@@ -14,12 +14,28 @@ const Workspace = (props) => {
   };
 
   const clickHandler = () => {
+    const initApi = (interpreter, scope) => {
+      // Add an API function for the alert() block.
+      const wrapper = function (text) {
+        text = text ? text.toString() : '';
+        return alert(text);
+        // original line below. createPrimitive throwing an error so we adjusted it because 🙄
+        // return interpreter.createPrimitive(alert(text))
+      };
+      interpreter.setProperty(
+        scope,
+        'alert',
+        interpreter.createNativeFunction(wrapper)
+      );
+    };
+
     // const myInterpreter = new Interpreter(javascriptCode);
-    const code = javascriptCode.toString();
-    const myInterpreter = new Interpreter('2 * 2');
-    console.log('JAVASCRIPT CODE 😤', code);
+    // const code = javascriptCode.toString();
+    const myInterpreter = new Interpreter(javascriptCode, initApi);
+    // console.log('JAVASCRIPT CODE 😤', code);
     console.log('MY INTERPRETER 😒', myInterpreter);
     console.log('RUN', myInterpreter.run());
+    // eval(javascriptCode);
     myInterpreter.run();
     // const nextStep = () => {
     //   if (myInterpreter.step()) {
