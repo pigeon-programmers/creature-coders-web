@@ -5,6 +5,7 @@ import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import {me} from './store'
 import Block from './components/Block'
+import Map from './components/Map'
 
 /**
  * COMPONENT
@@ -22,6 +23,7 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
+            <Route path='/map' component={Map} />
             <Redirect to="/home" />
           </Switch>
         ) : (
@@ -29,7 +31,8 @@ class Routes extends Component {
             <Route path='/' exact component={ Login } />
             <Route path="/login" exact component={Login} />
             <Route path="/signup" exact component={Signup} />
-            <Route path="/block" exact component={Block} />
+              <Route path="/block" exact component={Block} />
+              <Route path='/map' component={Map} />
           </Switch>
         )}
       </div>
