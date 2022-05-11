@@ -2,35 +2,19 @@ import React, { useState } from 'react';
 import { BlocklyWorkspace } from 'react-blockly';
 import Blockly from 'blockly';
 
-export const Block = (props) => {
-  const [xml, setXml] = useState('');
+const Workspace = (props) => {
+  const { toolbox } = props;
   const [javascriptCode, setJavascriptCode] = useState('');
 
-  const initialXml = '';
-
-  const toolboxCategories = {
-    kind: 'flyoutToolbox',
-    contents: [
-      {
-        kind: 'block',
-        type: 'text_print',
-      },
-      {
-        kind: 'block',
-        type: 'text',
-        fields: {TEXT: 'hello world'},
-      },
-    ],
-  };
-  function workspaceDidChange(workspace) {
+  const workspaceDidChange = (workspace) => {
     const code = Blockly.JavaScript.workspaceToCode(workspace);
     setJavascriptCode(code);
-  }
+  };
+
   return (
     <>
       <BlocklyWorkspace
-        toolboxConfiguration={toolboxCategories}
-        initialXml={initialXml}
+        toolboxConfiguration={toolbox}
         className="blockly-workspace"
         workspaceConfiguration={{
           grid: {
@@ -45,7 +29,6 @@ export const Block = (props) => {
           trashcan: true,
         }}
         onWorkspaceChange={workspaceDidChange}
-        onXmlChange={setXml}
       />
       <textarea
         id="code"
@@ -57,4 +40,4 @@ export const Block = (props) => {
   );
 };
 
-export default Block;
+export default Workspace;

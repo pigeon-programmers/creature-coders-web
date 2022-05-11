@@ -52,3 +52,9 @@ input {
   position: fixed;
   bottom: 0;
 }
+
+#gameMap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
