@@ -12,7 +12,7 @@ const Workspace = (props) => {
   };
 
   return (
-    <>
+    <div>
       <BlocklyWorkspace
         toolboxConfiguration={toolbox}
         className="blockly-workspace"
@@ -36,7 +36,7 @@ const Workspace = (props) => {
         value={javascriptCode}
         readOnly
       ></textarea>
-    </>
+    </div>
   );
 };
 
