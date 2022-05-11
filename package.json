@@ -1,7 +1,7 @@
 {
-  "name": "fs-app-template",
+  "name": "creature-coders",
   "version": "2.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
@@ -20,14 +20,19 @@
   "author": "Fullstack Academy of Code",
   "license": "MIT",
   "dependencies": {
+    "acorn": "^8.7.1",
+    "acorn-node": "^2.0.1",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
+    "blockly": "^8.0.2",
     "compression": "^1.7.3",
     "express": "^4.16.4",
     "history": "^4.9.0",
+    "js-interpreter": "^2.3.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
+    "react-blockly": "^7.0.0-alpha.2",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {

@@ -12,8 +12,23 @@ const User = db.define('user', {
     unique: true,
     allowNull: false
   },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      isEmail: true,
+    }
+  },
   password: {
     type: Sequelize.STRING,
+  },
+  currentLevel: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
+  },
+  currentGame: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
   }
 })
 

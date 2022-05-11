@@ -19,3 +19,42 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.blockly-workspace {
+  height: 500px;
+  width: 500px;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: white;
+  border: 1px solid black;
+}
+
+button:hover {
+  background-color: fuchsia;
+}
+
+input {
+  border: 1px solid black;
+}
+
+#navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+}
+
+#gameMap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

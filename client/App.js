@@ -6,8 +6,9 @@ import Routes from './Routes'
 const App = () => {
   return (
     <div>
-      <Navbar />
+      <h1>Creature Coders</h1>
       <Routes />
+      <Navbar />
     </div>
   )
 }
