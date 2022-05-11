@@ -1,29 +1,60 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
 import { BlocklyWorkspace } from 'react-blockly';
+import Blockly from 'blockly';
 
-export const Block = props => {
-  const [xml, setXml] = useState();
-  const toolbox = {
-    "kind": "flyoutToolbox",
-    "contents": [
+export const Block = (props) => {
+  const [xml, setXml] = useState('');
+  const [javascriptCode, setJavascriptCode] = useState('');
+
+  const initialXml = '';
+
+  const toolboxCategories = {
+    kind: 'flyoutToolbox',
+    contents: [
       {
-        "kind": "block",
-        "type": "controls_if"
+        kind: 'block',
+        type: 'text_print',
       },
       {
-        "kind": "block",
-        "type": "controls_whileUntil"
-      }
-    ]
+        kind: 'block',
+        type: 'text',
+        fields: {TEXT: 'hello world'},
+      },
+    ],
   };
+  function workspaceDidChange(workspace) {
+    const code = Blockly.JavaScript.workspaceToCode(workspace);
+    setJavascriptCode(code);
+  }
   return (
-    <BlocklyWorkspace
-      className="blockly-workspace" // you can use whatever classes are appropriate for your app's CSS
-      toolboxConfiguration={toolbox} // this must be a JSON toolbox definition
-      initialXml={xml}
-      onXmlChange={setXml}
-    />
-  )
-}
+    <>
+      <BlocklyWorkspace
+        toolboxConfiguration={toolboxCategories}
+        initialXml={initialXml}
+        className="blockly-workspace"
+        workspaceConfiguration={{
+          grid: {
+            spacing: 20,
+            length: 3,
+            colour: '#ccc',
+            snap: true,
+          },
+          horizontalLayout: true,
+          toolboxPosition: 'end',
+          scrollbars: false,
+          trashcan: true,
+        }}
+        onWorkspaceChange={workspaceDidChange}
+        onXmlChange={setXml}
+      />
+      <textarea
+        id="code"
+        style={{ height: '200px', width: '400px' }}
+        value={javascriptCode}
+        readOnly
+      ></textarea>
+    </>
+  );
+};
 
-export default Block
+export default Block;
