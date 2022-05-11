@@ -35,6 +35,7 @@ export const Game01 = () => {
   };
 
   //for this ternary we would need to make sure the instructions say to write hello pigeons with no caps or punctuation
+  //ideally this will end up not being alerts
 
   const outcome = () => {
     document.getElementById('test').innerHTML === 'hello pigeons'
