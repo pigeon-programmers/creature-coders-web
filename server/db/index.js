@@ -6,8 +6,8 @@ const User = require('./models/User');
 const Pet = require('./models/Pet');
 const Badge = require('./models/Badge');
 
-User.belongsTo(Pet);
-Pet.hasMany(User);
+User.hasOne(Pet);
+Pet.belongsTo(User);
 
 User.belongsToMany(Badge, { through: "User_Badges"});
 Badge.belongsToMany(User, { through: "User_Badges"});

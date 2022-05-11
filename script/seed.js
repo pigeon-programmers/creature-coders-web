@@ -68,7 +68,7 @@ async function seed() {
     Pet.create({ name: "Blossom", type: "Possom", userId: 1 }),
     Pet.create({ name: "Pidge", type: "Pigeon", userId: 2 }),
     Pet.create({ name: "Funky", type: "Skunk", userId: 3 }),
-    Pet.create({ name: "Ratteo", type: "Rat" })
+    Pet.create({ name: "Ratteo", type: "Rat", userId: 4 })
   ]);
 
   console.log(`seeded ${users.length} users`);
