@@ -21,7 +21,7 @@ const Workspace = (props) => {
   //put visuals of game above blockly workspace
 
   return (
-    <>
+    <div>
       <BlocklyWorkspace
         toolboxConfiguration={toolbox}
         className="blockly-workspace"
@@ -42,7 +42,7 @@ const Workspace = (props) => {
       <button type="button" onClick={clickHandler}>
         Run
       </button>
-    </>
+    </div>
   );
 };
 
