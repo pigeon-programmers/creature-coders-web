@@ -44,3 +44,17 @@ button:hover {
 input {
   border: 1px solid black;
 }
+
+#navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+}
+
+#gameMap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
