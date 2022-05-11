@@ -7,13 +7,28 @@ const axios = require('axios');
 const SALT_ROUNDS = 5;
 
 const User = db.define('user', {
-  username: {
+  name: {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false
   },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      isEmail: true,
+    }
+  },
   password: {
     type: Sequelize.STRING,
+  },
+  currentLevel: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
+  },
+  currentGame: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
   }
 })
 
