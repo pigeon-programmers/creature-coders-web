@@ -24,3 +24,23 @@ form div {
   height: 500px;
   width: 500px;
 }
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: white;
+  border: 1px solid black;
+}
+
+button:hover {
+  background-color: fuchsia;
+}
+
+input {
+  border: 1px solid black;
+}
