@@ -33,7 +33,7 @@ const AuthForm = props => {
           <input name="password" type="password" />
         </div>
         <div>
-          <Button>Log In</Button>
+          <Button>{displayName}</Button>
           {/* <button type="submit">{displayName}</button> */}
         </div>
         {error && error.response && <div> {error.response.data} </div>}
