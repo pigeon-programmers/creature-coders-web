@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Workspace from '../Workspace'
+import PopUp from '../../PopUp'
 
 export const Game00 = () => {
   const toolbox = {
@@ -17,15 +18,10 @@ export const Game00 = () => {
     ]
   }
 
+
   return (
     <div>
-      <div id='popUp'>
-        <div id='popup-header'>
-          <div id='title'>Hello World!</div>
-          <button id='close-button'>&times;</button>
-          <p>here is a pop up!</p>
-        </div>
-      </div>
+      <PopUp />
       <Workspace toolbox={toolbox} />
     </div>
   )
