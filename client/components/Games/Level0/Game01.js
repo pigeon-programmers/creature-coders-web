@@ -45,7 +45,7 @@ export const Game01 = () => {
   //ideally this will end up not being alerts
 
   const outcome = () => {
-    document.getElementById('test').innerHTML === 'hello pigeons'
+    string === 'hello pigeons'
       ? setTimeout(() => {
           alert('great job!');
         }, 500)
