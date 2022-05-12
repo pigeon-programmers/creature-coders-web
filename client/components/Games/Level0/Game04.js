@@ -1,6 +1,7 @@
 import React from "react";
 import Workspace from "../Workspace";
 import Game04Blocks from "../Game04Blocks";
+import PopUp from "../../PopUp";
 
 export const Game04 = () => {
   const toolbox = {
@@ -86,6 +87,7 @@ export const Game04 = () => {
 
   return (
     <>
+    <PopUp title={"Matching data types!"} body={"Match blocks from 'Types' and 'Match' to give your animal a slice of pizza!"} /> 
       <Workspace toolbox={toolbox} initApi={initApi} outcome={outcome} />
     </>
   );
