@@ -5,6 +5,7 @@ import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import { me } from './store'
 import Map from './components/Map'
+import UserProfile from './components/UserProfile';
 import Game00 from './components/Games/Level0/Game00';
 import Game01 from './components/Games/Level0/Game01';
 import Game02 from './components/Games/Level0/Game02';
@@ -22,6 +23,9 @@ class Routes extends Component {
 
     return (
       <div>
+          <Switch>
+            <Route path="/:userId" component={UserProfile} />
+          </Switch>
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
