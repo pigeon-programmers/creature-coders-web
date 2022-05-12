@@ -8,6 +8,7 @@ import Map from './components/Map'
 import Game00 from './components/Games/Level0/Game00';
 import Game01 from './components/Games/Level0/Game01';
 import Game02 from './components/Games/Level0/Game02';
+import Game04 from './components/Games/Level0/Game04';
 
 /**
  * COMPONENT
@@ -29,6 +30,7 @@ class Routes extends Component {
             <Route path="/game/0/0" exact component={Game00} />
             <Route path="/game/0/1" exact component={Game01} />
             <Route path="/game/0/2" exact component={Game02} />
+            <Route path="/game/0/4" exact component={Game04} />
           </Switch>
         ) : (
           <Switch>
@@ -39,6 +41,7 @@ class Routes extends Component {
             <Route path="/game/0/0" exact component={Game00} />
             <Route path="/game/0/1" exact component={Game01} />
             <Route path="/game/0/2" exact component={Game02} />
+            <Route path="/game/0/4" exact component={Game04} />
           </Switch>
         )}
       </div>
