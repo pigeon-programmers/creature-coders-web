@@ -8,7 +8,7 @@ export const Game01 = () => {
   const [string, setString] = useState('');
 
   useEffect(() => {
-    if (string !== 'EDIT TEXT') outcome();
+    if (string !== 'EDIT TEXT HERE') outcome();
   }, [string]);
 
   //make first block into custom "write" block
@@ -23,7 +23,7 @@ export const Game01 = () => {
       {
         kind: 'block',
         type: 'text',
-        fields: { TEXT: 'EDIT TEXT' },
+        fields: { TEXT: 'EDIT TEXT HERE' },
       },
     ],
   };
