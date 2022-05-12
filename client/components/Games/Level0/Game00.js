@@ -17,11 +17,9 @@ export const Game00 = () => {
       }
     ]
   }
-
-
   return (
     <div>
-      <PopUp />
+      <PopUp title='Hello Pigeons' body='Connect the blocks to return Hello Pigeons'/>
       <Workspace toolbox={toolbox} />
     </div>
   )
