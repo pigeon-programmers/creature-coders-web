@@ -1,93 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { GameContainer, MatchButton } from '../../style';
+import styled from 'styled-components';
+
+const DataTypeButton = styled(MatchButton)`
+  background: ${(props) => (props.className === 'off' ? 'white' : 'grey')};
+`;
+
+const AnswerButton = styled(MatchButton)`
+  background: ${(props) => (props.className === 'off' ? 'pink' : 'grey')};
+`;
 
 const Game03 = () => {
-  const handlePress = (evt) => {
-    const {value, style} = evt.target
-    if (value === 'string' || value === 'hello') {
-      if (value === 'string' || value === 'hello') {
-        style={{...style}, backgroundColor: grey}
-      }
-    }
+  const [match, setMatch] = useState('');
+  const [chosen, setChosen] = useState([]);
+
+  const handleClick = (evt) => {
+    const { value, className } = evt.target;
+    console.log('VALUE', value);
+
+    const newState = [...chosen, value];
+
+    setChosen(newState);
+    console.log('CHOSEN', chosen);
   };
 
   return (
     <div style={{ margin: 100 }}>
-      <div style={{ height: 300, width: 500, backgroundColor: '#ffd68a' }}>
-        <button
-          style={{
-            height: 25,
-            width: 50,
-            margin: 10,
-            border: '1px solid black',
-            backgroundColor: 'white',
-          }}
-          value="string"
-        >
+      <GameContainer style={{ backgroundColor: '#ffd68a' }}>
+        <DataTypeButton className="off" value="string" onClick={handleClick}>
           string
-        </button>
-        <button
-          style={{
-            height: 25,
-            width: 50,
-            margin: 10,
-            border: '1px solid black',
-            backgroundColor: 'white',
-          }}
-          value="boolean"
-        >
+        </DataTypeButton>
+        <DataTypeButton className="off" value="boolean" onClick={handleClick}>
           boolean
-        </button>
-        <button
-          style={{
-            height: 25,
-            width: 50,
-            margin: 10,
-            border: '1px solid black',
-            backgroundColor: 'white',
-          }}
-          value="number"
-        >
+        </DataTypeButton>
+        <DataTypeButton className="off" value="number" onClick={handleClick}>
           number
-        </button>
-      </div>
-      <div style={{ height: 300, width: 500, backgroundColor: '#add8e6' }}>
-        <button
-          style={{
-            height: 25,
-            width: 50,
-            margin: 10,
-            border: '1px solid black',
-            backgroundColor: 'pink',
-          }}
-          value="hello"
-        >
+        </DataTypeButton>
+      </GameContainer>
+      <GameContainer style={{ backgroundColor: '#add8e6' }}>
+        <AnswerButton className="off" value="hello" onClick={handleClick}>
           'hello'
-        </button>
-        <button
-          style={{
-            height: 25,
-            width: 50,
-            margin: 10,
-            border: '1px solid black',
-            backgroundColor: 'pink',
-          }}
-          value="2"
-        >
+        </AnswerButton>
+        <AnswerButton className="off" value="2" onClick={handleClick}>
           2
-        </button>
-        <button
-          style={{
-            height: 25,
-            width: 50,
-            margin: 10,
-            border: '1px solid black',
-            backgroundColor: 'pink',
-          }}
-          value="false"
-        >
+        </AnswerButton>
+        <AnswerButton className="off" value="false" onClick={handleClick}>
           false
-        </button>
-      </div>
+        </AnswerButton>
+      </GameContainer>
     </div>
   );
 };

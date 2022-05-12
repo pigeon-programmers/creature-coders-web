@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BlocklyWorkspace } from 'react-blockly';
 import Blockly from 'blockly';
-import Interpreter from 'js-interpreter';
+// import Interpreter from 'js-interpreter';
 
 const Workspace = (props) => {
-  const { toolbox, initApi, outcome } = props;
+  const { toolbox, onRun } = props;
   const [javascriptCode, setJavascriptCode] = useState('');
 
   const workspaceDidChange = (workspace) => {
@@ -12,11 +12,12 @@ const Workspace = (props) => {
     setJavascriptCode(code);
   };
 
-  const clickHandler = () => {
-    const myInterpreter = new Interpreter(javascriptCode, initApi);
-    myInterpreter.run();
-    // outcome();
-  };
+  //for setInterval, pass clickHandler into workspace as function and outer componets decide what they want to do with that handler
+
+  // const clickHandler = () => {
+  //   const myInterpreter = new Interpreter(javascriptCode, initApi);
+  //   myInterpreter.run();
+  // };
 
   //put visuals of game above blockly workspace
 
@@ -39,7 +40,7 @@ const Workspace = (props) => {
         }}
         onWorkspaceChange={workspaceDidChange}
       />
-      <button type="button" onClick={clickHandler}>
+      <button type="button" onClick={() => onRun(javascriptCode)}>
         Run
       </button>
     </div>
