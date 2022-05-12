@@ -21,8 +21,8 @@ form div {
 }
 
 .blockly-workspace {
-  height: 500px;
-  width: 500px;
+  height: 50vh;
+  width: 80vw;
 }
 
 .signup {
@@ -30,15 +30,6 @@ form div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-button {
-  background-color: white;
-  border: 1px solid black;
-}
-
-button:hover {
-  background-color: fuchsia;
 }
 
 input {
