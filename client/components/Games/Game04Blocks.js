@@ -126,6 +126,24 @@ Blockly.JavaScript['undefined'] = function(block) {
   return code;
 };
 
+Blockly.Blocks['undefined_ex'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldLabelSerializable("undefined"), "undefined");
+    this.setPreviousStatement(true, null);
+    this.setColour(345);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['undefined_ex'] = function(block) {
+  const code = 'undefined';
+  return code;
+};
+
+
+
 // OBJECTS
 
 Blockly.Blocks['object'] = {
@@ -143,6 +161,24 @@ Blockly.JavaScript['object'] = function(block) {
   const code = 'object';
   return code;
 };
+
+Blockly.Blocks['object_ex'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldLabelSerializable(" {  }  [  ] "), "object");
+    this.setPreviousStatement(true, null);
+    this.setColour(345);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['object_ex'] = function(block) {
+  const code = 'object';
+  return code;
+};
+
+
 
 // NULL 
 

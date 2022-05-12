@@ -56,6 +56,14 @@ export const Game04 = () => {
             kind: "block",
             type: "null_ex",
           },
+          {
+            kind: "block",
+            type: "object_ex",
+          },
+          {
+            kind: "block",
+            type: "undefined_ex",
+          },
         ],
       },
     ],
