@@ -19,13 +19,13 @@ const PopUp = (props) => {
         <div>
           <div className="popUp" id="popUp">
             <div className="popUp-header">
-              <div className="title">Hello World!</div>
+              <div className="title">{props.title}</div>
               <button onClick={togglePopUp} className="close-button">
                 &times;
               </button>
             </div>
             <div className="popUp-body">
-              Connect the blocks to print "Hello world"!
+            {props.body}
             </div>
           </div>
           <div id="overlay"></div>
