@@ -5,7 +5,7 @@ import Interpreter from 'js-interpreter';
 //useRef
 
 export const Game01 = () => {
-  const [string, setString] = useState('');
+  const [string, setString] = useState('EDIT TEXT HERE');
 
   useEffect(() => {
     if (string !== 'EDIT TEXT HERE') outcome();
