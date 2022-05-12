@@ -15,6 +15,7 @@ const Workspace = (props) => {
   const clickHandler = () => {
     const myInterpreter = new Interpreter(javascriptCode, initApi);
     myInterpreter.run();
+    console.log("JAVASCRIPT CODE", javascriptCode)
     outcome();
   };
 
