@@ -49,3 +49,11 @@ input {
   flex-direction: column;
   gap: 10px;
 }
+
+#game03-display {
+  display: flex;
+  height: 30px;
+  width: 80%;
+  align-items: center;
+  background-color: grey;
+}

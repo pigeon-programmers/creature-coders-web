@@ -21,10 +21,19 @@ Blockly.Blocks['subway'] = {
     const dropdown_switch = block.getFieldValue('switch');
     let code; 
     if (dropdown_switch === "on") {
-        code = "window.alert('hello pigeons');"
+        if (dropdown_subway_line === "G") {
+            code = document.getElementById('game03-display').style.backgroundColor='green';
+        }
+        if (dropdown_subway_line === "B") {
+            code = document.getElementById('game03-display').style.backgroundColor='blue';
+        }
+        if (dropdown_subway_line === "Y") {
+            code = document.getElementById('game03-display').style.backgroundColor='yellow';
+        }
+        else code = "window.alert('hello pigeons');"
     }
     if (dropdown_switch === "off") {
-        code = "window.alert('hello pigeons is turned off');"
+        code = document.getElementById('game03-display').style.backgroundColor='gray';
     }
     return code;
   };

@@ -42,7 +42,7 @@ export const Game02 = () => {
 
   return (
     <>
-    <div></div>
+    <div id="game03-display"></div>
       <Workspace toolbox={toolbox} initApi={initApi} outcome={outcome} />
     </>
   );
