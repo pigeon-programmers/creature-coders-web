@@ -1,5 +1,8 @@
 import Blockly from "blockly";
 
+
+// SUBWAY LINE COLOR BLOCK 
+
 Blockly.Blocks['subway'] = {
     init: function() {
       this.appendDummyInput()
@@ -30,10 +33,45 @@ Blockly.Blocks['subway'] = {
         if (dropdown_subway_line === "Y") {
             code = document.getElementById('game03-display').style.backgroundColor='yellow';
         }
-        else code = "window.alert('hello pigeons');"
     }
     if (dropdown_switch === "off") {
         code = document.getElementById('game03-display').style.backgroundColor='gray';
     }
+    return code;
+  };
+
+  // PIZZA NAME 
+
+  Blockly.Blocks['pizza_name'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField("Pizza");
+      this.setNextStatement(true, null);
+      this.setColour(45);
+   this.setTooltip("");
+   this.setHelpUrl("");
+    }
+};
+
+Blockly.JavaScript['pizza_name'] = function(block) {
+    const code = 'pizza';
+    return code;
+  };
+
+// PIZZA BLOCK 
+
+Blockly.Blocks['pizza'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField(new Blockly.FieldImage("https://www.kindpng.com/picc/m/3-34695_clip-art-how-to-draw-a-pizza-slice.png", 140, 70, { alt: "*", flipRtl: "FALSE" }));
+      this.setPreviousStatement(true, null);
+      this.setColour(45);
+   this.setTooltip("");
+   this.setHelpUrl("");
+    }
+  };
+
+  Blockly.JavaScript['pizza'] = function(block) {
+    let code = 'pizza';
     return code;
   };
