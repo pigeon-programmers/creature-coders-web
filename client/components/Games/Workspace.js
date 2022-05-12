@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BlocklyWorkspace } from 'react-blockly';
 import Blockly from 'blockly';
+import Interpreter from 'js-interpreter';
 
 const Workspace = (props) => {
-  const { toolbox } = props;
+  const { toolbox, initApi, outcome } = props;
   const [javascriptCode, setJavascriptCode] = useState('');
 
   const workspaceDidChange = (workspace) => {
@@ -11,8 +12,16 @@ const Workspace = (props) => {
     setJavascriptCode(code);
   };
 
+  const clickHandler = () => {
+    const myInterpreter = new Interpreter(javascriptCode, initApi);
+    myInterpreter.run();
+    outcome();
+  };
+
+  //put visuals of game above blockly workspace
+
   return (
-    <>
+    <div>
       <BlocklyWorkspace
         toolboxConfiguration={toolbox}
         className="blockly-workspace"
@@ -30,14 +39,22 @@ const Workspace = (props) => {
         }}
         onWorkspaceChange={workspaceDidChange}
       />
-      <textarea
-        id="code"
-        style={{ height: '200px', width: '400px' }}
-        value={javascriptCode}
-        readOnly
-      ></textarea>
-    </>
+      <button type="button" onClick={clickHandler}>
+        Run
+      </button>
+    </div>
   );
 };
 
 export default Workspace;
+
+//textarea below can be added in for higher level games to see the actual code
+//in separate "higher level" workspace
+{
+  /* <textarea
+id="code"
+style={{ height: '200px', width: '400px' }}
+value={javascriptCode}
+readOnly
+></textarea> */
+}

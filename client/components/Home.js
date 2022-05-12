@@ -11,6 +11,8 @@ export const Home = props => {
     <div>
       <h3>Welcome, {username}</h3>
     </div>
+
+
   )
 }
 
