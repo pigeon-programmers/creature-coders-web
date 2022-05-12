@@ -1,5 +1,6 @@
-import React from 'react';
-import Workspace from '../Workspace';
+import React, { useState } from 'react'
+import Workspace from '../Workspace'
+import PopUp from '../../PopUp'
 
 export const Game00 = () => {
   const toolbox = {
@@ -7,21 +8,23 @@ export const Game00 = () => {
     contents: [
       {
         kind: 'block',
-        type: 'text_print',
+        type: 'text_print'
       },
       {
         kind: 'block',
         type: 'text',
-        fields: { TEXT: 'hello world' },
-      },
-    ],
-  };
+        fields: { TEXT: 'hello world' }
+      }
+    ]
+  }
+
 
   return (
-    <>
+    <div>
+      <PopUp />
       <Workspace toolbox={toolbox} />
-    </>
-  );
-};
+    </div>
+  )
+}
 
-export default Game00;
+export default Game00
