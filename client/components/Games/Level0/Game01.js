@@ -85,7 +85,7 @@ export const Game01 = () => {
           backgroundColor: '#add8e6',
         }}
       >
-        <p id="test">{string}</p>
+        <p id="test">{string === 'EDIT TEXT HERE' ? '' : string}</p>
       </div>
       <Workspace toolbox={toolbox} onRun={onRun} />
     </div>
