@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
 
 export const Game01 = () => {
+  const [string, setString] = useState('');
+
+  useEffect(() => {
+    outcome();
+  }, [string]);
+
   const toolbox = {
     kind: 'flyoutToolbox',
     contents: [
@@ -21,8 +27,9 @@ export const Game01 = () => {
     // Add an API function for the alert() block.
     const wrapper = function (text) {
       text = text ? text.toString() : '';
-      const test = document.getElementById('test');
-      test.innerHTML = text;
+      // const test = document.getElementById('test');
+      // test.innerHTML = text;
+      setString(text);
 
       // original line below. createPrimitive throwing an error so we adjusted it because 🙄
       // return interpreter.createPrimitive(alert(text))
@@ -56,7 +63,7 @@ export const Game01 = () => {
           backgroundColor: '#add8e6',
         }}
       >
-        <p id="test"></p>
+        <p id="test">{string}</p>
       </div>
       <Workspace toolbox={toolbox} initApi={initApi} outcome={outcome} />
     </div>

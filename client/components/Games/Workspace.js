@@ -15,7 +15,7 @@ const Workspace = (props) => {
   const clickHandler = () => {
     const myInterpreter = new Interpreter(javascriptCode, initApi);
     myInterpreter.run();
-    outcome();
+    // outcome();
   };
 
   //put visuals of game above blockly workspace
