@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
+import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
 
 export const Game01 = () => {
@@ -68,6 +69,12 @@ export const Game01 = () => {
         }}
       >
         <p id="test">{string === 'EDIT TEXT HERE' ? '' : string}</p>
+        <PopUp
+          title={'Hello Pigeons'}
+          body={
+            'Connect the two blocks and change the text to say "hello pigeons" in all lowercase, then press RUN to see "hello world" written in your console!'
+          }
+        />
       </div>
       <Workspace toolbox={toolbox} onRun={onRun} />
     </div>
