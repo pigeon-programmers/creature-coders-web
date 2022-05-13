@@ -52,7 +52,7 @@ Blockly.Blocks["string"] = {
 };
 
 Blockly.JavaScript["string"] = function (block) {
-  const code = "string";
+  const code = "window.alert";
   return code;
 };
 
@@ -68,7 +68,7 @@ Blockly.Blocks['string_ex'] = {
 };
 
 Blockly.JavaScript['string_ex'] = function(block) {
-  const code = "string";
+  const code = "('string')";
   return code;
 };
 
@@ -88,7 +88,7 @@ Blockly.Blocks["number"] = {
 };
 
 Blockly.JavaScript["number"] = function (block) {
-  const code = "number";
+  const code = "window.alert";
   return code;
 };
 
@@ -104,7 +104,7 @@ Blockly.Blocks['number_ex'] = {
 };
 
 Blockly.JavaScript['number_ex'] = function(block) {
-  const code = 'number';
+  const code = "('number')";
   return code;
 };
 
