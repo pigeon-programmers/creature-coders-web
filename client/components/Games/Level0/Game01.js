@@ -22,7 +22,7 @@ export const Game01 = () => {
       {
         kind: 'block',
         type: 'text',
-        fields: { TEXT: 'EDIT TEXT HERE' },
+        fields: { TEXT: '' },
       },
     ],
   };
