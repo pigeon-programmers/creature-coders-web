@@ -3,7 +3,7 @@ module.exports = {
   output: {
     path: __dirname,
     filename: './public/bundle.js',
-    assetModuleFilename: 'images/[name][ext]',
+    assetModuleFilename: 'public/[name][ext]',
   },
   devtool: 'source-map',
   module: {

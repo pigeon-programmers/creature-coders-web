@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import bg from './bg.png';
 
 const palette = {
   white: '#FFFFFF',
@@ -16,7 +15,7 @@ const palette = {
 
 export const Main = styled.div`
   background: ${palette.mdGray};
-  background-image: url(${bg});
+  background-image: url("./bg.svg");
   background-blend-mode: overlay;
   display: flex;
   flex-direction: column;

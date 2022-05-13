@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
 import { Nav } from './style';
+import IconMap from './Assets/IconMap.svg'
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <Nav >
@@ -20,7 +21,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           {/* The navbar will show these links before you log in */}
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
-          <Link to="/map">Game Map</Link>
+          <Link to="/map"><IconMap /></Link>
           <p>test</p>
         </>
       )}
