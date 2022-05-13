@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 
 const PopUp = (props) => {
   const [isOpen, setIsOpen] = useState(false)
-  // const [title, setTitle] = useState('')
-  // const [body, setBody] = useState('')
 
   const togglePopUp = () => {
     console.log(isOpen)
