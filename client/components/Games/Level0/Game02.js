@@ -1,6 +1,6 @@
 import React from 'react';
 import Workspace from '../Workspace';
-import Blocklys from '../Blocklys';
+import '../Blocks/Blocklys';
 
 export const Game02 = () => {
   const toolbox = {
