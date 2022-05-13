@@ -10,6 +10,7 @@ export const Game00 = () => {
   //1 and 2 allow a re-render with 1 being correct and 2 being incorrect
   //if you can think of a better way to do this, call us up
   const [connect, setConnect] = useState(0);
+  const [string, setString] = useState('');
 
   useEffect(() => {
     if (connect) outcome();
@@ -33,6 +34,7 @@ export const Game00 = () => {
     // Add an API function for the alert() block.
     const wrapper = function (text) {
       text = text ? text.toString() : '';
+      setString(text);
       text === 'hello world' ? setConnect(1) : setConnect(2);
     };
 
@@ -61,10 +63,19 @@ export const Game00 = () => {
 
   return (
     <div>
-      <PopUp
-        title="Hello World!"
-        body='Connect the two blocks, then press RUN to see "hello world" written in your console!'
-      />
+      <div
+        style={{
+          height: 100,
+          width: 500,
+          backgroundColor: '#add8e6',
+        }}
+      >
+        <p id="test">{string}</p>
+        <PopUp
+          title="Hello World!"
+          body='Connect the two blocks, then press RUN to see "hello world" written in your console!'
+        />
+      </div>
       <Workspace toolbox={toolbox} onRun={onRun} />
     </div>
   );

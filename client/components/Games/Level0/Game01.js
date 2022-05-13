@@ -5,7 +5,7 @@ import Interpreter from 'js-interpreter';
 import '../Blocks/01Blocks';
 
 export const Game01 = () => {
-  const [string, setString] = useState('EDIT TEXT HERE');
+  const [string, setString] = useState('');
   const [connect, setConnect] = useState(false);
 
   useEffect(() => {
@@ -68,7 +68,7 @@ export const Game01 = () => {
           backgroundColor: '#add8e6',
         }}
       >
-        <p id="test">{string === 'EDIT TEXT HERE' ? '' : string}</p>
+        <p id="test">{string}</p>
         <PopUp
           title={'Hello Pigeons'}
           body={
