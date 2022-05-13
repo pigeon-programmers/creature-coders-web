@@ -16,23 +16,25 @@ Blockly.Blocks["boolean"] = {
 };
 
 Blockly.JavaScript["boolean"] = function (block) {
-  const code = "boolean";
+  const code = "window.boolean";
   return code;
 };
 
-Blockly.Blocks['boolean_ex'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldLabelSerializable("true"), "boolean");
+Blockly.Blocks["boolean_ex"] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+      new Blockly.FieldLabelSerializable("true"),
+      "boolean"
+    );
     this.setPreviousStatement(true, null);
     this.setColour(345);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
+    this.setTooltip("");
+    this.setHelpUrl("");
+  },
 };
 
-Blockly.JavaScript['boolean_ex'] = function(block) {
-  const code = 'boolean';
+Blockly.JavaScript["boolean_ex"] = function (block) {
+  const code = '("boolean")';
   return code;
 };
 
@@ -52,23 +54,25 @@ Blockly.Blocks["string"] = {
 };
 
 Blockly.JavaScript["string"] = function (block) {
-  const code = "string";
+  const code = "window.string";
   return code;
 };
 
-Blockly.Blocks['string_ex'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldLabelSerializable("\"hello pigeons\""), "string");
+Blockly.Blocks["string_ex"] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+      new Blockly.FieldLabelSerializable('"hello pigeons"'),
+      "string"
+    );
     this.setPreviousStatement(true, null);
     this.setColour(345);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
+    this.setTooltip("");
+    this.setHelpUrl("");
+  },
 };
 
-Blockly.JavaScript['string_ex'] = function(block) {
-  const code = "string";
+Blockly.JavaScript["string_ex"] = function (block) {
+  const code = '("string")';
   return code;
 };
 
@@ -88,127 +92,138 @@ Blockly.Blocks["number"] = {
 };
 
 Blockly.JavaScript["number"] = function (block) {
-  const code = "number";
+  const code = "window.number";
   return code;
 };
 
-Blockly.Blocks['number_ex'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldLabelSerializable("42"), "number");
+Blockly.Blocks["number_ex"] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+      new Blockly.FieldLabelSerializable("42"),
+      "number"
+    );
     this.setPreviousStatement(true, null);
     this.setColour(345);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
+    this.setTooltip("");
+    this.setHelpUrl("");
+  },
 };
 
-Blockly.JavaScript['number_ex'] = function(block) {
-  const code = 'number';
+Blockly.JavaScript["number_ex"] = function (block) {
+  const code = '("number")';
   return code;
 };
 
-// UNDEFINED 
+// UNDEFINED
 
-Blockly.Blocks['undefined'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldLabelSerializable("Undefined"), "undefined");
+Blockly.Blocks["undefined"] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+      new Blockly.FieldLabelSerializable("Undefined"),
+      "undefined"
+    );
     this.setNextStatement(true, null);
     this.setColour(195);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
+    this.setTooltip("");
+    this.setHelpUrl("");
+  },
 };
 
-Blockly.JavaScript['undefined'] = function(block) {
-  const code = 'undefined';
+Blockly.JavaScript["undefined"] = function (block) {
+  const code = "window.undef";
   return code;
 };
 
-Blockly.Blocks['undefined_ex'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldLabelSerializable("undefined"), "undefined");
+Blockly.Blocks["undefined_ex"] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+      new Blockly.FieldLabelSerializable("undefined"),
+      "undefined"
+    );
     this.setPreviousStatement(true, null);
     this.setColour(345);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
+    this.setTooltip("");
+    this.setHelpUrl("");
+  },
 };
 
-Blockly.JavaScript['undefined_ex'] = function(block) {
-  const code = 'undefined';
+Blockly.JavaScript["undefined_ex"] = function (block) {
+  const code = '("undef")';
   return code;
 };
-
-
 
 // OBJECTS
 
-Blockly.Blocks['object'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldLabelSerializable("Object"), "object");
+Blockly.Blocks["object"] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+      new Blockly.FieldLabelSerializable("Object"),
+      "object"
+    );
     this.setNextStatement(true, null);
     this.setColour(195);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
+    this.setTooltip("");
+    this.setHelpUrl("");
+  },
 };
 
-Blockly.JavaScript['object'] = function(block) {
-  const code = 'object';
+Blockly.JavaScript["object"] = function (block) {
+  const code = "window.object";
   return code;
 };
 
-Blockly.Blocks['object_ex'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldLabelSerializable(" {  }  [  ] "), "object");
+Blockly.Blocks["object_ex"] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+      new Blockly.FieldLabelSerializable(" {  }  [  ] "),
+      "object"
+    );
     this.setPreviousStatement(true, null);
     this.setColour(345);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
+    this.setTooltip("");
+    this.setHelpUrl("");
+  },
 };
 
-Blockly.JavaScript['object_ex'] = function(block) {
-  const code = 'object';
+Blockly.JavaScript["object_ex"] = function (block) {
+  const code = '("object")';
   return code;
 };
 
+// NULL
 
-
-// NULL 
-
-Blockly.Blocks['null'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldLabelSerializable("Null"), "null");
+Blockly.Blocks["null"] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+      new Blockly.FieldLabelSerializable("Null"),
+      "null"
+    );
     this.setNextStatement(true, null);
     this.setColour(195);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
+    this.setTooltip("");
+    this.setHelpUrl("");
+  },
 };
-Blockly.JavaScript['null'] = function(block) {
-  const code = 'null';
+Blockly.JavaScript["null"] = function (block) {
+  //Cannot use null as a variable
+  const code = "window.nullBlock";
   return code;
 };
 
-Blockly.Blocks['null_ex'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldLabelSerializable("null"), "null");
+Blockly.Blocks["null_ex"] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+      new Blockly.FieldLabelSerializable("null"),
+      "null"
+    );
     this.setPreviousStatement(true, null);
     this.setColour(345);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
+    this.setTooltip("");
+    this.setHelpUrl("");
+  },
 };
 
-Blockly.JavaScript['null_ex'] = function(block) {
-  const code = 'null';
+Blockly.JavaScript["null_ex"] = function (block) {
+  const code = '("nullBlock")';
   return code;
 };

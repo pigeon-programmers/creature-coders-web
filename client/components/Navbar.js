@@ -2,29 +2,38 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
-import { Nav } from './style';
-import IconMap from './Assets/IconMap.svg'
+import { Nav, NavIconContainer, NavIcon } from './style';
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
-  <Nav >
-      {isLoggedIn ? (
-        <>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/map">Game Map</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </>
-      ) : (
-        <>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/map"><IconMap /></Link>
-          <p>test</p>
-        </>
-      )}
+  <Nav>
+    {isLoggedIn ? (
+      <>
+        {/* The navbar will show these links after you log in */}
+        <NavIconContainer>
+          <Link to="/map">
+            <NavIcon src="https://creature-coders.s3.amazonaws.com/iconMap.svg" alt="level map" />
+          </Link>
+          <NavIcon src="https://creature-coders.s3.amazonaws.com/iconPet.svg" alt="pet settings"/>
+          <NavIcon src="https://creature-coders.s3.amazonaws.com/iconShop.svg" alt="shop" />
+          <NavIcon src="https://creature-coders.s3.amazonaws.com/iconSettings.svg" alt="user settings" />
+        </NavIconContainer>
+      </>
+    ) : (
+      <>
+        {/* The navbar will show these links before you log in */}
+        <NavIconContainer>
+          <Link to="/map">
+            <NavIcon src="https://creature-coders.s3.amazonaws.com/iconMap.svg" alt="level map" />
+          </Link>
+          <Link to="/signup">
+            <NavIcon src="https://creature-coders.s3.amazonaws.com/iconSignUp.svg" alt="sign up" />
+          </Link>
+          <Link to="/login">
+            <NavIcon src="https://creature-coders.s3.amazonaws.com/iconSignIn.svg" alt="sign in" />
+          </Link>
+        </NavIconContainer>
+      </>
+    )}
     {/* <hr /> */}
   </Nav>
 );

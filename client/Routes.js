@@ -3,13 +3,16 @@ import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
-import { me } from './store'
-import Map from './components/Map'
+import { me } from './store';
+import Map from './components/Map';
 import Game00 from './components/Games/Level0/Game00';
 import Game01 from './components/Games/Level0/Game01';
 import Game02 from './components/Games/Level0/Game02';
+import Game03 from './components/Games/Level0/Game03';
 import Game04 from './components/Games/Level0/Game04';
+import Game05 from './components/Games/Level0/Game05';
 
+//TODO: refactor component to hooks and adjust so that isLoggedIn ternary only applied to routes that are different
 /**
  * COMPONENT
  */
@@ -26,22 +29,26 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
-            <Route path='/map' component={Map} />
+            <Route path="/map" component={Map} />
             <Route path="/game/0/0" exact component={Game00} />
             <Route path="/game/0/1" exact component={Game01} />
             <Route path="/game/0/2" exact component={Game02} />
+            <Route path="/game/0/3" exact component={Game03} />
             <Route path="/game/0/4" exact component={Game04} />
+            <Route path="/game/0/5" exact component={Game05} />
           </Switch>
         ) : (
           <Switch>
             <Route path="/" exact component={Login} />
             <Route path="/login" exact component={Login} />
             <Route path="/signup" exact component={Signup} />
-              <Route path='/map' component={Map} />
+            <Route path="/map" component={Map} />
             <Route path="/game/0/0" exact component={Game00} />
             <Route path="/game/0/1" exact component={Game01} />
             <Route path="/game/0/2" exact component={Game02} />
+            <Route path="/game/0/3" exact component={Game03} />
             <Route path="/game/0/4" exact component={Game04} />
+            <Route path="/game/0/5" exact component={Game05} />
           </Switch>
         )}
       </div>

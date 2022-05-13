@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
+import Interpreter from 'js-interpreter';
+
+//useRef
 
 export const Game01 = () => {
+  const [string, setString] = useState('EDIT TEXT HERE');
+
+  useEffect(() => {
+    if (string !== 'EDIT TEXT HERE') outcome();
+  }, [string]);
+
+  //make first block into custom "write" block
+
   const toolbox = {
     kind: 'flyoutToolbox',
     contents: [
@@ -12,7 +23,7 @@ export const Game01 = () => {
       {
         kind: 'block',
         type: 'text',
-        fields: { TEXT: '' },
+        fields: { TEXT: 'EDIT TEXT HERE' },
       },
     ],
   };
@@ -21,24 +32,29 @@ export const Game01 = () => {
     // Add an API function for the alert() block.
     const wrapper = function (text) {
       text = text ? text.toString() : '';
-      const test = document.getElementById('test');
-      test.innerHTML = text;
+      setString(text);
 
       // original line below. createPrimitive throwing an error so we adjusted it because 🙄
       // return interpreter.createPrimitive(alert(text))
     };
     interpreter.setProperty(
       scope,
+      //'alert' is function in compiled code
       'alert',
       interpreter.createNativeFunction(wrapper)
     );
+  };
+
+  const onRun = (javascriptCode) => {
+    const myInterpreter = new Interpreter(javascriptCode, initApi);
+    myInterpreter.run();
   };
 
   //for this ternary we would need to make sure the instructions say to write hello pigeons with no caps or punctuation
   //ideally this will end up not being alerts
 
   const outcome = () => {
-    document.getElementById('test').innerHTML === 'hello pigeons'
+    string === 'hello pigeons'
       ? setTimeout(() => {
           alert('great job!');
         }, 500)
@@ -56,9 +72,9 @@ export const Game01 = () => {
           backgroundColor: '#add8e6',
         }}
       >
-        <p id="test"></p>
+        <p id="test">{string === 'EDIT TEXT HERE' ? '' : string}</p>
       </div>
-      <Workspace toolbox={toolbox} initApi={initApi} outcome={outcome} />
+      <Workspace toolbox={toolbox} onRun={onRun} />
     </div>
   );
 };

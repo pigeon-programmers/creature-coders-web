@@ -14,8 +14,9 @@ const palette = {
 };
 
 export const Main = styled.div`
+  position: fixed;
   background: ${palette.mdGray};
-  background-image: url("./bg.svg");
+  background-image: url('https://creature-coders.s3.amazonaws.com/bg.svg');
   background-blend-mode: overlay;
   display: flex;
   flex-direction: column;
@@ -27,6 +28,7 @@ export const Main = styled.div`
 
 export const Nav = styled.div`
   width: 100vw;
+  height: 70px;
   background: ${palette.dkGray};
   display: flex;
   align-items: center;
@@ -34,14 +36,17 @@ export const Nav = styled.div`
   position: fixed;
   bottom: 0;
   font-family: 'Kirang Haerang', sans-serif;
-  & {
-    font-size: xx-large;
-    color: ${palette.white};
-  }
-  &:visited {
-    font-size: small;
-    color: ${palette.green};
-  }
+`;
+
+export const NavIconContainer = styled.div`
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+export const NavIcon = styled.img`
+  height: 50px;
 `;
 
 export const Game = styled.div``;
@@ -53,4 +58,19 @@ export const Button = styled.button`
   margin: 1em;
   padding: 0.25em 1em;
   display: block;
+`;
+
+//these were made for hannah's matching game
+
+export const GameContainer = styled.div`
+  height: 30vh;
+  width: 90vw;
+`;
+
+export const MatchButton = styled.button`
+  height: 3vh;
+  width: 6vw;
+  margin: 10px;
+  border: 1px solid black;
+  text-align: center;
 `;

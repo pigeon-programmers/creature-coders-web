@@ -1,25 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BlocklyWorkspace } from 'react-blockly';
 import Blockly from 'blockly';
-import Interpreter from 'js-interpreter';
 
 const Workspace = (props) => {
-  const { toolbox, initApi, outcome } = props;
+  const { toolbox, onRun } = props;
   const [javascriptCode, setJavascriptCode] = useState('');
 
   const workspaceDidChange = (workspace) => {
     const code = Blockly.JavaScript.workspaceToCode(workspace);
     setJavascriptCode(code);
   };
-
-  const clickHandler = () => {
-    const myInterpreter = new Interpreter(javascriptCode, initApi);
-    myInterpreter.run();
-    console.log("JAVASCRIPT CODE", javascriptCode)
-    outcome();
-  };
-
-  //put visuals of game above blockly workspace
 
   return (
     <div>
@@ -40,7 +30,7 @@ const Workspace = (props) => {
         }}
         onWorkspaceChange={workspaceDidChange}
       />
-      <button type="button" onClick={clickHandler}>
+      <button type="button" onClick={() => onRun(javascriptCode)}>
         Run
       </button>
     </div>
