@@ -7,21 +7,38 @@ import Interpreter from 'js-interpreter';
 export const Game01 = () => {
   const [string, setString] = useState('EDIT TEXT');
   const [timesRan, setTimesRan] = useState(0);
+  const [codeRun, setCodeRun] = useState(null);
+  const [codeComplete, setCodeComplete] = useState(false);
 
   useEffect(() => {
-    if (timesRan === 10) {
-      setTimeout(() => {
-        alert('great job!');
-      }, 500);
-      setTimesRan(0);
-    } else if (timesRan) {
-      alert(
-        'SO CLOSE - try again! HINT: did you make sure to repeat this action 10 times?'
-      );
+    if (codeRun) {
+      const nextStep = () => {
+        if (codeRun.step()) {
+          window.setTimeout(nextStep, 50);
+        } else {
+          setCodeComplete(true);
+        }
+      };
+      nextStep();
     }
-  }, [timesRan]);
+  }, [codeRun]);
 
-  //make first block into custom "write" block
+  useEffect(() => {
+    if (codeComplete) {
+      outcome();
+      setCodeComplete(false);
+      setTimesRan(0);
+      setCodeRun(null);
+    }
+  }, [codeComplete, timesRan]);
+
+  const outcome = () => {
+    timesRan === 10
+      ? alert('great job!')
+      : alert(
+          'SO CLOSE - try again! HINT: did you make sure to repeat this action 10 times?'
+        );
+  };
 
   const toolbox = {
     kind: 'flyoutToolbox',
@@ -75,39 +92,29 @@ export const Game01 = () => {
 
   const onRun = (javascriptCode) => {
     const myInterpreter = new Interpreter(javascriptCode, initApi);
+    setCodeRun(myInterpreter);
     // myInterpreter.run();
     //IF we want to step through a loop use below instead of run
     //INSTEAD of interpreting code above, have useSTate that is runCode setRunCode that starts off as false and once it starts running it sets state
     // to true, that can then get picked up in useEffect & myInt would go into nextStep.
     //ELSE try useState for interpreter start as null and in useEffect update we can check if null
     //nextStep below should be in useEffect
-    function nextStep() {
-      if (myInterpreter.step()) {
-        window.setTimeout(nextStep, 50);
-        // } else {
-        //   //maybe put this in a completed state checks on new render
-        //   outcome();
-        //   // if (timesRan === 10) {
-        //   //   alert('good job');
-        //   // } else {
-        //   //   alert('bad job');
-        //   // }
-        //   setTimesRan(0);
-        // }
-      }
-    }
-    nextStep();
+    // function nextStep() {
+    //   if (myInterpreter.step()) {
+    //     window.setTimeout(nextStep, 50);
+    //     } else {
+    //       //maybe put this in a completed state checks on new render
+    //       outcome();
+    //       // if (timesRan === 10) {
+    //       //   alert('good job');
+    //       // } else {
+    //       //   alert('bad job');
+    //       // }
+    //       setTimesRan(0);
+    //     }
+    //     nextStep();
+    //   }
   };
-
-  // const outcome = () => {
-  //   timesRan === 10
-  //     ? setTimeout(() => {
-  //         alert('great job!');
-  //       }, 500)
-  //     : alert(
-  //         'SO CLOSE - try again! HINT: did you make sure to repeat this action 10 times?'
-  //       );
-  // };
 
   console.log('RENDERING COMPONENT:', timesRan);
 
