@@ -9,8 +9,17 @@ export const Game01 = () => {
   const [timesRan, setTimesRan] = useState(0);
 
   useEffect(() => {
-    if (string !== 'EDIT TEXT') outcome();
-  }, [string]);
+    if (timesRan === 10) {
+      setTimeout(() => {
+        alert('great job!');
+      }, 500);
+      setTimesRan(0);
+    } else if (timesRan) {
+      alert(
+        'SO CLOSE - try again! HINT: did you make sure to repeat this action 10 times?'
+      );
+    }
+  }, [timesRan]);
 
   //make first block into custom "write" block
 
@@ -26,7 +35,7 @@ export const Game01 = () => {
         type: 'controls_repeat',
         message0: 'repeat %1 times',
         args0: [
-          { type: 'field_number', name: 'TIMES', value: '5', check: 'Number' },
+          { type: 'field_number', name: 'TIMES', value: '10', check: 'Number' },
         ],
         message1: 'do %1',
         args1: [{ type: 'input_statement', name: 'DO' }],
@@ -50,6 +59,7 @@ export const Game01 = () => {
     const wrapper = function () {
       // text = text ? text.toString() : '';
       setTimesRan(++counter);
+      // counter++;
       console.log('COUNTER:', counter);
       console.log('TIMES RAN:', timesRan);
       // original line below. createPrimitive throwing an error so we adjusted it because 🙄
@@ -74,31 +84,30 @@ export const Game01 = () => {
     function nextStep() {
       if (myInterpreter.step()) {
         window.setTimeout(nextStep, 50);
-      } else {
-        //maybe put this in a completed state checks on new render
-        if (timesRan === 10) {
-          alert('good job');
-        } else {
-          alert('bad job');
-        }
-        setTimesRan(0);
+        // } else {
+        //   //maybe put this in a completed state checks on new render
+        //   outcome();
+        //   // if (timesRan === 10) {
+        //   //   alert('good job');
+        //   // } else {
+        //   //   alert('bad job');
+        //   // }
+        //   setTimesRan(0);
+        // }
       }
     }
     nextStep();
   };
 
-  //for this ternary we would need to make sure the instructions say to write hello pigeons with no caps or punctuation
-  //ideally this will end up not being alerts
-
-  const outcome = () => {
-    string === 'hello pigeons'
-      ? setTimeout(() => {
-          alert('great job!');
-        }, 500)
-      : alert(
-          'SO CLOSE - try again! HINT: did you make sure to write "hello pigeons" in the block?'
-        );
-  };
+  // const outcome = () => {
+  //   timesRan === 10
+  //     ? setTimeout(() => {
+  //         alert('great job!');
+  //       }, 500)
+  //     : alert(
+  //         'SO CLOSE - try again! HINT: did you make sure to repeat this action 10 times?'
+  //       );
+  // };
 
   console.log('RENDERING COMPONENT:', timesRan);
 
