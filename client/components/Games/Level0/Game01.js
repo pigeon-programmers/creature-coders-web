@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
 import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
+import '../Blocks/01Blocks';
 
 export const Game01 = () => {
-  const [string, setString] = useState('EDIT TEXT HERE');
+  const [string, setString] = useState('');
   const [connect, setConnect] = useState(false);
 
   useEffect(() => {
@@ -13,11 +14,10 @@ export const Game01 = () => {
 
   const toolbox = {
     kind: 'flyoutToolbox',
-    //all block in game 01 are pre-made blocks
     contents: [
       {
         kind: 'block',
-        type: 'text_print',
+        type: 'write-2',
       },
       {
         kind: 'block',
@@ -36,7 +36,7 @@ export const Game01 = () => {
     };
     interpreter.setProperty(
       scope,
-      'alert',
+      'writeTwo',
       interpreter.createNativeFunction(wrapper)
     );
   };
@@ -68,7 +68,7 @@ export const Game01 = () => {
           backgroundColor: '#add8e6',
         }}
       >
-        <p id="test">{string === 'EDIT TEXT HERE' ? '' : string}</p>
+        <p id="test">{string}</p>
         <PopUp
           title={'Hello Pigeons'}
           body={
