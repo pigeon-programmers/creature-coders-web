@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {authenticate} from '../store'
-import { Button } from './style'
+import { Button, Main, FormContainer, Label, Input } from './style'
 
 /**
  * COMPONENT
@@ -10,35 +10,35 @@ const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name} className='signup'>
+    <Main>
+      <FormContainer onSubmit={handleSubmit} name={name} className='signup'>
         <div>
-          <label htmlFor="username">
+          <Label htmlFor="username">
             <p>Username</p>
-          </label>
-          <input name="username" type="text" />
+          </Label>
+          <Input name="username" type="text" />
         </div>
         {name === "signup" ? (
           <div className="auth-div">
-            <label htmlFor="email">
+            <Label htmlFor="email">
               <p>Email address</p>
-            </label>
-            <input name="email" type="text" />
+            </Label>
+            <Input name="email" type="text" />
           </div>
         ) : null}
         <div>
-          <label htmlFor="password">
+          <Label htmlFor="password">
             <p>Password</p>
-          </label>
-          <input name="password" type="password" />
+          </Label>
+          <Input name="password" type="password" />
         </div>
         <div>
           <Button>{displayName}</Button>
           {/* <button type="submit">{displayName}</button> */}
         </div>
         {error && error.response && <div> {error.response.data} </div>}
-      </form>
-    </div>
+      </FormContainer>
+    </Main>
   )
 }
 

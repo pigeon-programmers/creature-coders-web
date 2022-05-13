@@ -15,7 +15,7 @@ const palette = {
 
 export const Main = styled.div`
   position: fixed;
-  background: ${palette.mdGray};
+  background: ${palette.orange};
   background-image: url('https://creature-coders.s3.amazonaws.com/bg.svg');
   background-blend-mode: overlay;
   display: flex;
@@ -29,13 +29,12 @@ export const Main = styled.div`
 export const Nav = styled.div`
   width: 100vw;
   height: 70px;
-  background: ${palette.dkGray};
+  background: ${palette.mdGray};
   display: flex;
   align-items: center;
   justify-content: space-around;
   position: fixed;
   bottom: 0;
-  font-family: 'Kirang Haerang', sans-serif;
 `;
 
 export const NavIconContainer = styled.div`
@@ -49,15 +48,62 @@ export const NavIcon = styled.img`
   height: 50px;
 `;
 
-export const Game = styled.div``;
+export const FormContainer = styled.div`
+  height: 70vh;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: ${palette.mdGray};
+`;
+
+export const Label = styled.label`
+  font-size: 2em;
+  font-family: 'Roboto Mono', monospace;
+`;
+
+export const Input = styled.input`
+  width: 50vw;
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 2em 0;
+`;
+
+export const MapContainer = styled.div`
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: ${palette.dkGray}
+`;
+
+export const GameContent = styled.div`
+  width: 80vw;
+  height: 300px;
+  background-color: ${palette.white};
+`;
+
+export const StyledWorkspace = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 2em;
+`;
 
 export const Button = styled.button`
+  align-items: center;
   color: ${palette.white};
   background: ${palette.dkGray};
-  font-size: 1em;
+  font-size: 2em;
   margin: 1em;
-  padding: 0.25em 1em;
-  display: block;
+  padding: 0.25em 2em;
+  font-family: 'Kirang Haerang', sans-serif;
+  border-style: none;
+  box-sizing: border-box;
 `;
 
 //these were made for hannah's matching game

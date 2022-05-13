@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 body {
   font-family: sans-serif;
@@ -11,46 +12,9 @@ a {
   text-decoration: none;
 }
 
-label {
-  display: block;
-}
-
-
-form div {
-  margin: 1em;
-  display: inline-block;
-}
-
 .blockly-workspace {
   height: 50vh;
   width: 80vw;
-}
-
-.signup {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-input {
-  border: 1px solid black;
-}
-
-/* #navBar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  bottom: 0;
-  font-family: 'Kirang Haerang', sans-serif;
-  font-size: xx-large;
-} */
-
-#gameMap {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 #game03-display {
