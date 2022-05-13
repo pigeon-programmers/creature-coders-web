@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Workspace from "../Workspace";
 import Game04Blocks from "../Game04Blocks";
 import Interpreter from "js-interpreter";
@@ -11,6 +11,19 @@ export const Game04 = () => {
   const [nullBlock, setNullBlock] = useState("");
   const [object, setObject] = useState("");
   const [undef, setUndef] = useState("");
+
+  useEffect(() => {
+    // All types of state need to be added below for game to function properly!
+    if (
+      string !== "" ||
+      number !== "" ||
+      boolean !== "" ||
+      nullBlock !== "" ||
+      object !== "" ||
+      undef !== ""
+    )
+      outcome();
+  }, [string, number, boolean, nullBlock, object, undef]);
 
   const toolbox = {
     kind: "categoryToolbox",
@@ -47,7 +60,7 @@ export const Game04 = () => {
       },
       {
         kind: "category",
-        name: "Match",
+        name: "Examples",
         contents: [
           {
             kind: "block",
@@ -79,12 +92,17 @@ export const Game04 = () => {
   };
 
   const initApi = (interpreter, scope) => {
-    const wrapper = function (text) {
-      text = text ? text.toString() : "";
-      alert(text);
-    };
-
     const prop = (varName) => {
+      const wrapper = function (text) {
+        text = text ? text.toString() : "";
+        if (varName === "string") setString(text);
+        if (varName === "number") setNumber(text);
+        if (varName === "boolean") setBoolean(text);
+        if (varName === "nullBlock") setNullBlock(text);
+        if (varName === "object") setObject(text);
+        if (varName === "undef") setUndef(text);
+      };
+
       interpreter.setProperty(
         scope,
         varName,
@@ -103,20 +121,26 @@ export const Game04 = () => {
   const onRun = (javascriptCode) => {
     const myInterpreter = new Interpreter(javascriptCode, initApi);
     myInterpreter.run();
-    console.log("CODE!", javascriptCode);
   };
 
   const outcome = () => {
-    // Placeholder
+    string === "string" &&
+    boolean === "boolean" &&
+    number === "number" &&
+    nullBlock === "nullBlock" &&
+    undef === "undef" &&
+    object === "object"
+      ? alert("good job!")
+      : alert("try again!");
   };
+
+  const popUpText = "Match blocks from 'Types' and 'Examples' to give your animal a slice of pizza! 🍕 Make sure you match all six types to win the game. Click RUN to check your answers!"
 
   return (
     <>
       <PopUp
-        title={"Matching data types!"}
-        body={
-          "Match blocks from 'Types' and 'Match' to give your animal a slice of pizza! 🍕"
-        }
+        title={"Data type matching game!"}
+        body={popUpText}
       />
       <Workspace toolbox={toolbox} onRun={onRun} />
     </>
