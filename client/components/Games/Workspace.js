@@ -30,6 +30,7 @@ const Workspace = (props) => {
           trashcan: true,
         }}
         onWorkspaceChange={workspaceDidChange}
+        initialXml='<xml xmlns="http://www.w3.org/1999/xhtml"></xml>'
       />
       <Button type="button" onClick={() => onRun(javascriptCode)}>
         Run

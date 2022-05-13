@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
+import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
-
-//useRef
+import '../Blocks/01Blocks';
 
 export const Game01 = () => {
-  const [string, setString] = useState('EDIT TEXT HERE');
+  const [string, setString] = useState('');
+  const [connect, setConnect] = useState(false);
 
   useEffect(() => {
-    if (string !== 'EDIT TEXT HERE') outcome();
-  }, [string]);
-
-  //make first block into custom "write" block
+    if (connect) outcome();
+  }, [connect]);
 
   const toolbox = {
     kind: 'flyoutToolbox',
     contents: [
       {
         kind: 'block',
-        type: 'text_print',
+        type: 'write-2',
       },
       {
         kind: 'block',
@@ -29,18 +28,15 @@ export const Game01 = () => {
   };
 
   const initApi = (interpreter, scope) => {
-    // Add an API function for the alert() block.
     const wrapper = function (text) {
       text = text ? text.toString() : '';
       setString(text);
-
-      // original line below. createPrimitive throwing an error so we adjusted it because 🙄
-      // return interpreter.createPrimitive(alert(text))
+      //set connect to true in order to cause re-render
+      setConnect(true);
     };
     interpreter.setProperty(
       scope,
-      //'alert' is function in compiled code
-      'alert',
+      'writeTwo',
       interpreter.createNativeFunction(wrapper)
     );
   };
@@ -50,9 +46,6 @@ export const Game01 = () => {
     myInterpreter.run();
   };
 
-  //for this ternary we would need to make sure the instructions say to write hello pigeons with no caps or punctuation
-  //ideally this will end up not being alerts
-
   const outcome = () => {
     string === 'hello pigeons'
       ? setTimeout(() => {
@@ -61,6 +54,9 @@ export const Game01 = () => {
       : alert(
           'SO CLOSE - try again! HINT: did you make sure to write "hello pigeons" in the block?'
         );
+
+    //set connect to false again to allow another try if solution was incorrect
+    setConnect(false);
   };
 
   return (
@@ -72,7 +68,13 @@ export const Game01 = () => {
           backgroundColor: '#add8e6',
         }}
       >
-        <p id="test">{string === 'EDIT TEXT HERE' ? '' : string}</p>
+        <p id="test">{string}</p>
+        <PopUp
+          title={'Hello Pigeons'}
+          body={
+            'Connect the two blocks and change the text to say "hello pigeons" in all lowercase, then press RUN to see "hello world" written in your console!'
+          }
+        />
       </div>
       <Workspace toolbox={toolbox} onRun={onRun} />
     </div>

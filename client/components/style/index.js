@@ -105,18 +105,3 @@ export const Button = styled.button`
   border-style: none;
   box-sizing: border-box;
 `;
-
-//these were made for hannah's matching game
-
-export const GameContainer = styled.div`
-  height: 30vh;
-  width: 90vw;
-`;
-
-export const MatchButton = styled.button`
-  height: 3vh;
-  width: 6vw;
-  margin: 10px;
-  border: 1px solid black;
-  text-align: center;
-`;
