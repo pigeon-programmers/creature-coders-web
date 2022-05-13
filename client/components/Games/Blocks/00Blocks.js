@@ -4,7 +4,8 @@ import Blockly from "blockly";
 
 Blockly.Blocks["write"] = {
   init: function () {
-    this.appendValueInput("Write").setCheck("String").appendField("Write");
+    this.appendValueInput("Write").appendField("Write");
+    this.setNextStatement(true, null);
     this.setColour(270);
     this.setTooltip("");
     this.setHelpUrl("");
@@ -12,12 +13,12 @@ Blockly.Blocks["write"] = {
 };
 
 Blockly.JavaScript["write"] = function (block) {
-  const value_write = Blockly.JavaScript.valueToCode(
-    block,
-    "Write",
-    Blockly.JavaScript.ORDER_ATOMIC
-  );
-  const code = "window.write";
+//   const value_write = Blockly.JavaScript.valueToCode(
+//     block,
+//     "Write",
+//     Blockly.JavaScript.ORDER_ATOMIC
+//   );
+  const code = 'window.write';
   return code;
 };
 
@@ -27,6 +28,7 @@ Blockly.Blocks["write_set_input"] = {
   init: function () {
     this.appendDummyInput().appendField('"hello world"');
     this.setOutput(true, null);
+    this.setPreviousStatement(true, null);
     this.setColour(270);
     this.setTooltip("");
     this.setHelpUrl("");
@@ -36,5 +38,7 @@ Blockly.Blocks["write_set_input"] = {
 Blockly.JavaScript['write_set_input'] = function(block) {
     const code = '("hello world")';
     // TODO: Change ORDER_NONE to the correct strength.
-    return [code, Blockly.JavaScript.ORDER_NONE];
+    // return [code, Blockly.JavaScript.ORDER_ATOMIC];
+    return code;
   };
+
