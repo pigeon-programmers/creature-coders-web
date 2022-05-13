@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Workspace from "../Workspace";
 import Game04Blocks from "../Game04Blocks";
+import Interpreter from "js-interpreter";
 import PopUp from "../../PopUp";
 
 export const Game04 = () => {
+  const [string, setString] = useState("");
+  const [number, setNumber] = useState("");
+  const [boolean, setBoolean] = useState("");
+  const [nullBlock, setNullBlock] = useState("");
+  const [object, setObject] = useState("");
+  const [undef, setUndef] = useState("");
+
   const toolbox = {
     kind: "categoryToolbox",
     contents: [
@@ -73,12 +81,29 @@ export const Game04 = () => {
   const initApi = (interpreter, scope) => {
     const wrapper = function (text) {
       text = text ? text.toString() : "";
+      alert(text);
     };
-    interpreter.setProperty(
-      scope,
-      "alert",
-      interpreter.createNativeFunction(wrapper)
-    );
+
+    const prop = (varName) => {
+      interpreter.setProperty(
+        scope,
+        varName,
+        interpreter.createNativeFunction(wrapper)
+      );
+    };
+
+    prop("string");
+    prop("boolean");
+    prop("number");
+    prop("nullBlock");
+    prop("undef");
+    prop("object");
+  };
+
+  const onRun = (javascriptCode) => {
+    const myInterpreter = new Interpreter(javascriptCode, initApi);
+    myInterpreter.run();
+    console.log("CODE!", javascriptCode);
   };
 
   const outcome = () => {
@@ -87,8 +112,13 @@ export const Game04 = () => {
 
   return (
     <>
-    <PopUp title={"Matching data types!"} body={"Match blocks from 'Types' and 'Match' to give your animal a slice of pizza! 🍕"} /> 
-      <Workspace toolbox={toolbox} initApi={initApi} outcome={outcome} />
+      <PopUp
+        title={"Matching data types!"}
+        body={
+          "Match blocks from 'Types' and 'Match' to give your animal a slice of pizza! 🍕"
+        }
+      />
+      <Workspace toolbox={toolbox} onRun={onRun} />
     </>
   );
 };

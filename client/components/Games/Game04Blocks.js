@@ -16,7 +16,7 @@ Blockly.Blocks["boolean"] = {
 };
 
 Blockly.JavaScript["boolean"] = function (block) {
-  const code = "boolean";
+  const code = "window.boolean";
   return code;
 };
 
@@ -32,7 +32,7 @@ Blockly.Blocks['boolean_ex'] = {
 };
 
 Blockly.JavaScript['boolean_ex'] = function(block) {
-  const code = 'boolean';
+  const code = '("boolean")';
   return code;
 };
 
@@ -52,7 +52,7 @@ Blockly.Blocks["string"] = {
 };
 
 Blockly.JavaScript["string"] = function (block) {
-  const code = "window.alert";
+  const code = "window.string";
   return code;
 };
 
@@ -68,7 +68,7 @@ Blockly.Blocks['string_ex'] = {
 };
 
 Blockly.JavaScript['string_ex'] = function(block) {
-  const code = "('string')";
+  const code = '("string")';
   return code;
 };
 
@@ -88,7 +88,7 @@ Blockly.Blocks["number"] = {
 };
 
 Blockly.JavaScript["number"] = function (block) {
-  const code = "window.alert";
+  const code = "window.number";
   return code;
 };
 
@@ -104,7 +104,7 @@ Blockly.Blocks['number_ex'] = {
 };
 
 Blockly.JavaScript['number_ex'] = function(block) {
-  const code = "('number')";
+  const code = '("number")';
   return code;
 };
 
@@ -122,7 +122,7 @@ Blockly.Blocks['undefined'] = {
 };
 
 Blockly.JavaScript['undefined'] = function(block) {
-  const code = 'undefined';
+  const code = 'window.undef';
   return code;
 };
 
@@ -138,7 +138,7 @@ Blockly.Blocks['undefined_ex'] = {
 };
 
 Blockly.JavaScript['undefined_ex'] = function(block) {
-  const code = 'undefined';
+  const code = '("undef")';
   return code;
 };
 
@@ -158,7 +158,7 @@ Blockly.Blocks['object'] = {
 };
 
 Blockly.JavaScript['object'] = function(block) {
-  const code = 'object';
+  const code = 'window.object';
   return code;
 };
 
@@ -174,7 +174,7 @@ Blockly.Blocks['object_ex'] = {
 };
 
 Blockly.JavaScript['object_ex'] = function(block) {
-  const code = 'object';
+  const code = '("object")';
   return code;
 };
 
@@ -193,7 +193,8 @@ Blockly.Blocks['null'] = {
   }
 };
 Blockly.JavaScript['null'] = function(block) {
-  const code = 'null';
+  //Cannot use null as a variable
+  const code = 'window.nullBlock';
   return code;
 };
 
@@ -209,6 +210,6 @@ Blockly.Blocks['null_ex'] = {
 };
 
 Blockly.JavaScript['null_ex'] = function(block) {
-  const code = 'null';
+  const code = '("nullBlock")';
   return code;
 };
