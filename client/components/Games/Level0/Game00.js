@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Workspace from '../Workspace'
 import PopUp from '../../PopUp'
+import "../Blocks/00Blocks"
 
 export const Game00 = () => {
   const toolbox = {
@@ -8,12 +9,11 @@ export const Game00 = () => {
     contents: [
       {
         kind: 'block',
-        type: 'text_print'
+        type: 'write'
       },
       {
         kind: 'block',
-        type: 'text',
-        fields: { TEXT: 'hello world' }
+        type: 'write_set_input',
       }
     ]
   }
