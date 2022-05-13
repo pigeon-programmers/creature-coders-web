@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BlocklyWorkspace } from 'react-blockly';
 import Blockly from 'blockly';
+import { Button, StyledWorkspace } from '../style';
 
 const Workspace = (props) => {
   const { toolbox, onRun } = props;
@@ -12,7 +13,7 @@ const Workspace = (props) => {
   };
 
   return (
-    <div>
+    <StyledWorkspace>
       <BlocklyWorkspace
         toolboxConfiguration={toolbox}
         className="blockly-workspace"
@@ -31,10 +32,10 @@ const Workspace = (props) => {
         onWorkspaceChange={workspaceDidChange}
         initialXml='<xml xmlns="http://www.w3.org/1999/xhtml"></xml>'
       />
-      <button type="button" onClick={() => onRun(javascriptCode)}>
+      <Button type="button" onClick={() => onRun(javascriptCode)}>
         Run
-      </button>
-    </div>
+      </Button>
+    </StyledWorkspace>
   );
 };
 
