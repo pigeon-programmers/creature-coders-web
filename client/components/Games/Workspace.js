@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BlocklyWorkspace } from 'react-blockly';
 import Blockly from 'blockly';
-// import Interpreter from 'js-interpreter';
 
 const Workspace = (props) => {
   const { toolbox, onRun } = props;
@@ -11,15 +10,6 @@ const Workspace = (props) => {
     const code = Blockly.JavaScript.workspaceToCode(workspace);
     setJavascriptCode(code);
   };
-
-  //for setInterval, pass clickHandler into workspace as function and outer componets decide what they want to do with that handler
-
-  // const clickHandler = () => {
-  //   const myInterpreter = new Interpreter(javascriptCode, initApi);
-  //   myInterpreter.run();
-  // };
-
-  //put visuals of game above blockly workspace
 
   return (
     <div>

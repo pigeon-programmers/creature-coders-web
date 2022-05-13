@@ -32,8 +32,6 @@ export const Game01 = () => {
     // Add an API function for the alert() block.
     const wrapper = function (text) {
       text = text ? text.toString() : '';
-      // const test = document.getElementById('test');
-      // test.innerHTML = text;
       setString(text);
 
       // original line below. createPrimitive throwing an error so we adjusted it because 🙄
@@ -50,17 +48,6 @@ export const Game01 = () => {
   const onRun = (javascriptCode) => {
     const myInterpreter = new Interpreter(javascriptCode, initApi);
     myInterpreter.run();
-    //IF we want to step through a loop use below instead of run
-    //INSTEAD of interpreting code above, have useSTate that is runCode setRunCode that starts off as false and once it starts running it sets state
-    // to true, that can then get picked up in useEffect & myInt would go into nextStep.
-    //ELSE try useState for interpreter start as null and in useEffect update we can check if null
-
-    // function nextStep() {
-    //   if (myInterpreter.step()) {
-    //     window.setTimeout(nextStep, 0);
-    //   }
-    // }
-    // nextStep();
   };
 
   //for this ternary we would need to make sure the instructions say to write hello pigeons with no caps or punctuation
