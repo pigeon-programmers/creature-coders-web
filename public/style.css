@@ -2,6 +2,8 @@
 
 body {
   font-family: sans-serif;
+  /* height: 100vh;
+  width: 100vw; */
 }
 
 a {
@@ -12,10 +14,10 @@ label {
   display: block;
 }
 
-nav a {
+/* nav a {
   display: inline-block;
   margin: 1em;
-}
+} */
 
 form div {
   margin: 1em;
@@ -38,14 +40,15 @@ input {
   border: 1px solid black;
 }
 
-#navBar {
+/* #navBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: fixed;
   bottom: 0;
-  font-family: 'Kirang Haerang', cursive;
-}
+  font-family: 'Kirang Haerang', sans-serif;
+  font-size: xx-large;
+} */
 
 #gameMap {
   display: flex;

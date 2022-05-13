@@ -1,7 +1,7 @@
 import React from 'react';
 import Workspace from '../Workspace';
 
-export const Game01 = () => {
+export const Game05 = () => {
   const toolbox = {
     kind: 'flyoutToolbox',
     contents: [
@@ -59,4 +59,4 @@ export const Game01 = () => {
   );
 };
 
-export default Game01;
+export default Game05;

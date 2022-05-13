@@ -1,16 +1,17 @@
-import React from 'react'
-
-import Navbar from './components/Navbar'
-import Routes from './Routes'
+import React from 'react';
+import Navbar from './components/Navbar';
+import Routes from './Routes';
+import Theme from './components/style/theme';
 
 const App = () => {
   return (
     <div>
-      <h1>Creature Coders</h1>
-      <Routes />
-      <Navbar />
+      <Theme>
+        <Routes />
+        <Navbar />
+      </Theme>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
