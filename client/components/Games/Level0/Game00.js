@@ -20,7 +20,7 @@ export const Game00 = () => {
     contents: [
       {
         kind: 'block',
-        type: 'text_print',
+        type: 'write',
       },
       {
         kind: 'block',
@@ -38,7 +38,7 @@ export const Game00 = () => {
 
     interpreter.setProperty(
       scope,
-      'alert',
+      'write',
       interpreter.createNativeFunction(wrapper)
     );
   };

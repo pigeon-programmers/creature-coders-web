@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
 import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
+import '../Blocks/01Blocks';
 
 export const Game01 = () => {
   const [string, setString] = useState('EDIT TEXT HERE');
@@ -13,11 +14,10 @@ export const Game01 = () => {
 
   const toolbox = {
     kind: 'flyoutToolbox',
-    //all block in game 01 are pre-made blocks
     contents: [
       {
         kind: 'block',
-        type: 'text_print',
+        type: 'write-2',
       },
       {
         kind: 'block',
@@ -36,7 +36,7 @@ export const Game01 = () => {
     };
     interpreter.setProperty(
       scope,
-      'alert',
+      'writeTwo',
       interpreter.createNativeFunction(wrapper)
     );
   };
