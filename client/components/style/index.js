@@ -83,6 +83,7 @@ export const MapContainer = styled.div`
 export const GameContent = styled.div`
   width: 80vw;
   height: 300px;
+  margin: 1em;
   background-color: ${palette.white};
 `;
 
