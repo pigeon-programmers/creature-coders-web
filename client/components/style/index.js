@@ -77,13 +77,19 @@ export const MapContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${palette.dkGray}
+  background-color: ${palette.dkGray};
 `;
 
 export const GameContent = styled.div`
   width: 80vw;
   height: 300px;
-  background-color: ${palette.white};
+  background-color: ${palette.black};
+`;
+
+export const GameText = styled.p`
+  color: ${palette.white};
+  font-size: large;
+  font-family: Andalé Mono, Courier, Monaco, monospace;
 `;
 
 export const StyledWorkspace = styled.div`

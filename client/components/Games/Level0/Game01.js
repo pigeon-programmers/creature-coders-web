@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
-import { GameContent, Main } from '../../style';
+import { GameContent, Main, GameText } from '../../style';
 import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
 import '../Blocks/01Blocks';
@@ -69,7 +69,7 @@ export const Game01 = () => {
         }
       />
       <GameContent>
-        <p id="test">{string}</p>
+        <GameText>{string}</GameText>
       </GameContent>
       <Workspace toolbox={toolbox} onRun={onRun} />
     </Main>

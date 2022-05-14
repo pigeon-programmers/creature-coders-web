@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Workspace from '../Workspace';
-import { GameContent, Main } from '../../style';
+import { GameContent, GameText, Main } from '../../style';
 import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
 import '../Blocks/00Blocks';
@@ -69,7 +69,7 @@ export const Game00 = () => {
         body='Connect the two blocks, then press RUN to see "hello world" written in your console!'
       />
       <GameContent>
-        <p id="test">{string}</p>
+        <GameText>{string}</GameText>
       </GameContent>
       <Workspace toolbox={toolbox} onRun={onRun} />
     </Main>
