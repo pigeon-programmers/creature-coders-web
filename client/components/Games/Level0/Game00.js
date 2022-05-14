@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Workspace from '../Workspace';
+import { GameContent, Main } from '../../style';
 import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
 import '../Blocks/00Blocks';
@@ -62,22 +63,16 @@ export const Game00 = () => {
   };
 
   return (
-    <div>
-      <div
-        style={{
-          height: 100,
-          width: 500,
-          backgroundColor: '#add8e6',
-        }}
-      >
+    <Main>
+      <PopUp
+        title="Hello World!"
+        body='Connect the two blocks, then press RUN to see "hello world" written in your console!'
+      />
+      <GameContent>
         <p id="test">{string}</p>
-        <PopUp
-          title="Hello World!"
-          body='Connect the two blocks, then press RUN to see "hello world" written in your console!'
-        />
-      </div>
+      </GameContent>
       <Workspace toolbox={toolbox} onRun={onRun} />
-    </div>
+    </Main>
   );
 };
 

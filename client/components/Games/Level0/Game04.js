@@ -1,90 +1,91 @@
-import React, { useState, useEffect } from "react";
-import Workspace from "../Workspace";
-import "../Blocks/04Blocks";
-import Interpreter from "js-interpreter";
-import PopUp from "../../PopUp";
+import React, { useState, useEffect } from 'react';
+import Workspace from '../Workspace';
+import { GameContent, Main } from '../../style';
+import PopUp from '../../PopUp';
+import Interpreter from 'js-interpreter';
+import '../Blocks/04Blocks';
 
 export const Game04 = () => {
-  const [string, setString] = useState("");
-  const [number, setNumber] = useState("");
-  const [boolean, setBoolean] = useState("");
-  const [nullBlock, setNullBlock] = useState("");
-  const [object, setObject] = useState("");
-  const [undef, setUndef] = useState("");
+  const [string, setString] = useState('');
+  const [number, setNumber] = useState('');
+  const [boolean, setBoolean] = useState('');
+  const [nullBlock, setNullBlock] = useState('');
+  const [object, setObject] = useState('');
+  const [undef, setUndef] = useState('');
 
   useEffect(() => {
     // All types of state need to be added below for game to function properly!
     if (
-      string !== "" ||
-      number !== "" ||
-      boolean !== "" ||
-      nullBlock !== "" ||
-      object !== "" ||
-      undef !== ""
+      string !== '' ||
+      number !== '' ||
+      boolean !== '' ||
+      nullBlock !== '' ||
+      object !== '' ||
+      undef !== ''
     )
       outcome();
   }, [string, number, boolean, nullBlock, object, undef]);
 
   const toolbox = {
-    kind: "categoryToolbox",
+    kind: 'categoryToolbox',
     contents: [
       {
-        kind: "category",
-        name: "Types",
+        kind: 'category',
+        name: 'Types',
         contents: [
           {
-            kind: "block",
-            type: "string",
+            kind: 'block',
+            type: 'string',
           },
           {
-            kind: "block",
-            type: "boolean",
+            kind: 'block',
+            type: 'boolean',
           },
           {
-            kind: "block",
-            type: "number",
+            kind: 'block',
+            type: 'number',
           },
           {
-            kind: "block",
-            type: "undefined",
+            kind: 'block',
+            type: 'undefined',
           },
           {
-            kind: "block",
-            type: "object",
+            kind: 'block',
+            type: 'object',
           },
           {
-            kind: "block",
-            type: "null",
+            kind: 'block',
+            type: 'null',
           },
         ],
       },
       {
-        kind: "category",
-        name: "Examples",
+        kind: 'category',
+        name: 'Examples',
         contents: [
           {
-            kind: "block",
-            type: "string_ex",
+            kind: 'block',
+            type: 'string_ex',
           },
           {
-            kind: "block",
-            type: "number_ex",
+            kind: 'block',
+            type: 'number_ex',
           },
           {
-            kind: "block",
-            type: "boolean_ex",
+            kind: 'block',
+            type: 'boolean_ex',
           },
           {
-            kind: "block",
-            type: "null_ex",
+            kind: 'block',
+            type: 'null_ex',
           },
           {
-            kind: "block",
-            type: "object_ex",
+            kind: 'block',
+            type: 'object_ex',
           },
           {
-            kind: "block",
-            type: "undefined_ex",
+            kind: 'block',
+            type: 'undefined_ex',
           },
         ],
       },
@@ -94,13 +95,13 @@ export const Game04 = () => {
   const initApi = (interpreter, scope) => {
     const prop = (varName) => {
       const wrapper = function (text) {
-        text = text ? text.toString() : "";
-        if (varName === "string") setString(text);
-        if (varName === "number") setNumber(text);
-        if (varName === "boolean") setBoolean(text);
-        if (varName === "nullBlock") setNullBlock(text);
-        if (varName === "object") setObject(text);
-        if (varName === "undef") setUndef(text);
+        text = text ? text.toString() : '';
+        if (varName === 'string') setString(text);
+        if (varName === 'number') setNumber(text);
+        if (varName === 'boolean') setBoolean(text);
+        if (varName === 'nullBlock') setNullBlock(text);
+        if (varName === 'object') setObject(text);
+        if (varName === 'undef') setUndef(text);
       };
 
       interpreter.setProperty(
@@ -110,12 +111,12 @@ export const Game04 = () => {
       );
     };
 
-    prop("string");
-    prop("boolean");
-    prop("number");
-    prop("nullBlock");
-    prop("undef");
-    prop("object");
+    prop('string');
+    prop('boolean');
+    prop('number');
+    prop('nullBlock');
+    prop('undef');
+    prop('object');
   };
 
   const onRun = (javascriptCode) => {
@@ -124,26 +125,28 @@ export const Game04 = () => {
   };
 
   const outcome = () => {
-    string === "string" &&
-    boolean === "boolean" &&
-    number === "number" &&
-    nullBlock === "nullBlock" &&
-    undef === "undef" &&
-    object === "object"
-      ? alert("good job!")
-      : alert("try again!");
+    string === 'string' &&
+    boolean === 'boolean' &&
+    number === 'number' &&
+    nullBlock === 'nullBlock' &&
+    undef === 'undef' &&
+    object === 'object'
+      ? alert('good job!')
+      : alert('try again!');
   };
 
-  const popUpText = "Match blocks from 'Types' and 'Examples' to give your animal a slice of pizza! 🍕 Make sure you match all six types to win the game. Click RUN to check your answers!"
+  const popUpText =
+    "Match blocks from 'Types' and 'Examples' to give your animal a slice of pizza! 🍕 Make sure you match all six types to win the game. Click RUN to check your answers!";
+
+  //right now the game content div is empty
+  //we can take it out or put examples of each data type in it
 
   return (
-    <>
-      <PopUp
-        title={"Data type matching game!"}
-        body={popUpText}
-      />
+    <Main>
+      <PopUp title={'Data type matching game!'} body={popUpText} />
+      <GameContent></GameContent>
       <Workspace toolbox={toolbox} onRun={onRun} />
-    </>
+    </Main>
   );
 };
 
