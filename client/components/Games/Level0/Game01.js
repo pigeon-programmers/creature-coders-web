@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
-import { GameContent, Main, GameText } from '../../style';
+import { GameContent, GameText, Main } from '../../style';
 import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
 import '../Blocks/01Blocks';

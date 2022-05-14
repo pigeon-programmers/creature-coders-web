@@ -18,15 +18,20 @@ export const Main = styled.div`
   background: ${palette.orange};
   background-image: url('https://creature-coders.s3.amazonaws.com/bg.svg');
   background-blend-mode: overlay;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
 `;
 
-export const Nav = styled.div`
+export const Nav = styled.nav`
   width: 100vw;
   height: 70px;
   background: ${palette.mdGray};
@@ -35,6 +40,7 @@ export const Nav = styled.div`
   justify-content: space-around;
   position: fixed;
   bottom: 0;
+  left: 0;
 `;
 
 export const NavIconContainer = styled.div`
@@ -106,6 +112,7 @@ export const Button = styled.button`
   background: ${palette.dkGray};
   font-size: 2em;
   margin: 1em;
+  bottom: 100px;
   padding: 0.25em 2em;
   font-family: 'Kirang Haerang', sans-serif;
   border-style: none;
