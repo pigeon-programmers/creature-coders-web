@@ -1,33 +1,29 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const PopUp = (props) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const {togglePopUp, open, children} = props
 
-  const togglePopUp = () => {
-    console.log(isOpen)
-    setIsOpen(!isOpen)
-  }
-
+  console.log(children)
   return (
     <div>
-      <button onClick={togglePopUp} type="button">
-        ?
-      </button>
-      {isOpen && (
+      {open && (
         <div>
+
+        <div className="modalscreen">
           <div className="popUp" id="popUp">
             <div className="popUp-header">
-              <div className="title">{props.title}</div>
-              <button onClick={togglePopUp} className="close-button">
+                <div className="Popup-Title">{children[0]}</div>
+                <button onClick={togglePopUp} className="close-button">
                 &times;
               </button>
             </div>
-            <div className="popUp-body">
-            {props.body}
+              <div className="popUp-body">
+                {children[1]}
             </div>
           </div>
-          <div id="overlay"></div>
-        </div>
+          <div onClick={togglePopUp} id="overlay"></div>
+          </div>
+          </div>
       )}
       </div>
   )

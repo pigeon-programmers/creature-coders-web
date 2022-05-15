@@ -1,13 +1,13 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {authenticate} from '../store'
+import { connect } from 'react-redux'
+import { authenticate } from '../store'
 import { Button } from './style'
 
 /**
  * COMPONENT
  */
 const AuthForm = props => {
-  const {name, displayName, handleSubmit, error} = props
+  const { name, displayName, handleSubmit, error } = props
 
   return (
     <div>
@@ -18,23 +18,33 @@ const AuthForm = props => {
           </label>
           <input name="username" type="text" />
         </div>
-        {name === "signup" ? (
+        {name === 'signup'
+          ? (
           <div className="auth-div">
             <label htmlFor="email">
               <p>Email address</p>
             </label>
             <input name="email" type="text" />
           </div>
-        ) : null}
+            )
+          : null}
         <div>
           <label htmlFor="password">
             <p>Password</p>
           </label>
           <input name="password" type="password" />
         </div>
+        {name === 'signup'
+          ? (
+        <div>
+          <label htmlFor="confirmPassword">
+            <p>Confirm Password</p>
+          </label>
+          <input name="confirmPassword" type="password" />
+        </div>)
+          : null}
         <div>
           <Button>{displayName}</Button>
-          {/* <button type="submit">{displayName}</button> */}
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
@@ -67,12 +77,12 @@ const mapSignup = state => {
 
 const mapDispatch = dispatch => {
   return {
-    handleSubmit(evt) {
+    handleSubmit (evt) {
       evt.preventDefault()
       const formName = evt.target.name
       const username = evt.target.username.value
       const password = evt.target.password.value
-      const email = evt.target.email ? evt.target.email.value : null;
+      const email = evt.target.email ? evt.target.email.value : null
       dispatch(authenticate(username, email, password, formName))
     }
   }
