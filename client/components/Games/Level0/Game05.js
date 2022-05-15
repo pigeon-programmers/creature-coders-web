@@ -1,75 +1,102 @@
 import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
-import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
-import { GameContent, GameText, Main } from '../../style';
-import '../Blocks/01Blocks';
+import { GameContent, GameText, Main, Bagel } from '../../style';
+import '../Blocks/05Blocks';
 
 export const Game05 = () => {
-  const [string, setString] = useState('');
-  const [connect, setConnect] = useState(false);
+  const [timesRan, setTimesRan] = useState(0);
+  const [codeRun, setCodeRun] = useState(null);
+  const [codeComplete, setCodeComplete] = useState(false);
+  const [bagelsMade, setBagelsMade] = useState([]);
 
   useEffect(() => {
-    if (connect) outcome();
-  }, [connect]);
+    if (codeRun) {
+      const nextStep = () => {
+        if (codeRun.step()) {
+          window.setTimeout(nextStep, 50);
+        } else {
+          setCodeComplete(true);
+        }
+      };
+      nextStep();
+    }
+  }, [codeRun]);
+
+  useEffect(() => {
+    if (codeComplete) {
+      outcome();
+      setCodeComplete(false);
+      setTimesRan(0);
+      setCodeRun(null);
+      setBagelsMade([]);
+    }
+  }, [codeComplete, timesRan]);
+
+  const outcome = () => {
+    timesRan === 10
+      ? alert('great job!')
+      : alert(
+          'SO CLOSE - try again! HINT: did you make sure to make 10 bagels?'
+        );
+  };
 
   const toolbox = {
     kind: 'flyoutToolbox',
     contents: [
       {
         kind: 'block',
-        type: 'write-2',
+        type: 'bagel',
       },
       {
         kind: 'block',
-        type: 'text',
-        fields: { TEXT: '' },
+        type: 'controls_repeat',
+        message0: 'repeat %1 times',
+        args0: [
+          { type: 'field_number', name: 'TIMES', value: '10', check: 'Number' },
+        ],
+        message1: 'do %1',
+        args1: [{ type: 'input_statement', name: 'DO' }],
+        previousStatement: null,
+        nextStatement: null,
+        colour: 120,
       },
     ],
   };
 
   const initApi = (interpreter, scope) => {
-    const wrapper = function (text) {
-      text = text ? text.toString() : '';
-      setString(text);
-      //set connect to true in order to cause re-render
-      setConnect(true);
+    // Add an API function for the alert() block.
+    let counter = 0;
+    let bagels = [...bagelsMade].concat('bagel');
+
+    const wrapper = function () {
+      setTimesRan(++counter);
+      setBagelsMade(bagels);
+      console.log('BAGELS:', bagelsMade);
     };
     interpreter.setProperty(
       scope,
-      'writeTwo',
+      'bagel',
       interpreter.createNativeFunction(wrapper)
     );
   };
 
   const onRun = (javascriptCode) => {
     const myInterpreter = new Interpreter(javascriptCode, initApi);
-    myInterpreter.run();
-  };
-
-  const outcome = () => {
-    string === 'hello pigeons'
-      ? setTimeout(() => {
-          alert('great job!');
-        }, 500)
-      : alert(
-          'SO CLOSE - try again! HINT: did you make sure to write "hello pigeons" in the block?'
-        );
-
-    //set connect to false again to allow another try if solution was incorrect
-    setConnect(false);
+    setCodeRun(myInterpreter);
   };
 
   return (
     <Main>
-      <PopUp
-        title={'Hello Pigeons'}
-        body={
-          'Connect the two blocks and change the text to say "hello pigeons" in all lowercase, then press RUN to see "hello world" written in your console!'
-        }
-      />
       <GameContent>
-        <GameText>{string}</GameText>
+        <GameText>{timesRan}</GameText>
+        <div>
+          {bagelsMade.length === 0 ? (
+            <p />
+          ) : (
+            bagelsMade.map((b) => <Bagel key={b} />)
+          )}
+        </div>
       </GameContent>
       <Workspace toolbox={toolbox} onRun={onRun} />
     </Main>

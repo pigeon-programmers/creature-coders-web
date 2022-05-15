@@ -13,6 +13,12 @@ const palette = {
   pink: '#ED1697',
 };
 
+export const Bagel = styled.p`
+  height: 10vh;
+  width: 10vw;
+  border: 1px solid ${palette.pink};
+`;
+
 export const Main = styled.div`
   position: fixed;
   background: ${palette.orange};
