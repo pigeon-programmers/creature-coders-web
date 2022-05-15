@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
+import { GameContent, GameText, Main } from '../../style';
 import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
 import '../Blocks/01Blocks';
@@ -60,24 +61,18 @@ export const Game01 = () => {
   };
 
   return (
-    <div style={{ margin: 100 }}>
-      <div
-        style={{
-          height: 100,
-          width: 500,
-          backgroundColor: '#add8e6',
-        }}
-      >
-        <p id="test">{string}</p>
-        <PopUp
-          title={'Hello Pigeons'}
-          body={
-            'Connect the two blocks and change the text to say "hello pigeons" in all lowercase, then press RUN to see "hello world" written in your console!'
-          }
-        />
-      </div>
+    <Main>
+      <PopUp
+        title={'Hello Pigeons'}
+        body={
+          'Connect the two blocks and change the text to say "hello pigeons" in all lowercase, then press RUN to see "hello world" written in your console!'
+        }
+      />
+      <GameContent>
+        <GameText>{string}</GameText>
+      </GameContent>
       <Workspace toolbox={toolbox} onRun={onRun} />
-    </div>
+    </Main>
   );
 };
 

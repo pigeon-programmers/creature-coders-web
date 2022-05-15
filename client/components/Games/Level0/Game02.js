@@ -1,6 +1,9 @@
 import React from 'react';
 import Workspace from '../Workspace';
+import { GameContent, Main } from '../../style';
 import '../Blocks/Blocklys';
+
+//as of May 14th this game isn't fleshed out
 
 export const Game02 = () => {
   const toolbox = {
@@ -41,10 +44,10 @@ export const Game02 = () => {
   };
 
   return (
-    <>
-    <div id="game03-display"></div>
+    <Main>
+      <GameContent id="game03-display"></GameContent>
       <Workspace toolbox={toolbox} initApi={initApi} outcome={outcome} />
-    </>
+    </Main>
   );
 };
 

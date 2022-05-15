@@ -18,17 +18,19 @@ export const Main = styled.div`
   background: ${palette.orange};
   background-image: url('https://creature-coders.s3.amazonaws.com/bg.svg');
   background-blend-mode: overlay;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
 `;
 
-export const Nav = styled.div`
+export const Nav = styled.nav`
   width: 100vw;
-  height: 70px;
+  height: 7wh;
   background: ${palette.mdGray};
   display: flex;
   align-items: center;
@@ -45,7 +47,7 @@ export const NavIconContainer = styled.div`
 `;
 
 export const NavIcon = styled.img`
-  height: 50px;
+  height: 4vh;
 `;
 
 export const FormContainer = styled.div`
@@ -77,14 +79,42 @@ export const MapContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${palette.dkGray}
+  background-color: ${palette.dkGray};
 `;
 
 export const GameContent = styled.div`
   width: 80vw;
-  height: 300px;
+  height: 25vh;
+  background-color: ${palette.black};
   margin: 1em;
-  background-color: ${palette.white};
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+export const GameText = styled.p`
+  color: ${palette.white};
+  font-size: large;
+  font-family: 'Roboto Mono', monospace;
+  margin: 1em;
+`;
+
+export const Computer = styled.img`
+  height: 80%;
+  margin: 1em;
+`;
+
+export const GameButton = styled.button`
+  align-items: center;
+  color: ${palette.black};
+  background: ${palette.mdGray};
+  font-size: 1em;
+  margin: 5px;
+  bottom: 100px;
+  padding: 0.25em 1em;
+  font-family: 'Roboto Mono', monospace;
+  border-style: none;
+  box-sizing: border-box;
 `;
 
 export const StyledWorkspace = styled.div`
@@ -101,6 +131,7 @@ export const Button = styled.button`
   background: ${palette.dkGray};
   font-size: 2em;
   margin: 1em;
+  bottom: 100px;
   padding: 0.25em 2em;
   font-family: 'Kirang Haerang', sans-serif;
   border-style: none;
