@@ -1,11 +1,8 @@
-
-
-
 import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
 import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
-import { GameContent, Main } from '../../style';
+import { GameContent, GameText, Main } from '../../style';
 import '../Blocks/01Blocks';
 
 export const Game05 = () => {
@@ -65,15 +62,15 @@ export const Game05 = () => {
 
   return (
     <Main>
-        <PopUp
-          title={'Hello Pigeons'}
-          body={
-            'Connect the two blocks and change the text to say "hello pigeons" in all lowercase, then press RUN to see "hello world" written in your console!'
-          }
-        />
-            <GameContent>
-        <p id="test">{string}</p>
-            </GameContent>
+      <PopUp
+        title={'Hello Pigeons'}
+        body={
+          'Connect the two blocks and change the text to say "hello pigeons" in all lowercase, then press RUN to see "hello world" written in your console!'
+        }
+      />
+      <GameContent>
+        <GameText>{string}</GameText>
+      </GameContent>
       <Workspace toolbox={toolbox} onRun={onRun} />
     </Main>
   );
