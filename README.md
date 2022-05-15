@@ -1,14 +1,12 @@
 # Creature Coders
 
 
-## Customize
+## Start
 
 Now that you've got the code, follow these steps to get acclimated:
 
 * `npm install`
 * Create postgres database `creature-coders` 
-
-## Start
 
 Sync and seed your database by running `npm run seed`. Running `npm run start:dev` will make great things happen!
 
