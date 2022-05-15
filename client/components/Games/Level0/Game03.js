@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { Computer, GameButton, GameContent, GameText, Main } from '../../style';
 import styled from 'styled-components';
+const BiggerGameContent = styled(GameContent)`
+  height: 40vh;
+`;
+const SmallerGameText = styled(GameText)`
+  font-size: small;
+`;
 
 const Game03 = () => {
   const [availButtons, setAvailButtons] = useState([
@@ -50,12 +56,6 @@ const Game03 = () => {
     }
   };
 
-  const BiggerGameContent = styled(GameContent)`
-    height: 40vh;
-  `;
-  const SmallerGameText = styled(GameText)`
-    font-size: small;
-  `;
 
   return (
     <Main>
