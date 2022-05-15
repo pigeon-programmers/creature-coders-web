@@ -13,6 +13,18 @@ const palette = {
   pink: '#ED1697',
 };
 
+export const VisualsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const Bagel = styled.p`
+  background-image: url('https://image.shutterstock.com/image-vector/hand-drawn-bagel-sketch-bread-600w-1082338913.jpg');
+  height: 20px;
+  width: 20px;
+  margin: 2px;
+`;
+
 export const Main = styled.div`
   position: fixed;
   background: ${palette.orange};
