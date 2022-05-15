@@ -44,14 +44,31 @@ export const Nav = styled.nav`
 `;
 
 export const NavIconContainer = styled.div`
-  width: 50vw;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+width: 50vw;
+display: flex;
+align-items: center;
+justify-content: space-around;
 `;
 
 export const NavIcon = styled.img`
-  height: 50px;
+height: 50px;
+`;
+
+export const Status = styled.nav`
+width: 100vw;
+height: 5vh;
+background: ${palette.mdGray};
+display: flex;
+align-items: center;
+justify-content: space-around;
+position: fixed;
+left: 0;
+top: 0;
+z-index: 2;
+`;
+
+export const StatusIcon = styled.img`
+height: 3vh;
 `;
 
 export const FormContainer = styled.div`

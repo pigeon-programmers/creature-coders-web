@@ -1,15 +1,14 @@
 import React from 'react';
 import Navbar from './components/Navbar';
+import StatusBar from './components/StatusBar';
 import Routes from './Routes';
-import Theme from './components/style/theme';
 
 const App = () => {
   return (
     <div>
-      <Theme>
+        <StatusBar />
         <Routes />
         <Navbar />
-      </Theme>
     </div>
   );
 };

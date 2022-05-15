@@ -14,6 +14,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             <NavIcon src="https://creature-coders.s3.amazonaws.com/iconMap.svg" alt="level map" />
           </Link>
           <NavIcon src="https://creature-coders.s3.amazonaws.com/iconPet.svg" alt="pet settings"/>
+          <NavIcon src="https://creature-coders.s3.amazonaws.com/iconLeaderboard.svg" alt="leaderboard" />
           <NavIcon src="https://creature-coders.s3.amazonaws.com/iconShop.svg" alt="shop" />
           <NavIcon src="https://creature-coders.s3.amazonaws.com/iconSettings.svg" alt="user settings" />
         </NavIconContainer>
