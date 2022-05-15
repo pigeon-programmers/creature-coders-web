@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
 import Interpreter from 'js-interpreter';
-import { GameContent, GameText, Main, Bagel } from '../../style';
+import {
+  GameContent,
+  GameText,
+  VisualsContainer,
+  Bagel,
+  Main,
+} from '../../style';
 import '../Blocks/05Blocks';
 
 export const Game05 = () => {
@@ -14,7 +20,7 @@ export const Game05 = () => {
     if (codeRun) {
       const nextStep = () => {
         if (codeRun.step()) {
-          window.setTimeout(nextStep, 50);
+          window.setTimeout(nextStep, 40);
         } else {
           setCodeComplete(true);
         }
@@ -35,7 +41,7 @@ export const Game05 = () => {
 
   const outcome = () => {
     timesRan === 10
-      ? alert('great job!')
+      ? setTimeout(alert('great job!'), 500)
       : alert(
           'SO CLOSE - try again! HINT: did you make sure to make 10 bagels?'
         );
@@ -67,12 +73,14 @@ export const Game05 = () => {
   const initApi = (interpreter, scope) => {
     // Add an API function for the alert() block.
     let counter = 0;
-    let bagels = [...bagelsMade].concat('bagel');
+    let bagels = bagelsMade;
+    bagels.push('bagel');
 
     const wrapper = function () {
       setTimesRan(++counter);
+      bagels.push('bagel');
+      // let newBagel = bagels.concat('bagel');
       setBagelsMade(bagels);
-      console.log('BAGELS:', bagelsMade);
     };
     interpreter.setProperty(
       scope,
@@ -86,17 +94,19 @@ export const Game05 = () => {
     setCodeRun(myInterpreter);
   };
 
+  console.log('RENDERED BAGELS:', bagelsMade);
+
   return (
     <Main>
       <GameContent>
-        <GameText>{timesRan}</GameText>
-        <div>
+        <GameText>You have made {timesRan} bagels</GameText>
+        <VisualsContainer>
           {bagelsMade.length === 0 ? (
             <p />
           ) : (
-            bagelsMade.map((b) => <Bagel key={b} />)
+            bagelsMade.map((b, i) => <Bagel key={i} />)
           )}
-        </div>
+        </VisualsContainer>
       </GameContent>
       <Workspace toolbox={toolbox} onRun={onRun} />
     </Main>
