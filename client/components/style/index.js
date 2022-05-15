@@ -100,7 +100,7 @@ export const GameText = styled.p`
 `;
 
 export const Computer = styled.img`
-  height: 80%;
+  height: 20vh;
   margin: 1em;
 `;
 
