@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
-import { GameContent, GameText, Main } from '../../style';
 import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
+import { GameContent, GameText, Main } from '../../style';
 import '../Blocks/01Blocks';
 
-export const Game01 = () => {
+export const Game05 = () => {
   const [string, setString] = useState('');
   const [connect, setConnect] = useState(false);
 
@@ -76,4 +76,4 @@ export const Game01 = () => {
   );
 };
 
-export default Game01;
+export default Game05;

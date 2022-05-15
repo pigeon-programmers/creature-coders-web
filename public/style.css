@@ -1,53 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
 body {
   font-family: sans-serif;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
 }
 
 a {
   text-decoration: none;
 }
 
-label {
-  display: block;
-}
-
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
-form div {
-  margin: 1em;
-  display: inline-block;
-}
-
 .blockly-workspace {
   height: 50vh;
   width: 80vw;
-}
-
-.signup {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-input {
-  border: 1px solid black;
-}
-
-#navBar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  bottom: 0;
-}
-
-#gameMap {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 #game03-display {
@@ -122,7 +89,6 @@ input {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   transition: 200ms ease-in-out;
 }
-
