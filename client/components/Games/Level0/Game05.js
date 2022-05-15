@@ -7,14 +7,18 @@ import {
   VisualsContainer,
   Bagel,
   Main,
+  Button,
 } from '../../style';
 import '../Blocks/05Blocks';
+import PopUp from '../../PopUp';
 
 export const Game05 = () => {
   const [timesRan, setTimesRan] = useState(0);
   const [codeRun, setCodeRun] = useState(null);
   const [codeComplete, setCodeComplete] = useState(false);
   const [bagelsMade, setBagelsMade] = useState([]);
+  const [mission, setMission] = useState(false);
+  const [hint, setHint] = useState('');
 
   useEffect(() => {
     if (codeRun) {
@@ -74,12 +78,13 @@ export const Game05 = () => {
     // Add an API function for the alert() block.
     let counter = 0;
     let bagels = bagelsMade;
+    //this creates a bug because it will still say 0 bagels were made but one pic will come up
+    //however, without this, the images are 1 behind the bagels made #
     bagels.push('bagel');
 
     const wrapper = function () {
       setTimesRan(++counter);
       bagels.push('bagel');
-      // let newBagel = bagels.concat('bagel');
       setBagelsMade(bagels);
     };
     interpreter.setProperty(
@@ -94,10 +99,16 @@ export const Game05 = () => {
     setCodeRun(myInterpreter);
   };
 
-  console.log('RENDERED BAGELS:', bagelsMade);
-
   return (
     <Main>
+      <Button onClick={() => setMission(true)}>Mission</Button>
+      <PopUp open={mission} togglePopUp={() => setMission(false)}>
+        <div>Pigeon is hungry!</div>
+        <div>
+          Help pigeon make some bagels. Between all of the creatures, we think
+          10 will be enough. Connect the blocks to make 10 bagels ON REPEAT.
+        </div>
+      </PopUp>
       <GameContent>
         <GameText>You have made {timesRan} bagels</GameText>
         <VisualsContainer>
