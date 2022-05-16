@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Workspace from '../Workspace';
-import { GameContent, GameText, Main } from '../../style';
-import { Button } from '../../style/index';
+import { GameContent, GameText, Main, Button} from '../../style';
 import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
 import '../Blocks/00Blocks';
@@ -67,7 +66,7 @@ export const Game00 = () => {
 
   return (
     <Main>
-      <Button onClick={() => setMission(true)}>Mission</Button>
+      <Button onClick={() => setMission(true)}>Misson</Button>
       <PopUp open={mission} togglePopUp={() => setMission(false)}>
         <div>Hello Pigeons!</div>
         <div>
