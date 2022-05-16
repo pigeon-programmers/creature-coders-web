@@ -95,13 +95,13 @@ const Game03 = () => {
         </div>
         <Computer src="https://creature-coders.s3.amazonaws.com/computer.svg" />
       </GameContentNoBlock>
-      <GameContent>
+      <GameContentNoBlock>
         {availButtons.map((a, i) => (
           <GameButton key={i} onClick={availClickHandler}>
             {a}
           </GameButton>
         ))}
-      </GameContent>
+      </GameContentNoBlock>
     </Main>
   );
 };
