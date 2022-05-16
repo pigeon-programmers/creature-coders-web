@@ -3,6 +3,9 @@
   "version": "2.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "npm": "6.x"
+  },
   "scripts": {
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development",
@@ -27,6 +30,7 @@
     "blockly": "^8.0.2",
     "compression": "^1.7.3",
     "express": "^4.16.4",
+    "heroku": "^7.60.2",
     "history": "^4.9.0",
     "js-interpreter": "^2.3.1",
     "jsonwebtoken": "^8.5.1",
