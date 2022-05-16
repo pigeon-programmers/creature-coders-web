@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { logout } from '../store';
+import { useSelector } from 'react-redux';
 import {
   Status,
   NavIconContainer,
@@ -9,11 +8,15 @@ import {
   StatusText,
 } from './style';
 
-const StatusBar = ({ handleClick, isLoggedIn }) => (
+const StatusBar = () => {
+  const isLoggedIn = useSelector(state => !!state.auth.id)
+
+  return (
+
   <Status>
     {isLoggedIn ? (
       <>
-        {/* The StatusBar will show these links after you log in */}
+        {/* The StatusBar will show this after you log in */}
         <NavIconContainer>
           <StatusIconContainer>
             <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconPidgeCoin.svg" />
@@ -31,7 +34,7 @@ const StatusBar = ({ handleClick, isLoggedIn }) => (
       </>
     ) : (
       <>
-        {/* The StatusBar will show these links before you log in */}
+        {/* The StatusBar will show this before you log in */}
         <NavIconContainer>
           <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconPidgeCoin.svg" />
           <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconStreak.svg" />
@@ -39,25 +42,7 @@ const StatusBar = ({ handleClick, isLoggedIn }) => (
         </NavIconContainer>
       </>
     )}
-    {/* <hr /> */}
   </Status>
-);
+)}
 
-/**
- * CONTAINER
- */
-const mapState = (state) => {
-  return {
-    isLoggedIn: !!state.auth.id,
-  };
-};
-
-const mapDispatch = (dispatch) => {
-  return {
-    handleClick() {
-      dispatch(logout());
-    },
-  };
-};
-
-export default connect(mapState, mapDispatch)(StatusBar);
+export default StatusBar;
