@@ -9,6 +9,7 @@ import {
   PopButton,
 } from '../../style';
 import PopUp from '../../PopUp';
+import TryAgain from '../../TryAgain';
 import styled from 'styled-components';
 
 const SmallerGameText = styled(GameText)`
@@ -99,16 +100,7 @@ const Game03 = () => {
             <p>RETURN is usually the last statement in a FUNCTION.</p>
           </div>
         </PopUp>
-        <PopUp open={tryAgain} togglePopUp={() => setTryAgain(!tryAgain)}>
-          <div>Oh no!</div>
-          <div>
-            <p>Hmmm...that doesn't look quite right. Let's try it again!</p>
-            <p>
-              Remember, the "Hint" button is there to help. Feel free to click
-              on it for some extra information.
-            </p>
-          </div>
-        </PopUp>
+        <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
       </PopContainer>
       <GameContentNoBlock>
         <div>

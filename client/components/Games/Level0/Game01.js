@@ -8,6 +8,7 @@ import {
   PopButton,
 } from '../../style';
 import PopUp from '../../PopUp';
+import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
 import '../Blocks/01Blocks';
 
@@ -89,16 +90,7 @@ export const Game01 = () => {
             Did you make sure to write "hello pigeons" in all lowercase?
           </div>
         </PopUp>
-        <PopUp open={tryAgain} togglePopUp={() => setTryAgain(!tryAgain)}>
-          <div>Oh no!</div>
-          <div>
-            <p>Hmmm...that doesn't look quite right. Let's try it again!</p>
-            <p>
-              Remember, the "Hint" button is there to help. Feel free to click
-              on it for some extra information.
-            </p>
-          </div>
-        </PopUp>
+        <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
       </PopContainer>
       <GameContent>
         <GameText>{string}</GameText>

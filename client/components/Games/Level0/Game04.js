@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Workspace from '../Workspace';
 import { GameContent, Main, PopContainer, PopButton } from '../../style';
 import PopUp from '../../PopUp';
+import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
 import '../Blocks/04Blocks';
 
@@ -172,16 +173,7 @@ export const Game04 = () => {
             <p>UNDEFNED means something's VALUE HAS NOT BEEN SET.</p>
           </div>
         </PopUp>
-        <PopUp open={tryAgain} togglePopUp={() => setTryAgain(!tryAgain)}>
-          <div>Oh no!</div>
-          <div>
-            <p>Hmmm...that doesn't look quite right. Let's try it again!</p>
-            <p>
-              Remember, the "Hint" button is there to help. Feel free to click
-              on it for some extra information.
-            </p>
-          </div>
-        </PopUp>
+        <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
       </PopContainer>
       <GameContent></GameContent>
       <Workspace toolbox={toolbox} onRun={onRun} />

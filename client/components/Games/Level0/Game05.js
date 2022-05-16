@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
-import Interpreter from 'js-interpreter';
 import {
   GameContent,
   GameText,
@@ -10,8 +9,10 @@ import {
   PopContainer,
   PopButton,
 } from '../../style';
-import '../Blocks/05Blocks';
 import PopUp from '../../PopUp';
+import TryAgain from '../../TryAgain';
+import Interpreter from 'js-interpreter';
+import '../Blocks/05Blocks';
 
 export const Game05 = () => {
   const [timesRan, setTimesRan] = useState(0);
@@ -19,7 +20,8 @@ export const Game05 = () => {
   const [codeComplete, setCodeComplete] = useState(false);
   const [bagelsMade, setBagelsMade] = useState([]);
   const [mission, setMission] = useState(true);
-  const [hint, setHint] = useState('');
+  const [hint, setHint] = useState(false);
+  const [tryAgain, setTryAgain] = useState(false);
 
   useEffect(() => {
     if (codeRun) {
@@ -45,11 +47,7 @@ export const Game05 = () => {
   }, [codeComplete, timesRan]);
 
   const outcome = () => {
-    timesRan === 10
-      ? setTimeout(alert('great job!'), 500)
-      : alert(
-          'SO CLOSE - try again! HINT: did you make sure to make 10 bagels?'
-        );
+    timesRan === 10 ? setTimeout(alert('great job!'), 500) : setTryAgain(true);
   };
 
   const toolbox = {
@@ -128,6 +126,7 @@ export const Game05 = () => {
             </p>
           </div>
         </PopUp>
+        <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
       </PopContainer>
       <GameContent>
         <GameText>You have made {timesRan} bagels</GameText>

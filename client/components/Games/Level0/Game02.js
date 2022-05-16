@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Workspace from '../Workspace';
 import { GameContent, Main, PopContainer, PopButton } from '../../style';
 import PopUp from '../../PopUp';
+import TryAgain from '../../TryAgain';
 import '../Blocks/Blocklys';
 
 //as of May 14th this game isn't fleshed out
@@ -66,16 +67,7 @@ export const Game02 = () => {
           <div>Hint</div>
           <div>ENTER HINT HERE</div>
         </PopUp>
-        <PopUp open={tryAgain} togglePopUp={() => setTryAgain(!tryAgain)}>
-          <div>Oh no!</div>
-          <div>
-            <p>Hmmm...that doesn't look quite right. Let's try it again!</p>
-            <p>
-              Remember, the "Hint" button is there to help. Feel free to click
-              on it for some extra information.
-            </p>
-          </div>
-        </PopUp>
+        <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
       </PopContainer>
       <GameContent id="game03-display"></GameContent>
       <Workspace toolbox={toolbox} initApi={initApi} outcome={outcome} />
