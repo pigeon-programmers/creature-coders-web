@@ -1,13 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
-import { GameContent, GameText, Main } from '../../style';
+import {
+  GameContent,
+  GameText,
+  Main,
+  PopContainer,
+  PopButton,
+} from '../../style';
 import PopUp from '../../PopUp';
+import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
 import '../Blocks/01Blocks';
 
 export const Game01 = () => {
   const [string, setString] = useState('');
   const [connect, setConnect] = useState(false);
+  const [mission, setMission] = useState(true);
+  const [hint, setHint] = useState(false);
+  const [tryAgain, setTryAgain] = useState(false);
 
   useEffect(() => {
     if (connect) outcome();
@@ -52,9 +62,7 @@ export const Game01 = () => {
       ? setTimeout(() => {
           alert('great job!');
         }, 500)
-      : alert(
-          'SO CLOSE - try again! HINT: did you make sure to write "hello pigeons" in the block?'
-        );
+      : setTryAgain(true);
 
     //set connect to false again to allow another try if solution was incorrect
     setConnect(false);
@@ -62,12 +70,28 @@ export const Game01 = () => {
 
   return (
     <Main>
-      <PopUp
-        title={'Hello Pigeons'}
-        body={
-          'Connect the two blocks and change the text to say "hello pigeons" in all lowercase, then press RUN to see "hello world" written in your console!'
-        }
-      />
+      <PopContainer>
+        <PopButton onClick={() => setMission(true)}>Mission</PopButton>
+        <PopUp open={mission} togglePopUp={() => setMission(false)}>
+          <div>Hello Pigeons!</div>
+          <div>
+            <p>The pigeon wants to send out a message to all their friends.</p>
+            <p>
+              Edit and move the given blocks into your WORKSPACE to return the
+              STRING "hello pigeons". Press RUN to see 'hello pigeons' written
+              in your CONSOLE.
+            </p>
+          </div>
+        </PopUp>
+        <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
+        <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
+          <div>Hint</div>
+          <div>
+            Did you make sure to write "hello pigeons" in all lowercase?
+          </div>
+        </PopUp>
+        <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
+      </PopContainer>
       <GameContent>
         <GameText>{string}</GameText>
       </GameContent>
