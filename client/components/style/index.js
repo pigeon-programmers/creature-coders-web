@@ -62,7 +62,7 @@ export const NavIcon = styled.img`
   height: 4vh;
 `;
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   height: 70vh;
   width: 70vw;
   display: flex;
@@ -103,6 +103,16 @@ export const GameContent = styled.div`
   align-items: center;
   justify-content: space-around;
 `;
+
+export const GameContentNoBlock = styled.div`
+width: 80vw;
+height: 40vh;
+background-color: ${palette.black};
+margin: 1em;
+display: flex;
+align-items: center;
+justify-content: space-around;
+`
 
 export const GameText = styled.p`
   color: ${palette.white};
