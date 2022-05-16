@@ -15,6 +15,9 @@ const Map = (props) => {
         <Link to="/game/0/2">
           <button type="button">Game 2</button>
         </Link>
+        <Link to="/game/0/3">
+          <button type="button">Game 3</button>
+        </Link>
         <Link to="/game/0/4">
           <button type="button">Game 4</button>
         </Link>

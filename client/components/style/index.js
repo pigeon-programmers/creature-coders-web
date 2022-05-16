@@ -20,10 +20,7 @@ export const Main = styled.div`
   background-blend-mode: overlay;
   height: 100vh;
   width: 100vw;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  margin: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -33,14 +30,13 @@ export const Main = styled.div`
 
 export const Nav = styled.nav`
   width: 100vw;
-  height: 70px;
+  height: 7wh;
   background: ${palette.mdGray};
   display: flex;
   align-items: center;
   justify-content: space-around;
   position: fixed;
   bottom: 0;
-  left: 0;
 `;
 
 export const NavIconContainer = styled.div`
@@ -51,7 +47,7 @@ export const NavIconContainer = styled.div`
 `;
 
 export const NavIcon = styled.img`
-  height: 50px;
+  height: 4vh;
 `;
 
 export const FormContainer = styled.div`
@@ -88,14 +84,37 @@ export const MapContainer = styled.div`
 
 export const GameContent = styled.div`
   width: 80vw;
-  height: 300px;
+  height: 25vh;
   background-color: ${palette.black};
+  margin: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 `;
 
 export const GameText = styled.p`
   color: ${palette.white};
   font-size: large;
-  font-family: Andalé Mono, Courier, Monaco, monospace;
+  font-family: 'Roboto Mono', monospace;
+  margin: 1em;
+`;
+
+export const Computer = styled.img`
+  height: 20vh;
+  margin: 1em;
+`;
+
+export const GameButton = styled.button`
+  align-items: center;
+  color: ${palette.black};
+  background: ${palette.mdGray};
+  font-size: 1em;
+  margin: 5px;
+  bottom: 100px;
+  padding: 0.25em 1em;
+  font-family: 'Roboto Mono', monospace;
+  border-style: none;
+  box-sizing: border-box;
 `;
 
 export const StyledWorkspace = styled.div`
