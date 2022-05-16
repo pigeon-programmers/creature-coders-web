@@ -15,7 +15,7 @@ export const getSingleUserData = (userId) => {
       const { data } = axios.get(`api/users/${userId}`);
       dispatch(_getSingleUserData(data));
     } catch (err) {
-      console.log("😭 unable to get user's points", err);
+      console.log("😭 unable to get user's data", err);
     }
   };
 };

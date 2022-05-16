@@ -1,28 +1,32 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { Main, Button } from './style'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components';
 
-/**
- * COMPONENT
- */
-export const Home = props => {
-  const {username} = props
+const MainBG = styled(Main)`
+background-color: #2828FF;
+`
+
+const Home = () => {
 
   return (
-    <div>
-      <h3>Welcome, {username}</h3>
-    </div>
+    <MainBG>
+      <h1>Creature Coders</h1>
+      <h5>Learn to code with garbage animals</h5>
+      <Link to="/map">
+      <Button>Play Now</Button>
+      </Link>
+      <Link to="/login">
+      <Button>Log In</Button>
+      </Link>
+      <Link to="/singup">
+      <Button>Sign Up</Button>
+      </Link>
+    </MainBG>
+
 
 
   )
 }
 
-/**
- * CONTAINER
- */
-const mapState = state => {
-  return {
-    username: state.auth.username
-  }
-}
-
-export default connect(mapState)(Home)
+export default Home

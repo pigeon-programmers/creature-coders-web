@@ -12,11 +12,11 @@ import {
 const StatusBar = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(state => !!state.auth.id)
-  const user = useSelector(state => state.user)
+  // const user = useSelector(state => state.user)
 
-  useEffect(() => {
-    dispatch(getSingleUserData(2))
-  }, [])
+  // useEffect(() => {
+  //   dispatch(getSingleUserData(2))
+  // }, [])
 
   return (
 
