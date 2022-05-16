@@ -13,17 +13,6 @@ const palette = {
   pink: '#ED1697',
 };
 
-export const VisualsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-export const Bagel = styled.p`
-  background-image: url('https://image.shutterstock.com/image-vector/hand-drawn-bagel-sketch-bread-600w-1082338913.jpg');
-  height: 20px;
-  width: 20px;
-  margin: 2px;
-`;
 
 export const Main = styled.div`
   position: fixed;
@@ -40,6 +29,20 @@ export const Main = styled.div`
   align-items: center;
 `;
 
+export const HomeTitle = styled.h1`
+font-family: 'Kirang Haerang', sans-serif;
+font-size: 8vh;
+color: ${palette.white};
+filter: drop-shadow(5px 5px 0 black);
+`
+
+export const HomeSubTitle = styled.h5`
+font-family: 'Anonymous Pro', 'Andale Mono', monospace;
+font-size: 2vh;
+color: ${palette.white};
+`
+
+//NAV AND STATUS BARS
 export const Nav = styled.nav`
   width: 100vw;
   height: 7wh;
@@ -87,10 +90,11 @@ export const StatusIcon = styled.img`
 `;
 
 export const StatusText = styled.p`
-font-family: 'Anonymous Pro', monospace;
+font-family: 'Anonymous Pro', 'Andale Mono', monospace;
 font-size: 3.5vh;
 `
 
+//FORMS AND INPUTS
 export const FormContainer = styled.form`
   height: 70vh;
   width: 70vw;
@@ -103,7 +107,7 @@ export const FormContainer = styled.form`
 
 export const Label = styled.label`
   font-size: 2em;
-  font-family: 'Anonymous Pro', monospace;
+  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
 `;
 
 export const Input = styled.input`
@@ -113,6 +117,7 @@ export const Input = styled.input`
   padding: 2em 0;
 `;
 
+//MAP STUFF
 export const MapContainer = styled.div`
   width: 50vw;
   height: 100vh;
@@ -123,28 +128,36 @@ export const MapContainer = styled.div`
   background-color: ${palette.dkGray};
 `;
 
+//GAME COMPONENTS
 export const GameContent = styled.div`
   width: 80vw;
   height: 25vh;
   background-color: ${palette.black};
   margin: 1em;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
 `;
 
+export const GameContentNoBlock = styled.div`
+width: 80vw;
+height: 40vh;
+background-color: ${palette.black};
+margin: 1em;
+display: flex;
+align-items: center;
+justify-content: space-around;
+`
+
 export const GameText = styled.p`
   color: ${palette.white};
   font-size: large;
-  font-family: 'Anonymous Pro', monospace;
+  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
   margin: 1em;
 `;
 
-export const Computer = styled.img`
-  height: 20vh;
-  margin: 1em;
-`;
-
+//used for FILL IN THE BLANK GAMES
 export const GameButton = styled.button`
   align-items: center;
   color: ${palette.black};
@@ -153,7 +166,7 @@ export const GameButton = styled.button`
   margin: 5px;
   bottom: 100px;
   padding: 0.25em 1em;
-  font-family: 'Anonymous Pro', monospace;
+  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
   border-style: none;
   box-sizing: border-box;
 `;
@@ -166,6 +179,7 @@ export const StyledWorkspace = styled.div`
   margin: 2em;
 `;
 
+//used for GENERAL buttons (run, sign-in, etc.)
 export const Button = styled.button`
   align-items: center;
   color: ${palette.white};
@@ -177,4 +191,105 @@ export const Button = styled.button`
   font-family: 'Kirang Haerang', sans-serif;
   border-style: none;
   box-sizing: border-box;
+`;
+
+export const VisualsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+//ARTWORK/ASSET STYLING
+export const Bagel = styled.p`
+  background-image: url('https://creature-coders.s3.amazonaws.com/bagel.svg');
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 50px;
+  margin: 2px;
+`;
+
+export const Computer = styled.img`
+  height: 20vh;
+  margin: 1em;
+`;
+
+//POPUPS AND HINTS STYLING
+export const ModalScreen = styled.div`
+  position: fixed;
+  opacity: 1;
+  z-index: 30;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 200ms ease-in-out;
+`;
+
+export const PopContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const PopMain = styled.div`
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 30;
+  transform: translate(-50%, -50%);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: white;
+  width: 500px;
+  max-width: 80%;
+`;
+
+export const PopHeader = styled.div`
+font-size: 1.25rem;
+font-weight: bold;
+padding: 10px 15px;
+justify-content: space-between;
+display: flex;
+align-items: center;
+}
+`;
+
+//Takes styling from Button and changes the size for popups
+export const PopButton = styled(Button)`
+  padding: 0.25vh 3vw 0.25vh 3vw;
+  bottom: 2vh;
+  font-size: 1.5em;
+  margin: 1vh 1vw 0.25vh 1vw;
+`;
+
+export const PopCloseButton = styled.button`
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: bold;
+`;
+
+export const PopTitle = styled.div`
+  font-size: 1.25rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+`;
+
+export const PopBody = styled.div`
+  padding: 10px 15px;
+  align-items: center;
+  display: flex;
+  font-size: 1.25rem;
+`;
+
+export const PopOverlay = styled.div`
+  position: fixed;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 200ms ease-in-out;
 `;

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Main, Button } from './style'
+import { Main, Button, HomeTitle, HomeSubTitle } from './style'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 
@@ -11,8 +11,8 @@ const Home = () => {
 
   return (
     <MainBG>
-      <h1>Creature Coders</h1>
-      <h5>Learn to code with garbage animals</h5>
+      <HomeTitle>Creature Coders</HomeTitle>
+      <HomeSubTitle>Learn to code with garbage animals</HomeSubTitle>
       <Link to="/map">
       <Button>Play Now</Button>
       </Link>
