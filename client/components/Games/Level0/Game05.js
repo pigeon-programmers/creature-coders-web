@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import Workspace from '../Workspace';
-import Interpreter from 'js-interpreter';
 import {
   GameContent,
   GameText,
   VisualsContainer,
   Bagel,
   Main,
-  Button,
+  PopContainer,
+  PopButton,
 } from '../../style';
-import '../Blocks/05Blocks';
 import PopUp from '../../PopUp';
+import TryAgain from '../../TryAgain';
+import Interpreter from 'js-interpreter';
+import '../Blocks/05Blocks';
 
 export const Game05 = () => {
   const [timesRan, setTimesRan] = useState(0);
   const [codeRun, setCodeRun] = useState(null);
   const [codeComplete, setCodeComplete] = useState(false);
   const [bagelsMade, setBagelsMade] = useState([]);
-  const [mission, setMission] = useState(false);
-  const [hint, setHint] = useState('');
+  const [mission, setMission] = useState(true);
+  const [hint, setHint] = useState(false);
+  const [tryAgain, setTryAgain] = useState(false);
 
   useEffect(() => {
     if (codeRun) {
@@ -44,11 +47,7 @@ export const Game05 = () => {
   }, [codeComplete, timesRan]);
 
   const outcome = () => {
-    timesRan === 10
-      ? setTimeout(alert('great job!'), 500)
-      : alert(
-          'SO CLOSE - try again! HINT: did you make sure to make 10 bagels?'
-        );
+    timesRan === 10 ? setTimeout(alert('great job!'), 500) : setTryAgain(true);
   };
 
   const toolbox = {
@@ -101,14 +100,34 @@ export const Game05 = () => {
 
   return (
     <Main>
-      <Button onClick={() => setMission(true)}>Mission</Button>
-      <PopUp open={mission} togglePopUp={() => setMission(false)}>
-        <div>Pigeon is hungry!</div>
-        <div>
-          Help pigeon make some bagels. Between all of the creatures, we think
-          10 will be enough. Connect the blocks to make 10 bagels ON REPEAT.
-        </div>
-      </PopUp>
+      <PopContainer>
+        <PopButton onClick={() => setMission(true)}>Mission</PopButton>
+        <PopUp open={mission} togglePopUp={() => setMission(false)}>
+          <div>The Pigeon is Hosting a Breakfast Party</div>
+          <div>
+            <p>
+              The pigeon is having some out of town guests who really want to
+              eat an NYC bagel! Between all of the creatures, we think 10 bagels
+              will be enough.
+            </p>
+            <p>
+              Help pigeon make some bagels. Combine the blocks to REPEAT making
+              a bagel 10 times!
+            </p>
+          </div>
+        </PopUp>
+        <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
+        <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
+          <div>Hint</div>
+          <div>
+            <p>
+              Make sure the connected blocks will be REPEATED on a LOOP of 10
+              times.
+            </p>
+          </div>
+        </PopUp>
+        <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
+      </PopContainer>
       <GameContent>
         <GameText>You have made {timesRan} bagels</GameText>
         <VisualsContainer>

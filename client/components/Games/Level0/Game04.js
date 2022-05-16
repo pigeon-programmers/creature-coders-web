@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Workspace from '../Workspace';
-import { GameContent, Main, Button } from '../../style';
+import { GameContent, Main, PopContainer, PopButton } from '../../style';
 import PopUp from '../../PopUp';
+import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
 import '../Blocks/04Blocks';
 
@@ -12,8 +13,9 @@ export const Game04 = () => {
   const [nullBlock, setNullBlock] = useState('');
   const [object, setObject] = useState('');
   const [undef, setUndef] = useState('');
-  const [mission, setMission] = useState(false);
+  const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
+  const [tryAgain, setTryAgain] = useState(false);
 
   useEffect(() => {
     // All types of state need to be added below for game to function properly!
@@ -134,29 +136,45 @@ export const Game04 = () => {
     undef === 'undef' &&
     object === 'object'
       ? alert('good job!')
-      : alert('try again!');
+      : setTryAgain(true);
   };
-
-  const popUpMission =
-    "Match blocks from 'Types' and 'Examples' to give your animal a slice of pizza! 🍕 Make sure you match all six types to win the game. Click RUN to check your answers!";
-
-  const hintText = ''
 
   //right now the game content div is empty
   //we can take it out or put examples of each data type in it
 
   return (
     <Main>
-      <Button onClick={() => setMission(true)}>Mission</Button>
-      <PopUp open={mission} togglePopUp={() => setMission(false)}>
-        <div>Match Data Types!</div>
-        <div>{popUpMission}</div>
-      </PopUp>
-      <Button onClick={() => setHint(true)}>Hint</Button>
-      <PopUp open={hint} togglePopUp={() => setHint(false)}>
-        <div>Match Data Types!</div>
-        <div>{hintText}</div>
-      </PopUp>
+      <PopContainer>
+        <PopButton onClick={() => setMission(true)}>Mission</PopButton>
+        <PopUp open={mission} togglePopUp={() => setMission(false)}>
+          <div>JavaScript Data Types</div>
+          <div>
+            <p>
+              JavaScript has 6 different data types: string, number, boolean,
+              object, null, and undefined. There is also a 7th type - symbol -
+              but we are going to put that one aside.
+            </p>
+            <p>
+              Match each one of the TYPE blocks with one EXAMPLE block to give
+              your creature a slice of pizza! 🍕. Press RUN when all 6 types are
+              connected to an example.
+            </p>
+          </div>
+        </PopUp>
+        <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
+        <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
+          <div>Hint</div>
+          <div>
+            <p>A STRING is surrounded by QUOTATION MARKS.</p>
+            <p>A NUMBER is an INTEGER without quotation marks.</p>
+            <p>An OBJECT has CURLY or SQUARE brackets around it.</p>
+            <p>A BOOLEAN can only be TRUE or FALSE.</p>
+            <p>NULL means something is set to have NO VALUE.</p>
+            <p>UNDEFNED means something's VALUE HAS NOT BEEN SET.</p>
+          </div>
+        </PopUp>
+        <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
+      </PopContainer>
       <GameContent></GameContent>
       <Workspace toolbox={toolbox} onRun={onRun} />
     </Main>
