@@ -18,6 +18,7 @@ const StatusBar = () => {
   //   dispatch(getSingleUserData(2))
   // }, [])
 
+
   return (
 
   <Status>

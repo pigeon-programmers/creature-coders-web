@@ -19,7 +19,7 @@ const Home = () => {
       <Link to="/login">
       <Button>Log In</Button>
       </Link>
-      <Link to="/singup">
+      <Link to="/signup">
       <Button>Sign Up</Button>
       </Link>
     </MainBG>
