@@ -1,23 +1,22 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const palette = {
-  white: '#FFFFFF',
-  black: '#000000',
-  dkGray: '#3D3D3D',
-  mdGray: '#7E7E7E',
-  red: '#E91717',
-  orange: '#F08435',
-  yellow: '#FFE600',
-  green: '#4EDE1C',
-  blue: '#2828FF',
-  pink: '#ED1697',
+  white: "#FFFFFF",
+  black: "#000000",
+  dkGray: "#3D3D3D",
+  mdGray: "#7E7E7E",
+  red: "#E91717",
+  orange: "#F08435",
+  yellow: "#FFE600",
+  green: "#4EDE1C",
+  blue: "#2828FF",
+  pink: "#ED1697",
 };
-
 
 export const Main = styled.div`
   position: fixed;
   background: ${palette.orange};
-  background-image: url('https://creature-coders.s3.amazonaws.com/bg.svg');
+  background-image: url("https://creature-coders.s3.amazonaws.com/bg.svg");
   background-blend-mode: overlay;
   height: 100vh;
   width: 100vw;
@@ -31,6 +30,32 @@ export const Main = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+export const Content = styled.div`
+  margin-top: 20%; 
+  bottom: 0;
+  height: 90vh;
+  width: 100vw;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+`;
+
+export const HomeTitle = styled.h1`
+  font-family: "Kirang Haerang", sans-serif;
+  font-size: 8vh;
+  color: ${palette.white};
+  filter: drop-shadow(5px 5px 0 black);
+`;
+
+export const HomeSubTitle = styled.h5`
+  font-family: "Anonymous Pro", "Andale Mono", monospace;
+  font-size: 2vh;
+  color: ${palette.white};
 `;
 
 //NAV AND STATUS BARS
@@ -57,6 +82,35 @@ export const NavIcon = styled.img`
   height: 4vh;
 `;
 
+export const Status = styled.nav`
+  width: 100vw;
+  height: 5vh;
+  background: ${palette.mdGray};
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+`;
+
+export const StatusIconContainer = styled.div`
+  width: 13vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+export const StatusIcon = styled.img`
+  height: 3vh;
+`;
+
+export const StatusText = styled.p`
+  font-family: "Anonymous Pro", "Andale Mono", monospace;
+  font-size: 3.5vh;
+`;
+
 //FORMS AND INPUTS
 export const FormContainer = styled.form`
   height: 70vh;
@@ -70,7 +124,7 @@ export const FormContainer = styled.form`
 
 export const Label = styled.label`
   font-size: 2em;
-  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
+  font-family: "Anonymous Pro", "Andale Mono", monospace;
 `;
 
 export const Input = styled.input`
@@ -104,19 +158,19 @@ export const GameContent = styled.div`
 `;
 
 export const GameContentNoBlock = styled.div`
-width: 80vw;
-height: 40vh;
-background-color: ${palette.black};
-margin: 1em;
-display: flex;
-align-items: center;
-justify-content: space-around;
-`
+  width: 80vw;
+  height: 40vh;
+  background-color: ${palette.black};
+  margin: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
 
 export const GameText = styled.p`
   color: ${palette.white};
   font-size: large;
-  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
+  font-family: "Anonymous Pro", "Andale Mono", monospace;
   margin: 1em;
 `;
 
@@ -134,7 +188,7 @@ export const GameButton = styled.button`
   margin: 5px;
   bottom: 100px;
   padding: 0.25em 1em;
-  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
+  font-family: "Anonymous Pro", "Andale Mono", monospace;
   border-style: none;
   box-sizing: border-box;
 `;
@@ -153,10 +207,10 @@ export const Button = styled.button`
   color: ${palette.white};
   background: ${palette.dkGray};
   font-size: 2em;
-  margin: 1em;
-  bottom: 100px;
+  margin: 3%;
+  bottom: 0;
   padding: 0.25em 2em;
-  font-family: 'Kirang Haerang', sans-serif;
+  font-family: "Kirang Haerang", sans-serif;
   border-style: none;
   box-sizing: border-box;
 `;
@@ -168,7 +222,7 @@ export const VisualsContainer = styled.div`
 
 //ARTWORK/ASSET STYLING
 export const Bagel = styled.p`
-  background-image: url('https://creature-coders.s3.amazonaws.com/bagel.svg');
+  background-image: url("https://creature-coders.s3.amazonaws.com/bagel.svg");
   background-repeat: no-repeat;
   height: 50px;
   width: 50px;

@@ -21,7 +21,10 @@ async function seed() {
       password: "123",
       email: "murphy@murphy.com",
       currentLevel: 0,
-      currentGame: 1
+      currentGame: 1,
+      points: 3,
+      streak: 37,
+      pidgeCoin: 10,
     }),
     User.create({
       username: "pippin",

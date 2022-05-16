@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Workspace from '../Workspace';
-<<<<<<< HEAD
-import { GameContent, GameText, Main, Button} from '../../style';
-=======
 import {
   GameContent,
   GameText,
   Main,
   PopContainer,
   PopButton,
+  Content
 } from '../../style';
-import { Button } from '../../style/index';
->>>>>>> 178b79d51d6d5e0b0c21c6d1c97ad333ebbd738c
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
@@ -79,6 +75,7 @@ export const Game00 = () => {
 
   return (
     <Main>
+    <Content>
       <PopContainer>
         <PopButton onClick={() => setMission(true)}>Mission</PopButton>
         <PopUp open={mission} togglePopUp={() => setMission(false)}>
@@ -105,6 +102,7 @@ export const Game00 = () => {
         <GameText>{string}</GameText>
       </GameContent>
       <Workspace toolbox={toolbox} onRun={onRun} />
+      </Content>
     </Main>
   );
 };
