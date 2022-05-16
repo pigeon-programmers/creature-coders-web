@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Computer, GameButton, GameContent, GameText, Main } from '../../style';
+import { Computer, GameButton, GameContentNoBlock, GameText, Main } from '../../style';
 import styled from 'styled-components';
-const BiggerGameContent = styled(GameContent)`
-  height: 40vh;
-`;
+
 const SmallerGameText = styled(GameText)`
   font-size: small;
 `;
@@ -59,7 +57,7 @@ const Game03 = () => {
 
   return (
     <Main>
-      <BiggerGameContent>
+      <GameContentNoBlock>
         <div>
           <GameText>We need more cats!!</GameText>
           <SmallerGameText>
@@ -96,14 +94,14 @@ const Game03 = () => {
           </SmallerGameText>
         </div>
         <Computer src="https://creature-coders.s3.amazonaws.com/computer.svg" />
-      </BiggerGameContent>
-      <GameContent>
+      </GameContentNoBlock>
+      <GameContentNoBlock>
         {availButtons.map((a, i) => (
           <GameButton key={i} onClick={availClickHandler}>
             {a}
           </GameButton>
         ))}
-      </GameContent>
+      </GameContentNoBlock>
     </Main>
   );
 };
