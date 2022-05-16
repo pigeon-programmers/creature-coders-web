@@ -177,12 +177,12 @@ export const Game04 = () => {
           <div>
             <p>Hmmm...that doesn't look quite right. Let's try it again!</p>
             <p>
-              Remember, you can always click on the "Hint" button if you need.
+              Remember, the "Hint" button is there to help. Feel free to click
+              on it for some extra information.
             </p>
           </div>
         </PopUp>
       </PopContainer>
-
       <GameContent></GameContent>
       <Workspace toolbox={toolbox} onRun={onRun} />
     </Main>
