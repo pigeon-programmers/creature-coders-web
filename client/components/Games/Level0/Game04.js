@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Workspace from '../Workspace';
-import { GameContent, Main } from '../../style';
+import { GameContent, Main, Button } from '../../style';
 import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
 import '../Blocks/04Blocks';
@@ -12,6 +12,8 @@ export const Game04 = () => {
   const [nullBlock, setNullBlock] = useState('');
   const [object, setObject] = useState('');
   const [undef, setUndef] = useState('');
+  const [mission, setMission] = useState(false);
+  const [hint, setHint] = useState(false);
 
   useEffect(() => {
     // All types of state need to be added below for game to function properly!
@@ -135,15 +137,26 @@ export const Game04 = () => {
       : alert('try again!');
   };
 
-  const popUpText =
+  const popUpMission =
     "Match blocks from 'Types' and 'Examples' to give your animal a slice of pizza! 🍕 Make sure you match all six types to win the game. Click RUN to check your answers!";
+
+  const hintText = ''
 
   //right now the game content div is empty
   //we can take it out or put examples of each data type in it
 
   return (
     <Main>
-      <PopUp title={'Data type matching game!'} body={popUpText} />
+      <Button onClick={() => setMission(true)}>Mission</Button>
+      <PopUp open={mission} togglePopUp={() => setMission(false)}>
+        <div>Match Data Types!</div>
+        <div>{popUpMission}</div>
+      </PopUp>
+      <Button onClick={() => setHint(true)}>Hint</Button>
+      <PopUp open={hint} togglePopUp={() => setHint(false)}>
+        <div>Match Data Types!</div>
+        <div>{hintText}</div>
+      </PopUp>
       <GameContent></GameContent>
       <Workspace toolbox={toolbox} onRun={onRun} />
     </Main>
