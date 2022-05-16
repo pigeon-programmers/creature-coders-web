@@ -4,6 +4,7 @@ import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import { me } from './store';
+import UserSettings from './components/UserSettings'
 import Map from './components/Map';
 import Game00 from './components/Games/Level0/Game00';
 import Game01 from './components/Games/Level0/Game01';
@@ -28,25 +29,24 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path="/home" component={Home} />
+            <Route path="/" exact component={Home} />
             <Route path="/map" component={Map} />
+            <Route path="/settings" component={UserSettings} />
             <Route path="/game/0/0" exact component={Game00} />
             <Route path="/game/0/1" exact component={Game01} />
             <Route path="/game/0/2" exact component={Game02} />
-            <Route path="/game/0/3" exact component={Game03} />
             <Route path="/game/0/4" exact component={Game04} />
             <Route path="/game/0/5" exact component={Game05} />
           </Switch>
         ) : (
           <Switch>
-            <Route path="/" exact component={Login} />
+            <Route path="/" exact component={Home} />
             <Route path="/login" exact component={Login} />
             <Route path="/signup" exact component={Signup} />
             <Route path="/map" component={Map} />
             <Route path="/game/0/0" exact component={Game00} />
             <Route path="/game/0/1" exact component={Game01} />
             <Route path="/game/0/2" exact component={Game02} />
-            <Route path="/game/0/3" exact component={Game03} />
             <Route path="/game/0/4" exact component={Game04} />
             <Route path="/game/0/5" exact component={Game05} />
           </Switch>
