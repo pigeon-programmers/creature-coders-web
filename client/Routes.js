@@ -4,8 +4,8 @@ import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import { me } from './store';
+import UserSettings from './components/UserSettings'
 import Map from './components/Map';
-import UserSettings from './components/UserSettings';
 import Game00 from './components/Games/Level0/Game00';
 import Game01 from './components/Games/Level0/Game01';
 import Game02 from './components/Games/Level0/Game02';
