@@ -88,6 +88,7 @@ export const GameContent = styled.div`
   background-color: ${palette.black};
   margin: 1em;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
 `;
