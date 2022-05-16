@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Workspace from '../Workspace';
 import { GameContent, GameText, Main } from '../../style';
+import { Button } from '../../style/index';
 import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
 import '../Blocks/00Blocks';
@@ -12,6 +13,8 @@ export const Game00 = () => {
   //if you can think of a better way to do this, call us up
   const [connect, setConnect] = useState(0);
   const [string, setString] = useState('');
+  const [mission, setMission] = useState(false);
+  const [hint, setHint] = useState(false);
 
   useEffect(() => {
     if (connect) outcome();
@@ -64,10 +67,19 @@ export const Game00 = () => {
 
   return (
     <Main>
-      <PopUp
-        title="Hello World!"
-        body='Connect the two blocks, then press RUN to see "hello world" written in your console!'
-      />
+      <Button onClick={() => setMission(true)}>Mission</Button>
+      <PopUp open={mission} togglePopUp={() => setMission(false)}>
+        <div>Hello Pigeons!</div>
+        <div>
+          Connect the given blocks into your WORKSPACE to return the STRING
+          "Hello Pigeons".
+        </div>
+      </PopUp>
+      <Button onClick={() => setHint(!hint)}>Hint</Button>
+      <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
+        <div>Hint</div>
+        <div>Try pulling a block into the given WORKSPACE!</div>
+      </PopUp>
       <GameContent>
         <GameText>{string}</GameText>
       </GameContent>

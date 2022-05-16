@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap');
 
 body {
   font-family: sans-serif;
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
+  margin: 0;
 }
 
 a {
@@ -17,13 +15,6 @@ a {
   width: 80vw;
 }
 
-#game03-display {
-  display: flex;
-  height: 30px;
-  width: 80%;
-  align-items: center;
-  background-color: grey;
-}
 .popUp {
   position: fixed;
   left: 50%;
@@ -38,16 +29,14 @@ a {
   max-width: 80%;
 }
 
-.popUp-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-}
 
-.popUp-header .title {
+.popUp-header {
   font-size: 1.25rem;
   font-weight: bold;
+  padding: 10px 15px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
 }
 
 .popUp-header .close-button {
@@ -59,10 +48,29 @@ a {
   font-weight: bold;
 }
 
+
+.Popup-Title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+
 .popUp-body {
   padding: 10px 15px;
   align-items: center;
   display: flex;
+  font-size: 1.25rem;
+}
+
+.modalscreen {
+  position: fixed;
+  opacity: 1;
+  z-index: 30;
+  background-color: rgba(0, 0, 0, .5);
+  transition: 200ms ease-in-out;
 }
 
 #overlay {
@@ -74,5 +82,4 @@ a {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   transition: 200ms ease-in-out;
-  pointer-events: none;
 }

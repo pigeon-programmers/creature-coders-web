@@ -40,14 +40,3 @@ const Workspace = (props) => {
 };
 
 export default Workspace;
-
-//textarea below can be added in for higher level games to see the actual code
-//in separate "higher level" workspace
-{
-  /* <textarea
-id="code"
-style={{ height: '200px', width: '400px' }}
-value={javascriptCode}
-readOnly
-></textarea> */
-}
