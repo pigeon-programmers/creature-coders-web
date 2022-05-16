@@ -14,6 +14,7 @@ export const Game04 = () => {
   const [undef, setUndef] = useState('');
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
+  const [tryAgain, setTryAgain] = useState(false);
 
   useEffect(() => {
     // All types of state need to be added below for game to function properly!
@@ -134,13 +135,8 @@ export const Game04 = () => {
     undef === 'undef' &&
     object === 'object'
       ? alert('good job!')
-      : alert('try again!');
+      : setTryAgain(true);
   };
-
-  const popUpMission =
-    "Match blocks from 'Types' and 'Examples' to give your animal a slice of pizza! 🍕 Make sure you match all six types to win the game. Click RUN to check your answers!";
-
-  const hintText = '';
 
   //right now the game content div is empty
   //we can take it out or put examples of each data type in it
@@ -158,8 +154,9 @@ export const Game04 = () => {
               but we are going to put that one aside.
             </p>
             <p>
-              Match each one of the TYPE blocks with one EXAMPLE block. Press
-              RUN when all 6 types are connected to an example.
+              Match each one of the TYPE blocks with one EXAMPLE block to give
+              your creature a slice of pizza! 🍕. Press RUN when all 6 types are
+              connected to an example.
             </p>
           </div>
         </PopUp>
@@ -173,6 +170,15 @@ export const Game04 = () => {
             <p>A BOOLEAN can only be TRUE or FALSE.</p>
             <p>NULL means something is set to have NO VALUE.</p>
             <p>UNDEFNED means something's VALUE HAS NOT BEEN SET.</p>
+          </div>
+        </PopUp>
+        <PopUp open={tryAgain} togglePopUp={() => setTryAgain(!tryAgain)}>
+          <div>Oh no!</div>
+          <div>
+            <p>Hmmm...that doesn't look quite right. Let's try it again!</p>
+            <p>
+              Remember, you can always click on the "Hint" button if you need.
+            </p>
           </div>
         </PopUp>
       </PopContainer>

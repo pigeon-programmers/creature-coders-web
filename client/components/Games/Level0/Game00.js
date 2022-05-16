@@ -21,6 +21,7 @@ export const Game00 = () => {
   const [string, setString] = useState('');
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
+  const [tryAgain, setTryAgain] = useState(false);
 
   useEffect(() => {
     if (connect) outcome();
@@ -68,7 +69,7 @@ export const Game00 = () => {
       ? setTimeout(() => {
           alert('great job!');
         }, 500)
-      : alert('SO CLOSE - try again! HINT: did you connect the two blocks?');
+      : setTryAgain(true);
   };
 
   return (
@@ -92,6 +93,16 @@ export const Game00 = () => {
         <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
           <div>Hint</div>
           <div>Try connecting the given blocks in the WORKSPACE!</div>
+        </PopUp>
+        <PopUp open={tryAgain} togglePopUp={() => setTryAgain(!tryAgain)}>
+          <div>Oh no!</div>
+          <div>
+            <p>Hmmm...that doesn't look quite right. Let's try it again!</p>
+            <p>
+              Remember, the "Hint" button is there to help. Feel free to click
+              on it for some extra information.
+            </p>
+          </div>
         </PopUp>
       </PopContainer>
       <GameContent>

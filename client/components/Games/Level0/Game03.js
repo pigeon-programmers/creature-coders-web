@@ -18,6 +18,7 @@ const SmallerGameText = styled(GameText)`
 const Game03 = () => {
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
+  const [tryAgain, setTryAgain] = useState(false);
   const [availButtons, setAvailButtons] = useState([
     `catsTarget`,
     `return`,
@@ -96,6 +97,16 @@ const Game03 = () => {
             </p>
             <p>In JavaScript, ++ means to go up by one!</p>
             <p>RETURN is usually the last statement in a FUNCTION.</p>
+          </div>
+        </PopUp>
+        <PopUp open={tryAgain} togglePopUp={() => setTryAgain(!tryAgain)}>
+          <div>Oh no!</div>
+          <div>
+            <p>Hmmm...that doesn't look quite right. Let's try it again!</p>
+            <p>
+              Remember, the "Hint" button is there to help. Feel free to click
+              on it for some extra information.
+            </p>
           </div>
         </PopUp>
       </PopContainer>

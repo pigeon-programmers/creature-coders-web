@@ -16,6 +16,7 @@ export const Game01 = () => {
   const [connect, setConnect] = useState(false);
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
+  const [tryAgain, setTryAgain] = useState(false);
 
   useEffect(() => {
     if (connect) outcome();
@@ -60,7 +61,7 @@ export const Game01 = () => {
       ? setTimeout(() => {
           alert('great job!');
         }, 500)
-      : alert('SO CLOSE - try again!');
+      : setTryAgain(true);
 
     //set connect to false again to allow another try if solution was incorrect
     setConnect(false);
@@ -86,6 +87,16 @@ export const Game01 = () => {
           <div>Hint</div>
           <div>
             Did you make sure to write "hello pigeons" in all lowercase?
+          </div>
+        </PopUp>
+        <PopUp open={tryAgain} togglePopUp={() => setTryAgain(!tryAgain)}>
+          <div>Oh no!</div>
+          <div>
+            <p>Hmmm...that doesn't look quite right. Let's try it again!</p>
+            <p>
+              Remember, the "Hint" button is there to help. Feel free to click
+              on it for some extra information.
+            </p>
           </div>
         </PopUp>
       </PopContainer>

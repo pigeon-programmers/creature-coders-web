@@ -9,6 +9,7 @@ import '../Blocks/Blocklys';
 export const Game02 = () => {
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
+  const [tryAgain, setTryAgain] = useState(false);
 
   const toolbox = {
     kind: 'flyoutToolbox',
@@ -42,9 +43,7 @@ export const Game02 = () => {
     //   ? setTimeout(() => {
     //       alert('great job!');
     //     }, 500)
-    //   : alert(
-    //       'SO CLOSE - try again! HINT: did you make sure to write "hello pigeons" in the block?'
-    //     );
+    //   : setTryAgain(true);
   };
 
   return (
@@ -66,6 +65,16 @@ export const Game02 = () => {
         <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
           <div>Hint</div>
           <div>ENTER HINT HERE</div>
+        </PopUp>
+        <PopUp open={tryAgain} togglePopUp={() => setTryAgain(!tryAgain)}>
+          <div>Oh no!</div>
+          <div>
+            <p>Hmmm...that doesn't look quite right. Let's try it again!</p>
+            <p>
+              Remember, the "Hint" button is there to help. Feel free to click
+              on it for some extra information.
+            </p>
+          </div>
         </PopUp>
       </PopContainer>
       <GameContent id="game03-display"></GameContent>
