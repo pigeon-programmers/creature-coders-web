@@ -95,7 +95,7 @@ const Game03 = () => {
               Our TARGET is to make 5 CATS. Where do you think catsTarget would
               go?
             </p>
-            <p>In JavaScript, ++ means to go up by one!</p>
+            <p>In JavaScript, ++ means the number goes up by one!</p>
             <p>RETURN is usually the last statement in a FUNCTION.</p>
           </div>
         </PopUp>
