@@ -13,6 +13,7 @@ const palette = {
   pink: '#ED1697',
 };
 
+
 export const Main = styled.div`
   position: fixed;
   background: ${palette.orange};
@@ -28,6 +29,7 @@ export const Main = styled.div`
   align-items: center;
 `;
 
+//NAV AND STATUS BARS
 export const Nav = styled.nav`
   width: 100vw;
   height: 7wh;
@@ -50,6 +52,7 @@ export const NavIcon = styled.img`
   height: 4vh;
 `;
 
+//FORMS AND INPUTS
 export const FormContainer = styled.form`
   height: 70vh;
   width: 70vw;
@@ -62,7 +65,7 @@ export const FormContainer = styled.form`
 
 export const Label = styled.label`
   font-size: 2em;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
 `;
 
 export const Input = styled.input`
@@ -72,6 +75,7 @@ export const Input = styled.input`
   padding: 2em 0;
 `;
 
+//MAP STUFF
 export const MapContainer = styled.div`
   width: 50vw;
   height: 100vh;
@@ -82,6 +86,7 @@ export const MapContainer = styled.div`
   background-color: ${palette.dkGray};
 `;
 
+//GAME COMPONENTS
 export const GameContent = styled.div`
   width: 80vw;
   height: 25vh;
@@ -106,12 +111,7 @@ justify-content: space-around;
 export const GameText = styled.p`
   color: ${palette.white};
   font-size: large;
-  font-family: 'Roboto Mono', monospace;
-  margin: 1em;
-`;
-
-export const Computer = styled.img`
-  height: 20vh;
+  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
   margin: 1em;
 `;
 
@@ -124,7 +124,7 @@ export const GameButton = styled.button`
   margin: 5px;
   bottom: 100px;
   padding: 0.25em 1em;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
   border-style: none;
   box-sizing: border-box;
 `;
@@ -156,6 +156,7 @@ export const VisualsContainer = styled.div`
   flex-direction: row;
 `;
 
+//ARTWORK/ASSET STYLING
 export const Bagel = styled.p`
   background-image: url('https://creature-coders.s3.amazonaws.com/bagel.svg');
   background-repeat: no-repeat;
@@ -164,6 +165,12 @@ export const Bagel = styled.p`
   margin: 2px;
 `;
 
+export const Computer = styled.img`
+  height: 20vh;
+  margin: 1em;
+`;
+
+//POPUPS AND HINTS STYLING
 export const ModalScreen = styled.div`
   position: fixed;
   opacity: 1;
@@ -205,6 +212,7 @@ align-items: center;
 export const PopButton = styled(Button)`
   padding: 0.25vh 3vw 0.25vh 3vw;
   bottom: 2vh;
+  font-size: 1.5em;
   margin: 1vh 1vw 0.25vh 1vw;
 `;
 
