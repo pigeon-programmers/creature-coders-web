@@ -13,18 +13,6 @@ const palette = {
   pink: '#ED1697',
 };
 
-export const VisualsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-export const Bagel = styled.p`
-  background-image: url('https://image.shutterstock.com/image-vector/hand-drawn-bagel-sketch-bread-600w-1082338913.jpg');
-  height: 20px;
-  width: 20px;
-  margin: 2px;
-`;
-
 export const Main = styled.div`
   position: fixed;
   background: ${palette.orange};
@@ -100,6 +88,7 @@ export const GameContent = styled.div`
   background-color: ${palette.black};
   margin: 1em;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
 `;
@@ -148,4 +137,17 @@ export const Button = styled.button`
   font-family: 'Kirang Haerang', sans-serif;
   border-style: none;
   box-sizing: border-box;
+`;
+
+export const VisualsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const Bagel = styled.p`
+  background-image: url('https://creature-coders.s3.amazonaws.com/bagel.svg');
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 50px;
+  margin: 2px;
 `;
