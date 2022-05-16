@@ -18,7 +18,7 @@ export const Game05 = () => {
   const [codeRun, setCodeRun] = useState(null);
   const [codeComplete, setCodeComplete] = useState(false);
   const [bagelsMade, setBagelsMade] = useState([]);
-  const [mission, setMission] = useState(false);
+  const [mission, setMission] = useState(true);
   const [hint, setHint] = useState('');
 
   useEffect(() => {

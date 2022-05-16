@@ -19,7 +19,7 @@ export const Game00 = () => {
   //if you can think of a better way to do this, call us up
   const [connect, setConnect] = useState(0);
   const [string, setString] = useState('');
-  const [mission, setMission] = useState(false);
+  const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
 
   useEffect(() => {

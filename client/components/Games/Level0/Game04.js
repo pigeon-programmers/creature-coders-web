@@ -12,7 +12,7 @@ export const Game04 = () => {
   const [nullBlock, setNullBlock] = useState('');
   const [object, setObject] = useState('');
   const [undef, setUndef] = useState('');
-  const [mission, setMission] = useState(false);
+  const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
 
   useEffect(() => {

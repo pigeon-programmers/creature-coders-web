@@ -7,7 +7,7 @@ import '../Blocks/Blocklys';
 //as of May 14th this game isn't fleshed out
 
 export const Game02 = () => {
-  const [mission, setMission] = useState(false);
+  const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
 
   const toolbox = {

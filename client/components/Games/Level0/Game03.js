@@ -16,7 +16,7 @@ const SmallerGameText = styled(GameText)`
 `;
 
 const Game03 = () => {
-  const [mission, setMission] = useState(false);
+  const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
   const [availButtons, setAvailButtons] = useState([
     `catsTarget`,

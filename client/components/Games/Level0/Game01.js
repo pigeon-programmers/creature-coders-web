@@ -14,7 +14,7 @@ import '../Blocks/01Blocks';
 export const Game01 = () => {
   const [string, setString] = useState('');
   const [connect, setConnect] = useState(false);
-  const [mission, setMission] = useState(false);
+  const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
 
   useEffect(() => {
