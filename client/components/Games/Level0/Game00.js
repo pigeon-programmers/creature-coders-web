@@ -9,6 +9,7 @@ import {
 } from '../../style';
 import { Button } from '../../style/index';
 import PopUp from '../../PopUp';
+import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
 import '../Blocks/00Blocks';
 
@@ -19,8 +20,9 @@ export const Game00 = () => {
   //if you can think of a better way to do this, call us up
   const [connect, setConnect] = useState(0);
   const [string, setString] = useState('');
-  const [mission, setMission] = useState(false);
+  const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
+  const [tryAgain, setTryAgain] = useState(false);
 
   useEffect(() => {
     if (connect) outcome();
@@ -68,7 +70,7 @@ export const Game00 = () => {
       ? setTimeout(() => {
           alert('great job!');
         }, 500)
-      : alert('SO CLOSE - try again! HINT: did you connect the two blocks?');
+      : setTryAgain(true);
   };
 
   return (
@@ -76,17 +78,24 @@ export const Game00 = () => {
       <PopContainer>
         <PopButton onClick={() => setMission(true)}>Mission</PopButton>
         <PopUp open={mission} togglePopUp={() => setMission(false)}>
-          <div>Hello Pigeons!</div>
+          <div>Hello World!</div>
           <div>
-            Connect the given blocks into your WORKSPACE to return the STRING
-            "Hello Pigeons".
+            <p>
+              The pigeon knows that the first step to being a coder is to write
+              "hello world" in the CONSOLE.{' '}
+            </p>
+            <p>
+              Connect the given blocks into your WORKSPACE, press RUN, and watch
+              the STRING appear in your CONSOLE.
+            </p>
           </div>
         </PopUp>
         <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
         <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
           <div>Hint</div>
-          <div>Try pulling a block into the given WORKSPACE!</div>
+          <div>Try connecting the given blocks in the WORKSPACE!</div>
         </PopUp>
+        <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
       </PopContainer>
       <GameContent>
         <GameText>{string}</GameText>
