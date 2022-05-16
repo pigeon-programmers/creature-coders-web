@@ -21,6 +21,10 @@ export const Main = styled.div`
   height: 100vh;
   width: 100vw;
   margin: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -64,6 +68,7 @@ export const Nav = styled.nav`
   justify-content: space-around;
   position: fixed;
   bottom: 0;
+left: 0;
 `;
 
 export const NavIconContainer = styled.div`
@@ -166,6 +171,11 @@ export const GameText = styled.p`
   color: ${palette.white};
   font-size: large;
   font-family: "Anonymous Pro", "Andale Mono", monospace;
+  margin: 1em;
+`;
+
+export const Computer = styled.img`
+  height: 20vh;
   margin: 1em;
 `;
 

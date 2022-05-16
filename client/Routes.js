@@ -35,7 +35,6 @@ class Routes extends Component {
             <Route path="/game/0/0" exact component={Game00} />
             <Route path="/game/0/1" exact component={Game01} />
             <Route path="/game/0/2" exact component={Game02} />
-            <Route path="/game/0/3" exact component={Game03} />
             <Route path="/game/0/4" exact component={Game04} />
             <Route path="/game/0/5" exact component={Game05} />
           </Switch>
@@ -48,7 +47,6 @@ class Routes extends Component {
             <Route path="/game/0/0" exact component={Game00} />
             <Route path="/game/0/1" exact component={Game01} />
             <Route path="/game/0/2" exact component={Game02} />
-            <Route path="/game/0/3" exact component={Game03} />
             <Route path="/game/0/4" exact component={Game04} />
             <Route path="/game/0/5" exact component={Game05} />
           </Switch>
