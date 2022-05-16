@@ -175,11 +175,6 @@ export const Bagel = styled.p`
   margin: 2px;
 `;
 
-export const Computer = styled.img`
-  height: 20vh;
-  margin: 1em;
-`;
-
 //POPUPS AND HINTS STYLING
 export const ModalScreen = styled.div`
   position: fixed;

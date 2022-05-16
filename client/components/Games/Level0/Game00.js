@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Workspace from '../Workspace';
-<<<<<<< HEAD
-import { GameContent, GameText, Main, Button} from '../../style';
-=======
 import {
   GameContent,
   GameText,
@@ -11,7 +8,6 @@ import {
   PopButton,
 } from '../../style';
 import { Button } from '../../style/index';
->>>>>>> 178b79d51d6d5e0b0c21c6d1c97ad333ebbd738c
 import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
 import '../Blocks/00Blocks';

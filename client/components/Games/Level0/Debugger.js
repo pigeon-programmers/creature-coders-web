@@ -1,20 +1,14 @@
 import React from 'react'
-import Workspace from '../Workspace'
-import Blocklys from '../Blocklys'
+import {Computer, GameButton, GameContentNoBlock, GameText, Main} from '../../style'
 
 export const Debugger = () => {
-  const toolbox = {
-    kind: "categoryToolbox",
-    contents: [
-      {
-        kind: "category",
-        name: "Types",
-        contents: [
-          {
-            kind: "block"
-          }
-        ]
-      }
-    ]
-  }
+  return (
+    <Main>
+      <GameContentNoBlock>
+        <div>
+          <GameText>Debug the code!🪳</GameText>
+        </div>
+      </GameContentNoBlock>
+    </Main>
+  )
 }
