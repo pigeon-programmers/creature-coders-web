@@ -76,16 +76,22 @@ export const Game00 = () => {
       <PopContainer>
         <PopButton onClick={() => setMission(true)}>Mission</PopButton>
         <PopUp open={mission} togglePopUp={() => setMission(false)}>
-          <div>Hello Pigeons!</div>
+          <div>Hello World!</div>
           <div>
-            Connect the given blocks into your WORKSPACE to return the STRING
-            "Hello Pigeons".
+            <p>
+              The pigeon knows that the first step to being a coder is to write
+              "hello world" in the CONSOLE.{' '}
+            </p>
+            <p>
+              Connect the given blocks into your WORKSPACE, press RUN, and watch
+              the STRING appear in your CONSOLE.
+            </p>
           </div>
         </PopUp>
         <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
         <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
           <div>Hint</div>
-          <div>Try pulling a block into the given WORKSPACE!</div>
+          <div>Try connecting the given blocks in the WORKSPACE!</div>
         </PopUp>
       </PopContainer>
       <GameContent>

@@ -7,7 +7,8 @@ import {
   VisualsContainer,
   Bagel,
   Main,
-  Button,
+  PopContainer,
+  PopButton,
 } from '../../style';
 import '../Blocks/05Blocks';
 import PopUp from '../../PopUp';
@@ -101,14 +102,33 @@ export const Game05 = () => {
 
   return (
     <Main>
-      <Button onClick={() => setMission(true)}>Mission</Button>
-      <PopUp open={mission} togglePopUp={() => setMission(false)}>
-        <div>Pigeon is hungry!</div>
-        <div>
-          Help pigeon make some bagels. Between all of the creatures, we think
-          10 will be enough. Connect the blocks to make 10 bagels ON REPEAT.
-        </div>
-      </PopUp>
+      <PopContainer>
+        <PopButton onClick={() => setMission(true)}>Mission</PopButton>
+        <PopUp open={mission} togglePopUp={() => setMission(false)}>
+          <div>The Pigeon is Hosting a Breakfast Party</div>
+          <div>
+            <p>
+              The pigeon is having some out of town guests who really want to
+              eat an NYC bagel! Between all of the creatures, we think 10 bagels
+              will be enough.
+            </p>
+            <p>
+              Help pigeon make some bagels. Combine the blocks to REPEAT making
+              a bagel 10 times!
+            </p>
+          </div>
+        </PopUp>
+        <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
+        <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
+          <div>Hint</div>
+          <div>
+            <p>
+              Make sure the connected blocks will be REPEATED on a LOOP of 10
+              times.
+            </p>
+          </div>
+        </PopUp>
+      </PopContainer>
       <GameContent>
         <GameText>You have made {timesRan} bagels</GameText>
         <VisualsContainer>

@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { Computer, GameButton, GameContentNoBlock, GameText, Main } from '../../style';
+import {
+  Computer,
+  GameButton,
+  GameContentNoBlock,
+  GameText,
+  Main,
+  PopContainer,
+  PopButton,
+} from '../../style';
+import PopUp from '../../PopUp';
 import styled from 'styled-components';
 
 const SmallerGameText = styled(GameText)`
@@ -7,6 +16,8 @@ const SmallerGameText = styled(GameText)`
 `;
 
 const Game03 = () => {
+  const [mission, setMission] = useState(false);
+  const [hint, setHint] = useState(false);
   const [availButtons, setAvailButtons] = useState([
     `catsTarget`,
     `return`,
@@ -17,10 +28,10 @@ const Game03 = () => {
   let won = false;
 
   if (availButtons.length === 0) {
-    won = (usedButtons.every((val, index) => val === winState[index]))
+    won = usedButtons.every((val, index) => val === winState[index]);
   }
 
-  if (won){
+  if (won) {
     console.log('you win!!');
   }
 
@@ -54,9 +65,40 @@ const Game03 = () => {
     }
   };
 
-
   return (
     <Main>
+      <PopContainer>
+        <PopButton onClick={() => setMission(true)}>Mission</PopButton>
+        <PopUp open={mission} togglePopUp={() => setMission(false)}>
+          <div>We Need More Cats!!!</div>
+          <div>
+            <p>
+              The pigeon went to the bodega to get some breakfast. While making
+              the food, Bodega Cat let Pigeon know that they need 5 more cat
+              friends to help out at the bodega. Help pigeon put together the
+              code to make Bodega Cat 5 more friends ON A LOOP.
+            </p>
+            <p>
+              Click on a word in the WORKSPACE to add it to the empty spaces in
+              the CONSOLE. It's okay if you don't understand everything you see
+              here, think back to the LOOPS/REPEATS you made in previous games
+              and move that logic into this game.
+            </p>
+          </div>
+        </PopUp>
+        <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
+        <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
+          <div>Hint</div>
+          <div>
+            <p>
+              Our TARGET is to make 5 CATS. Where do you think catsTarget would
+              go?
+            </p>
+            <p>In JavaScript, ++ means to go up by one!</p>
+            <p>RETURN is usually the last statement in a FUNCTION.</p>
+          </div>
+        </PopUp>
+      </PopContainer>
       <GameContentNoBlock>
         <div>
           <GameText>We need more cats!!</GameText>
