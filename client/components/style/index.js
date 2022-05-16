@@ -105,6 +105,7 @@ export const Computer = styled.img`
   margin: 1em;
 `;
 
+//used for FILL IN THE BLANK GAMES
 export const GameButton = styled.button`
   align-items: center;
   color: ${palette.black};
@@ -126,6 +127,7 @@ export const StyledWorkspace = styled.div`
   margin: 2em;
 `;
 
+//used for GENERAL buttons (run, sign-in, etc.)
 export const Button = styled.button`
   align-items: center;
   color: ${palette.white};
@@ -150,4 +152,84 @@ export const Bagel = styled.p`
   height: 50px;
   width: 50px;
   margin: 2px;
+`;
+
+export const ModalScreen = styled.div`
+  position: fixed;
+  opacity: 1;
+  z-index: 30;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 200ms ease-in-out;
+`;
+
+export const PopContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const PopMain = styled.div`
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 30;
+  transform: translate(-50%, -50%);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: white;
+  width: 500px;
+  max-width: 80%;
+`;
+
+export const PopHeader = styled.div`
+font-size: 1.25rem;
+font-weight: bold;
+padding: 10px 15px;
+justify-content: space-between;
+display: flex;
+align-items: center;
+}
+`;
+
+//Takes styling from Button and changes the size for popups
+export const PopButton = styled(Button)`
+  padding: 0.25vh 3vw 0.25vh 3vw;
+  bottom: 2vh;
+  margin: 1vh 1vw 0.25vh 1vw;
+`;
+
+export const PopCloseButton = styled.button`
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: bold;
+`;
+
+export const PopTitle = styled.div`
+  font-size: 1.25rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+`;
+
+export const PopBody = styled.div`
+  padding: 10px 15px;
+  align-items: center;
+  display: flex;
+  font-size: 1.25rem;
+`;
+
+export const PopOverlay = styled.div`
+  position: fixed;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 200ms ease-in-out;
 `;
