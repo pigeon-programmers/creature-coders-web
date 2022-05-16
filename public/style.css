@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap');
 
 body {
   font-family: sans-serif;
@@ -16,6 +16,7 @@ a {
   height: 50vh;
   width: 80vw;
 }
+<<<<<<< HEAD
 
 #game03-display {
   display: flex;
@@ -92,3 +93,5 @@ a {
   background-color: rgba(0, 0, 0, 0.5);
   transition: 200ms ease-in-out;
 }
+=======
+>>>>>>> 178b79d51d6d5e0b0c21c6d1c97ad333ebbd738c

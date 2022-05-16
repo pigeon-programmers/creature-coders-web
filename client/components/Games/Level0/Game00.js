@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Workspace from '../Workspace';
+<<<<<<< HEAD
 import { GameContent, GameText, Main, Button} from '../../style';
+=======
+import {
+  GameContent,
+  GameText,
+  Main,
+  PopContainer,
+  PopButton,
+} from '../../style';
+import { Button } from '../../style/index';
+>>>>>>> 178b79d51d6d5e0b0c21c6d1c97ad333ebbd738c
 import PopUp from '../../PopUp';
 import Interpreter from 'js-interpreter';
 import '../Blocks/00Blocks';
@@ -66,19 +77,21 @@ export const Game00 = () => {
 
   return (
     <Main>
-      <Button onClick={() => setMission(true)}>Misson</Button>
-      <PopUp open={mission} togglePopUp={() => setMission(false)}>
-        <div>Hello Pigeons!</div>
-        <div>
-          Connect the given blocks into your WORKSPACE to return the STRING
-          "Hello Pigeons".
-        </div>
-      </PopUp>
-      <Button onClick={() => setHint(!hint)}>Hint</Button>
-      <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
-        <div>Hint</div>
-        <div>Try pulling a block into the given WORKSPACE!</div>
-      </PopUp>
+      <PopContainer>
+        <PopButton onClick={() => setMission(true)}>Mission</PopButton>
+        <PopUp open={mission} togglePopUp={() => setMission(false)}>
+          <div>Hello Pigeons!</div>
+          <div>
+            Connect the given blocks into your WORKSPACE to return the STRING
+            "Hello Pigeons".
+          </div>
+        </PopUp>
+        <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
+        <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
+          <div>Hint</div>
+          <div>Try pulling a block into the given WORKSPACE!</div>
+        </PopUp>
+      </PopContainer>
       <GameContent>
         <GameText>{string}</GameText>
       </GameContent>

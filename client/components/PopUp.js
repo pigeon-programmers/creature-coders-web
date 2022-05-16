@@ -1,4 +1,13 @@
 import React from 'react';
+import {
+  ModalScreen,
+  PopMain,
+  PopHeader,
+  PopCloseButton,
+  PopTitle,
+  PopBody,
+  PopOverlay,
+} from './style';
 
 const PopUp = (props) => {
   const { togglePopUp, open, children } = props;
@@ -7,18 +16,16 @@ const PopUp = (props) => {
     <div>
       {open && (
         <div>
-          <div className="modalscreen">
-            <div className="popUp" id="popUp">
-              <div className="popUp-header">
-                <div className="Popup-Title">{children[0]}</div>
-                <button onClick={togglePopUp} className="close-button">
-                  &times;
-                </button>
-              </div>
-              <div className="popUp-body">{children[1]}</div>
-            </div>
-            <div onClick={togglePopUp} id="overlay"></div>
-          </div>
+          <ModalScreen>
+            <PopMain>
+              <PopHeader>
+                <PopTitle>{children[0]}</PopTitle>
+                <PopCloseButton onClick={togglePopUp}>&times;</PopCloseButton>
+              </PopHeader>
+              <PopBody>{children[1]}</PopBody>
+            </PopMain>
+            <PopOverlay onClick={togglePopUp}></PopOverlay>
+          </ModalScreen>
         </div>
       )}
     </div>
