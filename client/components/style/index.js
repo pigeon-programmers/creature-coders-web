@@ -13,7 +13,6 @@ const palette = {
   pink: '#ED1697',
 };
 
-
 export const Main = styled.div`
   position: fixed;
   background: ${palette.orange};
@@ -22,6 +21,10 @@ export const Main = styled.div`
   height: 100vh;
   width: 100vw;
   margin: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -29,8 +32,6 @@ export const Main = styled.div`
   align-items: center;
 `;
 
-<<<<<<< Updated upstream
-=======
 export const Content = styled.div`
   margin-top: 20%;
   bottom: 0;
@@ -57,7 +58,6 @@ export const HomeSubTitle = styled.h5`
   color: ${palette.white};
 `;
 
->>>>>>> Stashed changes
 //NAV AND STATUS BARS
 export const Nav = styled.nav`
   width: 100vw;
@@ -68,10 +68,7 @@ export const Nav = styled.nav`
   justify-content: space-around;
   position: fixed;
   bottom: 0;
-<<<<<<< Updated upstream
-=======
   left: 0;
->>>>>>> Stashed changes
 `;
 
 export const NavIconContainer = styled.div`
@@ -85,8 +82,6 @@ export const NavIcon = styled.img`
   height: 4vh;
 `;
 
-<<<<<<< Updated upstream
-=======
 export const Status = styled.nav`
   width: 100vw;
   height: 5vh;
@@ -116,7 +111,6 @@ export const StatusText = styled.p`
   font-size: 3.5vh;
 `;
 
->>>>>>> Stashed changes
 //FORMS AND INPUTS
 export const FormContainer = styled.form`
   height: 70vh;
@@ -164,14 +158,14 @@ export const GameContent = styled.div`
 `;
 
 export const GameContentNoBlock = styled.div`
-width: 80vw;
-height: 40vh;
-background-color: ${palette.black};
-margin: 1em;
-display: flex;
-align-items: center;
-justify-content: space-around;
-`
+  width: 80vw;
+  height: 40vh;
+  background-color: ${palette.black};
+  margin: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
 
 export const GameText = styled.p`
   color: ${palette.white};
@@ -208,8 +202,8 @@ export const Button = styled.button`
   color: ${palette.white};
   background: ${palette.dkGray};
   font-size: 2em;
-  margin: 1em;
-  bottom: 100px;
+  margin: 3%;
+  bottom: 0;
   padding: 0.25em 2em;
   font-family: 'Kirang Haerang', sans-serif;
   border-style: none;
