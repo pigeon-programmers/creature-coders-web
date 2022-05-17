@@ -230,6 +230,14 @@ export const Computer = styled.img`
   margin: 1em;
 `;
 
+export const Pigeon = styled.p`
+  background-image: url('https://creature-coders.s3.amazonaws.com/pigeon.svg');
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 350px;
+  margin-top: 1.5em;
+`;
+
 //POPUPS AND HINTS STYLING
 export const ModalScreen = styled.div`
   position: fixed;
