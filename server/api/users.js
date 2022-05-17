@@ -31,8 +31,8 @@ router.get('/:userId', async (req, res, next) => {
 router.put('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId);
-    const { points, currentLevel, currentGame, pidgeCoin } = req.body;
-    res.send(await user.update({ points, currentLevel, currentGame, pidgeCoin }));
+    const { points, currentLevel, currentGame, pidgeCoin, streak } = req.body;
+    res.send(await user.update({ points, currentLevel, currentGame, pidgeCoin, streak }));
   } catch (err) {
     next(err)
   }

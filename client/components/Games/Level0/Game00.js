@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Workspace from '../Workspace';
 import {
   GameContent,
@@ -11,7 +12,9 @@ import {
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
+import { updateSingleUser } from '../../../store/userProfile';
 import '../Blocks/00Blocks';
+
 
 export const Game00 = () => {
   //connect can only be set to 0, 1, 2.
@@ -23,10 +26,19 @@ export const Game00 = () => {
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
   const [tryAgain, setTryAgain] = useState(false);
+  const [won, setWon] = useState(false);
+
+  const dispatch = useDispatch();
+  let { id, points, currentLevel, currentGame, pidgeCoin, streak } = useSelector(state => state.user)
+  console.log("USER DATA", { points, currentLevel, currentGame, pidgeCoin, streak })
 
   useEffect(() => {
     if (connect) outcome();
   }, [connect]);
+
+  useEffect(() => {
+    if (won) dispatch(updateSingleUser(id, points, currentLevel, currentGame, pidgeCoin, streak))
+  }, [won])
 
   const toolbox = {
     kind: 'flyoutToolbox',
@@ -68,7 +80,11 @@ export const Game00 = () => {
   const outcome = () => {
     connect === 1
       ? setTimeout(() => {
-          alert('great job!');
+        pidgeCoin += 5; 
+        points += 10;
+        streak += 1;
+        setWon(true);
+        alert('great job!');
         }, 500)
       : setTryAgain(true);
   };

@@ -7,10 +7,11 @@ const updateUser = (user) => ({
     user,
 });
 
-export const updateSingleUser = (user) => {
+export const updateSingleUser = (id, points, currentLevel, currentGame, pidgeCoin, streak) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.put(`/api/users/${user.id}`, user);
+            const user = { points, currentLevel, currentGame, pidgeCoin, streak }; 
+            const { data } = await axios.put(`/api/users/${id}`, user);
             dispatch(updateUser(data));
         } catch (err) {
             console.log("There was an error updating the user!", err)
