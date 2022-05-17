@@ -6,7 +6,6 @@ import { Main, MapContainer } from './style';
 const Map = (props) => {
   return (
     <Main>
-      <Doors />
       <MapContainer>
         <Link to="/game/0/0">
           <button type="button">Game 0</button>
@@ -28,6 +27,7 @@ const Map = (props) => {
         </Link>
         {/* have a check to see if prev. game has been passed before moving on to next game/level */}
       </MapContainer>
+      <Doors />
     </Main>
   );
 };

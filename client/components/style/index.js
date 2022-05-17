@@ -257,8 +257,8 @@ export const SlideInLeftAnim = styled.div`
   height: 89vh;
   animation: ${slideInLeftAnim} 2s;
   position: absolute;
+   animation-iteration-count: 2;
   animation-direction: alternate;
-  animation-iteration-count: infinite;
   object-fit: fill;
 `;
 
@@ -276,8 +276,8 @@ export const SlideInRightAnim = styled.div`
   height: 89vh;
   animation: ${slideInRightAnim} 2s;
   position: absolute;
+   animation-iteration-count: 2;
   animation-direction: alternate;
-  animation-iteration-count: infinite;
   object-fit: fill;
 `;
 

@@ -3,7 +3,6 @@ import { Door, DoorsContainer, Main, SlideInLeftAnim, SlideInRightAnim } from '.
 
 const Doors = () => {
   return (
-    <Main>
       <DoorsContainer>
         <SlideInLeftAnim>
           <Door src="https://creature-coders.s3.amazonaws.com/door.jpg" />
@@ -12,7 +11,6 @@ const Doors = () => {
           <Door src="https://creature-coders.s3.amazonaws.com/door.jpg" />
         </SlideInRightAnim>
       </DoorsContainer>
-    </Main>
   );
 };
 
