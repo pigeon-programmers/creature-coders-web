@@ -20,7 +20,6 @@ const Routes = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const auth = useSelector((state) => state.auth);
-  const user = useSelector(state => state.user)
 
   useEffect(() => {
     dispatch(me());

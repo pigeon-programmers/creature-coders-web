@@ -61,7 +61,7 @@ export const HomeSubTitle = styled.h5`
 //NAV AND STATUS BARS
 export const Nav = styled.nav`
   width: 100vw;
-  height: 7wh;
+  height: 7vh;
   background: ${palette.mdGray};
   display: flex;
   align-items: center;
@@ -72,10 +72,10 @@ export const Nav = styled.nav`
 `;
 
 export const NavIconContainer = styled.div`
-  width: 50vw;
+  width: 80vw;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 export const NavIcon = styled.img`
@@ -97,6 +97,7 @@ export const Status = styled.nav`
 
 export const StatusIconContainer = styled.div`
   width: 13vw;
+  height: 5vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
