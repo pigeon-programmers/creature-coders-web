@@ -124,15 +124,33 @@ export const FormContainer = styled.form`
 `;
 
 export const Label = styled.label`
-  font-size: 2em;
+  font-size: 1.5em;
   font-family: 'Anonymous Pro', 'Andale Mono', monospace;
 `;
+
+export const LabelP = styled.p`
+  margin: 0;
+`
 
 export const Input = styled.input`
   width: 50vw;
   border: 1px solid black;
   box-sizing: border-box;
-  padding: 2em 0;
+  font-size: 3em;
+  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
+  display: block;
+  float: left;
+  clear: left;
+  margin: .5em;
+`;
+export const Select = styled.select`
+  width: 50vw;
+  margin: 1em;
+  height: 2em;
+  border: 1px solid black;
+  box-sizing: border-box;
+  font-size: 1.5em;
+  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
 `;
 
 //MAP STUFF
@@ -204,11 +222,10 @@ export const Button = styled.button`
   background: ${palette.dkGray};
   font-size: 2em;
   margin: 3%;
-  bottom: 0;
   padding: 0.25em 2em;
   font-family: 'Kirang Haerang', sans-serif;
   border-style: none;
-  box-sizing: border-box;
+  white-space: nowrap;
 `;
 
 export const VisualsContainer = styled.div`

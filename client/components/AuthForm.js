@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { authenticate } from '../store';
-import { Button, Main, FormContainer, Label, Input } from './style';
+import { Button, Main, FormContainer, Label, Input, Select, LabelP } from './style';
 
 /**
  * COMPONENT
@@ -12,33 +12,39 @@ const AuthForm = (props) => {
   return (
     <Main>
       <FormContainer onSubmit={handleSubmit} name={name} className="signup">
-        <div>
+        <>
           <Label htmlFor="username">
-            <p>Username</p>
+            <LabelP>Username</LabelP>
           </Label>
-          <Input name="username" type="text" />
-        </div>
+          <Input id="username" type="text" />
+        </>
         {name === 'signup' ? (
-          <div className="auth-div">
-            <Label htmlFor="email">
-              <p>Email address</p>
-            </Label>
-            <Input name="email" type="text" />
-          </div>
+          <>
+            <Label htmlFor="email"><LabelP>Email address</LabelP></Label>
+            <Input id="email" type="text" />
+          </>
         ) : null}
-        <div>
-          <Label htmlFor="password">
-            <p>Password</p>
-          </Label>
-          <Input name="password" type="password" />
-        </div>
+        <>
+          <Label htmlFor="password"><LabelP>Password</LabelP></Label>
+          <Input id="password" type="password" autocomplete="new-password" />
+        </>
         {name === 'signup' ? (
-          <div>
-            <Label htmlFor="confirmPassword">
-              <p>Confirm Password</p>
-            </Label>
-            <Input name="confirmPassword" type="password" />
-          </div>
+          <>
+            <Label htmlFor="confirmPassword"><LabelP>Confirm Password</LabelP></Label>
+            <Input
+              id="confirmPassword"
+              type="password"
+              autocomplete="new-password"
+            />
+            <Select defaultValue="choose">
+              <option disabled value="choose">
+                Choose Pet Type
+              </option>
+              <option value="Pigeon">Pigeon</option>
+              <option value="Raccoon">Raccoon</option>
+              <option value="Possum">Possum</option>
+            </Select>
+          </>
         ) : null}
         <div>
           <Button>{displayName}</Button>
