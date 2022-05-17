@@ -1,19 +1,19 @@
 import axios from 'axios';
 
-const GET_SINGLE_USER_DATA = 'GET_SINGLE_USER_DATA';
+const GET_SINGLE_USER = 'GET_SINGLE_USER';
 
-const _getSingleUserData = (data) => {
+const _getSingleUser = (data) => {
   return {
-    type: GET_SINGLE_USER_DATA,
+    type: GET_SINGLE_USER,
     data,
   };
 };
 
-export const getSingleUserData = (userId) => {
+export const getSingleUser = (userId) => {
   return async (dispatch) => {
     try {
-      const { data } = axios.get(`api/users/${userId}`);
-      dispatch(_getSingleUserData(data));
+      const { data } = await axios.get(`api/users/${userId}`);
+      dispatch(_getSingleUser(data));
     } catch (err) {
       console.log("😭 unable to get user's data", err);
     }
@@ -22,7 +22,7 @@ export const getSingleUserData = (userId) => {
 
 export default function (state = {}, action) {
   switch (action.type) {
-    case GET_SINGLE_USER_DATA:
+    case GET_SINGLE_USER:
       return action.data;
     default:
       return state;
