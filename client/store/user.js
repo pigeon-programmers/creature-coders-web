@@ -32,7 +32,7 @@ export const updateUserWon = (id, points, currentLevel, currentGame, pidgeCoin) 
           const user = { points, currentLevel, currentGame, pidgeCoin }; 
           const { data } = await axios.put(`/api/users/${id}`, user);
           console.log("Thunk was dispatched!!")
-          dispatch(updateUser(data));
+          dispatch(updateUser(data))
       } catch (err) {
           console.log("There was an error updating the user!", err)
       }
