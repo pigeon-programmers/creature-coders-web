@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const palette = {
   white: '#FFFFFF',
@@ -61,7 +61,7 @@ export const HomeSubTitle = styled.h5`
 //NAV AND STATUS BARS
 export const Nav = styled.nav`
   width: 100vw;
-  height: 7wh;
+  height: 6wh;
   background: ${palette.mdGray};
   display: flex;
   align-items: center;
@@ -84,7 +84,7 @@ export const NavIcon = styled.img`
 
 export const Status = styled.nav`
   width: 100vw;
-  height: 5vh;
+  height: 6vh;
   background: ${palette.mdGray};
   display: flex;
   align-items: center;
@@ -103,7 +103,7 @@ export const StatusIconContainer = styled.div`
 `;
 
 export const StatusIcon = styled.img`
-  height: 3vh;
+  height: 4vh;
 `;
 
 export const StatusText = styled.p`
@@ -227,6 +227,57 @@ export const Bagel = styled.p`
 export const Computer = styled.img`
   height: 20vh;
   margin: 1em;
+`;
+
+export const DoorsContainer = styled.div`
+  width: 50vw;
+  height: 100vh;
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+`;
+
+export const Door = styled.img`
+  width: 25vw;
+  height: 100vh;
+  object-fit: fill;
+`;
+
+export const slideInLeftAnim = keyframes`
+from {
+  left: -25vw;
+}
+to {
+  left: 0;
+}
+`;
+export const SlideInLeftAnim = styled.div`
+  width: 25vw;
+  height: 100vh;
+  animation: ${slideInLeftAnim} 2s;
+  position: absolute;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  object-fit: fill;
+`;
+
+export const slideInRightAnim = keyframes`
+from {
+  right: -25vw;
+}
+to {
+  right: 0;
+}
+`;
+
+export const SlideInRightAnim = styled.div`
+  width: 25vw;
+  height: 100vh;
+  animation: ${slideInRightAnim} 2s;
+  position: absolute;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  object-fit: fill;
 `;
 
 //POPUPS AND HINTS STYLING

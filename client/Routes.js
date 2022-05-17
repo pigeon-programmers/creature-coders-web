@@ -12,6 +12,7 @@ import Game02 from './components/Games/Level0/Game02';
 import Game03 from './components/Games/Level0/Game03';
 import Game04 from './components/Games/Level0/Game04';
 import Game05 from './components/Games/Level0/Game05';
+import Doors from './components/Animations/Doors';
 
 //TODO: refactor component to hooks and adjust so that isLoggedIn ternary only applied to routes that are different
 /**
@@ -37,6 +38,7 @@ class Routes extends Component {
             <Route path="/game/0/2" exact component={Game02} />
             <Route path="/game/0/4" exact component={Game04} />
             <Route path="/game/0/5" exact component={Game05} />
+            <Route path="/doors" exact component={Doors} />
           </Switch>
         ) : (
           <Switch>

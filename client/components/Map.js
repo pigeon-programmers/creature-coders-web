@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Doors from './Animations/Doors';
 import { Main, MapContainer } from './style';
 
 const Map = (props) => {
   return (
     <Main>
+      <Doors />
       <MapContainer>
         <Link to="/game/0/0">
           <button type="button">Game 0</button>
