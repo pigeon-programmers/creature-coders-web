@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const GET_SINGLE_USER = 'GET_SINGLE_USER';
-const UPDATE_USER = "UPDATE_USER";
+const UPDATE_USER = 'UPDATE_USER';
 
 const _getSingleUser = (data) => {
   return {
@@ -26,17 +26,22 @@ export const getSingleUser = (userId) => {
   };
 };
 
-export const updateUserWon = (id, points, currentLevel, currentGame, pidgeCoin) => {
+export const updateUserWon = (
+  id,
+  points,
+  currentLevel,
+  currentGame,
+  pidgeCoin
+) => {
   return async (dispatch) => {
-      try {
-          const user = { points, currentLevel, currentGame, pidgeCoin }; 
-          const { data } = await axios.put(`/api/users/${id}`, user);
-          console.log("Thunk was dispatched!!")
-          dispatch(updateUser(data))
-      } catch (err) {
-          console.log("There was an error updating the user!", err)
-      }
-  }
+    try {
+      const user = { points, currentLevel, currentGame, pidgeCoin };
+      const { data } = await axios.put(`/api/users/${id}`, user);
+      dispatch(updateUser(data));
+    } catch (err) {
+      console.log('There was an error updating the user!', err);
+    }
+  };
 };
 
 export default function (state = {}, action) {
@@ -44,7 +49,7 @@ export default function (state = {}, action) {
     case GET_SINGLE_USER:
       return action.data;
     case UPDATE_USER:
-       return action.user;
+      return action.user;
     default:
       return state;
   }

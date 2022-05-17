@@ -13,6 +13,7 @@ import Game02 from './components/Games/Level0/Game02';
 import Game03 from './components/Games/Level0/Game03';
 import Game04 from './components/Games/Level0/Game04';
 import Game05 from './components/Games/Level0/Game05';
+import GameWon from './components/GameWon';
 
 //TODO: adjust so that isLoggedIn ternary only applied to routes that are different
 
@@ -36,6 +37,7 @@ const Routes = () => {
           <Route path="/" exact component={Home} />
           <Route path="/map" component={Map} />
           <Route path="/settings" component={UserSettings} />
+          <Route path="/game/won" component={GameWon} />
           <Route path="/game/0/0" exact component={Game00} />
           <Route path="/game/0/1" exact component={Game01} />
           <Route path="/game/0/2" exact component={Game02} />
@@ -49,6 +51,7 @@ const Routes = () => {
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
           <Route path="/map" component={Map} />
+          <Route path="/game/won" component={GameWon} />
           <Route path="/game/0/0" exact component={Game00} />
           <Route path="/game/0/1" exact component={Game01} />
           <Route path="/game/0/2" exact component={Game02} />
