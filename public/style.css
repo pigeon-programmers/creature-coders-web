@@ -1,60 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap');
+
 body {
   font-family: sans-serif;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
 }
 
 a {
   text-decoration: none;
 }
 
-label {
-  display: block;
-}
-
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
-form div {
-  margin: 1em;
-  display: inline-block;
-}
-
 .blockly-workspace {
-  height: 500px;
+  height: 50vh;
+  width: 80vw;
+}
+<<<<<<< HEAD
+
+#game03-display {
+  display: flex;
+  height: 30px;
+  width: 80%;
+  align-items: center;
+  background-color: grey;
+}
+.popUp {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 30;
+  transform: translate(-50%, -50%);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: white;
   width: 500px;
+  max-width: 80%;
 }
 
-.signup {
+
+.popUp-header {
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 10px 15px;
+  justify-content: space-between;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
-button {
-  background-color: white;
-  border: 1px solid black;
+.popUp-header .close-button {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
-button:hover {
-  background-color: fuchsia;
-}
 
-input {
-  border: 1px solid black;
-}
-
-#navBar {
+.Popup-Title {
+  font-size: 1.25rem;
+  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
-  bottom: 0;
+  padding: 10px 15px;
 }
 
-#gameMap {
+.popUp-body {
+  padding: 10px 15px;
+  align-items: center;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  font-size: 1.25rem;
 }
+
+.modalscreen {
+  position: fixed;
+  opacity: 1;
+  z-index: 30;
+  background-color: rgba(0, 0, 0, .5);
+  transition: 200ms ease-in-out;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 200ms ease-in-out;
+}
+=======
+>>>>>>> 178b79d51d6d5e0b0c21c6d1c97ad333ebbd738c

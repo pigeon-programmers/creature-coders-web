@@ -20,6 +20,11 @@ async function seed() {
       username: "murphy",
       password: "123",
       email: "murphy@murphy.com",
+      currentLevel: 0,
+      currentGame: 1,
+      points: 3,
+      streak: 37,
+      pidgeCoin: 10,
     }),
     User.create({
       username: "pippin",
@@ -35,7 +40,7 @@ async function seed() {
     }),
   ]);
 
-  //Badges 
+  //Badges
 
   const welcome = await Badge.create({ name: "welcome" });
   const nyc = await Badge.create({ name: "nyc" });

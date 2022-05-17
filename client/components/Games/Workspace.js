@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { BlocklyWorkspace } from 'react-blockly';
 import Blockly from 'blockly';
-import Interpreter from 'js-interpreter';
-// import * as Acorn from 'acorn-node';
+import { Button, StyledWorkspace } from '../style';
 
 const Workspace = (props) => {
-  const { toolbox } = props;
+  const { toolbox, onRun } = props;
   const [javascriptCode, setJavascriptCode] = useState('');
 
   const workspaceDidChange = (workspace) => {
@@ -13,43 +12,8 @@ const Workspace = (props) => {
     setJavascriptCode(code);
   };
 
-  const clickHandler = () => {
-    const initApi = (interpreter, scope) => {
-      // Add an API function for the alert() block.
-      const wrapper = function (text) {
-        text = text ? text.toString() : '';
-        return alert(text);
-        // original line below. createPrimitive throwing an error so we adjusted it because 🙄
-        // return interpreter.createPrimitive(alert(text))
-      };
-      interpreter.setProperty(
-        scope,
-        'alert',
-        interpreter.createNativeFunction(wrapper)
-      );
-    };
-
-    // const myInterpreter = new Interpreter(javascriptCode);
-    // const code = javascriptCode.toString();
-    const myInterpreter = new Interpreter(javascriptCode, initApi);
-    // console.log('JAVASCRIPT CODE 😤', code);
-    console.log('MY INTERPRETER 😒', myInterpreter);
-    console.log('RUN', myInterpreter.run());
-    // eval(javascriptCode);
-    myInterpreter.run();
-    // const nextStep = () => {
-    //   if (myInterpreter.step()) {
-    //     window.setTimeout(nextStep, 0);
-    //   }
-    // };
-    // nextStep();
-    console.log('I CLICKED 🤪');
-  };
-
-  //put visuals of game above blockly workspace
-
   return (
-    <>
+    <StyledWorkspace>
       <BlocklyWorkspace
         toolboxConfiguration={toolbox}
         className="blockly-workspace"
@@ -66,23 +30,13 @@ const Workspace = (props) => {
           trashcan: true,
         }}
         onWorkspaceChange={workspaceDidChange}
+        initialXml='<xml xmlns="http://www.w3.org/1999/xhtml"></xml>'
       />
-      <button type="button" onClick={clickHandler}>
+      <Button type="button" onClick={() => onRun(javascriptCode)}>
         Run
-      </button>
-    </>
+      </Button>
+    </StyledWorkspace>
   );
 };
 
 export default Workspace;
-
-//textarea below can be added in for higher level games to see the actual code
-//in separate "higher level" workspace
-{
-  /* <textarea
-id="code"
-style={{ height: '200px', width: '400px' }}
-value={javascriptCode}
-readOnly
-></textarea> */
-}
