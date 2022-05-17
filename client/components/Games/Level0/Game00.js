@@ -12,7 +12,7 @@ import {
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
-import { updateSingleUser } from '../../../store/userProfile';
+import { updateUserWon } from '../../../store/user';
 import '../Blocks/00Blocks';
 
 
@@ -26,19 +26,21 @@ export const Game00 = () => {
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
   const [tryAgain, setTryAgain] = useState(false);
-  const [won, setWon] = useState(false);
+  const [levelGame, setLevelGame] = useState(0);
 
   const dispatch = useDispatch();
-  let { id, points, currentLevel, currentGame, pidgeCoin, streak } = useSelector(state => state.user)
-  console.log("USER DATA", { points, currentLevel, currentGame, pidgeCoin, streak })
+  const isLoggedIn = useSelector(state => !!state.auth.id)
+  const { id, points, currentLevel, currentGame, pidgeCoin } = useSelector(state => state.user)
 
   useEffect(() => {
     if (connect) outcome();
   }, [connect]);
 
   useEffect(() => {
-    if (won) dispatch(updateSingleUser(id, points, currentLevel, currentGame, pidgeCoin, streak))
-  }, [won])
+    isLoggedIn
+      ? setLevelGame(parseInt(`${currentLevel}${currentGame}`))
+      : setLevelGame(1);
+  }, []);
 
   const toolbox = {
     kind: 'flyoutToolbox',
@@ -80,10 +82,12 @@ export const Game00 = () => {
   const outcome = () => {
     connect === 1
       ? setTimeout(() => {
-        pidgeCoin += 5; 
-        points += 10;
-        streak += 1;
-        setWon(true);
+        if (isLoggedIn) {
+          let newPoints = points + 10;
+          let newPidgeCoin = pidgeCoin + 5
+          levelGame > 1 ? dispatch(updateUserWon(id, newPoints, currentLevel, currentGame, newPidgeCoin)) : 
+          dispatch(updateUserWon(id, newPoints, 0, 1, newPidgeCoin));
+        }
         alert('great job!');
         }, 500)
       : setTryAgain(true);
