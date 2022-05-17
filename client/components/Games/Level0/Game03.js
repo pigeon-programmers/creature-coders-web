@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   Computer,
   GameButton,
@@ -8,10 +8,11 @@ import {
   PopContainer,
   PopButton,
   Content,
-} from "../../style";
-import PopUp from "../../PopUp";
-import TryAgain from "../../TryAgain";
-import styled from "styled-components";
+  Button,
+} from '../../style';
+import PopUp from '../../PopUp';
+import TryAgain from '../../TryAgain';
+import styled from 'styled-components';
 
 const SmallerGameText = styled(GameText)`
   font-size: small;
@@ -27,16 +28,32 @@ const Game03 = () => {
     `cats++`,
   ]);
   const [usedButtons, setUsedButtons] = useState([`_____`, `_____`, `_____`]);
+  const [win, setWin] = useState(false);
+  const [ran, setRan] = useState(false);
   const winState = [`catsTarget`, `cats++`, `return`];
-  let won = false;
 
-  if (availButtons.length === 0) {
-    won = usedButtons.every((val, index) => val === winState[index]);
-  }
+  useEffect(() => {
+    if (ran) {
+      outcome();
+      setRan(false);
+    }
+  }, [ran]);
 
-  if (won) {
-    console.log("you win!!");
-  }
+  const outcome = () => {
+    win
+      ? setTimeout(() => {
+          alert('great job!');
+        }, 500)
+      : setTryAgain(true);
+  };
+
+  const onRun = () => {
+    if (availButtons.length === 0) {
+      setWin(usedButtons.every((val, index) => val === winState[index]));
+    }
+
+    setRan(true);
+  };
 
   const availClickHandler = (e) => {
     const text = e.target.innerHTML;
@@ -149,6 +166,9 @@ const Game03 = () => {
             </GameButton>
           ))}
         </GameContentNoBlock>
+        <Button type="button" onClick={() => onRun()}>
+          Run
+        </Button>
       </Content>
     </Main>
   );
