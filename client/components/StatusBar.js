@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getSingleUserData } from '../store/user';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   Status,
   NavIconContainer,
@@ -10,12 +9,10 @@ import {
 } from './style';
 
 const StatusBar = () => {
-  const dispatch = useDispatch();
   const isLoggedIn = useSelector(state => !!state.auth.id)
   const { points, pidgeCoin, streak } = useSelector(state => state.user)
 
   return (
-
   <Status>
     {isLoggedIn ? (
       <>
