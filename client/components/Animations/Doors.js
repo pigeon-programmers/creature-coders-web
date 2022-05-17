@@ -1,6 +1,5 @@
 import React from 'react';
 import { Door, DoorsContainer, Main, SlideInLeftAnim, SlideInRightAnim } from '../style';
-// import doorSvg from './doorSvg.svg'
 
 const Doors = () => {
   return (

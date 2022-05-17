@@ -61,7 +61,7 @@ export const HomeSubTitle = styled.h5`
 //NAV AND STATUS BARS
 export const Nav = styled.nav`
   width: 100vw;
-  height: 6wh;
+  height: 6vh;
   background: ${palette.mdGray};
   display: flex;
   align-items: center;
@@ -84,7 +84,7 @@ export const NavIcon = styled.img`
 
 export const Status = styled.nav`
   width: 100vw;
-  height: 6vh;
+  height: 5vh;
   background: ${palette.mdGray};
   display: flex;
   align-items: center;
@@ -231,15 +231,16 @@ export const Computer = styled.img`
 
 export const DoorsContainer = styled.div`
   width: 50vw;
-  height: 100vh;
+  height: 89vh;
   position: absolute;
   overflow: hidden;
   display: flex;
+  top: 5vh;
 `;
 
 export const Door = styled.img`
   width: 25vw;
-  height: 100vh;
+  height: 89vh;
   object-fit: fill;
 `;
 
@@ -253,7 +254,7 @@ to {
 `;
 export const SlideInLeftAnim = styled.div`
   width: 25vw;
-  height: 100vh;
+  height: 89vh;
   animation: ${slideInLeftAnim} 2s;
   position: absolute;
   animation-direction: alternate;
@@ -272,7 +273,7 @@ to {
 
 export const SlideInRightAnim = styled.div`
   width: 25vw;
-  height: 100vh;
+  height: 89vh;
   animation: ${slideInRightAnim} 2s;
   position: absolute;
   animation-direction: alternate;
