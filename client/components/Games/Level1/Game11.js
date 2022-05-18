@@ -14,10 +14,10 @@ import {
 } from '../../style';
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
+import Home from '../../Home';
 import Interpreter from 'js-interpreter';
 import { updateUserWon } from '../../../store/user';
 import '../Blocks/11Blocks';
-
 
 export const Game11 = () => {
   const dispatch = useDispatch();
@@ -146,7 +146,7 @@ export const Game11 = () => {
     setCodeRun(myInterpreter);
   };
 
-  return (
+  return isLoggedIn ? (
     <Main>
       <Content>
         <PopContainer>
@@ -190,6 +190,8 @@ export const Game11 = () => {
         <Workspace toolbox={toolbox} onRun={onRun} />
       </Content>
     </Main>
+  ) : (
+    <Home mustLogIn={true} />
   );
 };
 

@@ -94,13 +94,20 @@ export const Game01 = () => {
               )
             )
           : dispatch(updateUserWon(id, newPoints, 1, 0, newPidgeCoin));
+
+        setTimeout(() => {
+          history.push(`/game/won`, {
+            points: gamePoints,
+            pidgeCoins: gameCoins,
+          });
+        }, 750);
+      } else {
+        setTimeout(() => {
+          history.push(`/`, {
+            mustLogIn: true,
+          });
+        }, 750);
       }
-      setTimeout(() => {
-        history.push(`/game/won`, {
-          points: gamePoints,
-          pidgeCoins: gameCoins,
-        });
-      }, 750);
     } else {
       setTryAgain(true);
       //set connect to false again to allow another try if solution was incorrect
