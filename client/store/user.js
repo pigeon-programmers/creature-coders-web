@@ -18,7 +18,7 @@ const updateUser = (user) => ({
 export const getSingleUser = (userId) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`api/users/${userId}`);
+      const { data } = await axios.get(`/api/users/${userId}`);
       dispatch(_getSingleUser(data));
     } catch (err) {
       console.log("😭 unable to get user's data", err);
