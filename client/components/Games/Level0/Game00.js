@@ -28,6 +28,8 @@ export const Game00 = () => {
   const [hint, setHint] = useState(false);
   const [tryAgain, setTryAgain] = useState(false);
   const [levelGame, setLevelGame] = useState(0);
+  const [gamePoints, setGamePoints] = useState(10);
+  const [gameCoins, setGameCoins] = useState(5);
   const history = useHistory();
 
   const isLoggedIn = useSelector((state) => !!state.auth.id);
@@ -83,28 +85,39 @@ export const Game00 = () => {
   //ideally this will end up not being alerts
 
   const outcome = () => {
-    connect === 1
-      ? setTimeout(() => {
-          if (isLoggedIn) {
-            let newPoints = points + 10;
-            let newPidgeCoin = pidgeCoin + 5;
+    if (connect === 1) {
+      setTimeout(() => {
+        if (isLoggedIn) {
+          let newPoints = points + gamePoints;
+          let newPidgeCoin = pidgeCoin + gameCoins;
 
-            levelGame > 1
-              ? dispatch(
-                  updateUserWon(
-                    id,
-                    newPoints,
-                    currentLevel,
-                    currentGame,
-                    newPidgeCoin
-                  )
+          levelGame > 1
+            ? dispatch(
+                updateUserWon(
+                  id,
+                  newPoints,
+                  currentLevel,
+                  currentGame,
+                  newPidgeCoin
                 )
-              : dispatch(updateUserWon(id, newPoints, 0, 1, newPidgeCoin));
-          }
-          history.push(`/game/won`, { points: 10, pidgeCoins: 5 });
-        }, 750)
-      : setTryAgain(true);
+              )
+            : dispatch(updateUserWon(id, newPoints, 0, 1, newPidgeCoin));
+        }
+        history.push(`/game/won`, {
+          points: gamePoints,
+          pidgeCoins: gameCoins,
+        });
+      }, 750);
+    } else {
+      setTryAgain(true);
+      setConnect(0);
+      gamePoints <= 5 ? null : setGamePoints(gamePoints - 1);
+      gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);
+    }
   };
+
+  console.log('COINS', gameCoins);
+  console.log('POINTS', gamePoints);
 
   return (
     <Main>
