@@ -124,26 +124,33 @@ export const FormContainer = styled.form`
 `;
 
 export const Label = styled.label`
-  font-size: 2em;
+  font-size: 1.5em;
   font-family: 'Anonymous Pro', 'Andale Mono', monospace;
+`;
+
+export const LabelP = styled.p`
+  margin: 0;
 `;
 
 export const Input = styled.input`
   width: 50vw;
   border: 1px solid black;
   box-sizing: border-box;
-  padding: 2em 0;
+  font-size: 3em;
+  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
+  display: block;
+  float: left;
+  clear: left;
+  margin: 0.5em;
 `;
-
-//MAP STUFF
-export const MapContainer = styled.div`
+export const Select = styled.select`
   width: 50vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${palette.dkGray};
+  margin: 1em;
+  height: 2em;
+  border: 1px solid black;
+  box-sizing: border-box;
+  font-size: 1.5em;
+  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
 `;
 
 //GAME COMPONENTS
@@ -204,11 +211,10 @@ export const Button = styled.button`
   background: ${palette.dkGray};
   font-size: 2em;
   margin: 3%;
-  bottom: 0;
   padding: 0.25em 2em;
   font-family: 'Kirang Haerang', sans-serif;
   border-style: none;
-  box-sizing: border-box;
+  white-space: nowrap;
 `;
 
 export const VisualsContainer = styled.div`
@@ -229,58 +235,6 @@ export const Computer = styled.img`
   height: 20vh;
   margin: 1em;
 `;
-
-export const DoorsContainer = styled.div`
-  width: 50vw;
-  height: 89vh;
-  position: absolute;
-  overflow: hidden;
-  display: flex;
-  top: 5vh;
-`;
-
-export const Door = styled.img`
-  width: 25vw;
-  height: 89vh;
-  object-fit: fill;
-`;
-
-export const slideInLeftAnim = keyframes`
-from {
-  left: -25vw;
-}
-to {
-  left: 0;
-}
-`;
-export const SlideInLeftAnim = styled.div`
-  width: 25vw;
-  height: 89vh;
-  animation: ${slideInLeftAnim} 2s;
-  position: absolute;
-   animation-iteration-count: 2;
-  animation-direction: alternate;
-  object-fit: fill;
-`;
-
-export const slideInRightAnim = keyframes`
-from {
-  right: -25vw;
-}
-to {
-  right: 0;
-}
-`;
-
-export const SlideInRightAnim = styled.div`
-  width: 25vw;
-  height: 89vh;
-  animation: ${slideInRightAnim} 2s;
-  position: absolute;
-   animation-iteration-count: 2;
-  animation-direction: alternate;
-  object-fit: fill;
-  `
 
 export const Pigeon = styled.p`
   background-image: url('https://creature-coders.s3.amazonaws.com/pigeon.svg');

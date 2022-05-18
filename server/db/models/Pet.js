@@ -6,7 +6,7 @@ const Pet = db.define('pet', {
         type: Sequelize.STRING,
     },
     type: {
-        type: Sequelize.ENUM("Pigeon", "Possom", "Skunk", "Rat", "Racoon"),
+        type: Sequelize.ENUM("Pigeon", "Possum", "Skunk", "Rat", "Raccoon"),
         defaultValue: "Pigeon",
         allowNull: false,
     }

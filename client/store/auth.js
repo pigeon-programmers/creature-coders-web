@@ -24,7 +24,8 @@ export const me = () => async dispatch => {
         authorization: token
       }
     })
-    history.push('/map');
+    //figure out how to make this work:
+    // history.push('/map');
     return dispatch(setAuth(res.data))
   }
 }
@@ -34,6 +35,7 @@ export const authenticate = (username, email, password, method) => async dispatc
     const res = await axios.post(`/auth/${method}`, {username, email, password})
     window.localStorage.setItem(TOKEN, res.data.token)
     dispatch(me())
+    history.push('/pet')
   } catch (authError) {
     return dispatch(setAuth({error: authError}))
   }
