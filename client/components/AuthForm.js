@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { authenticate } from '../store';
-import { Button, Main, FormContainer, Label, Input, Select, LabelP } from './style';
+import { Button, Main, FormContainer, Label, Input, LabelP } from './style';
 
 /**
  * COMPONENT
@@ -36,14 +36,6 @@ const AuthForm = (props) => {
               type="password"
               autocomplete="new-password"
             />
-            <Select defaultValue="choose">
-              <option disabled value="choose">
-                Choose Pet Type
-              </option>
-              <option value="Pigeon">Pigeon</option>
-              <option value="Raccoon">Raccoon</option>
-              <option value="Possum">Possum</option>
-            </Select>
           </>
         ) : null}
         <div>
