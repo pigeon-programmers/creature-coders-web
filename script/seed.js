@@ -31,12 +31,14 @@ async function seed() {
       password: "123",
       email: "pippin@pippin.com",
       currentLevel: 1,
+      currentGame: 2,
     }),
     User.create({
       username: "grace",
       password: "123",
       email: "grace@grace.com",
-      currentLevel: 2,
+      currentLevel: 3,
+      currentGame: 0,
     }),
   ]);
 
@@ -70,7 +72,7 @@ async function seed() {
 
   // Creating Pets
   const pets = await Promise.all([
-    Pet.create({ name: "Blossom", type: "Possom", userId: 1 }),
+    Pet.create({ name: "Blossom", type: "Possum", userId: 1 }),
     Pet.create({ name: "Pidge", type: "Pigeon", userId: 2 }),
     Pet.create({ name: "Funky", type: "Skunk", userId: 3 }),
     Pet.create({ name: "Ratteo", type: "Rat", userId: 4 })

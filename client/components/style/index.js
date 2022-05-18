@@ -124,26 +124,33 @@ export const FormContainer = styled.form`
 `;
 
 export const Label = styled.label`
-  font-size: 2em;
+  font-size: 1.5em;
   font-family: 'Anonymous Pro', 'Andale Mono', monospace;
+`;
+
+export const LabelP = styled.p`
+  margin: 0;
 `;
 
 export const Input = styled.input`
   width: 50vw;
   border: 1px solid black;
   box-sizing: border-box;
-  padding: 2em 0;
+  font-size: 3em;
+  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
+  display: block;
+  float: left;
+  clear: left;
+  margin: 0.5em;
 `;
-
-//MAP STUFF
-export const MapContainer = styled.div`
+export const Select = styled.select`
   width: 50vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${palette.dkGray};
+  margin: 1em;
+  height: 2em;
+  border: 1px solid black;
+  box-sizing: border-box;
+  font-size: 1.5em;
+  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
 `;
 
 //GAME COMPONENTS
@@ -204,11 +211,10 @@ export const Button = styled.button`
   background: ${palette.dkGray};
   font-size: 2em;
   margin: 3%;
-  bottom: 0;
   padding: 0.25em 2em;
   font-family: 'Kirang Haerang', sans-serif;
   border-style: none;
-  box-sizing: border-box;
+  white-space: nowrap;
 `;
 
 export const VisualsContainer = styled.div`
@@ -228,6 +234,14 @@ export const Bagel = styled.p`
 export const Computer = styled.img`
   height: 20vh;
   margin: 1em;
+`;
+
+export const Pigeon = styled.p`
+  background-image: url('https://creature-coders.s3.amazonaws.com/pigeon.svg');
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 350px;
+  margin-top: 1.5em;
 `;
 
 //POPUPS AND HINTS STYLING
