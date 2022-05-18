@@ -23,8 +23,16 @@ const Level = styled.div`
   border-radius: 50%;
   box-shadow: 1vh 1vh 0.5vh #000000;
   margin: 1vh;
-  background-color: ${(p) =>
-    parseInt(p.linkLevel) <= p.levelGame ? '#FFE600' : '#7E7E7E'};
+  background-color: ${(p) => {
+    if (parseInt(p.linkLevel) <= p.levelGame) {
+      if (p.linkLevel[0] === '0') return '#FFE600';
+      if (p.linkLevel[0] == '1') return '#4EDE1C';
+      if (p.linkLevel[0] == '2') return '#2828FF';
+      if (p.linkLevel[0] == '3') return '#E91717';
+    } else {
+      return '#7E7E7E';
+    }
+  }};
   .link {
     text-decoration: none;
     color: #000000;
@@ -32,6 +40,8 @@ const Level = styled.div`
       parseInt(p.linkLevel) <= p.levelGame ? 'auto' : 'none'};
   }
 `;
+// background-color: ${(p) =>
+//   parseInt(p.linkLevel) <= p.levelGame ? '#FFE600' : '#7E7E7E'};
 
 const Map = () => {
   const { currentLevel, currentGame } = useSelector((state) => state.user);
