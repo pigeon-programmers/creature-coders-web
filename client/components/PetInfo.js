@@ -12,7 +12,7 @@ const PetInfo = () => {
   const dispatch = useDispatch();
   const [petType, setPetType] = useState('');
   const [name, setName] = useState('');
-  const { id } = useSelector((state) => state.auth);
+  const { id } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (petType) {

@@ -24,6 +24,7 @@ export const me = () => async dispatch => {
         authorization: token
       }
     })
+    history.push('/map');
     return dispatch(setAuth(res.data))
   }
 }
