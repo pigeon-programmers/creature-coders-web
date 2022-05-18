@@ -24,6 +24,9 @@ const Map = (props) => {
         <Link to="/game/0/5">
           <button type="button">Game 5</button>
         </Link>
+        <Link to="/game/0/debugger">
+          <button type='button'>Debugger</button>
+        </Link>
         {/* have a check to see if prev. game has been passed before moving on to next game/level */}
       </MapContainer>
     </Main>
