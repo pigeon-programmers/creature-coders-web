@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Workspace from "../Workspace";
 import {
   GameContent,
@@ -9,11 +11,12 @@ import {
 } from "../../style";
 import PopUp from "../../PopUp";
 import TryAgain from "../../TryAgain";
-import "../Blocks/Blocklys";
+import { updateUserWon } from '../../../store/user';
+import "../Blocks/12Blocks";
 
 //as of May 14th this game isn't fleshed out
 
-export const Game02 = () => {
+export const Game12 = () => {
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
   const [tryAgain, setTryAgain] = useState(false);
@@ -83,4 +86,4 @@ export const Game02 = () => {
   );
 };
 
-export default Game02;
+export default Game12;

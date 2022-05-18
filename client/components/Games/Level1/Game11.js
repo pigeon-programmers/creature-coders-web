@@ -18,6 +18,7 @@ import Interpreter from 'js-interpreter';
 import { updateUserWon } from '../../../store/user';
 import '../Blocks/11Blocks';
 
+
 export const Game11 = () => {
   const dispatch = useDispatch();
   const history = useHistory();
