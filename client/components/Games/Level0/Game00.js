@@ -38,14 +38,14 @@ export const Game00 = () => {
   );
 
   useEffect(() => {
-    if (connect) outcome();
-  }, [connect]);
-
-  useEffect(() => {
     isLoggedIn
       ? setLevelGame(parseInt(`${currentLevel}${currentGame}`))
       : setLevelGame(1);
   }, []);
+
+  useEffect(() => {
+    if (connect) outcome();
+  }, [connect]);
 
   const toolbox = {
     kind: 'flyoutToolbox',
