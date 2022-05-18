@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Main, FormContainer, Select, Button, Input, Label } from './style';
-import { setPet } from '../store/pet';
+import { savePet } from '../store/pet';
 
 const MainBG = styled(Main)`
   background-color: #4ede1c;
 `;
 
 const PetInfo = () => {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const [petType, setPetType] = useState('');
   const [name, setName] = useState('');
+  const { id } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (petType) {
@@ -89,7 +90,7 @@ const PetInfo = () => {
           type="submit"
           onClick={(e) => {
             e.preventDefault();
-            dispatch(setPet({ name, type: petType }));
+            dispatch(savePet(id, { name, type: petType }));
           }}
         >
           Submit

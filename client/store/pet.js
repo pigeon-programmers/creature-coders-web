@@ -1,19 +1,19 @@
 import axios from 'axios';
 
-const SET_PET = 'SET_PET';
+const SAVE_PET = 'SAVE_PET';
 
-const _setPet = (data) => {
+const _savePet = (data) => {
   return {
-    type: SET_PET,
+    type: SAVE_PET,
     data,
   };
 };
 
-export const setPet = (userId, pet) => {
+export const savePet = (userId, pet) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`api/pet/${userId}`, pet);
-      dispatch(_setPet(data));
+      const { data } = await axios.post(`/api/pet/${userId}`, pet);
+      dispatch(_savePet(data));
     } catch (err) {
       console.log("😭 unable to save pet info", err);
     }
@@ -22,7 +22,7 @@ export const setPet = (userId, pet) => {
 
 export default function (state = {}, action) {
   switch (action.type) {
-    case SET_PET:
+    case SAVE_PET:
       return action.data;
     default:
       return state;
