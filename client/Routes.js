@@ -7,6 +7,8 @@ import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import UserSettings from './components/UserSettings';
 import Map from './components/Map';
+import PetInfo from './components/PetInfo';
+import NotFound from './components/NotFound';
 import Game00 from './components/Games/Level0/Game00';
 import Game01 from './components/Games/Level0/Game01';
 import Game10 from './components/Games/Level1/Game10';
@@ -36,7 +38,9 @@ const Routes = () => {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/map" component={Map} />
+          <Route path="/404" component={NotFound} />
           <Route path="/settings" component={UserSettings} />
+          <Route path="/pet" component={PetInfo} />
           <Route path="/game/won" component={GameWon} />
           <Route path="/game/0/0" exact component={Game00} />
           <Route path="/game/0/1" exact component={Game01} />
