@@ -50,20 +50,22 @@ const Routes = () => {
           <Route path="/game/1/1" exact component={Game11} />
           <Route path="/game/1/2" exact component={Game12} />
           <Route path="/game/2/0" exact component={Game20} />
+          <Route component={NotFound} />
         </Switch>
       ) : (
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
-          <Route path="/map" component={Map} />
-          <Route path="/game/won" component={GameWon} />
+          <Route path="/map" exact component={Map} />
+          <Route path="/game/won" exact component={GameWon} />
           <Route path="/game/0/0" exact component={Game00} />
           <Route path="/game/0/1" exact component={Game01} />
           <Route path="/game/1/0" exact component={Game10} />
           <Route path="/game/1/1" exact component={Game11} />
           <Route path="/game/1/2" exact component={Game12} />
           <Route path="/game/2/0" exact component={Game20} />
+          <Route component={NotFound} />
         </Switch>
       )}
     </div>
