@@ -1,11 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Main, Button, HomeTitle, HomeSubTitle } from './style';
-
 import styled from 'styled-components';
 
 const UserBG = styled(Main)`
 background-color: #ED1697;
+`
+const ProfileText = styled(HomeSubTitle)`
+font-size: 3vh;
 `
 
 const UserProfile = () => {
@@ -17,11 +19,11 @@ const UserProfile = () => {
     return (
         <UserBG>
             <HomeTitle>{username}</HomeTitle>
-            <p>Current Level: {currentLevel}</p> 
-            <p>Current Game: {currentGame}</p>
-            <p>Badges: {badges ? badges.map((badge) => {
-                <div key={badge.id}>{badge.name}</div>
-            }) : null }</p>
+            <ProfileText>Current Level: {currentLevel}</ProfileText> 
+            <ProfileText>Current Game: {currentGame}</ProfileText>
+            <ProfileText>Badges: {badges ? badges.map((badge) => {
+                <ProfileText key={badge.id}>{badge.name}</ProfileText>
+            }) : null }</ProfileText>
         </UserBG>
     )
 }
