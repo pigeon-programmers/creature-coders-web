@@ -3,7 +3,8 @@
 ![pigeon](https://user-images.githubusercontent.com/98194118/169086011-39d44ddd-4fdf-42b5-b50f-f235e5d2152f.png)
 
 ### 🐦 <a href=https://creature-coders.herokuapp.com/>Link to Creature Coders Game</a> 🐦
-      
+
+✨ *note: Creature Coders is currently designed for iPad. For best user experience, open Chrome Dev Tools and view on iPad Air* ✨
 
 **Log in as a seeded user:**
 1.  To log in as a registered user, you can use username: `Grace` , password: `123` for access to all games and levels. 
