@@ -10,8 +10,8 @@ const MainBG = styled(Main)`
 //THIS COMPONENT OPERATES AS HOME AND MUST LOG IN PAGE FOR GAMES ABOVE TUTORIAL LEVEL
 
 const Home = (props) => {
-  //mustLogIn is passed from games that are only accessible to logged-in users
-  const { mustLogIn } = props;
+  //mustLogIn is passed after last tutorial game from games that are only accessible to logged-in users
+  const { mustLogIn } = props.location ? props.location.state : props;
 
   return (
     <MainBG>
