@@ -21,7 +21,7 @@ router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
       attributes: ['id', 'username', 'email', 'currentLevel', 'currentGame', 'points', 'streak', 'pidgeCoin'],
-      include: [{ model: Pet }, { model: Badge }]
+      include: [{ model: Badge }]
     });
     res.send(user)
   } catch (err) {

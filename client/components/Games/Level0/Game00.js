@@ -18,6 +18,7 @@ import '../Blocks/00Blocks';
 
 export const Game00 = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   //connect can only be set to 0, 1, 2.
   //0 is falsy and does not allow outcome to be called on first render
   //1 and 2 allow a re-render with 1 being correct and 2 being incorrect
@@ -28,7 +29,8 @@ export const Game00 = () => {
   const [hint, setHint] = useState(false);
   const [tryAgain, setTryAgain] = useState(false);
   const [levelGame, setLevelGame] = useState(0);
-  const history = useHistory();
+  const [gamePoints, setGamePoints] = useState(10);
+  const [gameCoins, setGameCoins] = useState(5);
 
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const { id, points, currentLevel, currentGame, pidgeCoin } = useSelector(
@@ -36,14 +38,14 @@ export const Game00 = () => {
   );
 
   useEffect(() => {
-    if (connect) outcome();
-  }, [connect]);
-
-  useEffect(() => {
     isLoggedIn
       ? setLevelGame(parseInt(`${currentLevel}${currentGame}`))
       : setLevelGame(1);
   }, []);
+
+  useEffect(() => {
+    if (connect) outcome();
+  }, [connect]);
 
   const toolbox = {
     kind: 'flyoutToolbox',
@@ -83,27 +85,35 @@ export const Game00 = () => {
   //ideally this will end up not being alerts
 
   const outcome = () => {
-    connect === 1
-      ? setTimeout(() => {
-          if (isLoggedIn) {
-            let newPoints = points + 10;
-            let newPidgeCoin = pidgeCoin + 5;
+    if (connect === 1) {
+      if (isLoggedIn) {
+        let newPoints = points + gamePoints;
+        let newPidgeCoin = pidgeCoin + gameCoins;
 
-            levelGame > 1
-              ? dispatch(
-                  updateUserWon(
-                    id,
-                    newPoints,
-                    currentLevel,
-                    currentGame,
-                    newPidgeCoin
-                  )
-                )
-              : dispatch(updateUserWon(id, newPoints, 0, 1, newPidgeCoin));
-          }
-          history.push(`/game/won`, { points: 10, pidgeCoins: 5 });
-        }, 750)
-      : setTryAgain(true);
+        levelGame > 1
+          ? dispatch(
+              updateUserWon(
+                id,
+                newPoints,
+                currentLevel,
+                currentGame,
+                newPidgeCoin
+              )
+            )
+          : dispatch(updateUserWon(id, newPoints, 0, 1, newPidgeCoin));
+      }
+      setTimeout(() => {
+        history.push(`/game/won`, {
+          points: gamePoints,
+          pidgeCoins: gameCoins,
+        });
+      }, 750);
+    } else {
+      setTryAgain(true);
+      setConnect(0);
+      gamePoints <= 5 ? null : setGamePoints(gamePoints - 1);
+      gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);
+    }
   };
 
   return (

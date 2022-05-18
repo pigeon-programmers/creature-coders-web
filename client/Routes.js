@@ -7,12 +7,14 @@ import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import UserSettings from './components/UserSettings';
 import Map from './components/Map';
+import PetInfo from './components/PetInfo';
+import NotFound from './components/NotFound';
 import Game00 from './components/Games/Level0/Game00';
 import Game01 from './components/Games/Level0/Game01';
-import Game02 from './components/Games/Level0/Game02';
-import Game03 from './components/Games/Level0/Game03';
-import Game04 from './components/Games/Level0/Game04';
-import Game05 from './components/Games/Level0/Game05';
+import Game10 from './components/Games/Level1/Game10';
+import Game11 from './components/Games/Level1/Game11';
+import Game12 from './components/Games/Level1/Game12';
+import Game20 from './components/Games/Level2/Game20';
 import GameWon from './components/GameWon';
 
 //TODO: adjust so that isLoggedIn ternary only applied to routes that are different
@@ -36,14 +38,16 @@ const Routes = () => {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/map" component={Map} />
+          <Route path="/404" component={NotFound} />
           <Route path="/settings" component={UserSettings} />
+          <Route path="/pet" component={PetInfo} />
           <Route path="/game/won" component={GameWon} />
           <Route path="/game/0/0" exact component={Game00} />
           <Route path="/game/0/1" exact component={Game01} />
-          <Route path="/game/0/2" exact component={Game02} />
-          <Route path="/game/0/3" exact component={Game03} />
-          <Route path="/game/0/4" exact component={Game04} />
-          <Route path="/game/0/5" exact component={Game05} />
+          <Route path="/game/1/0" exact component={Game10} />
+          <Route path="/game/1/1" exact component={Game11} />
+          <Route path="/game/1/2" exact component={Game12} />
+          <Route path="/game/2/0" exact component={Game20} />
         </Switch>
       ) : (
         <Switch>
@@ -54,10 +58,10 @@ const Routes = () => {
           <Route path="/game/won" component={GameWon} />
           <Route path="/game/0/0" exact component={Game00} />
           <Route path="/game/0/1" exact component={Game01} />
-          <Route path="/game/0/2" exact component={Game02} />
-          <Route path="/game/0/3" exact component={Game03} />
-          <Route path="/game/0/4" exact component={Game04} />
-          <Route path="/game/0/5" exact component={Game05} />
+          <Route path="/game/1/0" exact component={Game10} />
+          <Route path="/game/1/1" exact component={Game11} />
+          <Route path="/game/1/2" exact component={Game12} />
+          <Route path="/game/2/0" exact component={Game20} />
         </Switch>
       )}
     </div>
