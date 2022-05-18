@@ -40,8 +40,6 @@ const Level = styled.div`
       parseInt(p.linkLevel) <= p.levelGame ? 'auto' : 'none'};
   }
 `;
-// background-color: ${(p) =>
-//   parseInt(p.linkLevel) <= p.levelGame ? '#FFE600' : '#7E7E7E'};
 
 const Map = () => {
   const { currentLevel, currentGame } = useSelector((state) => state.user);
