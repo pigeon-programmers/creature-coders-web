@@ -6,6 +6,7 @@ import { getSingleUser } from './store/user';
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import UserSettings from './components/UserSettings';
+import UserProfile from './components/UserProfile';
 import Map from './components/Map';
 import PetInfo from './components/PetInfo';
 import NotFound from './components/NotFound';
@@ -40,6 +41,7 @@ const Routes = () => {
           <Route path="/map" component={Map} />
           <Route path="/404" component={NotFound} />
           <Route path="/settings" component={UserSettings} />
+          <Route path="/profile" component={UserProfile} />
           <Route path="/pet" component={PetInfo} />
           <Route path="/game/won" component={GameWon} />
           <Route path="/game/0/0" exact component={Game00} />
