@@ -18,6 +18,7 @@ import '../Blocks/00Blocks';
 
 export const Game00 = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   //connect can only be set to 0, 1, 2.
   //0 is falsy and does not allow outcome to be called on first render
   //1 and 2 allow a re-render with 1 being correct and 2 being incorrect
@@ -30,7 +31,6 @@ export const Game00 = () => {
   const [levelGame, setLevelGame] = useState(0);
   const [gamePoints, setGamePoints] = useState(10);
   const [gameCoins, setGameCoins] = useState(5);
-  const history = useHistory();
 
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const { id, points, currentLevel, currentGame, pidgeCoin } = useSelector(
@@ -86,23 +86,23 @@ export const Game00 = () => {
 
   const outcome = () => {
     if (connect === 1) {
-      setTimeout(() => {
-        if (isLoggedIn) {
-          let newPoints = points + gamePoints;
-          let newPidgeCoin = pidgeCoin + gameCoins;
+      if (isLoggedIn) {
+        let newPoints = points + gamePoints;
+        let newPidgeCoin = pidgeCoin + gameCoins;
 
-          levelGame > 1
-            ? dispatch(
-                updateUserWon(
-                  id,
-                  newPoints,
-                  currentLevel,
-                  currentGame,
-                  newPidgeCoin
-                )
+        levelGame > 1
+          ? dispatch(
+              updateUserWon(
+                id,
+                newPoints,
+                currentLevel,
+                currentGame,
+                newPidgeCoin
               )
-            : dispatch(updateUserWon(id, newPoints, 0, 1, newPidgeCoin));
-        }
+            )
+          : dispatch(updateUserWon(id, newPoints, 0, 1, newPidgeCoin));
+      }
+      setTimeout(() => {
         history.push(`/game/won`, {
           points: gamePoints,
           pidgeCoins: gameCoins,
@@ -115,9 +115,6 @@ export const Game00 = () => {
       gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);
     }
   };
-
-  console.log('COINS', gameCoins);
-  console.log('POINTS', gamePoints);
 
   return (
     <Main>

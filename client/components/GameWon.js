@@ -19,15 +19,6 @@ const GameWon = (props) => {
   return (
     <WonBg>
       <Content>
-        {/* <div
-          style={{
-            width: 500,
-            height: 500,
-            backgroundColor: 'gray',
-            border: '1px solid black',
-            margin: 50,
-          }}
-        /> */}
         <Pigeon />
         <BlackGameText>You Won</BlackGameText>
         <BlackGameText>You won {points} points</BlackGameText>
