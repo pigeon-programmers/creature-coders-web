@@ -27,7 +27,8 @@ const Map = (props) => {
         </Link>
         {/* have a check to see if prev. game has been passed before moving on to next game/level */}
       </MapContainer>
-      <Doors />
+      {/* need to fix door animation: */}
+      {/* <Doors /> */}
     </Main>
   );
 };

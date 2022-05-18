@@ -230,7 +230,6 @@ export const Computer = styled.img`
   margin: 1em;
 `;
 
-<<<<<<< HEAD
 export const DoorsContainer = styled.div`
   width: 50vw;
   height: 89vh;
@@ -281,14 +280,14 @@ export const SlideInRightAnim = styled.div`
    animation-iteration-count: 2;
   animation-direction: alternate;
   object-fit: fill;
-=======
+  `
+
 export const Pigeon = styled.p`
   background-image: url('https://creature-coders.s3.amazonaws.com/pigeon.svg');
   background-repeat: no-repeat;
   height: 500px;
   width: 350px;
   margin-top: 1.5em;
->>>>>>> main
 `;
 
 //POPUPS AND HINTS STYLING
