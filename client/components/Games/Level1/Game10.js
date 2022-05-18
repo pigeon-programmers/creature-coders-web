@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Workspace from "../Workspace";
 import {
   GameContent,
@@ -10,9 +12,19 @@ import {
 import PopUp from "../../PopUp";
 import TryAgain from "../../TryAgain";
 import Interpreter from "js-interpreter";
-import "../Blocks/04Blocks";
+import { updateUserWon } from "../../../store/user";
+import "../Blocks/10Blocks";
+import styled from "styled-components";
 
-export const Game04 = () => {
+const GameWrapper = styled.div`
+  .blocklyToolboxDiv {
+    z-index: 5;
+  }
+`;
+
+export const Game10 = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [string, setString] = useState("");
   const [number, setNumber] = useState("");
   const [boolean, setBoolean] = useState("");
@@ -22,6 +34,20 @@ export const Game04 = () => {
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
   const [tryAgain, setTryAgain] = useState(false);
+  const [levelGame, setLevelGame] = useState(0);
+  const [gamePoints, setGamePoints] = useState(15);
+  const [gameCoins, setGameCoins] = useState(5);
+
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
+  const { id, points, currentLevel, currentGame, pidgeCoin } = useSelector(
+    (state) => state.user
+  );
+
+  useEffect(() => {
+    isLoggedIn
+      ? setLevelGame(parseInt(`${currentLevel}${currentGame}`))
+      : setLevelGame(1);
+  }, []);
 
   useEffect(() => {
     // All types of state need to be added below for game to function properly!
@@ -135,14 +161,41 @@ export const Game04 = () => {
   };
 
   const outcome = () => {
-    string === "string" &&
-    boolean === "boolean" &&
-    number === "number" &&
-    nullBlock === "nullBlock" &&
-    undef === "undef" &&
-    object === "object"
-      ? alert("good job!")
-      : setTryAgain(true);
+    if (
+      string === "string" &&
+      boolean === "boolean" &&
+      number === "number" &&
+      nullBlock === "nullBlock" &&
+      undef === "undef" &&
+      object === "object"
+    ) {
+      if (isLoggedIn) {
+        let newPoints = points + gamePoints;
+        let newPidgeCoin = pidgeCoin + gameCoins;
+
+        levelGame > 10
+          ? dispatch(
+              updateUserWon(
+                id,
+                newPoints,
+                currentLevel,
+                currentGame,
+                newPidgeCoin
+              )
+            )
+          : dispatch(updateUserWon(id, newPoints, 1, 1, newPidgeCoin));
+      }
+      setTimeout(() => {
+        history.push(`/game/won`, {
+          points: gamePoints,
+          pidgeCoins: gameCoins,
+        });
+      }, 750);
+    } else {
+      setTryAgain(true);
+      gamePoints <= 5 ? null : setGamePoints(gamePoints - 1);
+      gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);
+    }
   };
 
   //right now the game content div is empty
@@ -177,16 +230,18 @@ export const Game04 = () => {
               <p>An OBJECT has CURLY or SQUARE brackets around it.</p>
               <p>A BOOLEAN can only be TRUE or FALSE.</p>
               <p>NULL means something is set to have NO VALUE.</p>
-              <p>UNDEFNED means something's VALUE HAS NOT BEEN SET.</p>
+              <p>UNDEFINED means something's VALUE HAS NOT BEEN SET.</p>
             </div>
           </PopUp>
           <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
         </PopContainer>
         <GameContent></GameContent>
-        <Workspace toolbox={toolbox} onRun={onRun} />
+        <GameWrapper>
+          <Workspace toolbox={toolbox} onRun={onRun} />
+        </GameWrapper>
       </Content>
     </Main>
   );
 };
 
-export default Game04;
+export default Game10;

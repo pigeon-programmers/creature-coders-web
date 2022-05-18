@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
   Computer,
   GameButton,
@@ -13,12 +15,16 @@ import {
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
 import styled from 'styled-components';
+import { updateUserWon } from '../../../store/user';
 
 const SmallerGameText = styled(GameText)`
   font-size: small;
 `;
 
-const Game03 = () => {
+const Game20 = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
   const [tryAgain, setTryAgain] = useState(false);
@@ -30,7 +36,22 @@ const Game03 = () => {
   const [usedButtons, setUsedButtons] = useState([`_____`, `_____`, `_____`]);
   const [win, setWin] = useState(false);
   const [ran, setRan] = useState(false);
+  const [levelGame, setLevelGame] = useState(0);
+  const [gamePoints, setGamePoints] = useState(10);
+  const [gameCoins, setGameCoins] = useState(5);
+  
   const winState = [`catsTarget`, `cats++`, `return`];
+
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
+  const { id, points, currentLevel, currentGame, pidgeCoin } = useSelector(
+    (state) => state.user
+  );
+
+  useEffect(() => {
+    isLoggedIn
+      ? setLevelGame(parseInt(`${currentLevel}${currentGame}`))
+      : setLevelGame(1);
+  }, []);
 
   useEffect(() => {
     if (ran) {
@@ -40,11 +61,34 @@ const Game03 = () => {
   }, [ran]);
 
   const outcome = () => {
-    win
-      ? setTimeout(() => {
-          alert('great job!');
-        }, 500)
-      : setTryAgain(true);
+    if (win) {
+      if (isLoggedIn) {
+        let newPoints = points + gamePoints;
+        let newPidgeCoin = pidgeCoin + gameCoins;
+
+        levelGame > 20
+          ? dispatch(
+              updateUserWon(
+                id,
+                newPoints,
+                currentLevel,
+                currentGame,
+                newPidgeCoin
+              )
+            )
+          : dispatch(updateUserWon(id, newPoints, 3, 0, newPidgeCoin));
+      }
+      setTimeout(() => {
+        history.push(`/game/won`, {
+          points: gamePoints,
+          pidgeCoins: gameCoins,
+        });
+      }, 750);
+    } else {
+       setTryAgain(true);
+       gamePoints <= 5 ? null : setGamePoints(gamePoints - 1);
+       gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);
+      }
   };
 
   const onRun = () => {
@@ -174,4 +218,4 @@ const Game03 = () => {
   );
 };
 
-export default Game03;
+export default Game20;
