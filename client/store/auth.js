@@ -24,6 +24,7 @@ export const me = () => async dispatch => {
         authorization: token
       }
     })
+    history.push('/map');
     return dispatch(setAuth(res.data))
   }
 }
@@ -40,7 +41,7 @@ export const authenticate = (username, email, password, method) => async dispatc
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN)
-  history.push('/login')
+  history.push('/')
   return {
     type: SET_AUTH,
     auth: {}

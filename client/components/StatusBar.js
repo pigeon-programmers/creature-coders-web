@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getSingleUserData } from '../store/user';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   Status,
   NavIconContainer,
@@ -10,17 +9,10 @@ import {
 } from './style';
 
 const StatusBar = () => {
-  const dispatch = useDispatch();
   const isLoggedIn = useSelector(state => !!state.auth.id)
-  // const user = useSelector(state => state.user)
-
-  // useEffect(() => {
-  //   dispatch(getSingleUserData(2))
-  // }, [])
-
+  const { points, pidgeCoin, streak } = useSelector(state => state.user)
 
   return (
-
   <Status>
     {isLoggedIn ? (
       <>
@@ -28,15 +20,15 @@ const StatusBar = () => {
         <NavIconContainer>
           <StatusIconContainer>
             <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconPidgeCoin.svg" />
-            <StatusText>37</StatusText>
+            <StatusText>{pidgeCoin}</StatusText>
           </StatusIconContainer>
           <StatusIconContainer>
             <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconStreak.svg" />
-            <StatusText>37</StatusText>
+            <StatusText>{streak}</StatusText>
           </StatusIconContainer>
           <StatusIconContainer>
             <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconPoints.svg" />
-            <StatusText>37</StatusText>
+            <StatusText>{points}</StatusText>
           </StatusIconContainer>
         </NavIconContainer>
       </>

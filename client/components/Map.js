@@ -8,22 +8,22 @@ const Map = (props) => {
     <Main>
       <MapContainer>
         <Link to="/game/0/0">
-          <button type="button">Game 0</button>
+          <button type="button">Game 0.0</button>
         </Link>
         <Link to="/game/0/1">
-          <button type="button">Game 1</button>
+          <button type="button">Game 0.1</button>
         </Link>
-        <Link to="/game/0/2">
-          <button type="button">Game 2</button>
+        <Link to="/game/1/0">
+          <button type="button">Game 1.0</button>
         </Link>
-        <Link to="/game/0/3">
-          <button type="button">Game 3</button>
+        <Link to="/game/1/1">
+          <button type="button">Game 1.1</button>
         </Link>
-        <Link to="/game/0/4">
-          <button type="button">Game 4</button>
+        <Link to="/game/1/2">
+          <button type="button">Game 1.2</button>
         </Link>
-        <Link to="/game/0/5">
-          <button type="button">Game 5</button>
+        <Link to="/game/2/0">
+          <button type="button">Game 2.0</button>
         </Link>
         {/* have a check to see if prev. game has been passed before moving on to next game/level */}
       </MapContainer>

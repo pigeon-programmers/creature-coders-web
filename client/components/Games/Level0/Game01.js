@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
-import Workspace from "../Workspace";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import Workspace from '../Workspace';
 import {
   GameContent,
   GameText,
@@ -7,48 +9,65 @@ import {
   PopContainer,
   PopButton,
   Content,
-} from "../../style";
-import PopUp from "../../PopUp";
-import TryAgain from "../../TryAgain";
-import Interpreter from "js-interpreter";
-import "../Blocks/01Blocks";
+} from '../../style';
+import PopUp from '../../PopUp';
+import TryAgain from '../../TryAgain';
+import Interpreter from 'js-interpreter';
+import '../Blocks/01Blocks';
+import { updateUserWon } from '../../../store/user';
 
 export const Game01 = () => {
-  const [string, setString] = useState("");
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [string, setString] = useState('');
   const [connect, setConnect] = useState(false);
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
   const [tryAgain, setTryAgain] = useState(false);
+  const [levelGame, setLevelGame] = useState(0);
+  const [gamePoints, setGamePoints] = useState(10);
+  const [gameCoins, setGameCoins] = useState(5);
+
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
+  const { id, points, currentLevel, currentGame, pidgeCoin } = useSelector(
+    (state) => state.user
+  );
+
+  useEffect(() => {
+    isLoggedIn
+      ? setLevelGame(parseInt(`${currentLevel}${currentGame}`))
+      : setLevelGame(1);
+  }, []);
 
   useEffect(() => {
     if (connect) outcome();
   }, [connect]);
 
   const toolbox = {
-    kind: "flyoutToolbox",
+    kind: 'flyoutToolbox',
     contents: [
       {
-        kind: "block",
-        type: "write-2",
+        kind: 'block',
+        type: 'write-2',
       },
       {
-        kind: "block",
-        type: "text",
-        fields: { TEXT: "" },
+        kind: 'block',
+        type: 'text',
+        fields: { TEXT: '' },
       },
     ],
   };
 
   const initApi = (interpreter, scope) => {
     const wrapper = function (text) {
-      text = text ? text.toString() : "";
+      text = text ? text.toString() : '';
       setString(text);
       //set connect to true in order to cause re-render
       setConnect(true);
     };
     interpreter.setProperty(
       scope,
-      "writeTwo",
+      'writeTwo',
       interpreter.createNativeFunction(wrapper)
     );
   };
@@ -59,14 +78,36 @@ export const Game01 = () => {
   };
 
   const outcome = () => {
-    string === "hello pigeons"
-      ? setTimeout(() => {
-          alert("great job!");
-        }, 500)
-      : setTryAgain(true);
+    if (string === 'hello pigeons') {
+      if (isLoggedIn) {
+        let newPoints = points + gamePoints;
+        let newPidgeCoin = pidgeCoin + gameCoins;
 
-    //set connect to false again to allow another try if solution was incorrect
-    setConnect(false);
+        levelGame > 1
+          ? dispatch(
+              updateUserWon(
+                id,
+                newPoints,
+                currentLevel,
+                currentGame,
+                newPidgeCoin
+              )
+            )
+          : dispatch(updateUserWon(id, newPoints, 1, 0, newPidgeCoin));
+      }
+      setTimeout(() => {
+        history.push(`/game/won`, {
+          points: gamePoints,
+          pidgeCoins: gameCoins,
+        });
+      }, 750);
+    } else {
+      setTryAgain(true);
+      //set connect to false again to allow another try if solution was incorrect
+      setConnect(false);
+      gamePoints <= 5 ? null : setGamePoints(gamePoints - 1);
+      gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);
+    }
   };
 
   return (

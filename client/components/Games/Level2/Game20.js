@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
   Computer,
   GameButton,
@@ -8,16 +10,21 @@ import {
   PopContainer,
   PopButton,
   Content,
-} from "../../style";
-import PopUp from "../../PopUp";
-import TryAgain from "../../TryAgain";
-import styled from "styled-components";
+  Button,
+} from '../../style';
+import PopUp from '../../PopUp';
+import TryAgain from '../../TryAgain';
+import styled from 'styled-components';
+import { updateUserWon } from '../../../store/user';
 
 const SmallerGameText = styled(GameText)`
   font-size: small;
 `;
 
-const Game03 = () => {
+const Game20 = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
   const [tryAgain, setTryAgain] = useState(false);
@@ -27,16 +34,70 @@ const Game03 = () => {
     `cats++`,
   ]);
   const [usedButtons, setUsedButtons] = useState([`_____`, `_____`, `_____`]);
+  const [win, setWin] = useState(false);
+  const [ran, setRan] = useState(false);
+  const [levelGame, setLevelGame] = useState(0);
+  const [gamePoints, setGamePoints] = useState(10);
+  const [gameCoins, setGameCoins] = useState(5);
+  
   const winState = [`catsTarget`, `cats++`, `return`];
-  let won = false;
 
-  if (availButtons.length === 0) {
-    won = usedButtons.every((val, index) => val === winState[index]);
-  }
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
+  const { id, points, currentLevel, currentGame, pidgeCoin } = useSelector(
+    (state) => state.user
+  );
 
-  if (won) {
-    console.log("you win!!");
-  }
+  useEffect(() => {
+    isLoggedIn
+      ? setLevelGame(parseInt(`${currentLevel}${currentGame}`))
+      : setLevelGame(1);
+  }, []);
+
+  useEffect(() => {
+    if (ran) {
+      outcome();
+      setRan(false);
+    }
+  }, [ran]);
+
+  const outcome = () => {
+    if (win) {
+      if (isLoggedIn) {
+        let newPoints = points + gamePoints;
+        let newPidgeCoin = pidgeCoin + gameCoins;
+
+        levelGame > 20
+          ? dispatch(
+              updateUserWon(
+                id,
+                newPoints,
+                currentLevel,
+                currentGame,
+                newPidgeCoin
+              )
+            )
+          : dispatch(updateUserWon(id, newPoints, 3, 0, newPidgeCoin));
+      }
+      setTimeout(() => {
+        history.push(`/game/won`, {
+          points: gamePoints,
+          pidgeCoins: gameCoins,
+        });
+      }, 750);
+    } else {
+       setTryAgain(true);
+       gamePoints <= 5 ? null : setGamePoints(gamePoints - 1);
+       gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);
+      }
+  };
+
+  const onRun = () => {
+    if (availButtons.length === 0) {
+      setWin(usedButtons.every((val, index) => val === winState[index]));
+    }
+
+    setRan(true);
+  };
 
   const availClickHandler = (e) => {
     const text = e.target.innerHTML;
@@ -149,9 +210,12 @@ const Game03 = () => {
             </GameButton>
           ))}
         </GameContentNoBlock>
+        <Button type="button" onClick={() => onRun()}>
+          Run
+        </Button>
       </Content>
     </Main>
   );
 };
 
-export default Game03;
+export default Game20;

@@ -1,82 +1,69 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { me } from './store';
+import { getSingleUser } from './store/user';
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
-import { me } from './store';
-import UserSettings from './components/UserSettings'
+import UserSettings from './components/UserSettings';
 import Map from './components/Map';
 import Game00 from './components/Games/Level0/Game00';
 import Game01 from './components/Games/Level0/Game01';
-import Game02 from './components/Games/Level0/Game02';
-import Game03 from './components/Games/Level0/Game03';
-import Game04 from './components/Games/Level0/Game04';
-import Game05 from './components/Games/Level0/Game05';
-import Doors from './components/Animations/Doors';
+import Game10 from './components/Games/Level1/Game10';
+import Game11 from './components/Games/Level1/Game11';
+import Game12 from './components/Games/Level1/Game12';
+import Game20 from './components/Games/Level2/Game20';
+import GameWon from './components/GameWon';
 
-//TODO: refactor component to hooks and adjust so that isLoggedIn ternary only applied to routes that are different
-/**
- * COMPONENT
- */
-class Routes extends Component {
-  componentDidMount() {
-    this.props.loadInitialData();
-  }
+//TODO: adjust so that isLoggedIn ternary only applied to routes that are different
 
-  render() {
-    const { isLoggedIn } = this.props;
+const Routes = () => {
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
+  const auth = useSelector((state) => state.auth);
 
-    return (
-      <div>
-        {isLoggedIn ? (
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/map" component={Map} />
-            <Route path="/settings" component={UserSettings} />
-            <Route path="/game/0/0" exact component={Game00} />
-            <Route path="/game/0/1" exact component={Game01} />
-            <Route path="/game/0/2" exact component={Game02} />
-            <Route path="/game/0/4" exact component={Game04} />
-            <Route path="/game/0/5" exact component={Game05} />
-            <Route path="/doors" exact component={Doors} />
-          </Switch>
-        ) : (
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/signup" exact component={Signup} />
-            <Route path="/map" component={Map} />
-            <Route path="/game/0/0" exact component={Game00} />
-            <Route path="/game/0/1" exact component={Game01} />
-            <Route path="/game/0/2" exact component={Game02} />
-            <Route path="/game/0/4" exact component={Game04} />
-            <Route path="/game/0/5" exact component={Game05} />
-          </Switch>
-        )}
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    dispatch(me());
+  }, []);
 
-/**
- * CONTAINER
- */
-const mapState = (state) => {
-  return {
-    // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
-    // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
-    isLoggedIn: !!state.auth.id,
-  };
-};
+  useEffect(() => {
+    if (isLoggedIn) dispatch(getSingleUser(auth.id));
+  }, [isLoggedIn]);
 
-const mapDispatch = (dispatch) => {
-  return {
-    loadInitialData() {
-      dispatch(me());
-    },
-  };
+  return (
+    <div>
+      {isLoggedIn ? (
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/map" component={Map} />
+          <Route path="/settings" component={UserSettings} />
+          <Route path="/game/won" component={GameWon} />
+          <Route path="/game/0/0" exact component={Game00} />
+          <Route path="/game/0/1" exact component={Game01} />
+          <Route path="/game/1/0" exact component={Game10} />
+          <Route path="/game/1/1" exact component={Game11} />
+          <Route path="/game/1/2" exact component={Game12} />
+          <Route path="/game/2/0" exact component={Game20} />
+        </Switch>
+      ) : (
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/signup" exact component={Signup} />
+          <Route path="/map" component={Map} />
+          <Route path="/game/won" component={GameWon} />
+          <Route path="/game/0/0" exact component={Game00} />
+          <Route path="/game/0/1" exact component={Game01} />
+          <Route path="/game/1/0" exact component={Game10} />
+          <Route path="/game/1/1" exact component={Game11} />
+          <Route path="/game/1/2" exact component={Game12} />
+          <Route path="/game/2/0" exact component={Game20} />
+        </Switch>
+      )}
+    </div>
+  );
 };
 
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
-export default withRouter(connect(mapState, mapDispatch)(Routes));
+export default withRouter(Routes);
