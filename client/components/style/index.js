@@ -130,7 +130,7 @@ export const Label = styled.label`
 
 export const LabelP = styled.p`
   margin: 0;
-`
+`;
 
 export const Input = styled.input`
   width: 50vw;
@@ -141,7 +141,7 @@ export const Input = styled.input`
   display: block;
   float: left;
   clear: left;
-  margin: .5em;
+  margin: 0.5em;
 `;
 export const Select = styled.select`
   width: 50vw;
@@ -151,17 +151,6 @@ export const Select = styled.select`
   box-sizing: border-box;
   font-size: 1.5em;
   font-family: 'Anonymous Pro', 'Andale Mono', monospace;
-`;
-
-//MAP STUFF
-export const MapContainer = styled.div`
-  width: 50vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${palette.dkGray};
 `;
 
 //GAME COMPONENTS
