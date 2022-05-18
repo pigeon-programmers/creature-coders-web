@@ -1,7 +1,8 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Main, Button, HomeTitle, HomeSubTitle, Content } from "./style";
 import styled from "styled-components";
+import { getPet } from '../store/pet';
 
 const UserBG = styled(Main)`
   background-color: #ed1697;
@@ -19,11 +20,16 @@ const ProfileText = styled(HomeSubTitle)`
 `;
 
 const UserProfile = () => {
+  const dispatch = useDispatch();
   const { currentLevel, currentGame, username, badges, id } = useSelector(
     (state) => state.user
   );
-  // const user = useSelector((state) => state.user);
+  const pet = useSelector((state) => state.pet);
 
+  useEffect(() => {
+      if (id) dispatch(getPet(id));
+  }, [id])
+  console.log("PET INFO!", pet, id)
   // const isLoggedIn = useSelector((state) => !!state.auth.id);
 
   return (
