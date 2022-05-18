@@ -16,10 +16,12 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
               alt="level map"
             />
           </Link>
-          <NavIcon
-            src="https://creature-coders.s3.amazonaws.com/iconPet.svg"
-            alt="pet settings"
-          />
+          <Link to="/profile">
+            <NavIcon
+              src="https://creature-coders.s3.amazonaws.com/iconPet.svg"
+              alt="pet settings"
+            />
+          </Link>
           <NavIcon
             src="https://creature-coders.s3.amazonaws.com/iconLeaderboard.svg"
             alt="leaderboard"
