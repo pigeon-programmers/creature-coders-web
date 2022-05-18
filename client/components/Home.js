@@ -1,32 +1,41 @@
-import React from 'react'
-import { Main, Button, HomeTitle, HomeSubTitle } from './style'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Main, Content, Button, HomeTitle, HomeSubTitle } from './style';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const MainBG = styled(Main)`
-background-color: #2828FF;
-`
+  background-color: #2828ff;
+`;
 
-const Home = () => {
+//THIS COMPONENT OPERATES AS HOME AND MUST LOG IN PAGE FOR GAMES ABOVE TUTORIAL LEVEL
+
+const Home = (props) => {
+  //mustLogIn is passed from games that are only accessible to logged-in users
+  const { mustLogIn } = props;
 
   return (
     <MainBG>
-      <HomeTitle>Creature Coders</HomeTitle>
-      <HomeSubTitle>Learn to code with garbage animals</HomeSubTitle>
-      <Link to="/map">
-      <Button>Play Now</Button>
-      </Link>
+      <HomeTitle>
+        {!mustLogIn ? 'Creature Coders' : 'Want to keep the fun going...?'}
+      </HomeTitle>
+      <HomeSubTitle>
+        {!mustLogIn
+          ? 'Learn to code with garbage animals'
+          : 'Log in or sign up to see more levels!'}
+      </HomeSubTitle>
+      {!mustLogIn ? (
+        <Link to="/map">
+          <Button>Play Now</Button>
+        </Link>
+      ) : null}
       <Link to="/login">
-      <Button>Log In</Button>
+        <Button>Log In</Button>
       </Link>
       <Link to="/signup">
-      <Button>Sign Up</Button>
+        <Button>Sign Up</Button>
       </Link>
     </MainBG>
+  );
+};
 
-
-
-  )
-}
-
-export default Home
+export default Home;
