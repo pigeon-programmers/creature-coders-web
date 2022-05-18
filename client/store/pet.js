@@ -1,4 +1,6 @@
 import axios from 'axios';
+import history from '../history'
+
 
 const SAVE_PET = 'SAVE_PET';
 
@@ -14,8 +16,9 @@ export const savePet = (userId, pet) => {
     try {
       const { data } = await axios.post(`/api/pet/${userId}`, pet);
       dispatch(_savePet(data));
+      history.push('/map');
     } catch (err) {
-      console.log("😭 unable to save pet info", err);
+      console.log('😭 unable to save pet info', err);
     }
   };
 };

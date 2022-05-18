@@ -91,6 +91,7 @@ const PetInfo = () => {
           onClick={(e) => {
             e.preventDefault();
             dispatch(savePet(id, { name, type: petType }));
+
           }}
         >
           Submit
