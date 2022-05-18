@@ -11,7 +11,7 @@ const MainBG = styled(Main)`
 
 const Home = (props) => {
   //mustLogIn is passed after last tutorial game from games that are only accessible to logged-in users
-  const { mustLogIn } = props.location ? props.location.state : props;
+  const { mustLogIn } = props.location.state ? props.location.state : props;
 
   return (
     <MainBG>
