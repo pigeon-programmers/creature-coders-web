@@ -6,7 +6,7 @@ import Blockly from "blockly";
 Blockly.Blocks['subway_one'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Let's go to central park!");
+        .appendField("Let's go to Central Park!");
     this.setInputsInline(false);
     this.setNextStatement(true, null);
     this.setColour(120);

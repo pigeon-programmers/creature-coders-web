@@ -16,7 +16,6 @@ import Home from "../../Home";
 import { updateUserWon } from "../../../store/user";
 import "../Blocks/12Blocks";
 
-
 export const Game12 = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -24,7 +23,8 @@ export const Game12 = () => {
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
   const [tryAgain, setTryAgain] = useState(false);
-  const [subwayLine, setSubwayLine] = useState('gray');
+  const [subwayLine, setSubwayLine] = useState("gray");
+  const [connect, setConnect] = useState(false);
   const [levelGame, setLevelGame] = useState(0);
   const [gamePoints, setGamePoints] = useState(15);
   const [gameCoins, setGameCoins] = useState(5);
@@ -41,9 +41,8 @@ export const Game12 = () => {
   }, []);
 
   useEffect(() => {
-    console.log("subwayLine", subwayLine)
-    subwayLine === 'yellow' ? outcome() : null;
-  }, [subwayLine]);
+    if (connect) outcome();
+  }, [connect]);
 
   const toolbox = {
     kind: "flyoutToolbox",
@@ -60,28 +59,18 @@ export const Game12 = () => {
   };
 
   const initApi = (interpreter, scope) => {
-    // const prop = (varName) => {
-    //   console.log("varName", varName)
-      const wrapper = function (text) {
-        text = text ? text.toString() : "";
-        setSubwayLine(text);
-      //   if (varName === 'yellow') setSubwayLine('yellow');
-      //   if (varName ==='gray') setSubwayLine('gray');
-      //   if (varName === 'green') setSubwayLine('green');
-      //   if (varName === 'blue') setSubwayLine('blue');
-      };
-      interpreter.setProperty(
-        scope,
-        alert,
-        interpreter.createNativeFunction(wrapper)
-      );
+    const wrapper = function (text) {
+      console.log(text);
+      text = text ? text.toString() : "";
+      setSubwayLine(text);
+      setConnect(true);
     };
-  //   prop('yellow');
-  //   prop('gray');
-  //   prop('green');
-  //   prop('blue');
-  
-
+    interpreter.setProperty(
+      scope,
+      "alert",
+      interpreter.createNativeFunction(wrapper)
+    );
+  };
 
   const onRun = (javascriptCode) => {
     const myInterpreter = new Interpreter(javascriptCode, initApi);
@@ -89,10 +78,11 @@ export const Game12 = () => {
   };
 
   const outcome = () => {
-    if (subwayLine === 'yellow') {
+    if (subwayLine === "yellow") {
       if (isLoggedIn) {
         let newPoints = points + gamePoints;
         let newPidgeCoin = pidgeCoin + gameCoins;
+        // document.getElementById('subwayLine').style.backgroundColor('yellow');
         levelGame > 12
           ? dispatch(
               updateUserWon(
@@ -113,6 +103,7 @@ export const Game12 = () => {
       }, 750);
     } else {
       setTryAgain(true);
+      setConnect(false);
       gamePoints <= 5 ? null : setGamePoints(gamePoints - 1);
       gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);
     }
@@ -140,7 +131,7 @@ export const Game12 = () => {
           </PopUp>
           <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
         </PopContainer>
-        <GameContent id="game03-display"></GameContent>
+        <GameContent id="subwayLine"></GameContent>
         <Workspace toolbox={toolbox} onRun={onRun} />
       </Content>
     </Main>
