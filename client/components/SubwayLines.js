@@ -3,12 +3,9 @@ import styled from 'styled-components';
 
 const Svg = styled.svg`
   enable-background: new 0 0 290.88 726.2;
-  fill: none;
-  stroke: #39b54a;
-  stroke-width: 7.4355;
-  stroke-miterlimit: 10;
-  width: 100vw;
-  height: 80vh;
+  width: 35vw;
+  height: 63vh;
+  transform: scale(1.47);
 `;
 
 const PathSt0 = styled.path`

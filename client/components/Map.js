@@ -5,14 +5,21 @@ import { Main, Content } from './style';
 import SubwayLines from './SubwayLines';
 import styled from 'styled-components';
 
-export const MapContainer = styled.div`
+// const CityStreets = styled(Content)`
+//   background-image: url'(https://creature-coders.s3.amazonaws.com/map-bg.svg');
+// `;
+
+const MapContainer = styled.div`
+  background-image: url('https://creature-coders.s3.amazonaws.com/map-bg.jpg');
+  background-size: 100% 100%;
+  background-color: #3d3d3d;
   width: 50vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  background-color: #3d3d3d;
+  overflow: hidden;
 `;
 
 const Level = styled.div`
@@ -54,43 +61,49 @@ const Map = () => {
   }, [currentLevel, currentGame]);
 
   return (
-    // <Main>
-    <Content>
-      <SubwayLines />
-      {/* <MapContainer>
-          <Level linkLevel={'20'} levelGame={levelGame}>
-            <Link to="/game/2/0" className="link">
-              2.0
-            </Link>
-          </Level>
-          <Level linkLevel={'12'} levelGame={levelGame}>
-            <Link to="/game/1/2" className="link">
-              1.2
-            </Link>
-          </Level>
-          <Level linkLevel={'11'} levelGame={levelGame}>
-            <Link to="/game/1/1" className="link">
-              1.1
-            </Link>
-          </Level>
-          <Level linkLevel={'10'} levelGame={levelGame}>
-            <Link to="/game/1/0" className="link">
-              1.0
-            </Link>
-          </Level>
-          <Level linkLevel={'01'} levelGame={levelGame}>
-            <Link to="/game/0/1" className="link">
-              0.1
-            </Link>
-          </Level>
-          <Level linkLevel={'00'} levelGame={levelGame}>
-            <Link to="/game/0/0" className="link">
-              0.0
-            </Link>
-          </Level>
-        </MapContainer> */}
-    </Content>
-    // </Main>
+    <Main>
+      <Content>
+        <MapContainer>
+          <SubwayLines>
+            <Level linkLevel={'30'} levelGame={levelGame}>
+              <Link to="/game/3/0" className="link">
+                2.0
+              </Link>
+            </Level>
+            <Level linkLevel={'20'} levelGame={levelGame}>
+              <Link to="/game/2/0" className="link">
+                2.0
+              </Link>
+            </Level>
+            <Level linkLevel={'12'} levelGame={levelGame}>
+              <Link to="/game/1/2" className="link">
+                1.2
+              </Link>
+            </Level>
+            <Level linkLevel={'11'} levelGame={levelGame}>
+              <Link to="/game/1/1" className="link">
+                1.1
+              </Link>
+            </Level>
+            <Level linkLevel={'10'} levelGame={levelGame}>
+              <Link to="/game/1/0" className="link">
+                1.0
+              </Link>
+            </Level>
+            <Level linkLevel={'01'} levelGame={levelGame}>
+              <Link to="/game/0/1" className="link">
+                0.1
+              </Link>
+            </Level>
+            <Level linkLevel={'00'} levelGame={levelGame}>
+              <Link to="/game/0/0" className="link">
+                0.0
+              </Link>
+            </Level>
+          </SubwayLines>
+        </MapContainer>
+      </Content>
+    </Main>
   );
 };
 
