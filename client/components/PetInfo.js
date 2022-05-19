@@ -123,7 +123,7 @@ const PetInfo = () => {
         </Select>
         <Label htmlFor="name">Name:</Label>
         <NameBox disabled id="name" value={name}></NameBox>
-        <Label htmlFor="get-new-name">Get New Name:</Label>
+        <Label htmlFor="get-new-name">Roll the dice to get a new name:</Label>
         <Button
           type="button" id="get-new-name"
           onClick={(e) => {
@@ -131,7 +131,7 @@ const PetInfo = () => {
             setName(randomName);
           }}
         >
-          🎲
+          🎲 🎲
         </Button>
         <Button
           type="submit"
