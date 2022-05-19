@@ -2,40 +2,39 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Main, Content } from './style';
+import SubwayLines from './SubwayLines';
 import styled from 'styled-components';
 
-export const MapContainer = styled.div`
+const MapContainer = styled.div`
+  background-image: url('https://creature-coders.s3.amazonaws.com/map-bg.jpg');
+  background-size: 100% 100%;
+  background-color: #3d3d3d;
   width: 50vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  background-color: #3d3d3d;
+  overflow: hidden;
 `;
 
 const Level = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5vh;
-  height: 5vh;
+  position: absolute;
+  width: 3.5vh;
+  height: 3.5vh;
   border-radius: 50%;
-  box-shadow: 1vh 1vh 0.5vh #000000;
+  border: 3px solid
+    ${(p) => (parseInt(p.linkLevel) <= p.levelGame ? '#000000' : '#FFFFFF')};
   margin: 1vh;
-  background-color: ${(p) => {
-    if (parseInt(p.linkLevel) <= p.levelGame) {
-      if (p.linkLevel[0] === '0') return '#FFE600';
-      if (p.linkLevel[0] == '1') return '#4EDE1C';
-      if (p.linkLevel[0] == '2') return '#2828FF';
-      if (p.linkLevel[0] == '3') return '#E91717';
-    } else {
-      return '#7E7E7E';
-    }
-  }};
+  background-color: ${(p) =>
+    parseInt(p.linkLevel) <= p.levelGame ? '#FFFFFF' : '#000000'};
   .link {
     text-decoration: none;
-    color: #000000;
+    color: ${(p) =>
+      parseInt(p.linkLevel) <= p.levelGame ? '#000000' : '#FFFFFF'};
     pointer-events: ${(p) =>
       parseInt(p.linkLevel) <= p.levelGame ? 'auto' : 'none'};
   }
@@ -50,43 +49,72 @@ const Map = () => {
     isLoggedIn
       ? setLevelGame(parseInt(`${currentLevel}${currentGame}`))
       : setLevelGame(1);
-  }, [currentLevel, currentGame]);
+  }, [currentLevel, currentGame, isLoggedIn]);
 
   return (
     <Main>
       <Content>
         <MapContainer>
-          <Level linkLevel={'30'} levelGame={levelGame}>
-            <Link to="/game/3/0" className='link'>
+          <SubwayLines />
+          <Level
+            linkLevel={'30'}
+            levelGame={levelGame}
+            style={{ transform: 'translate(144.9px, -416px)' }}
+          >
+            <Link to="/game/3/0" className="link">
               3.0
             </Link>
           </Level>
-          <Level linkLevel={'20'} levelGame={levelGame}>
+          <Level
+            linkLevel={'20'}
+            levelGame={levelGame}
+            style={{ transform: 'translate(-113.1px, -238px)' }}
+          >
             <Link to="/game/2/0" className="link">
               2.0
             </Link>
           </Level>
-          <Level linkLevel={'12'} levelGame={levelGame}>
+          <Level
+            linkLevel={'12'}
+            levelGame={levelGame}
+            style={{ transform: 'translate(-22.1px, -62px)' }}
+          >
             <Link to="/game/1/2" className="link">
               1.2
             </Link>
           </Level>
-          <Level linkLevel={'11'} levelGame={levelGame}>
+          <Level
+            linkLevel={'11'}
+            levelGame={levelGame}
+            style={{ transform: 'translate(67.9px, 116px)' }}
+          >
             <Link to="/game/1/1" className="link">
               1.1
             </Link>
           </Level>
-          <Level linkLevel={'10'} levelGame={levelGame}>
+          <Level
+            linkLevel={'10'}
+            levelGame={levelGame}
+            style={{ transform: 'translate(66.9px, 268px)' }}
+          >
             <Link to="/game/1/0" className="link">
               1.0
             </Link>
           </Level>
-          <Level linkLevel={'01'} levelGame={levelGame}>
+          <Level
+            linkLevel={'01'}
+            levelGame={levelGame}
+            style={{ transform: 'translate(94.9px, 366px)' }}
+          >
             <Link to="/game/0/1" className="link">
               0.1
             </Link>
           </Level>
-          <Level linkLevel={'00'} levelGame={levelGame}>
+          <Level
+            linkLevel={'00'}
+            levelGame={levelGame}
+            style={{ transform: 'translate(154.9px, 449px)' }}
+          >
             <Link to="/game/0/0" className="link">
               0.0
             </Link>
@@ -98,3 +126,8 @@ const Map = () => {
 };
 
 export default Map;
+
+// level 00
+// cx: 249.4;
+// cy: 680.07;
+// r: 9.16;
