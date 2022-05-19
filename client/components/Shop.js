@@ -83,7 +83,7 @@ const Shop = () => {
           {allHats.map((hat, index) => (
             <HatContainer2 key={index}>
               <Hat src={hat.url} />
-              <HatButton>{`P ${hat.cost}`}</HatButton>
+              <HatButton onClick={() => console.log('buy hat')} >{`P ${hat.cost}`}</HatButton>
             </HatContainer2>
           ))}
         </HatContainer>
