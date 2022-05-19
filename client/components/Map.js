@@ -65,16 +65,16 @@ const Map = () => {
           <Level
             linkLevel={'30'}
             levelGame={levelGame}
-            style={{ transform: 'translate(154.9px, 449px)' }}
+            style={{ transform: 'translate(144.9px, -416px)' }}
           >
             <Link to="/game/3/0" className="link">
-              2.0
+              3.0
             </Link>
           </Level>
           <Level
             linkLevel={'20'}
             levelGame={levelGame}
-            style={{ transform: 'translate(94.9px, 366px)' }}
+            style={{ transform: 'translate(-113.1px, -238px)' }}
           >
             <Link to="/game/2/0" className="link">
               2.0
@@ -83,7 +83,7 @@ const Map = () => {
           <Level
             linkLevel={'12'}
             levelGame={levelGame}
-            style={{ transform: 'translate(94.9px, 366px)' }}
+            style={{ transform: 'translate(-22.1px, -62px)' }}
           >
             <Link to="/game/1/2" className="link">
               1.2
