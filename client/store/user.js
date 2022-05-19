@@ -43,6 +43,26 @@ export const updateUserWon = (
     }
   };
 };
+// const UPDATED_USER = 'UPDATED_USER'
+
+// const _updatedUser = (user) => {
+//   return {
+//     type: UPDATED_USER,
+//     user
+//   }
+// }
+
+// export const fetchUpdatedUser = (data) => {
+//   console.log('are we being called?')
+//   return async (dispatch) => {
+//     try {
+//       const { editedUser } = await axios.put(`/api/users/${data.id}`, { password: data.password })
+//       dispatch(_updatedUser(editedUser))
+//     } catch (err) {
+//       console.log('Unable to fetch edited user', err)
+//     }
+//   }
+// }
 
 export default function (state = {}, action) {
   switch (action.type) {

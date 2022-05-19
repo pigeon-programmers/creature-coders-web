@@ -16,26 +16,28 @@ import Game10 from './components/Games/Level1/Game10';
 import Game11 from './components/Games/Level1/Game11';
 import Game12 from './components/Games/Level1/Game12';
 import Game20 from './components/Games/Level2/Game20';
+import Game30 from './components/Games/Level3/Game30';
 import GameWon from './components/GameWon';
 
-//TODO: adjust so that isLoggedIn ternary only applied to routes that are different
+// TODO: adjust so that isLoggedIn ternary only applied to routes that are different
 
 const Routes = () => {
-  const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => !!state.auth.id);
-  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch()
+  const isLoggedIn = useSelector((state) => !!state.auth.id)
+  const auth = useSelector((state) => state.auth)
 
   useEffect(() => {
-    dispatch(me());
-  }, []);
+    dispatch(me())
+  }, [])
 
   useEffect(() => {
-    if (isLoggedIn) dispatch(getSingleUser(auth.id));
-  }, [isLoggedIn]);
+    if (isLoggedIn) dispatch(getSingleUser(auth.id))
+  }, [isLoggedIn])
 
   return (
     <div>
-      {isLoggedIn ? (
+      {isLoggedIn
+        ? (
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/map" component={Map} />
@@ -50,9 +52,11 @@ const Routes = () => {
           <Route path="/game/1/1" exact component={Game11} />
           <Route path="/game/1/2" exact component={Game12} />
           <Route path="/game/2/0" exact component={Game20} />
+          <Route path="/game/3/0" exact component={Game30} />
           <Route component={NotFound} />
         </Switch>
-      ) : (
+          )
+        : (
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/login" exact component={Login} />
@@ -65,13 +69,14 @@ const Routes = () => {
           <Route path="/game/1/1" exact component={Game11} />
           <Route path="/game/1/2" exact component={Game12} />
           <Route path="/game/2/0" exact component={Game20} />
+          <Route path="/game/3/0" exact component={Game30} />
           <Route component={NotFound} />
         </Switch>
-      )}
+          )}
     </div>
-  );
-};
+  )
+}
 
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
-export default withRouter(Routes);
+export default withRouter(Routes)
