@@ -58,45 +58,6 @@ export const HomeSubTitle = styled.h5`
   color: ${palette.white};
 `;
 
-//NAV AND STATUS BARS
-
-export const NavIconContainer = styled.div`
-  width: 80vw;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const Status = styled.nav`
-  width: 100vw;
-  height: 5vh;
-  background: ${palette.mdGray};
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 2;
-`;
-
-export const StatusIconContainer = styled.div`
-  width: 13vw;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-`;
-
-export const StatusIcon = styled.img`
-  height: 3vh;
-`;
-
-export const StatusText = styled.p`
-  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
-  font-size: 3.5vh;
-`;
-
 //FORMS AND INPUTS
 export const FormContainer = styled.form`
   height: 70vh;
