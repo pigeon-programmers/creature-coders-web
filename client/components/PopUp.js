@@ -10,7 +10,7 @@ import {
 } from './style';
 
 const PopUp = (props) => {
-  const { togglePopUp, open, children } = props;
+  const { togglePopUp, open, children, title} = props;
 
   return (
     <div>
@@ -19,10 +19,10 @@ const PopUp = (props) => {
           <ModalScreen>
             <PopMain>
               <PopHeader>
-                <PopTitle>{children[0]}</PopTitle>
+                <PopTitle>{title}</PopTitle>
                 <PopCloseButton onClick={togglePopUp}>&times;</PopCloseButton>
               </PopHeader>
-              <PopBody>{children[1]}</PopBody>
+              <PopBody>{children}</PopBody>
             </PopMain>
             <PopOverlay onClick={togglePopUp}></PopOverlay>
           </ModalScreen>

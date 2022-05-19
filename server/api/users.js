@@ -38,3 +38,16 @@ router.put('/:userId', async (req, res, next) => {
   }
 })
 
+// router.put('/:id', async (req, res, next) => {
+//   try {
+//     const user = await User.findOne({
+//       where: {
+//         id: req.params.id,
+//       },
+//     });
+//     res.send(await user.update(req.body));
+//     res.status(202);
+//   } catch (err) {
+//     next(err)
+//   }
+// })
