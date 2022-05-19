@@ -1,7 +1,7 @@
 import React from 'react';
 import { Main, Button, HomeTitle, HomeSubTitle } from './style';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const HomeButton = styled(Button)`
   width: 40vw;
@@ -25,11 +25,45 @@ const MainBG = styled(Main)`
   background-color: #2828ff;
 `;
 
+const blinker = keyframes`
+0% {
+  opacity: 0;
+}
+49.9% {
+  opacity: 0;
+}
+50% {
+  opacity: 1;
+}
+100% {
+  opacity: 1;
+}
+`;
+const blinker2 = keyframes`
+0% {
+  opacity: 1;
+}
+49.9% {
+  opacity: 1;
+}
+50% {
+  opacity: 0;
+}
+100% {
+  opacity: 0;
+}
+`;
+
 const Bang = styled.img`
   width: 95vw;
   position: absolute;
   top: 10vh;
+  animation: ${blinker} 1s linear infinite;
 `;
+
+const Bang2 = styled(Bang)`
+animation: ${blinker2} 1s linear infinite;
+`
 
 const SmallBang = styled.img`
   width: 6vw;
@@ -61,7 +95,7 @@ const Home = (props) => {
   return (
     <MainBG>
       <Bang src="https://creature-coders.s3.amazonaws.com/bang1.svg" />
-      <Bang src="https://creature-coders.s3.amazonaws.com/bang2.svg" />
+      <Bang2 src="https://creature-coders.s3.amazonaws.com/bang2.svg" />
       <SmallBang src="https://creature-coders.s3.amazonaws.com/bangSmall-01.svg" />
       <SmallBang src="https://creature-coders.s3.amazonaws.com/bangSmall-02.svg" />
       <SmallBang src="https://creature-coders.s3.amazonaws.com/bangSmall-03.svg" />
