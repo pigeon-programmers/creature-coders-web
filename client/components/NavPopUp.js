@@ -4,8 +4,8 @@ import { NavIcon, PopOverlay, palette } from './style';
 import styled from 'styled-components';
 
 const Pop = styled.div`
-  position: fixed;
-  left: 76.5vw;
+  position: absolute;
+  left: 87vw;
   bottom: 3vh;
   height: 10vh;
   width: 10vw;
@@ -27,9 +27,9 @@ const NavPopUp = (props) => {
   const { togglePopUp, open } = props;
 
   return (
-    <div>
+    <>
       {open && (
-        <div>
+        <>
           <NavPopOverlay onClick={togglePopUp}>
           <Pop>
             <Link to="/settings">
@@ -44,9 +44,9 @@ const NavPopUp = (props) => {
               />
           </Pop>
           </NavPopOverlay>
-        </div>
+        </>
       )}
-    </div>
+    </>
   );
 };
 
