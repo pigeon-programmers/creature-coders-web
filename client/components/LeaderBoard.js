@@ -22,21 +22,22 @@ const LeaderText = styled(HomeSubTitle)`
 const LeaderBoard = () => {
     const dispatch = useDispatch();
     const allUsers = useSelector((state) => state.allUsers);
-    console.log("geting all users!", allUsers)
+    console.log("getting all users!", allUsers)
 
     useEffect(() => {
        dispatch(fetchAllUsers());
       }, []);
 
+    const pointsArray = allUsers.map((user) => user.points);
+    console.log(pointsArray.sort((a, b) => a - b));
+
     return (
         <LeaderBG>
           <LeaderContent>
             <LeaderText>Creature Coders Leader Board</LeaderText> 
-            <p>1st: </p>
-            <p>2nd: </p>
-            <p>3rd: </p>
-            <p>4th: </p>
-            <p>5th: </p>
+            {allUsers.map((user) => {
+                return <p key={user.id}>{user.points}</p>
+            })}
           </LeaderContent>
         </LeaderBG>
     )
