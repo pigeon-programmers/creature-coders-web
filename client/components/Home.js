@@ -7,10 +7,10 @@ const MainBG = styled(Main)`
   background-color: #2828ff;
 `;
 
-//THIS COMPONENT OPERATES AS HOME AND MUST LOG IN PAGE FOR GAMES ABOVE TUTORIAL LEVEL
+//THIS COMPONENT OPERATES AS HOME AND "MUST LOG IN" PAGE FOR GAMES ABOVE TUTORIAL LEVEL
 
 const Home = (props) => {
-  //mustLogIn is passed after last tutorial game from games that are only accessible to logged-in users
+  //mustLogIn is passed after last tutorial game and from games that are only accessible to logged-in users
   const { mustLogIn } =
     props && props.location && props.location.state
       ? props.location.state
