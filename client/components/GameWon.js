@@ -33,7 +33,7 @@ const GameWon = (props) => {
     <WonBg>
       <Content>
         <DancingPigeon src="https://creature-coders.s3.amazonaws.com/pigeon.svg" />
-        <BlackGameText>You Won</BlackGameText>
+        {/* <BlackGameText>You Won</BlackGameText> */}
         <BlackGameText>You won {points} points</BlackGameText>
         <BlackGameText>You won {pidgeCoins} pidge coins</BlackGameText>
         <BlackGameText>GO YOU!!</BlackGameText>

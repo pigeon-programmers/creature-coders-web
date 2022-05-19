@@ -246,7 +246,7 @@ export const Computer = styled.img`
 
 export const Pigeon = styled.img`
   height: 40vh;
-  margin-top: 2.5vh;
+  margin-top: 8vh;
 `;
 
 //POPUPS AND HINTS STYLING
