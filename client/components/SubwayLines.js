@@ -1,11 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
+//THIS COMPONENT IS HERE FOR WORKING WITH MOVING PIECE ALONG SVG LINES
+//FOR NOW, SUBWAY LINES ARE IN THE BACKGROUND IMAGE
+//Levels in "Map" must also be moved in this component is to be used
+//BACKGROUND IMG WITHOUT SUBWAY LINES: https://creature-coders.s3.amazonaws.com/map-bg.jpg
+
 const Svg = styled.svg`
   enable-background: new 0 0 290.88 726.2;
   width: 35vw;
   height: 63vh;
   transform: scale(1.47);
+  position: fixed;
 `;
 
 //General styling for all paths and lines
