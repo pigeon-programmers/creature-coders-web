@@ -14,9 +14,9 @@ const SubTitle = styled(HomeSubTitle)`
 `;
 
 const Hat = styled.img`
-  width: 20%;
+  width: 28vw;
   justify-content: space-around;
-  margin: 1em 3em;
+  margin: .25em 3em;
 `;
 
 const HatButton = styled(Button)`
@@ -28,6 +28,7 @@ const HatContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 3em;
 `;
 
 const HatContainer2 = styled.div`
