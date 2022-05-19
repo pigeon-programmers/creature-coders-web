@@ -6,6 +6,8 @@
 
 ✨ *note: Creature Coders is currently designed for iPad. For best user experience, open Chrome Dev Tools and view on iPad Air* ✨
 
+Give us some feedback!: https://docs.google.com/forms/d/17tWMHHM6FGypawsQcMP3HqCbZi5qYHG2Rr9i804lmUY/edit?ts=6284ffa4
+
 **Log in as a seeded user:**
 1.  To log in as a registered user, you can use username: `Grace` , password: `123` for access to all games and levels. 
 2.  For a user mid-way through levels, you can log in as username: `Pippin`, password `123`. 

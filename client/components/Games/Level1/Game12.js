@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import Workspace from "../Workspace";
+import Workspace from '../Workspace';
 import {
   GameContent,
   Main,
   PopContainer,
   PopButton,
   Content,
-} from "../../style";
-import PopUp from "../../PopUp";
-import TryAgain from "../../TryAgain";
+} from '../../style';
+import PopUp from '../../PopUp';
+import TryAgain from '../../TryAgain';
+import Home from '../../Home';
 import { updateUserWon } from '../../../store/user';
-import "../Blocks/12Blocks";
+import '../Blocks/12Blocks';
 
 //as of May 14th this game isn't fleshed out
 
@@ -39,11 +40,11 @@ export const Game12 = () => {
   }, []);
 
   const toolbox = {
-    kind: "flyoutToolbox",
+    kind: 'flyoutToolbox',
     contents: [
       {
-        kind: "block",
-        type: "subway",
+        kind: 'block',
+        type: 'subway',
       },
     ],
   };
@@ -51,7 +52,7 @@ export const Game12 = () => {
   const initApi = (interpreter, scope) => {
     // Add an API function for the alert() block.
     const wrapper = function (text) {
-      text = text ? text.toString() : "";
+      text = text ? text.toString() : '';
       // const test = document.getElementById('test');
       // test.innerHTML = text;
 
@@ -60,43 +61,42 @@ export const Game12 = () => {
     };
     interpreter.setProperty(
       scope,
-      "alert",
+      'alert',
       interpreter.createNativeFunction(wrapper)
     );
   };
 
   const outcome = () => {
     // if won
-  //   if (isLoggedIn) {
-  //     let newPoints = points + gamePoints;
-  //     let newPidgeCoin = pidgeCoin + gameCoins;
-
-  //     levelGame > 12
-  //       ? dispatch(
-  //           updateUserWon(
-  //             id,
-  //             newPoints,
-  //             currentLevel,
-  //             currentGame,
-  //             newPidgeCoin
-  //           )
-  //         )
-  //       : dispatch(updateUserWon(id, newPoints, 2, 0, newPidgeCoin));
-  //   }
-  //   setTimeout(() => {
-  //     history.push(`/game/won`, {
-  //       points: gamePoints,
-  //       pidgeCoins: gameCoins,
-  //     });
-  //   }, 750);
-  // } else {
-  //   setTryAgain(true);
-  //   gamePoints <= 5 ? null : setGamePoints(gamePoints - 1);
-  //   gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);
-  // }
+    //   if (isLoggedIn) {
+    //     let newPoints = points + gamePoints;
+    //     let newPidgeCoin = pidgeCoin + gameCoins;
+    //     levelGame > 12
+    //       ? dispatch(
+    //           updateUserWon(
+    //             id,
+    //             newPoints,
+    //             currentLevel,
+    //             currentGame,
+    //             newPidgeCoin
+    //           )
+    //         )
+    //       : dispatch(updateUserWon(id, newPoints, 2, 0, newPidgeCoin));
+    //   }
+    //   setTimeout(() => {
+    //     history.push(`/game/won`, {
+    //       points: gamePoints,
+    //       pidgeCoins: gameCoins,
+    //     });
+    //   }, 750);
+    // } else {
+    //   setTryAgain(true);
+    //   gamePoints <= 5 ? null : setGamePoints(gamePoints - 1);
+    //   gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);
+    // }
   };
 
-  return (
+  return isLoggedIn ? (
     <Main>
       <Content>
         <PopContainer>
@@ -123,6 +123,8 @@ export const Game12 = () => {
         <Workspace toolbox={toolbox} initApi={initApi} outcome={outcome} />
       </Content>
     </Main>
+  ) : (
+    <Home mustLogIn={true} />
   );
 };
 

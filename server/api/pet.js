@@ -4,6 +4,17 @@ const {
 } = require('../db');
 module.exports = router;
 
+router.get('/:userId', async (req, res, next) => {
+  try {
+    const userPet = await Pet.findOne({ where: {
+      userId: req.params.userId
+    }})
+    res.json(userPet);
+  } catch (err) {
+    next(err);
+  }
+})
+
 router.post('/:userId', async (req, res, next) => {
   try {
     console.log('wreck that body: ', req.body);
