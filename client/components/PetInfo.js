@@ -8,6 +8,10 @@ const MainBG = styled(Main)`
   background-color: #4ede1c;
 `;
 
+const NameBox = styled(Input)`
+background-color: #FFFFFF;
+`
+
 const PetInfo = () => {
   const dispatch = useDispatch();
   const [petType, setPetType] = useState('');
@@ -16,7 +20,7 @@ const PetInfo = () => {
 
   useEffect(() => {
     if (petType) {
-      setName(names[Math.floor(Math.random() * names.length)]);
+      setName(randomName);
     }
   }, [petType]);
 
@@ -54,6 +58,48 @@ const PetInfo = () => {
     'Tire',
     'Jax',
     'Alfy',
+    'Bucky',
+    'Nichols',
+    'Petunia',
+    'Delilah',
+    'Potato',
+    'Penelope',
+    'Boots',
+    'Nickie',
+    'Hubcap',
+    'Olive',
+    'Stewpot',
+    'Papes',
+    'Newsie',
+    'Petunia',
+    'Meep',
+    'Gooch',
+    'Rudely',
+    'Spot',
+    'Sleepy',
+    'JJ',
+    'Aggie',
+    'Fancy',
+    'Bernice',
+    'Peach',
+    'Porchie',
+    'Poochie',
+    'Shrimpy',
+    'Hula Hoop',
+    'Fragonard',
+    'Crackers',
+    'Cricket',
+    'Whiffle Ball',
+    'Duflee',
+    'Beebo',
+    'Buttercup',
+    'Knuckle',
+    'Meadow',
+    'Turbo',
+    'Turnip',
+    'Parsnip',
+    'Pastrami',
+    'Scoops',
   ];
   const randomName = names[Math.floor(Math.random() * names.length)];
 
@@ -76,9 +122,10 @@ const PetInfo = () => {
           <option value="Skunk">Skunk</option>
         </Select>
         <Label htmlFor="name">Name:</Label>
-        <Input disabled id="name" value={name}></Input>
+        <NameBox disabled id="name" value={name}></NameBox>
+        <Label htmlFor="get-new-name">Get New Name:</Label>
         <Button
-          type="button"
+          type="button" id="get-new-name"
           onClick={(e) => {
             e.preventDefault();
             setName(randomName);
@@ -91,7 +138,6 @@ const PetInfo = () => {
           onClick={(e) => {
             e.preventDefault();
             dispatch(savePet(id, { name, type: petType }));
-
           }}
         >
           Submit
