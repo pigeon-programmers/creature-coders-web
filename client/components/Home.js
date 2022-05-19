@@ -111,7 +111,7 @@ const Home = (props) => {
       <SmallBang3 src="https://creature-coders.s3.amazonaws.com/bangSmall-03.svg" />
       <SmallBang4 src="https://creature-coders.s3.amazonaws.com/bangSmall-04.svg" />
       <Title>
-        {!mustLogIn ? 'Creature Coders' : 'Want to keep the fun going...?'}
+        {!mustLogIn ? 'Creature Coders' : 'Want to keep going?'}
       </Title>
       <SubTitle>
         {!mustLogIn
