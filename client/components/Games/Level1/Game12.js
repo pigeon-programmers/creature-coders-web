@@ -19,15 +19,20 @@ import "../Blocks/12Blocks";
 import styled from "styled-components";
 
 const Bush = styled.img`
-  height: 6vh;
-  width: 6vh;
+  height: 15vh;
+  width: 15vh;
 `;
 const SubwayPigeon = styled(Pigeon)`
-  height: 10vh;
-  width: 10vh;
+  height: 13vh;
+  width: 13vh;
+  position: absolute;
 `;
 const SubwayGameContent = styled(GameContent)`
   flex-direction: row;
+  align-items: flex-end;
+  background-color: #2828FF;
+  overflow: hidden;
+  position: relative;
 `;
 
 export const Game12 = () => {
@@ -154,8 +159,8 @@ export const Game12 = () => {
           {pigeonAppear ? (
             <SubwayPigeon src="https://creature-coders.s3.amazonaws.com/pigeon.svg" />
           ) : null}
-          <Bush src="https://creature-coders.s3.amazonaws.com/bush-02.svg" />
           <Bush src="https://creature-coders.s3.amazonaws.com/bush-01.svg" />
+          <Bush src="https://creature-coders.s3.amazonaws.com/bush-02.svg" />
         </SubwayGameContent>
         <Workspace toolbox={toolbox} onRun={onRun} />
       </Content>
