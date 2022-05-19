@@ -9,12 +9,26 @@ import {
   PopContainer,
   PopButton,
   Content,
+  Pigeon,
 } from "../../style";
 import PopUp from "../../PopUp";
 import TryAgain from "../../TryAgain";
 import Home from "../../Home";
 import { updateUserWon } from "../../../store/user";
 import "../Blocks/12Blocks";
+import styled from "styled-components";
+
+const Bush = styled.img`
+  height: 6vh;
+  width: 6vh;
+`;
+const SubwayPigeon = styled(Pigeon)`
+  height: 10vh;
+  width: 10vh;
+`;
+const SubwayGameContent = styled(GameContent)`
+  flex-direction: row;
+`;
 
 export const Game12 = () => {
   const dispatch = useDispatch();
@@ -22,9 +36,10 @@ export const Game12 = () => {
 
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
+  const [connect, setConnect] = useState(false);
   const [tryAgain, setTryAgain] = useState(false);
   const [subwayLine, setSubwayLine] = useState("");
-  const [connect, setConnect] = useState(false);
+  const [pigeonAppear, setPigeonAppear] = useState(false);
   const [levelGame, setLevelGame] = useState(0);
   const [gamePoints, setGamePoints] = useState(15);
   const [gameCoins, setGameCoins] = useState(5);
@@ -82,7 +97,7 @@ export const Game12 = () => {
       if (isLoggedIn) {
         let newPoints = points + gamePoints;
         let newPidgeCoin = pidgeCoin + gameCoins;
-        // document.getElementById('subwayLine').style.backgroundColor('yellow');
+        setPigeonAppear(true);
         levelGame > 12
           ? dispatch(
               updateUserWon(
@@ -100,7 +115,7 @@ export const Game12 = () => {
           points: gamePoints,
           pidgeCoins: gameCoins,
         });
-      }, 750);
+      }, 1200);
     } else {
       setTryAgain(true);
       setConnect(false);
@@ -127,11 +142,21 @@ export const Game12 = () => {
           <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
           <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
             <div>Hint</div>
-            <p>The Q train is on the Yellow Line! Also remember to select GO!</p>
+            <p>
+              The Q train is on the Yellow Line! Also remember to select GO!
+            </p>
           </PopUp>
           <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
         </PopContainer>
-        <GameContent id="subwayLine"></GameContent>
+        <SubwayGameContent>
+          <Bush src="https://creature-coders.s3.amazonaws.com/bush-01.svg" />
+          <Bush src="https://creature-coders.s3.amazonaws.com/bush-02.svg" />
+          {pigeonAppear ? (
+            <SubwayPigeon src="https://creature-coders.s3.amazonaws.com/pigeon.svg" />
+          ) : null}
+          <Bush src="https://creature-coders.s3.amazonaws.com/bush-02.svg" />
+          <Bush src="https://creature-coders.s3.amazonaws.com/bush-01.svg" />
+        </SubwayGameContent>
         <Workspace toolbox={toolbox} onRun={onRun} />
       </Content>
     </Main>
