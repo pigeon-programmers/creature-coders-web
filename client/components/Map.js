@@ -5,6 +5,17 @@ import { Main, Content } from './style';
 import SubwayLines from './SubwayLines';
 import styled from 'styled-components';
 
+// background-color: ${(p) => {
+//   if (parseInt(p.linkLevel) <= p.levelGame) {
+//     if (p.linkLevel[0] === '0') return '#FFE600';
+//     if (p.linkLevel[0] == '1') return '#4EDE1C';
+//     if (p.linkLevel[0] == '2') return '#2828FF';
+//     if (p.linkLevel[0] == '3') return '#E91717';
+//   } else {
+//     return '#7E7E7E';
+//   }
+// }};
+
 const MapContainer = styled.div`
   background-image: url('https://creature-coders.s3.amazonaws.com/map-bg.jpg');
   background-size: 100% 100%;
@@ -26,21 +37,15 @@ const Level = styled.div`
   width: 3.5vh;
   height: 3.5vh;
   border-radius: 50%;
-  border: 1px solid #000000;
+  border: 1px solid
+    ${(p) => (parseInt(p.linkLevel) <= p.levelGame ? '#000000' : '#FFFFFF')};
   margin: 1vh;
-  background-color: ${(p) => {
-    if (parseInt(p.linkLevel) <= p.levelGame) {
-      if (p.linkLevel[0] === '0') return '#FFE600';
-      if (p.linkLevel[0] == '1') return '#4EDE1C';
-      if (p.linkLevel[0] == '2') return '#2828FF';
-      if (p.linkLevel[0] == '3') return '#E91717';
-    } else {
-      return '#7E7E7E';
-    }
-  }};
+  background-color: ${(p) =>
+    parseInt(p.linkLevel) <= p.levelGame ? '#FFFFFF' : '#000000'};
   .link {
     text-decoration: none;
-    color: #000000;
+    color: ${(p) =>
+      parseInt(p.linkLevel) <= p.levelGame ? '#000000' : '#FFFFFF'};
     pointer-events: ${(p) =>
       parseInt(p.linkLevel) <= p.levelGame ? 'auto' : 'none'};
   }
