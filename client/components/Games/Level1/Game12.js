@@ -23,7 +23,7 @@ export const Game12 = () => {
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
   const [tryAgain, setTryAgain] = useState(false);
-  const [subwayLine, setSubwayLine] = useState("gray");
+  const [subwayLine, setSubwayLine] = useState("");
   const [connect, setConnect] = useState(false);
   const [levelGame, setLevelGame] = useState(0);
   const [gamePoints, setGamePoints] = useState(15);
@@ -127,7 +127,7 @@ export const Game12 = () => {
           <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
           <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
             <div>Hint</div>
-            <div>The Q train is on the Yellow Line!</div>
+            <p>The Q train is on the Yellow Line! Also remember to select GO!</p>
           </PopUp>
           <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
         </PopContainer>

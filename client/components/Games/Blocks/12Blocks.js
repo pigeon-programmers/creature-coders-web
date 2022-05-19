@@ -24,7 +24,7 @@ Blockly.Blocks['subway_two'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Get on the")
-        .appendField(new Blockly.FieldDropdown([["green","G"], ["blue","B"], ["yellow","Y"]]), "subway line")
+        .appendField(new Blockly.FieldDropdown([["green","G"], ["purple","P"], ["yellow","Y"]]), "subway line")
         .appendField("line! Ready?")
         .appendField(new Blockly.FieldDropdown([["Stop.","off"], ["Go!","on"]]), "switch");
     this.setInputsInline(false);
@@ -43,8 +43,8 @@ Blockly.JavaScript['subway_two'] = function(block) {
     if (dropdown_subway_line === "G") {
         code = `("green")`;
     }
-    if (dropdown_subway_line === "B") {
-        code = `("blue")`;
+    if (dropdown_subway_line === "P") {
+        code = `("purple")`;
     }
     if (dropdown_subway_line === "Y") {
         code = `("yellow")`;
