@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Main, Content } from './style';
+import SubwayLines from './SubwayLines';
 import styled from 'styled-components';
 
 export const MapContainer = styled.div`
@@ -53,9 +54,10 @@ const Map = () => {
   }, [currentLevel, currentGame]);
 
   return (
-    <Main>
-      <Content>
-        <MapContainer>
+    // <Main>
+    <Content>
+      <SubwayLines />
+      {/* <MapContainer>
           <Level linkLevel={'20'} levelGame={levelGame}>
             <Link to="/game/2/0" className="link">
               2.0
@@ -86,9 +88,9 @@ const Map = () => {
               0.0
             </Link>
           </Level>
-        </MapContainer>
-      </Content>
-    </Main>
+        </MapContainer> */}
+    </Content>
+    // </Main>
   );
 };
 
