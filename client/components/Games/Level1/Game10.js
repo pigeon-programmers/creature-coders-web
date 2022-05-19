@@ -207,8 +207,11 @@ export const Game10 = () => {
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
-          <PopUp open={mission} togglePopUp={() => setMission(false)}>
-            <div>JavaScript Data Types</div>
+          <PopUp
+            open={mission}
+            togglePopUp={() => setMission(false)}
+            title={'JavaScript Data Types'}
+          >
             <div>
               <p>
                 JavaScript has 6 different data types: string, number, boolean,

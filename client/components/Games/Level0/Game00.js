@@ -44,42 +44,42 @@ export const Game00 = () => {
   }, []);
 
   useEffect(() => {
-    if (connect) outcome()
-  }, [connect])
+    if (connect) outcome();
+  }, [connect]);
 
   const toolbox = {
     kind: 'flyoutToolbox',
     contents: [
       {
         kind: 'block',
-        type: 'write'
+        type: 'write',
       },
       {
         kind: 'block',
-        type: 'write_set_input'
-      }
-    ]
-  }
+        type: 'write_set_input',
+      },
+    ],
+  };
 
   const initApi = (interpreter, scope) => {
     // Add an API function for the alert() block.
     const wrapper = function (text) {
-      text = text ? text.toString() : ''
-      setString(text)
-      text === 'hello world' ? setConnect(1) : setConnect(2)
-    }
+      text = text ? text.toString() : '';
+      setString(text);
+      text === 'hello world' ? setConnect(1) : setConnect(2);
+    };
 
     interpreter.setProperty(
       scope,
       'write',
       interpreter.createNativeFunction(wrapper)
-    )
-  }
+    );
+  };
 
   const onRun = (javascriptCode) => {
-    const myInterpreter = new Interpreter(javascriptCode, initApi)
-    myInterpreter.run()
-  }
+    const myInterpreter = new Interpreter(javascriptCode, initApi);
+    myInterpreter.run();
+  };
 
   // for this ternary we would need to make sure the instructions say to write hello pigeons with no caps or punctuation
   // ideally this will end up not being alerts
@@ -121,8 +121,11 @@ export const Game00 = () => {
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
-          <PopUp open={mission} togglePopUp={() => setMission(false)}>
-            <div>Hello World!</div>
+          <PopUp
+            open={mission}
+            togglePopUp={() => setMission(false)}
+            title={'Hello World'}
+          >
             <div>
               <p>
                 The pigeon knows that the first step to being a coder is to
@@ -147,7 +150,7 @@ export const Game00 = () => {
         <Workspace toolbox={toolbox} onRun={onRun} />
       </Content>
     </Main>
-  )
-}
+  );
+};
 
-export default Game00
+export default Game00;
