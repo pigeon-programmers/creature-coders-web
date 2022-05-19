@@ -56,6 +56,11 @@ const Map = () => {
     <Main>
       <Content>
         <MapContainer>
+          <Level linkLevel={'30'} levelGame={levelGame}>
+            <Link to="/game/3/0" className='link'>
+              3.0
+            </Link>
+          </Level>
           <Level linkLevel={'20'} levelGame={levelGame}>
             <Link to="/game/2/0" className="link">
               2.0
