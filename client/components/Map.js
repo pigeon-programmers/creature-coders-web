@@ -5,17 +5,6 @@ import { Main, Content } from './style';
 import SubwayLines from './SubwayLines';
 import styled from 'styled-components';
 
-// background-color: ${(p) => {
-//   if (parseInt(p.linkLevel) <= p.levelGame) {
-//     if (p.linkLevel[0] === '0') return '#FFE600';
-//     if (p.linkLevel[0] == '1') return '#4EDE1C';
-//     if (p.linkLevel[0] == '2') return '#2828FF';
-//     if (p.linkLevel[0] == '3') return '#E91717';
-//   } else {
-//     return '#7E7E7E';
-//   }
-// }};
-
 const MapContainer = styled.div`
   background-image: url('https://creature-coders.s3.amazonaws.com/map-bg.jpg');
   background-size: 100% 100%;
@@ -37,7 +26,7 @@ const Level = styled.div`
   width: 3.5vh;
   height: 3.5vh;
   border-radius: 50%;
-  border: 1px solid
+  border: 3px solid
     ${(p) => (parseInt(p.linkLevel) <= p.levelGame ? '#000000' : '#FFFFFF')};
   margin: 1vh;
   background-color: ${(p) =>
@@ -60,7 +49,7 @@ const Map = () => {
     isLoggedIn
       ? setLevelGame(parseInt(`${currentLevel}${currentGame}`))
       : setLevelGame(1);
-  }, [currentLevel, currentGame]);
+  }, [currentLevel, currentGame, isLoggedIn]);
 
   return (
     <Main>
