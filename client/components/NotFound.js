@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Main, Button } from './style';
@@ -17,13 +18,21 @@ const CryingPidge = styled.img`
 `;
 
 const NotFound = () => {
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
+
   return (
     <MainBG>
       <Text>{'Page not found, please try again :('}</Text>
       <CryingPidge src="https://creature-coders.s3.amazonaws.com/cryingPidgeInHole.svg" />
-      <Link to="/">
-        <Button>Home</Button>
-      </Link>
+      {isLoggedIn ? (
+        <Link to="/map">
+          <Button>Go Back to Map</Button>
+        </Link>
+      ) : (
+        <Link to="/">
+          <Button>Go Home</Button>
+        </Link>
+      )}
     </MainBG>
   );
 };
