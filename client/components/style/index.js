@@ -58,6 +58,9 @@ export const HomeSubTitle = styled.h5`
   color: ${palette.white};
 `;
 
+export const NavIcon = styled.img`
+height: 4vh;
+`;
 //FORMS AND INPUTS
 export const FormContainer = styled.form`
   height: 70vh;

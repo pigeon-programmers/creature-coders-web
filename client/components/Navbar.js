@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import NavPopUp from './NavPopUp';
 import styled from 'styled-components';
-import { palette } from './style';
+import { palette, NavIcon } from './style';
 
 const Nav = styled.nav`
   width: 100vw;
@@ -23,12 +24,9 @@ const NavIconContainer = styled.div`
   justify-content: space-between;
 `;
 
-const NavIcon = styled.img`
-  height: 4vh;
-`;
-
 const Navbar = () => {
-  const isLoggedIn = useSelector(state => !!state.auth.id)
+  const [pop, setPop] = useState(false);
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
 
   return (
     <Nav>
@@ -45,7 +43,7 @@ const Navbar = () => {
             <Link to="/profile">
               <NavIcon
                 src="https://creature-coders.s3.amazonaws.com/iconPet.svg"
-                alt="pet settings"
+                alt="user profile"
               />
             </Link>
             <NavIcon
@@ -56,12 +54,13 @@ const Navbar = () => {
               src="https://creature-coders.s3.amazonaws.com/iconShop.svg"
               alt="shop"
             />
-            <Link to="/settings">
-              <NavIcon
-                src="https://creature-coders.s3.amazonaws.com/iconSettings.svg"
-                alt="user settings"
-              />
-            </Link>
+
+            <NavIcon
+              onClick={() => setPop(true)}
+              src="https://creature-coders.s3.amazonaws.com/iconMenu.svg"
+              alt="more"
+            />
+            <NavPopUp open={pop} togglePopUp={() => setPop(false)} />
           </NavIconContainer>
         </>
       ) : (
