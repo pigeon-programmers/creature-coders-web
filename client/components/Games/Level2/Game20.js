@@ -135,8 +135,11 @@ const Game20 = () => {
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
-          <PopUp open={mission} togglePopUp={() => setMission(false)}>
-            <div>We Need More Cats!!!</div>
+          <PopUp
+            open={mission}
+            togglePopUp={() => setMission(false)}
+            title={'We Need More Cats!!!'}
+          >
             <div>
               <p>
                 The pigeon went to the bodega to get some breakfast. While
