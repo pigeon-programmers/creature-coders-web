@@ -61,6 +61,7 @@ export const HomeSubTitle = styled.h5`
 export const NavIcon = styled.img`
   height: 4vh;
 `;
+
 //FORMS AND INPUTS
 export const FormContainer = styled.form`
   height: 70vh;

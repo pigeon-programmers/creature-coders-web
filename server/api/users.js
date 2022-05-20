@@ -27,6 +27,20 @@ router.get('/:userId', async (req, res, next) => {
   }
 });
 
+router.post('/reset-passsword', async (req, res, next) => {
+  const thisUser = User.findByPk(req.body.email)
+  try {
+    if (thisUser) {
+      const request = {
+        email: thisUser.email
+      }
+      createResent
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.put('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId);
