@@ -21,8 +21,7 @@ export const getLoading = () => ({
 /**
  * THUNK CREATORS
  */
-
-// 
+ 
 export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
   if (token) {
