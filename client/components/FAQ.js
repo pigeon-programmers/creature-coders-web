@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import PopUp from './PopUp';
-import { Content, Main, PopContainer, PopButton } from './style';
+import { Content, Main, PopContainer, PopButton, HomeTgitcitle } from './style';
 import styled from 'styled-components';
+
+const FaqTitle = styled(HomeTitle)`
+  margin-bottom: 1vh;
+  font-family: 'Kirang Haerang', sans-serif;
+  font-size: 8vh;
+  color: #ffffff;
+  filter: drop-shadow(5px 5px 0 black);
+`;
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -9,12 +17,6 @@ const ButtonContainer = styled.div`
   justify-content: baseline;
   align-items: center;
   margin-top: 1vh;
-`;
-const HomeTitle = styled.h1`
-  font-family: 'Kirang Haerang', sans-serif;
-  font-size: 8vh;
-  color: #ffffff;
-  filter: drop-shadow(5px 5px 0 black);
 `;
 
 export const FAQ = () => {
@@ -34,7 +36,7 @@ export const FAQ = () => {
   return (
     <Main>
       <Content>
-        <HomeTitle>FAQ</HomeTitle>
+        <FaqTitle>FAQ</FaqTitle>
         <ButtonContainer>
           <PopButton onClick={() => setCreatures(!creatures)} type="button">
             What is Creature Coders?
