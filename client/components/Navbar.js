@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import NavPopUp from './NavPopUp';
-import styled from 'styled-components';
-import { palette, NavIcon } from './style';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import NavPopUp from "./NavPopUp";
+import styled from "styled-components";
+import { palette, NavIcon } from "./style";
 
 const Nav = styled.nav`
   width: 100vw;
@@ -46,10 +46,12 @@ const Navbar = () => {
                 alt="user profile"
               />
             </Link>
-            <NavIcon
-              src="https://creature-coders.s3.amazonaws.com/iconLeaderboard.svg"
-              alt="leaderboard"
-            />
+            <Link to="/leaderboard">
+              <NavIcon
+                src="https://creature-coders.s3.amazonaws.com/iconLeaderboard.svg"
+                alt="leaderboard"
+              />
+            </Link>
             <NavIcon
               src="https://creature-coders.s3.amazonaws.com/iconShop.svg"
               alt="shop"

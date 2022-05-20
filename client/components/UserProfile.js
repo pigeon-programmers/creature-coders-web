@@ -9,13 +9,14 @@ const UserBG = styled(Main)`
 `;
 
 const UserContent = styled(Content)`
-  background-color: rgba(126, 126, 126, 0.6);
+  background-color: rgba(255, 255, 255, 0.6);
   height: 70%;
   width: 80%;
 `;
 
 const ProfileText = styled(HomeSubTitle)`
   font-size: 3vh;
+  color: black;
   z-index: 50;
 `;
 
