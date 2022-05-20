@@ -4,19 +4,19 @@ const db = require('./db');
 
 const User = require('./models/User');
 const Pet = require('./models/Pet');
-const Badge = require('./models/Badge');
+const Hat = require('./models/Hat');
 
 User.hasOne(Pet);
 Pet.belongsTo(User);
 
-User.belongsToMany(Badge, { through: "User_Badges"});
-Badge.belongsToMany(User, { through: "User_Badges"});
+User.belongsToMany(Hat, { through: "User_Hats"});
+Hat.belongsToMany(User, { through: "User_Hats"});
 
 module.exports = {
   db,
   models: {
     User,
     Pet,
-    Badge,
+    Hat,
   },
 }
