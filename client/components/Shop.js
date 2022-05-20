@@ -1,11 +1,23 @@
 import React, { useEffect } from 'react';
-import { Button, HomeSubTitle, HomeTitle, Main } from './style';
+import {
+  Button,
+  HomeSubTitle,
+  HomeTitle,
+  Main,
+  Content,
+  palette,
+} from './style';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllHats } from '../store/hats';
 
 const MainBg = styled(Main)`
-  background-color: #ffe600;
+  background-color: ${palette.green};
+`;
+
+const HatContent = styled(Content)`
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 80%;
 `;
 
 const Title = styled(HomeTitle)`
@@ -13,6 +25,7 @@ const Title = styled(HomeTitle)`
 `;
 const SubTitle = styled(HomeSubTitle)`
   color: black;
+  margin: 2vh;
 `;
 
 const Hat = styled.img`
@@ -23,6 +36,10 @@ const Hat = styled.img`
 
 const HatButton = styled(Button)`
   width: 30vw;
+`;
+
+const ExpensiveHatButton = styled(HatButton)`
+  background: ${palette.mdGray};
 `;
 
 const HatContainer = styled.div`
@@ -44,33 +61,36 @@ const HatContainer2 = styled.div`
 const Shop = () => {
   const dispatch = useDispatch();
   const allHats = useSelector((state) => state.hats);
+  const user = useSelector((state) => state.user);
   useEffect(() => {
-    console.log('use effect happening')
-    dispatch(getAllHats);
+    dispatch(getAllHats());
   }, []);
-
-  console.log('all hats: ', allHats);
 
   return (
     <div>
       <MainBg>
-        <Title>Hat Shop!</Title>
-        <SubTitle>Buy hats with PidgeCoin</SubTitle>
-
-        <HatContainer>
-          {allHats && allHats.length > 0 ? (
-            allHats.map((hat, index) => (
-              <HatContainer2 key={index}>
-                <Hat src={hat.url} />
-                <HatButton
-                  onClick={() => console.log('buy hat')}
-                >{`P ${hat.cost}`}</HatButton>
-              </HatContainer2>
-            ))
-          ) : (
-            <SubTitle>Loading Hats...</SubTitle>
-          )}
-        </HatContainer>
+        <HatContent>
+          <Title>Hat Shop!</Title>
+          <SubTitle>Buy hats with PidgeCoin</SubTitle>
+          <HatContainer>
+            {allHats && allHats.length > 0 ? (
+              allHats.map((hat, index) => (
+                <HatContainer2 key={index}>
+                  <Hat src={hat.url} />
+                  {hat.cost > user.pidgeCoin ? (
+                    <ExpensiveHatButton>{`P ${hat.cost}`}</ExpensiveHatButton>
+                  ) : (
+                    <HatButton
+                      onClick={() => console.log('buy hat')}
+                    >{`P ${hat.cost}`}</HatButton>
+                  )}
+                </HatContainer2>
+              ))
+            ) : (
+              <Title>Loading Hats...</Title>
+            )}
+          </HatContainer>
+        </HatContent>
       </MainBg>
     </div>
   );
