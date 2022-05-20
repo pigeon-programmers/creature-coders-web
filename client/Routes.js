@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import { me } from "./store";
+import { me, getLoading } from "./store";
 import { getSingleUser } from "./store/user";
 import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
@@ -27,9 +27,13 @@ const Routes = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const auth = useSelector((state) => state.auth);
+  const isLoading = useSelector((state) => state.auth.isLoading);
+
+  console.log("AUTH", auth, "IS LOADING", isLoading)
 
   useEffect(() => {
     dispatch(me());
+    dispatch(getLoading());
   }, []);
 
   useEffect(() => {
