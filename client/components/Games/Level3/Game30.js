@@ -8,9 +8,9 @@ import {
   Content,
   Main,
   PopContainer,
-  PopButton
-} from '../../style'
-import PopUp from '../../PopUp'
+  PopButton,
+} from '../../style';
+import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
 import { updateUserWon } from '../../../store/user';
 import { useHistory } from 'react-router-dom';
@@ -85,9 +85,9 @@ export const Debugger = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      return setMission(true)
-    }, 5000)
-  }, [])
+      return setMission(true);
+    }, 5000);
+  }, []);
 
   useEffect(() => {
     isLoggedIn
@@ -185,71 +185,85 @@ export const Debugger = () => {
           </PopUp>
           <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
         </PopContainer>
-      <BigGameContent>
-        <div>
-          <SmallerGameText>
-            {'function rockPaperScissors(p1, p2) {'}
-            <BugText id={0} onClick={handleClick}>{bugs[0]}</BugText>
-            <br />
-            &ensp;&ensp;{'if (p1 '}
-            <BugText id={3}>{fakeBugs[1]}</BugText>
-            {' p2){'}
-            <br />
-            <br />
-            &ensp;&ensp;&ensp;&ensp;{"return 'Draw!'"}
-            <BugText id={2} onClick={handleClick}>{bugs[2]}</BugText>
-            <br />
-            &ensp;&ensp;{'}'}
-            <br />
-            <br />
-            &ensp;&ensp;{"if (p1 == 'rock' && "}
-            <BugText id={1} onClick={handleClick}>{bugs[1]}</BugText>
-            {" p2 == 'scissors'){"}
-            <br />
-            <br />
-            &ensp;&ensp;&ensp;&ensp;{"return 'Player 1 won!'"}
-            <BugText id={4} onClick={handleClick}>{bugs[4]}</BugText>
-            <br />
-              &ensp;&ensp;{"}"}
+        <BigGameContent>
+          <div>
+            <SmallerGameText>
+              {'function rockPaperScissors(p1, p2) {'}
+              <BugText id={0} onClick={handleClick}>
+                {bugs[0]}
+              </BugText>
+              <br />
+              &ensp;&ensp;{'if (p1 '}
+              <BugText id={3}>{fakeBugs[1]}</BugText>
+              {' p2){'}
+              <br />
+              <br />
+              &ensp;&ensp;&ensp;&ensp;{"return 'Draw!'"}
+              <BugText id={2} onClick={handleClick}>
+                {bugs[2]}
+              </BugText>
+              <br />
+              &ensp;&ensp;{'}'}
+              <br />
+              <br />
+              &ensp;&ensp;{"if (p1 == 'rock' && "}
+              <BugText id={1} onClick={handleClick}>
+                {bugs[1]}
+              </BugText>
+              {" p2 == 'scissors'){"}
+              <br />
+              <br />
+              &ensp;&ensp;&ensp;&ensp;{"return 'Player 1 won!'"}
+              <BugText id={4} onClick={handleClick}>
+                {bugs[4]}
+              </BugText>
+              <br />
+              &ensp;&ensp;{'}'}
               <br />
               &ensp;&ensp;{"else if (p1 == 'scissors' "}
-            <BugText id={4}>{fakeBugs[2]}</BugText>
-            {" p2 == 'paper'){"}
-            <br />
-            <br />
-            <BugText id={3} onClick={handleClick}>{bugs[3]}</BugText>
-            &ensp;&ensp;&ensp;&ensp;{"return 'Player 1 won!'"}
-            <br />
+              <BugText id={4}>{fakeBugs[2]}</BugText>
+              {" p2 == 'paper'){"}
+              <br />
+              <br />
+              <BugText id={3} onClick={handleClick}>
+                {bugs[3]}
+              </BugText>
+              &ensp;&ensp;&ensp;&ensp;{"return 'Player 1 won!'"}
+              <br />
               &ensp;&ensp;{'}'}
-              <BugText id={5} onClick={handleClick}>{bugs[5]}</BugText>
+              <BugText id={5} onClick={handleClick}>
+                {bugs[5]}
+              </BugText>
               <br />
               &ensp;&ensp;{'else '}
-            <BugText id={0}>{fakeBugs[0]}</BugText>
-            {" (p1 == 'paper' && p2 == 'rock'){"}
-            <br />
-            <br />
-            &ensp;&ensp;&ensp;&ensp;{"return 'Player 1 won!'"}
-            <br />
+              <BugText id={0}>{fakeBugs[0]}</BugText>
+              {" (p1 == 'paper' && p2 == 'rock'){"}
+              <br />
+              <br />
+              &ensp;&ensp;&ensp;&ensp;{"return 'Player 1 won!'"}
+              <br />
               &ensp;&ensp;{'}'}
               <br />
               &ensp;&ensp;
               {'else {'}
-            <br />
-            <br />
-            &ensp;&ensp;&ensp;&ensp;{"return 'Player 2 won!';"}
-            <br />
-            &ensp;&ensp;{'}'}
-            <BugText id={6} onClick={handleClick}>{bugs[6]}</BugText>
+              <br />
+              <br />
+              &ensp;&ensp;&ensp;&ensp;{"return 'Player 2 won!';"}
+              <br />
+              &ensp;&ensp;{'}'}
+              <BugText id={6} onClick={handleClick}>
+                {bugs[6]}
+              </BugText>
               <br />
               <br />
               {'}'}
-          </SmallerGameText>
-        </div>
+            </SmallerGameText>
+          </div>
         </BigGameContent>
         <Button type="button" onClick={() => onRun()}>
           Run
         </Button>
-        <Roach src='https://creature-coders.s3.amazonaws.com/cockroach.svg' />
+        <Roach src="https://creature-coders.s3.amazonaws.com/cockroach.svg" />
       </Content>
     </Main>
   );

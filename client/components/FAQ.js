@@ -263,27 +263,27 @@ export const FAQ = () => {
           </PopButton>
           <PopUp
             open={undeNull}
-            title={'What is a bug??'}
+            title={'What is a bug?'}
             togglePopUp={() => setUndeNull(!undeNull)}
           >
             <div>
               <p>
                 A bug is an error in someone's code that causes the program to
-                do something unexpected. When you find a fix bugs in your code,
-                it is called debugging.
+                do something unexpected. When you find and fix bugs in your
+                code, it is called debugging.
               </p>
               <p>
-                The word "bug" is used because in 1947 Grace Hopper, a computer
-                scientist and baval engineer, found AN ACTUAL BUG in the
-                computer that was causing problems. She put the bug in a log
-                with the note: "First actual case of a bug being found." This
-                was back when computers were big things that relayed information
-                through tons of wires (...we've come a long way).
+                In 1947 Grace Hopper, a computer scientist and naval engineer,
+                found AN ACTUAL BUG in the computer that was causing problems.
+                She put the bug in a log with the note: "First actual case of a
+                bug being found." This was back when computers were big things
+                that relayed information through tons of wires (...we've come a
+                long way). This is why we use the word "bug."
               </p>
               <p>
-                Fun fact: Grace Hopper in an important figure in the programming
-                world. The creators of this app attending the Grace Hopper
-                Program at Full Stack Academy.
+                Fun fact: Grace Hopper is an important figure in the programming
+                world. The creators of this app attended the Grace Hopper
+                Program at Full Stack Academy!
               </p>
             </div>
           </PopUp>
