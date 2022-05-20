@@ -1,9 +1,9 @@
 import React from 'react';
 import { GameText, Main, Content, Pigeon, Button, palette } from './style';
 import { Link } from 'react-router-dom';
+import DancingPigeon from './Animations/DancingPigeon';
 import styled, { keyframes } from 'styled-components';
 
-//put dancing pigeon on own component and change styles to palette
 const WonBg = styled(Main)`
   background-color: ${palette.yellow};
 `;
@@ -14,27 +14,13 @@ const BlackGameText = styled(GameText)`
   margin: 0.25vh, 0.5vh, 0.5vh, 0.25vh;
 `;
 
-const rotate = keyframes`
-  from {
-    transform: rotate(.03turn)
-  }
-
-  to {
-    transform: rotate(-.05turn)
-  }`;
-
-const DancingPigeon = styled(Pigeon)`
-  animation: ${rotate} 0.4s alternate-reverse infinite;
-`;
-
 const GameWon = (props) => {
   const { points, pidgeCoins } = props.location.state;
 
   return (
     <WonBg>
       <Content>
-        <DancingPigeon src="https://creature-coders.s3.amazonaws.com/pigeon.svg" />
-        {/* <BlackGameText>You Won</BlackGameText> */}
+        <DancingPigeon />
         <BlackGameText>You won {points} points</BlackGameText>
         <BlackGameText>You won {pidgeCoins} pidge coins</BlackGameText>
         <BlackGameText>GO YOU!!</BlackGameText>

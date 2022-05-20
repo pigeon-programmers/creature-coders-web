@@ -13,37 +13,10 @@ import {
 } from '../../style';
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
+import Roach from '../../Animations/Roach';
 import { updateUserWon } from '../../../store/user';
 import { useHistory } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
-
-const slideIn = keyframes`
-  from {
-    top: 74vh;
-    z-index: 0;
-  }
-  35% {
-    top: 8vh;
-    z-index: 0;
-  }
-  50% {
-    top: 8vh;
-    z-index: 0;
-  }
-  to{
-    top: 74vh;
-    z-index: 0;
-  }
-`;
-
-const Roach = styled.img`
-  height: 60vh;
-  width: 50vh;
-  position: absolute;
-  top: 74vh;
-  animation: ${slideIn} 5s 1 linear;
-  z-index: -1;
-`;
 
 const BigGameContent = styled(GameContentNoBlock)`
   height: 60vh;
@@ -264,7 +237,7 @@ export const Debugger = () => {
         <Button type="button" onClick={() => onRun()}>
           Run
         </Button>
-        <Roach src="https://creature-coders.s3.amazonaws.com/cockroach.svg" />
+        <Roach />
       </Content>
     </Main>
   );
