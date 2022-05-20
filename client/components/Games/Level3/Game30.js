@@ -16,18 +16,32 @@ import { updateUserWon } from '../../../store/user';
 import { useHistory } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 
-const Roach = keyframes`
-from {}
-to {}
-`
+const slideIn = keyframes`
+  35% {
+    top: 8vh
+  }
+  50% {
+    top: 8vh
+  }
+`;
+
+const Roach = styled.img`
+  height: 60vh;
+  width: 50vh;
+  position: absolute;
+  top: 74vh;
+  animation: ${slideIn} 5s 1 linear;
+  z-index: 35;
+`;
 
 const BigGameContent = styled(GameContentNoBlock)`
-height: 60vh;
-`
+  height: 60vh;
+`;
 
 const SmallerGameText = styled(GameText)`
   font-size: x-large;
-`
+`;
+
 const BugText = styled.button`
   color: #e91717;
   border: none;
@@ -37,7 +51,6 @@ const BugText = styled.button`
   font-size: x-large;
   padding: 0;
 `;
-
 
 export const Debugger = () => {
   const dispatch = useDispatch();
@@ -221,6 +234,7 @@ export const Debugger = () => {
         <Button type="button" onClick={() => onRun()}>
           Run
         </Button>
+        <Roach src='https://creature-coders.s3.amazonaws.com/cockroach.svg' />
       </Content>
     </Main>
   );
