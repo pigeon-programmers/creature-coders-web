@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Doors from './Animations/Doors';
 import { Main, Content } from './style';
 import SubwayLines from './SubwayLines';
 import styled from 'styled-components';
@@ -128,6 +129,8 @@ const Map = () => {
             </Link>
           </Level>
         </MapContainer>
+        {/* need to fix door animation: */}
+        <Doors />
       </Content>
     </Main>
   );
