@@ -151,8 +151,11 @@ export const Game11 = () => {
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
-          <PopUp open={mission} togglePopUp={() => setMission(false)}>
-            <div>The Pigeon is Hosting a Breakfast Party</div>
+          <PopUp
+            open={mission}
+            togglePopUp={() => setMission(false)}
+            title={'The Pigeon is Hosting a Breakfast Party'}
+          >
             <div>
               <p>
                 The pigeon is having some out of town guests who really want to
