@@ -15,13 +15,13 @@ const GET_LOADING = 'IS_LOADING';
 const setAuth = (auth) => ({ type: SET_AUTH, auth });
 
 export const getLoading = () => ({
-  type: GET_LOADING
+  type: GET_LOADING,
 });
 
 /**
  * THUNK CREATORS
  */
- 
+
 export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
   if (token) {
@@ -30,6 +30,7 @@ export const me = () => async (dispatch) => {
         authorization: token,
       },
     });
+    dispatch(getLoading());
     return dispatch(setAuth({ ...res.data, token }));
   }
 };
@@ -59,16 +60,19 @@ export const logout = () => {
   };
 };
 
+const initialState = {
+  isLoading: true,
+};
 /**
  * REDUCER
  */
-export default function (state = {isLoading: true}, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case SET_AUTH:
-      return {...state, auth: action.auth};
-    case GET_LOADING: 
-      return {...state, isLoading: false}
+      return { ...state, ...action.auth };
+    case GET_LOADING:
+      return { ...state, isLoading: false };
     default:
-      return state
+      return state;
   }
 }
