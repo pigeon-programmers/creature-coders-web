@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import PopUp from './PopUp';
-import { Content, Main, PopContainer, PopButton, HomeTitle } from './style';
+import {
+  Content,
+  Main,
+  PopContainer,
+  PopButton,
+  HomeTitle,
+  palette,
+} from './style';
 import styled from 'styled-components';
 
 const FaqTitle = styled(HomeTitle)`
   margin-bottom: 1vh;
   font-family: 'Kirang Haerang', sans-serif;
   font-size: 8vh;
-  color: #ffffff;
+  color: ${palette.white};
   filter: drop-shadow(5px 5px 0 black);
 `;
 

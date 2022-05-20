@@ -5,7 +5,6 @@ import { Main, Button } from './style';
 
 const UserSettings = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => !!state.auth.id);
 
   return (
     <Main>

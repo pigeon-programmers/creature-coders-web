@@ -10,6 +10,7 @@ import {
   PopButton,
   Content,
   Pigeon,
+  palette,
 } from '../../style';
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
@@ -30,7 +31,7 @@ const SubwayPigeon = styled(Pigeon)`
 const SubwayGameContent = styled(GameContent)`
   flex-direction: row;
   align-items: flex-end;
-  background-color: #2828ff;
+  background-color: ${palette.blue};
   overflow: hidden;
   position: relative;
 `;
