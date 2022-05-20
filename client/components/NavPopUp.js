@@ -37,11 +37,13 @@ const NavPopUp = (props) => {
                 src="https://creature-coders.s3.amazonaws.com/iconSettings.svg"
                 alt="settings"
                 />
-                </Link>
+              </Link>
+              <Link to="/faq">
               <NavIcon
                 src="https://creature-coders.s3.amazonaws.com/iconHelp.svg"
                 alt="help"
-              />
+                />
+              </Link>
           </Pop>
           </NavPopOverlay>
         </>
