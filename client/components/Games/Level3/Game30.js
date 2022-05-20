@@ -107,12 +107,9 @@ export const Debugger = () => {
 
   console.log('squashed')
   const onRun = () => {
-    console.log('squashed', squashedBugs.length, 'bugs', bugs.length)
-    // const getBugs = localStorage.getItem('squashedBugs')
     if (squashedBugs.length === 7) {
       setWin(true)
     }
-    // check local storage compare lS vs bugs arr
     setRan(true)
   }
 
@@ -199,23 +196,5 @@ export const Debugger = () => {
     </Main>
   )
 }
-
-// if the function in the box == (
-// function rockPaperScissors(p1, p2) {
-//  if (p1 == p2){
-//    return 'Draw!'
-//  }
-//  if (p1 == 'rock' && p2 == 'scissors'){
-//    return 'Player 1 won!'
-//  } else if (p1 == 'scissors' && p2 == 'paper'){
-//    return 'Player 1 won!'
-//  } else if (p1 == \'paper\' && p2 == \'rock\'){ {
-//    return 'Player 1 won!'
-//  } else {
-//    return 'Player 2 won!';
-//  }
-//  )
-
-//  rerturn debugged
 
 export default Debugger
