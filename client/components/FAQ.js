@@ -263,7 +263,7 @@ export const FAQ = () => {
           </PopButton>
           <PopUp
             open={undeNull}
-            title={'What is a bug??'}
+            title={'What is a bug?'}
             togglePopUp={() => setUndeNull(!undeNull)}
           >
             <div>
