@@ -122,8 +122,11 @@ export const Game01 = () => {
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
-          <PopUp open={mission} togglePopUp={() => setMission(false)}>
-            <div>Hello Pigeons!</div>
+          <PopUp
+            open={mission}
+            togglePopUp={() => setMission(false)}
+            title={'Hello Pigeons'}
+          >
             <div>
               <p>
                 The pigeon wants to send out a message to all their friends.
