@@ -14,10 +14,10 @@ import {
 } from '../../style';
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
+import Home from '../../Home';
 import Interpreter from 'js-interpreter';
 import { updateUserWon } from '../../../store/user';
 import '../Blocks/11Blocks';
-
 
 export const Game11 = () => {
   const dispatch = useDispatch();
@@ -146,13 +146,16 @@ export const Game11 = () => {
     setCodeRun(myInterpreter);
   };
 
-  return (
+  return isLoggedIn ? (
     <Main>
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
-          <PopUp open={mission} togglePopUp={() => setMission(false)}>
-            <div>The Pigeon is Hosting a Breakfast Party</div>
+          <PopUp
+            open={mission}
+            togglePopUp={() => setMission(false)}
+            title={'The Pigeon is Hosting a Breakfast Party'}
+          >
             <div>
               <p>
                 The pigeon is having some out of town guests who really want to
@@ -190,6 +193,8 @@ export const Game11 = () => {
         <Workspace toolbox={toolbox} onRun={onRun} />
       </Content>
     </Main>
+  ) : (
+    <Home mustLogIn={true} />
   );
 };
 

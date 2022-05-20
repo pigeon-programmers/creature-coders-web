@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const palette = {
+export const palette = {
   white: '#FFFFFF',
   black: '#000000',
   dkGray: '#3D3D3D',
@@ -58,60 +58,9 @@ export const HomeSubTitle = styled.h5`
   color: ${palette.white};
 `;
 
-//NAV AND STATUS BARS
-export const Nav = styled.nav`
-  width: 100vw;
-  height: 7vh;
-  background: ${palette.mdGray};
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-`;
-
-export const NavIconContainer = styled.div`
-  width: 80vw;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
 export const NavIcon = styled.img`
   height: 4vh;
 `;
-
-export const Status = styled.nav`
-  width: 100vw;
-  height: 5vh;
-  background: ${palette.mdGray};
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 2;
-`;
-
-export const StatusIconContainer = styled.div`
-  width: 13vw;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-`;
-
-export const StatusIcon = styled.img`
-  height: 3vh;
-`;
-
-export const StatusText = styled.p`
-  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
-  font-size: 3.5vh;
-`;
-
 //FORMS AND INPUTS
 export const FormContainer = styled.form`
   height: 70vh;
@@ -130,7 +79,7 @@ export const Label = styled.label`
 
 export const LabelP = styled.p`
   margin: 0;
-`
+`;
 
 export const Input = styled.input`
   width: 50vw;
@@ -141,7 +90,7 @@ export const Input = styled.input`
   display: block;
   float: left;
   clear: left;
-  margin: .5em;
+  margin: 0.5em;
 `;
 export const Select = styled.select`
   width: 50vw;
@@ -151,17 +100,6 @@ export const Select = styled.select`
   box-sizing: border-box;
   font-size: 1.5em;
   font-family: 'Anonymous Pro', 'Andale Mono', monospace;
-`;
-
-//MAP STUFF
-export const MapContainer = styled.div`
-  width: 50vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${palette.dkGray};
 `;
 
 //GAME COMPONENTS
@@ -247,12 +185,17 @@ export const Computer = styled.img`
   margin: 1em;
 `;
 
-export const Pigeon = styled.p`
-  background-image: url('https://creature-coders.s3.amazonaws.com/pigeon.svg');
-  background-repeat: no-repeat;
-  height: 500px;
-  width: 350px;
-  margin-top: 1.5em;
+// export const Pigeon = styled.p`
+//   background-image: url('https://creature-coders.s3.amazonaws.com/pigeon.svg');
+//   background-repeat: no-repeat;
+//   height: 500px;
+//   width: 350px;
+//   margin-top: 1.5em;
+// `;
+
+export const Pigeon = styled.img`
+  height: 40vh;
+  margin-top: 8vh;
 `;
 
 //POPUPS AND HINTS STYLING

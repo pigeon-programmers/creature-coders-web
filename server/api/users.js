@@ -3,19 +3,18 @@ const { models: { User, Pet, Badge }} = require('../db')
 const { requireToken } = require('./securityMiddleware')
 module.exports = router
 
-router.get('/', async (req, res, next) => {
+router.get('/leaderboard', async (req, res, next) => {
   try {
     const users = await User.findAll({
-      // explicitly select only the id and username fields - even though
-      // users' passwords are encrypted, it won't help if we just
-      // send everything to anyone who asks!
-      attributes: ['id', 'username']
+      attributes: ['id', 'username', 'points', 'currentLevel'],
+      order: [['points', 'DESC']],
+      limit: 5,
     })
     res.json(users)
   } catch (err) {
     next(err)
   }
-})
+});
 
 router.get('/:userId', async (req, res, next) => {
   try {
@@ -40,3 +39,16 @@ router.put('/:userId', async (req, res, next) => {
   }
 });
 
+// router.put('/:id', async (req, res, next) => {
+//   try {
+//     const user = await User.findOne({
+//       where: {
+//         id: req.params.id,
+//       },
+//     });
+//     res.send(await user.update(req.body));
+//     res.status(202);
+//   } catch (err) {
+//     next(err)
+//   }
+// })

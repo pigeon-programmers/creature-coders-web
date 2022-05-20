@@ -94,13 +94,20 @@ export const Game01 = () => {
               )
             )
           : dispatch(updateUserWon(id, newPoints, 1, 0, newPidgeCoin));
+
+        setTimeout(() => {
+          history.push(`/game/won`, {
+            points: gamePoints,
+            pidgeCoins: gameCoins,
+          });
+        }, 750);
+      } else {
+        setTimeout(() => {
+          history.push(`/`, {
+            mustLogIn: true,
+          });
+        }, 750);
       }
-      setTimeout(() => {
-        history.push(`/game/won`, {
-          points: gamePoints,
-          pidgeCoins: gameCoins,
-        });
-      }, 750);
     } else {
       setTryAgain(true);
       //set connect to false again to allow another try if solution was incorrect
@@ -115,8 +122,11 @@ export const Game01 = () => {
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
-          <PopUp open={mission} togglePopUp={() => setMission(false)}>
-            <div>Hello Pigeons!</div>
+          <PopUp
+            open={mission}
+            togglePopUp={() => setMission(false)}
+            title={'Hello Pigeons'}
+          >
             <div>
               <p>
                 The pigeon wants to send out a message to all their friends.

@@ -14,11 +14,12 @@ import {
 } from '../../style';
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
+import Home from '../../Home';
 import styled from 'styled-components';
 import { updateUserWon } from '../../../store/user';
 
 const SmallerGameText = styled(GameText)`
-  font-size: small;
+  font-size: medium;
 `;
 
 const Game20 = () => {
@@ -39,7 +40,7 @@ const Game20 = () => {
   const [levelGame, setLevelGame] = useState(0);
   const [gamePoints, setGamePoints] = useState(10);
   const [gameCoins, setGameCoins] = useState(5);
-  
+
   const winState = [`catsTarget`, `cats++`, `return`];
 
   const isLoggedIn = useSelector((state) => !!state.auth.id);
@@ -85,10 +86,10 @@ const Game20 = () => {
         });
       }, 750);
     } else {
-       setTryAgain(true);
-       gamePoints <= 5 ? null : setGamePoints(gamePoints - 1);
-       gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);
-      }
+      setTryAgain(true);
+      gamePoints <= 5 ? null : setGamePoints(gamePoints - 1);
+      gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);
+    }
   };
 
   const onRun = () => {
@@ -129,13 +130,16 @@ const Game20 = () => {
     }
   };
 
-  return (
+  return isLoggedIn ? (
     <Main>
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
-          <PopUp open={mission} togglePopUp={() => setMission(false)}>
-            <div>We Need More Cats!!!</div>
+          <PopUp
+            open={mission}
+            togglePopUp={() => setMission(false)}
+            title={'We Need More Cats!!!'}
+          >
             <div>
               <p>
                 The pigeon went to the bodega to get some breakfast. While
@@ -167,7 +171,6 @@ const Game20 = () => {
         </PopContainer>
         <GameContentNoBlock>
           <div>
-            <GameText>We need more cats!!</GameText>
             <SmallerGameText>
               {`let ourCats = 0;`}
               <br />
@@ -215,6 +218,8 @@ const Game20 = () => {
         </Button>
       </Content>
     </Main>
+  ) : (
+    <Home mustLogIn={true} />
   );
 };
 

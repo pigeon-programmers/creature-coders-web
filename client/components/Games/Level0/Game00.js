@@ -81,8 +81,8 @@ export const Game00 = () => {
     myInterpreter.run();
   };
 
-  //for this ternary we would need to make sure the instructions say to write hello pigeons with no caps or punctuation
-  //ideally this will end up not being alerts
+  // for this ternary we would need to make sure the instructions say to write hello pigeons with no caps or punctuation
+  // ideally this will end up not being alerts
 
   const outcome = () => {
     if (connect === 1) {
@@ -121,8 +121,11 @@ export const Game00 = () => {
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
-          <PopUp open={mission} togglePopUp={() => setMission(false)}>
-            <div>Hello World!</div>
+          <PopUp
+            open={mission}
+            togglePopUp={() => setMission(false)}
+            title={'Hello World'}
+          >
             <div>
               <p>
                 The pigeon knows that the first step to being a coder is to

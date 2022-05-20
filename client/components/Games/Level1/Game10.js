@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import Workspace from "../Workspace";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import Workspace from '../Workspace';
 import {
   GameContent,
   Main,
   PopContainer,
   PopButton,
   Content,
-} from "../../style";
-import PopUp from "../../PopUp";
-import TryAgain from "../../TryAgain";
-import Interpreter from "js-interpreter";
-import { updateUserWon } from "../../../store/user";
-import "../Blocks/10Blocks";
-import styled from "styled-components";
+} from '../../style';
+import PopUp from '../../PopUp';
+import TryAgain from '../../TryAgain';
+import Home from '../../Home';
+import Interpreter from 'js-interpreter';
+import { updateUserWon } from '../../../store/user';
+import '../Blocks/10Blocks';
+import styled from 'styled-components';
 
 const GameWrapper = styled.div`
   .blocklyToolboxDiv {
@@ -25,12 +26,12 @@ const GameWrapper = styled.div`
 export const Game10 = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [string, setString] = useState("");
-  const [number, setNumber] = useState("");
-  const [boolean, setBoolean] = useState("");
-  const [nullBlock, setNullBlock] = useState("");
-  const [object, setObject] = useState("");
-  const [undef, setUndef] = useState("");
+  const [string, setString] = useState('');
+  const [number, setNumber] = useState('');
+  const [boolean, setBoolean] = useState('');
+  const [nullBlock, setNullBlock] = useState('');
+  const [object, setObject] = useState('');
+  const [undef, setUndef] = useState('');
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
   const [tryAgain, setTryAgain] = useState(false);
@@ -162,12 +163,12 @@ export const Game10 = () => {
 
   const outcome = () => {
     if (
-      string === "string" &&
-      boolean === "boolean" &&
-      number === "number" &&
-      nullBlock === "nullBlock" &&
-      undef === "undef" &&
-      object === "object"
+      string === 'string' &&
+      boolean === 'boolean' &&
+      number === 'number' &&
+      nullBlock === 'nullBlock' &&
+      undef === 'undef' &&
+      object === 'object'
     ) {
       if (isLoggedIn) {
         let newPoints = points + gamePoints;
@@ -201,13 +202,16 @@ export const Game10 = () => {
   //right now the game content div is empty
   //we can take it out or put examples of each data type in it
 
-  return (
+  return isLoggedIn ? (
     <Main>
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
-          <PopUp open={mission} togglePopUp={() => setMission(false)}>
-            <div>JavaScript Data Types</div>
+          <PopUp
+            open={mission}
+            togglePopUp={() => setMission(false)}
+            title={'JavaScript Data Types'}
+          >
             <div>
               <p>
                 JavaScript has 6 different data types: string, number, boolean,
@@ -241,6 +245,8 @@ export const Game10 = () => {
         </GameWrapper>
       </Content>
     </Main>
+  ) : (
+    <Home mustLogIn={true} />
   );
 };
 
