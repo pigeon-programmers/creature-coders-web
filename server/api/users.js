@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { models: { User, Pet, Badge }} = require('../db')
+const { models: { User, Pet, Hat }} = require('../db')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -20,7 +20,7 @@ router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
       attributes: ['id', 'username', 'email', 'currentLevel', 'currentGame', 'points', 'streak', 'pidgeCoin'],
-      include: [{ model: Badge }]
+      include: [{ model: Hat }]
     });
     res.send(user)
   } catch (err) {

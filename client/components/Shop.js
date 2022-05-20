@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, HomeSubTitle, HomeTitle, Main } from './style';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllHats } from '../store/hats';
 
 const MainBg = styled(Main)`
   background-color: #ffe600;
@@ -40,38 +42,41 @@ const HatContainer2 = styled.div`
 `;
 
 const Shop = () => {
-  const allHats = [
-    {
-      name: 'baseball',
-      url: 'https://creature-coders.s3.amazonaws.com/hat-baseball.svg',
-      cost: 10,
-    },
-    {
-      name: 'cheese',
-      url: 'https://creature-coders.s3.amazonaws.com/hat-cheese.svg',
-      cost: 50,
-    },
-    {
-      name: 'cowboy',
-      url: 'https://creature-coders.s3.amazonaws.com/hat-cowboy.svg',
-      cost: 100,
-    },
-    {
-      name: 'newsie',
-      url: 'https://creature-coders.s3.amazonaws.com/hat-newsie.svg',
-      cost: 25,
-    },
-    {
-      name: 'sun',
-      url: 'https://creature-coders.s3.amazonaws.com/hat-sun.svg',
-      cost: 2000,
-    },
-    {
-      name: 'tophat',
-      url: 'https://creature-coders.s3.amazonaws.com/hat-top.svg',
-      cost: 1000000,
-    },
-  ];
+  // const allHats = [
+  //   {
+  //     name: 'baseball',
+  //     url: 'https://creature-coders.s3.amazonaws.com/hat-baseball.svg',
+  //     cost: 10,
+  //   },
+  //   {
+  //     name: 'cheese',
+  //     url: 'https://creature-coders.s3.amazonaws.com/hat-cheese.svg',
+  //     cost: 50,
+  //   },
+  //   {
+  //     name: 'cowboy',
+  //     url: 'https://creature-coders.s3.amazonaws.com/hat-cowboy.svg',
+  //     cost: 100,
+  //   },
+  //   {
+  //     name: 'newsie',
+  //     url: 'https://creature-coders.s3.amazonaws.com/hat-newsie.svg',
+  //     cost: 25,
+  //   },
+  //   {
+  //     name: 'sun',
+  //     url: 'https://creature-coders.s3.amazonaws.com/hat-sun.svg',
+  //     cost: 2000,
+  //   },
+  //   {
+  //     name: 'top',
+  //     url: 'https://creature-coders.s3.amazonaws.com/hat-top.svg',
+  //     cost: 1000000,
+  //   },
+  // ];
+  const dispatch = useDispatch();
+  const allHats = useSelector(state => state.hats)
+  useEffect(() => {dispatch(getAllHats)}, []);
 
   return (
     <div>
@@ -80,12 +85,12 @@ const Shop = () => {
         <SubTitle>Buy hats with PidgeCoin</SubTitle>
 
         <HatContainer>
-          {allHats.map((hat, index) => (
+          {allHats && allHats.length > 0? (allHats.map((hat, index) => (
             <HatContainer2 key={index}>
               <Hat src={hat.url} />
               <HatButton onClick={() => console.log('buy hat')} >{`P ${hat.cost}`}</HatButton>
             </HatContainer2>
-          ))}
+          ))) : <SubTitle>Loading Hats...</SubTitle>}
         </HatContainer>
       </MainBg>
     </div>
