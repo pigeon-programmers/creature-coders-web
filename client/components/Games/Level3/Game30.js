@@ -17,11 +17,21 @@ import { useHistory } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 
 const slideIn = keyframes`
+  from {
+    top: 74vh;
+    z-index: 0;
+  }
   35% {
-    top: 8vh
+    top: 8vh;
+    z-index: 0;
   }
   50% {
-    top: 8vh
+    top: 8vh;
+    z-index: 0;
+  }
+  to{
+    top: 74vh;
+    z-index: 0;
   }
 `;
 
@@ -31,7 +41,7 @@ const Roach = styled.img`
   position: absolute;
   top: 74vh;
   animation: ${slideIn} 5s 1 linear;
-  z-index: 35;
+  z-index: -1;
 `;
 
 const BigGameContent = styled(GameContentNoBlock)`
@@ -55,7 +65,7 @@ const BugText = styled.button`
 export const Debugger = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [mission, setMission] = useState(true);
+  const [mission, setMission] = useState(false);
   const [hint, setHint] = useState(false);
   const [ran, setRan] = useState(false);
   const [bugs, setBugs] = useState(['{', ';', ':', 'r', "'", '}', 'return']);
@@ -72,6 +82,12 @@ export const Debugger = () => {
   const { id, points, currentLevel, currentGame, pidgeCoin } = useSelector(
     (state) => state.user
   );
+
+  useEffect(() => {
+    setTimeout(() => {
+      return setMission(true)
+    }, 5000)
+  }, [])
 
   useEffect(() => {
     isLoggedIn
@@ -126,7 +142,6 @@ export const Debugger = () => {
     setBugs([...bugs]);
   };
 
-  console.log('squashed');
   const onRun = () => {
     if (squashedBugs.length === 7) {
       setWin(true);
@@ -141,7 +156,7 @@ export const Debugger = () => {
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
           <PopUp
             open={mission}
-            title={'Randel the Roach🪳'}
+            title={'Randall the Roach🪳'}
             togglePopUp={() => setMission(false)}
           >
             <div>
@@ -169,7 +184,7 @@ export const Debugger = () => {
             </p>
           </PopUp>
           <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
-      </PopContainer>
+        </PopContainer>
       <BigGameContent>
         <div>
           <SmallerGameText>
