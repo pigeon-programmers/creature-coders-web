@@ -10,7 +10,10 @@ const _getAllHats = (hats) => ({
 export const getAllHats = () => {
   return async (dispatch) => {
     try {
+      console.log('thunk working' )
+
       const { data } = await axios.get(`api/hats`);
+      console.log('hats from thunk', data)
       dispatch(_getAllHats(data));
     } catch (err) {
       console.log('😭 unable to get hats', err);

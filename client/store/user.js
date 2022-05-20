@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
-const GET_SINGLE_USER = 'GET_SINGLE_USER';
-const UPDATE_USER = 'UPDATE_USER';
+const GET_SINGLE_USER = "GET_SINGLE_USER";
+const UPDATE_USER = "UPDATE_USER";
 
 const _getSingleUser = (data) => {
   return {
@@ -39,7 +39,7 @@ export const updateUserWon = (
       const { data } = await axios.put(`/api/users/${id}`, user);
       dispatch(updateUser(data));
     } catch (err) {
-      console.log('There was an error updating the user!', err);
+      console.log("There was an error updating the user!", err);
     }
   };
 };

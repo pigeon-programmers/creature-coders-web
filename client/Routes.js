@@ -7,6 +7,7 @@ import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import UserSettings from './components/UserSettings';
 import UserProfile from './components/UserProfile';
+import LeaderBoard from './components/LeaderBoard';
 import Map from './components/Map';
 import PetInfo from './components/PetInfo';
 import Shop from './components/Shop';
@@ -45,6 +46,7 @@ const Routes = () => {
           <Route path="/map" component={Map} />
           <Route path="/404" component={NotFound} />
           <Route path="/settings" component={UserSettings} />
+          <Route path="/leaderboard" component={LeaderBoard} />
           <Route path="/profile" component={UserProfile} />
           <Route path="/shop" component={Shop} />
           <Route path="/pet" component={PetInfo} />

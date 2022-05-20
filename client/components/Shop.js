@@ -42,41 +42,10 @@ const HatContainer2 = styled.div`
 `;
 
 const Shop = () => {
-  // const allHats = [
-  //   {
-  //     name: 'baseball',
-  //     url: 'https://creature-coders.s3.amazonaws.com/hat-baseball.svg',
-  //     cost: 10,
-  //   },
-  //   {
-  //     name: 'cheese',
-  //     url: 'https://creature-coders.s3.amazonaws.com/hat-cheese.svg',
-  //     cost: 50,
-  //   },
-  //   {
-  //     name: 'cowboy',
-  //     url: 'https://creature-coders.s3.amazonaws.com/hat-cowboy.svg',
-  //     cost: 100,
-  //   },
-  //   {
-  //     name: 'newsie',
-  //     url: 'https://creature-coders.s3.amazonaws.com/hat-newsie.svg',
-  //     cost: 25,
-  //   },
-  //   {
-  //     name: 'sun',
-  //     url: 'https://creature-coders.s3.amazonaws.com/hat-sun.svg',
-  //     cost: 2000,
-  //   },
-  //   {
-  //     name: 'top',
-  //     url: 'https://creature-coders.s3.amazonaws.com/hat-top.svg',
-  //     cost: 1000000,
-  //   },
-  // ];
   const dispatch = useDispatch();
   const allHats = useSelector((state) => state.hats);
   useEffect(() => {
+    console.log('use effect happening')
     dispatch(getAllHats);
   }, []);
 
