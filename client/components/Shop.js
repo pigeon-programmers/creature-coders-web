@@ -18,7 +18,7 @@ const SubTitle = styled(HomeSubTitle)`
 const Hat = styled.img`
   width: 28vw;
   justify-content: space-around;
-  margin: .25em 3em;
+  margin: 0.25em 3em;
 `;
 
 const HatButton = styled(Button)`
@@ -75,8 +75,12 @@ const Shop = () => {
   //   },
   // ];
   const dispatch = useDispatch();
-  const allHats = useSelector(state => state.hats)
-  useEffect(() => {dispatch(getAllHats)}, []);
+  const allHats = useSelector((state) => state.hats);
+  useEffect(() => {
+    dispatch(getAllHats);
+  }, []);
+
+  console.log('all hats: ', allHats);
 
   return (
     <div>
@@ -85,12 +89,18 @@ const Shop = () => {
         <SubTitle>Buy hats with PidgeCoin</SubTitle>
 
         <HatContainer>
-          {allHats && allHats.length > 0? (allHats.map((hat, index) => (
-            <HatContainer2 key={index}>
-              <Hat src={hat.url} />
-              <HatButton onClick={() => console.log('buy hat')} >{`P ${hat.cost}`}</HatButton>
-            </HatContainer2>
-          ))) : <SubTitle>Loading Hats...</SubTitle>}
+          {allHats && allHats.length > 0 ? (
+            allHats.map((hat, index) => (
+              <HatContainer2 key={index}>
+                <Hat src={hat.url} />
+                <HatButton
+                  onClick={() => console.log('buy hat')}
+                >{`P ${hat.cost}`}</HatButton>
+              </HatContainer2>
+            ))
+          ) : (
+            <SubTitle>Loading Hats...</SubTitle>
+          )}
         </HatContainer>
       </MainBg>
     </div>
