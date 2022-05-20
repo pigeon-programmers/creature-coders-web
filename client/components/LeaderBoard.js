@@ -29,7 +29,7 @@ const LeaderBoard = () => {
       }, []);
 
     const pointsArray = allUsers.map((user) => user.points);
-    console.log(pointsArray.sort((a, b) => a - b));
+    // console.log(pointsArray.sort((a, b) => a - b));
 
     return (
         <LeaderBG>
