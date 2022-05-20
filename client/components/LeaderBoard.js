@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllUsers } from "../store/allUsers";
-import { Main, Button, HomeTitle, HomeSubTitle, Content } from "./style";
+import { Main, HomeSubTitle, Content } from "./style";
 import styled from "styled-components";
 
 const LeaderBG = styled(Main)`
@@ -24,26 +24,43 @@ const LeaderSubText = styled(HomeSubTitle)`
   color: black;
 `
 
+const Trophy = styled.img`
+  height: 2vh;
+  width: 2vh;
+`
+
 const LeaderBoard = () => {
     const dispatch = useDispatch();
     const allUsers = useSelector((state) => state.allUsers);
-    console.log("getting all users!", allUsers)
-
+    
     useEffect(() => {
-       dispatch(fetchAllUsers());
+      dispatch(fetchAllUsers());
       }, []);
-
+      
     return (
         <LeaderBG>
           <LeaderContent>
             <LeaderText>Creature Coders Leader Board</LeaderText> 
-            {allUsers.map((user) => {
+            {allUsers.map((user, index) => {
+              if (index === 0) {
                 return <LeaderSubText key={user.id}>{user.username.toUpperCase()} : {user.points} points</LeaderSubText>
+              }
+              if (index === 1) {
+                return <LeaderSubText key={user.id}>{user.username.toUpperCase()} : {user.points} points</LeaderSubText>
+              }
+              if (index === 2) {
+                return <LeaderSubText key={user.id}>{user.username.toUpperCase()} : {user.points} points</LeaderSubText>
+              }
+              if (index === 3) {
+                return <LeaderSubText key={user.id}>{user.username.toUpperCase()} : {user.points} points</LeaderSubText>
+              }
+              if (index === 4) {
+                return <LeaderSubText key={user.id}>{user.username.toUpperCase()} : {user.points} points</LeaderSubText>
+              }
             })}
           </LeaderContent>
         </LeaderBG>
     )
-}
+};
 
 export default LeaderBoard;
-
