@@ -5,7 +5,7 @@ import { Main, HomeSubTitle, Content } from "./style";
 import styled from "styled-components";
 
 const LeaderBG = styled(Main)`
-  background-color: #FFE600;
+  background-color: #ffe600;
 `;
 
 const LeaderContent = styled(Content)`
@@ -20,47 +20,99 @@ const LeaderText = styled(HomeSubTitle)`
 `;
 
 const LeaderSubText = styled(HomeSubTitle)`
-  font-size: 2vh;
+  font-size: 3vh;
+  margin: 2vh;
   color: black;
-`
+`;
 
 const Trophy = styled.img`
-  height: 2vh;
-  width: 2vh;
+  height: 5vh;
+  width: 5vh;
+`;
+
+const LeaderContent2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-between;
 `
 
+const Leader = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
 const LeaderBoard = () => {
-    const dispatch = useDispatch();
-    const allUsers = useSelector((state) => state.allUsers);
-    
-    useEffect(() => {
-      dispatch(fetchAllUsers());
-      }, []);
-      
-    return (
-        <LeaderBG>
-          <LeaderContent>
-            <LeaderText>Creature Coders Leader Board</LeaderText> 
-            {allUsers.map((user, index) => {
-              if (index === 0) {
-                return <LeaderSubText key={user.id}>{user.username.toUpperCase()} : {user.points} points</LeaderSubText>
-              }
-              if (index === 1) {
-                return <LeaderSubText key={user.id}>{user.username.toUpperCase()} : {user.points} points</LeaderSubText>
-              }
-              if (index === 2) {
-                return <LeaderSubText key={user.id}>{user.username.toUpperCase()} : {user.points} points</LeaderSubText>
-              }
-              if (index === 3) {
-                return <LeaderSubText key={user.id}>{user.username.toUpperCase()} : {user.points} points</LeaderSubText>
-              }
-              if (index === 4) {
-                return <LeaderSubText key={user.id}>{user.username.toUpperCase()} : {user.points} points</LeaderSubText>
-              }
-            })}
-          </LeaderContent>
-        </LeaderBG>
-    )
+  const dispatch = useDispatch();
+  const allUsers = useSelector((state) => state.allUsers);
+
+  useEffect(() => {
+    dispatch(fetchAllUsers());
+  }, []);
+
+  return (
+    <LeaderBG>
+      <LeaderContent>
+        <LeaderText>Creature Coders Leaderboard</LeaderText>
+        <LeaderContent2>
+        {allUsers.map((user, index) => {
+          if (index === 0) {
+            return (
+              <Leader key={user.id}>
+                <Trophy src="https://creature-coders.s3.amazonaws.com/leaderboard-trophies-01.svg" />
+                <LeaderSubText>
+                  {user.username.toUpperCase()}: {user.points} points
+                </LeaderSubText>
+              </Leader>
+            );
+          }
+          if (index === 1) {
+            return (
+              <Leader key={user.id}>
+                <Trophy src="https://creature-coders.s3.amazonaws.com/leaderboard-trophies-02.svg" />
+                <LeaderSubText>
+                  {user.username.toUpperCase()}: {user.points} points
+                </LeaderSubText>
+              </Leader>
+            );
+          }
+          if (index === 2) {
+            return (
+              <Leader key={user.id}>
+                <Trophy src="https://creature-coders.s3.amazonaws.com/leaderboard-trophies-03.svg" />
+                <LeaderSubText>
+                  {user.username.toUpperCase()}: {user.points} points
+                </LeaderSubText>
+              </Leader>
+            );
+          }
+          if (index === 3) {
+            return (
+              <Leader key={user.id}>
+                <Trophy src="https://creature-coders.s3.amazonaws.com/leaderboard-trophies-05.svg" />
+                <LeaderSubText>
+                  {user.username.toUpperCase()}: {user.points} points
+                </LeaderSubText>
+              </Leader>
+            );
+          }
+          if (index === 4) {
+            return (
+              <Leader key={user.id}>
+                <Trophy src="https://creature-coders.s3.amazonaws.com/leaderboard-trophies-04.svg" />
+                <LeaderSubText>
+                  {user.username.toUpperCase()}: {user.points} points
+                </LeaderSubText>
+              </Leader>
+            );
+          }
+        })}
+        </LeaderContent2>
+      </LeaderContent>
+    </LeaderBG>
+  );
 };
 
 export default LeaderBoard;
