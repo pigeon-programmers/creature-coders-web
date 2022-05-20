@@ -60,13 +60,10 @@ export const logout = () => {
   };
 };
 
-const initialState = {
-  isLoading: true,
-};
 /**
  * REDUCER
  */
-export default function (state = initialState, action) {
+export default function (state = { isLoading: true }, action) {
   switch (action.type) {
     case SET_AUTH:
       return { ...state, ...action.auth };
