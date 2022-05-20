@@ -19,7 +19,7 @@ import styled from 'styled-components';
 import { updateUserWon } from '../../../store/user';
 
 const SmallerGameText = styled(GameText)`
-  font-size: small;
+  font-size: medium;
 `;
 
 const Game20 = () => {
@@ -171,7 +171,6 @@ const Game20 = () => {
         </PopContainer>
         <GameContentNoBlock>
           <div>
-            <GameText>We need more cats!!</GameText>
             <SmallerGameText>
               {`let ourCats = 0;`}
               <br />
