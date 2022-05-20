@@ -31,11 +31,11 @@ export const updateUserWon = (
   points,
   currentLevel,
   currentGame,
-  pidgeCoin
+  pidgeCoins
 ) => {
   return async (dispatch) => {
     try {
-      const user = { points, currentLevel, currentGame, pidgeCoin };
+      const user = { points, currentLevel, currentGame, pidgeCoins };
       const { data } = await axios.put(`/api/users/${id}`, user);
       dispatch(updateUser(data));
     } catch (err) {

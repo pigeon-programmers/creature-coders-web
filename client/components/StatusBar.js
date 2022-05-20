@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { palette } from './style';
 import styled from 'styled-components';
@@ -42,6 +42,18 @@ const StatusText = styled.p`
 const StatusBar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const { points, pidgeCoin, streak } = useSelector((state) => state.user);
+  const [lsCoins, setLsCoins] = useState(0);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      // +localStorage.getItem('points')
+      //   ? setLsPoints(+localStorage.getItem('points'))
+      //   : null;
+      +localStorage.getItem('coins')
+        ? setLsCoins(+localStorage.getItem('coins'))
+        : null;
+    }
+  }, []);
 
   return (
     <Status>
@@ -67,7 +79,10 @@ const StatusBar = () => {
         <>
           {/* The StatusBar will show this before you log in */}
           <NavIconContainer>
-            <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconPidgeCoin.svg" />
+            <StatusIconContainer>
+              <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconPidgeCoin.svg" />
+              <StatusText>{lsCoins}</StatusText>
+            </StatusIconContainer>
             <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconStreak.svg" />
             <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconPoints.svg" />
           </NavIconContainer>

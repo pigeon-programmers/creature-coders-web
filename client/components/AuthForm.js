@@ -2,6 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { authenticate } from '../store';
 import { Button, Main, FormContainer, Label, Input, LabelP } from './style';
+import styled from 'styled-components';
+
+// const VerifyInput = styled(Input)`
+//   border: ${p => p.}
+// `;
 
 /**
  * COMPONENT
@@ -20,17 +25,23 @@ const AuthForm = (props) => {
         </>
         {name === 'signup' ? (
           <>
-            <Label htmlFor="email"><LabelP>Email address</LabelP></Label>
+            <Label htmlFor="email">
+              <LabelP>Email address</LabelP>
+            </Label>
             <Input id="email" type="text" />
           </>
         ) : null}
         <>
-          <Label htmlFor="password"><LabelP>Password</LabelP></Label>
+          <Label htmlFor="password">
+            <LabelP>Password</LabelP>
+          </Label>
           <Input id="password" type="password" autocomplete="new-password" />
         </>
         {name === 'signup' ? (
           <>
-            <Label htmlFor="confirmPassword"><LabelP>Confirm Password</LabelP></Label>
+            <Label htmlFor="confirmPassword">
+              <LabelP>Confirm Password</LabelP>
+            </Label>
             <Input
               id="confirmPassword"
               type="password"
