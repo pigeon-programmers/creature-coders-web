@@ -1,15 +1,15 @@
 import React from 'react';
-import { GameText, Main, Content, Pigeon, Button } from './style';
+import { GameText, Main, Content, Pigeon, Button, palette } from './style';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 
 //put dancing pigeon on own component and change styles to palette
 const WonBg = styled(Main)`
-  background-color: #ffe600;
+  background-color: ${palette.yellow};
 `;
 
 const BlackGameText = styled(GameText)`
-  color: #000000;
+  color: ${palette.black};
   font-size: 3vh;
   margin: 0.25vh, 0.5vh, 0.5vh, 0.25vh;
 `;

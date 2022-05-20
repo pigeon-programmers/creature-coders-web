@@ -9,6 +9,7 @@ import {
   Main,
   PopContainer,
   PopButton,
+  palette,
 } from '../../style';
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
@@ -53,7 +54,7 @@ const SmallerGameText = styled(GameText)`
 `;
 
 const BugText = styled.button`
-  color: #e91717;
+  color: ${palette.red};
   border: none;
   outline: none;
   background: none;

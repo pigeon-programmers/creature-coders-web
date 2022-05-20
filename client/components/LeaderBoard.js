@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAllUsers } from "../store/allUsers";
-import { Main, HomeSubTitle, Content } from "./style";
-import styled from "styled-components";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllUsers } from '../store/allUsers';
+import { Main, HomeSubTitle, Content, palette } from './style';
+import styled from 'styled-components';
 
 const LeaderBG = styled(Main)`
-  background-color: #ffe600;
+  background-color: ${palette.yellow};
 `;
 
 const LeaderContent = styled(Content)`
