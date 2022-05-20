@@ -3,6 +3,7 @@ import { GameText, Main, Content, Pigeon, Button } from './style';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 
+//put dancing pigeon on own component and change styles to palette
 const WonBg = styled(Main)`
   background-color: #ffe600;
 `;

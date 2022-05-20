@@ -128,9 +128,9 @@ const Map = () => {
               0.0
             </Link>
           </Level>
+          <Doors />
         </MapContainer>
         {/* need to fix door animation: */}
-        <Doors />
       </Content>
     </Main>
   );
