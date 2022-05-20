@@ -273,12 +273,12 @@ export const FAQ = () => {
                 code, it is called debugging.
               </p>
               <p>
-                The word "bug" is used because in 1947 Grace Hopper, a computer
-                scientist and baval engineer, found AN ACTUAL BUG in the
-                computer that was causing problems. She put the bug in a log
-                with the note: "First actual case of a bug being found." This
-                was back when computers were big things that relayed information
-                through tons of wires (...we've come a long way).
+                In 1947 Grace Hopper, a computer scientist and naval engineer,
+                found AN ACTUAL BUG in the computer that was causing problems.
+                She put the bug in a log with the note: "First actual case of a
+                bug being found." This was back when computers were big things
+                that relayed information through tons of wires (...we've come a
+                long way). This is why we use the word "bug."
               </p>
               <p>
                 Fun fact: Grace Hopper is an important figure in the programming
