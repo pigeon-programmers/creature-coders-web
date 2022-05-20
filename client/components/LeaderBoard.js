@@ -19,6 +19,11 @@ const LeaderText = styled(HomeSubTitle)`
   color: black;
 `;
 
+const LeaderSubText = styled(HomeSubTitle)`
+  font-size: 2vh;
+  color: black;
+`
+
 const LeaderBoard = () => {
     const dispatch = useDispatch();
     const allUsers = useSelector((state) => state.allUsers);
@@ -28,15 +33,12 @@ const LeaderBoard = () => {
        dispatch(fetchAllUsers());
       }, []);
 
-    const pointsArray = allUsers.map((user) => user.points);
-    // console.log(pointsArray.sort((a, b) => a - b));
-
     return (
         <LeaderBG>
           <LeaderContent>
             <LeaderText>Creature Coders Leader Board</LeaderText> 
             {allUsers.map((user) => {
-                return <p key={user.id}>{user.points}</p>
+                return <LeaderSubText key={user.id}>{user.username.toUpperCase()} : {user.points} points</LeaderSubText>
             })}
           </LeaderContent>
         </LeaderBG>
