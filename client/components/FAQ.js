@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PopUp from './PopUp';
-import { Content, Main, PopContainer, PopButton, HomeTgitcitle } from './style';
+import { Content, Main, PopContainer, PopButton, HomeTitle } from './style';
 import styled from 'styled-components';
 
 const FaqTitle = styled(HomeTitle)`
@@ -268,10 +268,22 @@ export const FAQ = () => {
           >
             <div>
               <p>
-                Null and Undefined may seem very similar, but they are actually
-                different. Undefined means a variable has been declared but has
-                not been assigned. Null means a variable has been assigned to
-                nothing!
+                A bug is an error in someone's code that causes the program to
+                do something unexpected. When you find a fix bugs in your code,
+                it is called debugging.
+              </p>
+              <p>
+                The word "bug" is used because in 1947 Grace Hopper, a computer
+                scientist and baval engineer, found AN ACTUAL BUG in the
+                computer that was causing problems. She put the bug in a log
+                with the note: "First actual case of a bug being found." This
+                was back when computers were big things that relayed information
+                through tons of wires (...we've come a long way).
+              </p>
+              <p>
+                Fun fact: Grace Hopper in an important figure in the programming
+                world. The creators of this app attending the Grace Hopper
+                Program at Full Stack Academy.
               </p>
             </div>
           </PopUp>
