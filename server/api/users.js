@@ -1,41 +1,68 @@
-const router = require('express').Router()
-const { models: { User, Pet, Badge }} = require('../db')
-module.exports = router
+const router = require("express").Router();
+const {
+  models: { User, Pet, Badge },
+} = require("../db");
+const { requireToken } = require("./securityMiddleware");
+module.exports = router;
 
-router.get('/leaderboard', async (req, res, next) => {
+router.get("/leaderboard", async (req, res, next) => {
   try {
     const users = await User.findAll({
-      attributes: ['id', 'username', 'points', 'currentLevel'],
-      order: [['points', 'DESC']],
+      attributes: ["id", "username", "points", "currentLevel"],
+      order: [["points", "DESC"]],
       limit: 5,
-    })
-    res.json(users)
+    });
+    res.json(users);
   } catch (err) {
-    next(err)
+    next(err);
   }
 });
 
-router.get('/:userId', async (req, res, next) => {
+router.get("/:userId", async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
-      attributes: ['id', 'username', 'email', 'currentLevel', 'currentGame', 'points', 'streak', 'pidgeCoin'],
-      include: [{ model: Badge }]
+      attributes: [
+        "id",
+        "username",
+        "email",
+        "currentLevel",
+        "currentGame",
+        "points",
+        "streak",
+        "pidgeCoin",
+      ],
+      include: [{ model: Badge }],
     });
-    res.send(user)
+    console.log("req.headers", req.headers);
+    res.send(user);
   } catch (err) {
-    next(err)
+    next(err);
   }
 });
 
-router.put('/:userId', async (req, res, next) => {
+router.put("/:userId", requireToken, async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.params.userId);
-    const { points, currentLevel, currentGame, pidgeCoin, streak } = req.body;
-    res.send(await user.update({ points, currentLevel, currentGame, pidgeCoin, streak }));
+    if (+req.params.userId === req.user.id) {
+      const user = await User.findByPk(req.params.userId);
+      const { points, currentLevel, currentGame, pidgeCoin, streak } = req.body;
+      res.send(
+        await user.update({
+          points,
+          currentLevel,
+          currentGame,
+          pidgeCoin,
+          streak,
+        })
+      );
+    } else {
+      const error = Error("Forbidden");
+      error.status = 403;
+      throw(error);
+    }
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});
 
 // router.put('/:id', async (req, res, next) => {
 //   try {
