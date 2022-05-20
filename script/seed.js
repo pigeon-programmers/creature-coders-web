@@ -39,6 +39,9 @@ async function seed() {
       email: 'grace@grace.com',
       currentLevel: 3,
       currentGame: 0,
+      points: 3,
+      streak: 37,
+      pidgeCoin: 1000,
     }),
   ]);
 

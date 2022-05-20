@@ -37,16 +37,14 @@ router.put('/:userId', async (req, res, next) => {
   }
 })
 
-// router.put('/:id', async (req, res, next) => {
-//   try {
-//     const user = await User.findOne({
-//       where: {
-//         id: req.params.id,
-//       },
-//     });
-//     res.send(await user.update(req.body));
-//     res.status(202);
-//   } catch (err) {
-//     next(err)
-//   }
-// })
+router.put('/:userId/hats', async (req, res, next) => {
+  try {
+    const hat = req.body;
+    const new PidgeCoins = user.pidgeCoin - hat.cost
+    const user = await User.findByPk(req.params.userId);
+    user.addHat(hat.id)
+    res.send(await user.update({ points, currentLevel, currentGame, pidgeCoin, streak }));
+  } catch (err) {
+    next(err)
+  }
+})

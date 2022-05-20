@@ -14,12 +14,10 @@ import { getAllHats } from '../store/hats';
 const MainBg = styled(Main)`
   background-color: ${palette.green};
 `;
-
 const HatContent = styled(Content)`
   background-color: rgba(255, 255, 255, 0.6);
   width: 80%;
 `;
-
 const Title = styled(HomeTitle)`
   margin: 0;
 `;
@@ -27,21 +25,17 @@ const SubTitle = styled(HomeSubTitle)`
   color: black;
   margin: 2vh;
 `;
-
 const Hat = styled.img`
   width: 28vw;
   justify-content: space-around;
   margin: 0.25em 3em;
 `;
-
 const HatButton = styled(Button)`
   width: 30vw;
 `;
-
 const ExpensiveHatButton = styled(HatButton)`
   background: ${palette.mdGray};
 `;
-
 const HatContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -49,7 +43,6 @@ const HatContainer = styled.div`
   justify-content: space-between;
   margin-bottom: 3em;
 `;
-
 const HatContainer2 = styled.div`
   display: flex;
   flex-direction: row;
