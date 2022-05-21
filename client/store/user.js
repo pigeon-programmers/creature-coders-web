@@ -62,10 +62,10 @@ export const buyHat = (hat, userId) => {
   };
 };
 
-export const updateUserStreak = (userId) => {
+export const updateUserStreak = (userId, logIn = false) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`/api/users/${userId}/streak`);
+      const { data } = await axios.put(`/api/users/${userId}/streak`, logIn);
       console.log('USER STREAK DATA', data);
       dispatch(_updateUser(data));
     } catch (err) {

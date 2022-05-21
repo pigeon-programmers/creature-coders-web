@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { me } from './store';
-import { getSingleUser } from './store/user';
+import { getSingleUser, updateUserStreak } from './store/user';
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import UserSettings from './components/UserSettings';
@@ -37,6 +37,14 @@ const Routes = () => {
   useEffect(() => {
     if (isLoggedIn) {
       dispatch(getSingleUser(auth.id));
+    }
+  }, [isLoggedIn]);
+
+  //if this is added into the useEffect above, it does not get called
+  //if you can fix it, please do and then teach me your ways :)
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(updateUserStreak(auth.id, true));
     }
   }, [isLoggedIn]);
 

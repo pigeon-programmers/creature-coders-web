@@ -103,6 +103,17 @@ router.put('/:userId/streak', async (req, res, next) => {
     console.log('🐷OLD STREAK', user.streak);
     console.log('🦆TODAY', today);
 
+    const newLogIn = req.body.logIn;
+
+    //if they are logging in and it is not adding to a streak, reset to 0
+    if (newLogIn && today !== user.lastDatePlayed + 1)
+      res.send(
+        await user.update({
+          lastDatePlayed: today,
+          streak: 0,
+        })
+      );
+
     // if user last played yesterday, update date and add 1 to streak
     if (today === user.lastDatePlayed + 1) {
       const newStreak = user.streak++;
@@ -119,7 +130,7 @@ router.put('/:userId/streak', async (req, res, next) => {
       res.send(user);
     } else {
       //else update date and change streak to 1
-      //this will include streak being 0 or a streak breaking
+      //this will take care of streak being 0
       console.log('🐍 USER NOT IN OR BREAKING STREAK');
       res.send(
         await user.update({
