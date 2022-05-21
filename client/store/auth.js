@@ -33,6 +33,7 @@ export const me = () => async (dispatch) => {
     dispatch(getLoading());
     return dispatch(setAuth({ ...res.data, token }));
   }
+  dispatch(getLoading());
 };
 
 export const authenticate =
@@ -63,12 +64,12 @@ export const logout = () => {
 /**
  * REDUCER
  */
-export default function (state = { isLoading: false }, action) {
+export default function (state = { isLoading: true }, action) {
   switch (action.type) {
     case SET_AUTH:
       return { ...action.auth, isLoading: false };
     case GET_LOADING:
-      return { ...state, isLoading: true };
+      return { ...state, isLoading: false };
     default:
       return state;
   }
