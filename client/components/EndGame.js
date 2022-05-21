@@ -18,16 +18,17 @@ const EndBg = styled(Main)`
 const EndGameContent = styled(Content)`
   background-color: rgba(255, 255, 255, 0.6);
   width: 80vw;
-  height: 50vh;
+  height: 35vh;
 `;
 
 const LargeText = styled(HomeSubTitle)`
   font-size: 3vh;
   color: ${palette.black};
+  margin: 2vh;
 `;
 
 const MarginButton = styled(Button)`
-  margin: 2vh;
+  margin: 5vh;
 `;
 
 const EndGame = () => {
