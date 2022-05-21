@@ -33,10 +33,17 @@ export const updateUserWon = (
   currentGame,
   pidgeCoin
 ) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
+      const {
+        auth: { token },
+      } = getState();
       const user = { points, currentLevel, currentGame, pidgeCoin };
-      const { data } = await axios.put(`/api/users/${id}`, user);
+      const { data } = await axios.put(`/api/users/${id}`, user, {
+        headers: {
+          authorization: token,
+        },
+      });
       dispatch(_updateUser(data));
     } catch (err) {
       console.log('💩 There was an error updating the user!', err);

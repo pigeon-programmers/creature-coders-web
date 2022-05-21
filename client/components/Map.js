@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Main, Content } from './style';
+import Doors from './Animations/Doors';
+import { Main, Content, palette } from './style';
 import SubwayLines from './SubwayLines';
 import styled from 'styled-components';
 
 const MapContainer = styled.div`
   background-image: url('https://creature-coders.s3.amazonaws.com/subway-map-updated-01.jpg');
   background-size: 100% 100%;
-  background-color: #3d3d3d;
+  background-color: ${palette.dkGray};
   width: 50vw;
   height: 100vh;
   display: flex;
@@ -28,14 +29,15 @@ const Level = styled.div`
   height: 3.5vh;
   border-radius: 50%;
   border: 3px solid
-    ${(p) => (parseInt(p.linkLevel) <= p.levelGame ? '#000000' : '#FFFFFF')};
+    ${(p) =>
+      parseInt(p.linkLevel) <= p.levelGame ? palette.black : palette.white};
   margin: 1vh;
   background-color: ${(p) =>
-    parseInt(p.linkLevel) <= p.levelGame ? '#FFFFFF' : '#000000'};
+    parseInt(p.linkLevel) <= p.levelGame ? palette.white : palette.black};
   .link {
     text-decoration: none;
     color: ${(p) =>
-      parseInt(p.linkLevel) <= p.levelGame ? '#000000' : '#FFFFFF'};
+      parseInt(p.linkLevel) <= p.levelGame ? palette.black : palette.white};
     pointer-events: ${(p) =>
       parseInt(p.linkLevel) <= p.levelGame ? 'auto' : 'none'};
   }
@@ -127,6 +129,7 @@ const Map = () => {
               0.0
             </Link>
           </Level>
+          <Doors />
         </MapContainer>
       </Content>
     </Main>
@@ -134,8 +137,3 @@ const Map = () => {
 };
 
 export default Map;
-
-// level 00
-// cx: 249.4;
-// cy: 680.07;
-// r: 9.16;
