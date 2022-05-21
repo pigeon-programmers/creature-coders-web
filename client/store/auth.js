@@ -7,15 +7,21 @@ const TOKEN = 'token';
  * ACTION TYPES
  */
 const SET_AUTH = 'SET_AUTH';
+const GET_LOADING = 'IS_LOADING';
 
 /**
  * ACTION CREATORS
  */
 const setAuth = (auth) => ({ type: SET_AUTH, auth });
 
+export const getLoading = () => ({
+  type: GET_LOADING,
+});
+
 /**
  * THUNK CREATORS
  */
+
 export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
   if (token) {
@@ -26,6 +32,7 @@ export const me = () => async (dispatch) => {
     });
     return dispatch(setAuth({ ...res.data, token }));
   }
+  dispatch(getLoading());
 };
 
 export const authenticate =
@@ -56,10 +63,12 @@ export const logout = () => {
 /**
  * REDUCER
  */
-export default function (state = {}, action) {
+export default function (state = { isLoading: true }, action) {
   switch (action.type) {
     case SET_AUTH:
-      return action.auth;
+      return { ...action.auth, isLoading: false };
+    case GET_LOADING:
+      return { ...state, isLoading: false };
     default:
       return state;
   }
