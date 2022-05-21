@@ -95,7 +95,7 @@ export const Debugger = () => {
           : dispatch(updateUserWon(id, newPoints, 3, 1, newPidgeCoin));
       }
       setTimeout(() => {
-        history.push('/game/won', {
+        history.push('/game/end', {
           points: gamePoints,
           pidgeCoins: gameCoins,
         });
