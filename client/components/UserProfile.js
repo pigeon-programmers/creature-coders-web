@@ -14,22 +14,30 @@ import { getPet } from '../store/pet';
 const UserBG = styled(Main)`
   background-color: ${palette.pink};
 `;
-
 const UserContent = styled(Content)`
   background-color: rgba(255, 255, 255, 0.6);
   height: 70%;
   width: 80%;
 `;
-
 const ProfileText = styled(HomeSubTitle)`
   font-size: 3vh;
   color: black;
   z-index: 50;
+  margin: 0;
+`;
+const HatContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+const ProfileHat = styled.img`
+  width: 10vw;
+  margin: 1em;
 `;
 
 const UserProfile = () => {
   const dispatch = useDispatch();
-  const { currentLevel, currentGame, username, id } = useSelector(
+  const { currentLevel, currentGame, username, id, hats } = useSelector(
     (state) => state.user
   );
   const { name, type } = useSelector((state) => state.pet);
@@ -47,12 +55,16 @@ const UserProfile = () => {
         </ProfileText>
         <ProfileText>Current Level: {currentLevel}</ProfileText>
         <ProfileText>Current Game: {currentGame}</ProfileText>
-        {/* <ProfileText>
-          Badges:{" "}
-        </ProfileText>
-         {badges && badges.length
-            ? badges.map((badge) => <ProfileText key={badge.id}>{badge.name}</ProfileText>)
-            : null} */}
+        <ProfileText>Hats:</ProfileText>
+        {hats && hats.length > 0 ? (
+          <HatContainer>
+            {hats.map((hat) => (
+              <ProfileHat key={hat.id} src={hat.url} />
+            ))}
+          </HatContainer>
+        ) : (
+          <ProfileText>Visit the shop to buy some hats!</ProfileText>
+        )}
       </UserContent>
     </UserBG>
   );

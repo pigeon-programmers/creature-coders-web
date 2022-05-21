@@ -28,7 +28,6 @@ const SubTitle = styled(HomeSubTitle)`
 `;
 const Hat = styled.img`
   width: 28vw;
-  justify-content: space-around;
   margin: 0.5em 3em;
 `;
 const HatButton = styled(Button)`
