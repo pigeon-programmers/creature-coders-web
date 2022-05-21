@@ -39,6 +39,14 @@ router.get('/:userId', async (req, res, next) => {
   }
 });
 
+// const year = new Date().getFullYear();
+// const month = new Date().getMonth() + 1;
+// const day = new Date().getDate();
+// const today = `${year}-${month}-${day}`;
+// const user = await User.findByToken(req.headers.authorization)
+// const lastDate = user.
+// const updatedUser = user.({last})
+
 router.put('/:userId', requireToken, async (req, res, next) => {
   try {
     if (+req.params.userId === req.user.id) {
