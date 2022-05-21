@@ -1,15 +1,15 @@
-const router = require("express").Router();
+const router = require('express').Router();
 const {
   models: { User, Pet, Badge },
-} = require("../db");
-const { requireToken } = require("./securityMiddleware");
+} = require('../db');
+const { requireToken } = require('./securityMiddleware');
 module.exports = router;
 
-router.get("/leaderboard", async (req, res, next) => {
+router.get('/leaderboard', async (req, res, next) => {
   try {
     const users = await User.findAll({
-      attributes: ["id", "username", "points", "currentLevel"],
-      order: [["points", "DESC"]],
+      attributes: ['id', 'username', 'points', 'currentLevel'],
+      order: [['points', 'DESC']],
       limit: 5,
     });
     res.json(users);
@@ -18,29 +18,28 @@ router.get("/leaderboard", async (req, res, next) => {
   }
 });
 
-router.get("/:userId", async (req, res, next) => {
+router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
       attributes: [
-        "id",
-        "username",
-        "email",
-        "currentLevel",
-        "currentGame",
-        "points",
-        "streak",
-        "pidgeCoin",
+        'id',
+        'username',
+        'email',
+        'currentLevel',
+        'currentGame',
+        'points',
+        'streak',
+        'pidgeCoin',
       ],
       include: [{ model: Badge }],
     });
-    console.log("req.headers", req.headers);
     res.send(user);
   } catch (err) {
     next(err);
   }
 });
 
-router.put("/:userId", requireToken, async (req, res, next) => {
+router.put('/:userId', requireToken, async (req, res, next) => {
   try {
     if (+req.params.userId === req.user.id) {
       const user = await User.findByPk(req.params.userId);
@@ -55,9 +54,9 @@ router.put("/:userId", requireToken, async (req, res, next) => {
         })
       );
     } else {
-      const error = Error("Forbidden");
+      const error = Error('Forbidden');
       error.status = 403;
-      throw(error);
+      throw error;
     }
   } catch (err) {
     next(err);

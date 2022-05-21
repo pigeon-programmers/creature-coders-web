@@ -28,8 +28,6 @@ const Routes = () => {
   const auth = useSelector((state) => state.auth);
   const isLoading = useSelector((state) => state.auth.isLoading);
 
-  console.log('😏 is loading', isLoading);
-
   useEffect(() => {
     dispatch(me());
   }, []);
