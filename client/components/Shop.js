@@ -10,6 +10,7 @@ import {
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllHats } from '../store/hats';
+import { buyHat } from '../store/user';
 
 const MainBg = styled(Main)`
   background-color: ${palette.green};
@@ -74,7 +75,7 @@ const Shop = () => {
                     <ExpensiveHatButton>{`P ${hat.cost}`}</ExpensiveHatButton>
                   ) : (
                     <HatButton
-                      onClick={() => console.log('buy hat')}
+                      onClick={() => dispatch(buyHat(hat, user.id))}
                     >{`P ${hat.cost}`}</HatButton>
                   )}
                 </HatContainer2>

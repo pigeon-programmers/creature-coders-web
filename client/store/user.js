@@ -55,7 +55,7 @@ export const buyHat = (hat, userId) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.put(`api/users/${userId}/hats`, hat);
-      dispatch(_updateUser(user))
+      dispatch(_updateUser(data))
     } catch (err) {
       console.log('🎩 There was an error buying the hat!', err);
     }

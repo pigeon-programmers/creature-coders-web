@@ -78,7 +78,6 @@ async function seed() {
   });
 
   const hats = [baseball, cheese, cowboy, newsie, sun, top];
-  console.log(`seeded ${hats.length} hats`);
 
   users[1].addHat(1);
   users[1].addHat(2);
@@ -91,34 +90,6 @@ async function seed() {
   users[2].addHat(6);
   users[3].addHat(1);
 
-  //Badges - optional to add this back in later
-
-  // const welcome = await Badge.create({ name: "welcome" });
-  // const nyc = await Badge.create({ name: "nyc" });
-  // const pizza = await Badge.create({ name: "pizza" });
-  // const grandCentral = await Badge.create({ name: "grand central" });
-  // const subway = await Badge.create({ name: "subway" });
-
-  // const badges = [
-  //   welcome,
-  //   nyc,
-  //   pizza,
-  //   grandCentral,
-  //   subway
-  // ]
-
-  // console.log(`seeded ${badges.length} badges`);
-
-  // users[0].addBadge(1);
-  // users[1].addBadge(1);
-  // users[1].addBadge(4);
-  // users[2].addBadge(1);
-  // users[2].addBadge(3);
-  // users[2].addBadge(5);
-  // users[3].addBadge(1);
-  // users[3].addBadge(2);
-  // users[3].addBadge(4);
-
   // Creating Pets
   const pets = await Promise.all([
     Pet.create({ name: 'Blossom', type: 'Possum', userId: 1 }),
@@ -127,6 +98,7 @@ async function seed() {
     Pet.create({ name: 'Ratteo', type: 'Rat', userId: 4 }),
   ]);
 
+  console.log(`seeded ${hats.length} hats`);
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${pets.length} pets`);
   console.log(`seeded successfully`);
