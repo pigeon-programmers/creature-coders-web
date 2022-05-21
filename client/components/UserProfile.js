@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Main,
-  Button,
   HomeTitle,
   HomeSubTitle,
   Content,
@@ -19,6 +18,9 @@ const UserContent = styled(Content)`
   height: 70%;
   width: 80%;
 `;
+const Title = styled(HomeTitle)`
+margin: 0;
+`
 const ProfileText = styled(HomeSubTitle)`
   font-size: 3vh;
   color: black;
@@ -34,9 +36,15 @@ const ProfileHat = styled.img`
   margin: 1em;
 `;
 const PetImage = styled.img`
-  height: 30vw;
-  margin-top: 5vh;
+  height: 40vw;
+  margin-top: 9vh;
 `;
+const PetHat = styled.img`
+  width: 25vw;
+  position: absolute;
+  top: 47vh;
+  left:41vw;
+`
 
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -44,6 +52,7 @@ const UserProfile = () => {
     (state) => state.user
   );
   const { name, type } = useSelector((state) => state.pet);
+  const [petHat, setPetHat] = useState({})
 
   useEffect(() => {
     if (id) dispatch(getPet(id));
@@ -55,27 +64,28 @@ const UserProfile = () => {
 
   const petUrls = {
     Pigeon: 'https://creature-coders.s3.amazonaws.com/pigeon-for-hats.svg',
-    Racoon: 'https://creature-coders.s3.amazonaws.com/raccoon.svg',
+    Raccoon: 'https://creature-coders.s3.amazonaws.com/raccoon.svg',
   }
 
   return (
     <UserBG>
       <UserContent>
-        <HomeTitle>{username}</HomeTitle>
+        <Title>{username}</Title>
         <RowContainer>
           <ProfileText>Current Level: {currentLevel}</ProfileText>
           <ProfileText>Current Game: {currentGame}</ProfileText>
         </RowContainer>
-        <ProfileText>Hats:</ProfileText>
+        <ProfileText>Hats - click to wear!</ProfileText>
         {hats && hats.length > 0 ? (
           <RowContainer>
             {hats.map((hat) => (
-              <ProfileHat key={hat.id} src={hat.url} />
+              <ProfileHat key={hat.id} src={hat.url} onClick={() => setPetHat(hat)} />
             ))}
           </RowContainer>
         ) : (
           <ProfileText>Visit the shop to buy some hats!</ProfileText>
         )}
+        {petHat ? <PetHat src={petHat.url} onClick={() => setPetHat({})} /> : null}
         <PetImage src={petUrls[type]}/>
         <ProfileText>
           Pet: {name} the {type}
