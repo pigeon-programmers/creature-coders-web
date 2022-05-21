@@ -15,7 +15,12 @@ async function seed() {
 
   // Creating Users
   const users = await Promise.all([
-    User.create({ username: 'cody', password: '123', email: 'cody@cody.com' }),
+    User.create({
+      username: 'cody',
+      password: '123',
+      email: 'cody@cody.com',
+      pidgeCoin: 1000,
+    }),
     User.create({
       username: 'murphy',
       password: '123',
@@ -24,7 +29,7 @@ async function seed() {
       currentGame: 1,
       points: 3,
       streak: 37,
-      pidgeCoin: 10,
+      pidgeCoin: 5000000,
     }),
     User.create({
       username: 'pippin',
@@ -32,6 +37,7 @@ async function seed() {
       email: 'pippin@pippin.com',
       currentLevel: 1,
       currentGame: 2,
+      pidgeCoin: 100,
     }),
     User.create({
       username: 'grace',
