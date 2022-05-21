@@ -98,20 +98,36 @@ router.put('/:userId/streak', async (req, res, next) => {
     //get the user by userId
     const userId = req.params.userId;
     let user = await User.findByPk(userId);
-    let updatedUser;
+    console.log('🐠USER', user);
+    console.log('🦁OLD LAST DATE PLAYED', user.lastDatePlayed);
+    console.log('🐷OLD STREAK', user.streak);
+    console.log('🦆TODAY', today);
 
-    //check if user is signing in the next day
+    // if user last played yesterday, update date and add 1 to streak
     if (today === user.lastDatePlayed + 1) {
       const newStreak = user.streak++;
-      updatedUser = await user.update({
-        lastDatePlayed: today,
-        streak: newStreak,
-      });
+      console.log('🦀 USER SIGNING IN NEXT DAY');
+      res.send(
+        await user.update({
+          lastDatePlayed: today,
+          streak: newStreak,
+        })
+      );
+    } else if (today === user.lastDatePlayed) {
+      //if the last time they played was today, do nothing
+      console.log('🐥 USER SIGNING IN SAME DAY');
+      res.send(user);
     } else {
-      updatedUser = await user.update({ lastDatePlayed: today, streak: 0 });
+      //else update date and change streak to 1
+      //this will include streak being 0 or a streak breaking
+      console.log('🐍 USER NOT IN OR BREAKING STREAK');
+      res.send(
+        await user.update({
+          lastDatePlayed: today,
+          streak: 1,
+        })
+      );
     }
-    console.log(updatedUser);
-    res.send(updatedUser);
   } catch (err) {
     console.error('🥶Cannot update user streak...');
     next(err);

@@ -54,7 +54,7 @@ export const updateUserWon = (
 export const buyHat = (hat, userId) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`api/users/${userId}/hats`, hat);
+      const { data } = await axios.put(`/api/users/${userId}/hats`, hat);
       dispatch(_updateUser(data));
     } catch (err) {
       console.log('🎩 There was an error buying the hat!', err);
@@ -65,7 +65,8 @@ export const buyHat = (hat, userId) => {
 export const updateUserStreak = (userId) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`api/users/${userId}/streak`);
+      const { data } = await axios.put(`/api/users/${userId}/streak`);
+      console.log('USER STREAK DATA', data);
       dispatch(_updateUser(data));
     } catch (err) {
       console.log('🐦 There was an error updating streak!', err);

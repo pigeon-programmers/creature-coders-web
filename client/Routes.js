@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { me } from './store';
-import { getSingleUser, updateUserStreak } from './store/user';
+import { getSingleUser } from './store/user';
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import UserSettings from './components/UserSettings';
@@ -32,11 +32,12 @@ const Routes = () => {
 
   useEffect(() => {
     dispatch(me());
-    dispatch(updateUserStreak(auth.id));
   }, []);
 
   useEffect(() => {
-    if (isLoggedIn) dispatch(getSingleUser(auth.id));
+    if (isLoggedIn) {
+      dispatch(getSingleUser(auth.id));
+    }
   }, [isLoggedIn]);
 
   return isLoading ? (

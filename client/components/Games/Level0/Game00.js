@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { updateUserWon, updateUserStreak } from '../../../store/user';
 import Workspace from '../Workspace';
 import {
   GameContent,
@@ -13,7 +14,6 @@ import {
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
-import { updateUserWon } from '../../../store/user';
 import '../Blocks/00Blocks';
 
 export const Game00 = () => {
@@ -77,6 +77,8 @@ export const Game00 = () => {
   };
 
   const onRun = (javascriptCode) => {
+    dispatch(updateUserStreak(id));
+    console.log('updated user streak called 🐯');
     const myInterpreter = new Interpreter(javascriptCode, initApi);
     myInterpreter.run();
   };
