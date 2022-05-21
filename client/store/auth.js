@@ -53,6 +53,7 @@ export const authenticate =
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN);
+  // history.push('/');
   return {
     type: SET_AUTH,
     auth: {},
@@ -62,12 +63,12 @@ export const logout = () => {
 /**
  * REDUCER
  */
-export default function (state = { isLoading: true }, action) {
+export default function (state = { isLoading: false }, action) {
   switch (action.type) {
     case SET_AUTH:
-      return { ...state, ...action.auth };
+      return { ...state, ...action.auth, isLoading: false };
     case GET_LOADING:
-      return { ...state, isLoading: false };
+      return { ...state, isLoading: true };
     default:
       return state;
   }

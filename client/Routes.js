@@ -22,13 +22,13 @@ import GameWon from './components/GameWon';
 import Loading from './components/Loading';
 import FAQ from './components/FAQ';
 
-// TODO: add ternary for not found and loading, pull from redux state
-
 const Routes = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const auth = useSelector((state) => state.auth);
   const isLoading = useSelector((state) => state.auth.isLoading);
+
+  console.log('😏 is loading', isLoading);
 
   useEffect(() => {
     dispatch(me());
