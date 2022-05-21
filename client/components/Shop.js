@@ -35,7 +35,7 @@ const HatButton = styled(Button)`
   font-size: 1.5em;
 `;
 const HatButtonNoClick = styled(HatButton)`
-  background: ${palette.mdGray};
+  opacity: 0.5;
 `;
 const HatContainer = styled.div`
   display: flex;
@@ -65,6 +65,7 @@ const Shop = () => {
   if (user.hats && user.hats.length > 0) {
     user.hats.forEach((hat) => userHats.add(hat.id));
   }
+  console.log('user hats: ', userHats);
 
   return (
     <div>
@@ -77,10 +78,10 @@ const Shop = () => {
               allHats.map((hat, index) => (
                 <HatContainer2 key={index}>
                   <Hat src={hat.url} />
-                  {hat.cost > user.pidgeCoin ? (
-                    <HatButtonNoClick>{`P ${hat.cost}`}</HatButtonNoClick>
-                  ) : userHats.has(hat.id) ? (
+                  {userHats.has(hat.id) ? (
                     <HatButtonNoClick>Already Own</HatButtonNoClick>
+                  ) : hat.cost > user.pidgeCoin ? (
+                    <HatButtonNoClick>{`P ${hat.cost}`}</HatButtonNoClick>
                   ) : (
                     <HatButton
                       onClick={() => dispatch(buyHat(hat, user.id))}
