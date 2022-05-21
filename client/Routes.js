@@ -19,6 +19,7 @@ import Game12 from './components/Games/Level1/Game12';
 import Game20 from './components/Games/Level2/Game20';
 import Game30 from './components/Games/Level3/Game30';
 import GameWon from './components/GameWon';
+import EndGame from './components/EndGame';
 import Loading from './components/Loading';
 import FAQ from './components/FAQ';
 
@@ -55,9 +56,10 @@ const Routes = () => {
       <Route path="/game/2/0" exact component={Game20} />
       <Route path="/game/3/0" exact component={Game30} />
       <Route path="/faq" component={FAQ} />
-      <Route path="/settings" component={UserSettings} />
+      {isLoggedIn && <Route path="/settings" component={UserSettings} />}
       {isLoggedIn && <Route path="/profile" component={UserProfile} />}
       {isLoggedIn && <Route path="/pet" component={PetInfo} />}
+      {isLoggedIn && <Route path="/game/end" component={EndGame} />}
       {!isLoggedIn && <Route path="/login" exact component={Login} />}
       {!isLoggedIn && <Route path="/signup" exact component={Signup} />}
       <Route component={NotFound} />
