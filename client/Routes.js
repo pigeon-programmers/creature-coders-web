@@ -42,6 +42,7 @@ const Routes = () => {
     </Switch>
   ) : (
     <Switch>
+      <Route path="/loading" exact component={Loading} />
       <Route path="/" exact component={isLoggedIn ? Map : Home} />
       <Route path="/map" component={Map} />
       <Route path="/leaderboard" component={LeaderBoard} />

@@ -30,7 +30,6 @@ export const me = () => async (dispatch) => {
         authorization: token,
       },
     });
-    dispatch(getLoading());
     return dispatch(setAuth({ ...res.data, token }));
   }
   dispatch(getLoading());

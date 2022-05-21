@@ -1,9 +1,12 @@
 import React from 'react';
-import { Content, HomeTitle, palette } from './style';
+import { Content, HomeSubTitle, HomeTitle, palette } from './style';
 import styled, { keyframes } from 'styled-components';
 
-const Title = styled(HomeTitle)`
-  font-family: 'Andale Mono', monospace;
+// const Title = styled(HomeTitle)`
+//   font-family: 'Andale Mono', monospace;
+//   color: ${palette.mdGray};
+// `;
+const Title = styled(HomeSubTitle)`
   color: ${palette.mdGray};
 `;
 const spin = keyframes`
@@ -14,14 +17,14 @@ const PidgeHead = styled.img`
   animation: ${spin} 1s linear infinite;
 `;
 const LoadingContent = styled(Content)`
-  justify-content: space-evenly;
+  justify-content: center;
 `;
 
 const Loading = () => {
   return (
     <LoadingContent>
-      <Title>loading...!</Title>
-      <PidgeHead src="pidgeheadbig.png" />
+      <Title>loading...</Title>
+      <PidgeHead src="pidgehead.png" />
     </LoadingContent>
   );
 };
