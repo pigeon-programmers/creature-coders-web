@@ -29,6 +29,7 @@ const Routes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const auth = useSelector((state) => state.auth);
   const isLoading = useSelector((state) => state.auth.isLoading);
+  const { id } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(me());
@@ -37,14 +38,7 @@ const Routes = () => {
   useEffect(() => {
     if (isLoggedIn) {
       dispatch(getSingleUser(auth.id));
-    }
-  }, [isLoggedIn]);
-
-  //if this is added into the useEffect above, it does not get called
-  //if you can fix it, please do and then teach me your ways :)
-  useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(updateUserStreak(auth.id, true));
+      dispatch(updateUserStreak(auth.id, { logIn: true }));
     }
   }, [isLoggedIn]);
 

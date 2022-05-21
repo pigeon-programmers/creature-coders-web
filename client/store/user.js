@@ -62,11 +62,11 @@ export const buyHat = (hat, userId) => {
   };
 };
 
-export const updateUserStreak = (userId, logIn = false) => {
+//logIn should only equal false if true is not being passed in, but it is always equaling false
+export const updateUserStreak = (userId, logIn = { logIn: false }) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.put(`/api/users/${userId}/streak`, logIn);
-      console.log('USER STREAK DATA', data);
       dispatch(_updateUser(data));
     } catch (err) {
       console.log('🐦 There was an error updating streak!', err);

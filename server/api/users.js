@@ -98,13 +98,12 @@ router.put('/:userId/streak', async (req, res, next) => {
     //get the user by userId
     const userId = req.params.userId;
     let user = await User.findByPk(userId);
-    console.log('🐠USER', user);
-    console.log('🦁OLD LAST DATE PLAYED', user.lastDatePlayed);
-    console.log('🐷OLD STREAK', user.streak);
-    console.log('🦆TODAY', today);
+    // console.log('🐠USER', user);
+    // console.log('🦁OLD LAST DATE PLAYED', user.lastDatePlayed);
+    // console.log('🐷OLD STREAK', user.streak);
+    // console.log('🦆TODAY', today);
 
     const newLogIn = req.body.logIn;
-
     //if they are logging in and it is not adding to a streak, reset to 0
     if (newLogIn && today !== user.lastDatePlayed + 1)
       res.send(
