@@ -66,7 +66,7 @@ export const logout = () => {
 export default function (state = { isLoading: false }, action) {
   switch (action.type) {
     case SET_AUTH:
-      return { ...state, ...action.auth, isLoading: false };
+      return { ...action.auth, isLoading: false };
     case GET_LOADING:
       return { ...state, isLoading: true };
     default:
