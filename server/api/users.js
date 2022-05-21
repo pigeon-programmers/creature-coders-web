@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-  models: { User, Pet, Badge },
+  models: { User, Pet, Hat },
 } = require('../db');
 const { requireToken } = require('./securityMiddleware');
 module.exports = router;
@@ -31,7 +31,7 @@ router.get('/:userId', async (req, res, next) => {
         'streak',
         'pidgeCoin',
       ],
-      include: [{ model: Badge }],
+      include: [{ model: Hat }],
     });
     res.send(user);
   } catch (err) {
@@ -42,7 +42,9 @@ router.get('/:userId', async (req, res, next) => {
 router.put('/:userId', requireToken, async (req, res, next) => {
   try {
     if (+req.params.userId === req.user.id) {
-      const user = await User.findByPk(req.params.userId);
+      const user = await User.findByPk(req.params.userId, {
+        include: [{ model: Hat }],
+      });
       const { points, currentLevel, currentGame, pidgeCoin, streak } = req.body;
       res.send(
         await user.update({
@@ -63,6 +65,29 @@ router.put('/:userId', requireToken, async (req, res, next) => {
   }
 });
 
+router.put('/:userId/hats', async (req, res, next) => {
+  try {
+    const hat = req.body;
+    const userId = req.params.userId;
+    const user = await User.findByPk(userId);
+    const newPidgeCoin = user.pidgeCoin - hat.cost;
+    //break out if user doesn't have enough PC
+    if (newPidgeCoin < 0) return res.send('Not enough PidgeCoins!');
+    //add hat to user
+    await user.addHat(hat.id);
+    await user.update({
+      pidgeCoin: newPidgeCoin,
+    });
+    res.send(
+      await User.findByPk(userId, {
+        include: [{ model: Hat }],
+      })
+    );
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.put('/:userId/streak', async (req, res, next) => {
   try {
     const year = new Date().getFullYear();
@@ -72,35 +97,23 @@ router.put('/:userId/streak', async (req, res, next) => {
     const today = +`${year}${month}${day}`;
     //get the user by userId
     const userId = req.params.userId;
-    let user = await User.findByPk(userId, {
-      attributes: ['lastDatePlayed', 'streak'],
-    });
+    let user = await User.findByPk(userId);
+    let updatedUser;
 
     //check if user is signing in the next day
     if (today === user.lastDatePlayed + 1) {
       const newStreak = user.streak++;
-      user = await user.update({ lastDatePlayed: today, streak: newStreak });
+      updatedUser = await user.update({
+        lastDatePlayed: today,
+        streak: newStreak,
+      });
     } else {
-      user = await user.update({ lastDatePlayed: today, streak: 0 });
+      updatedUser = await user.update({ lastDatePlayed: today, streak: 0 });
     }
-    console.log(user);
-    res.send(user);
+    console.log(updatedUser);
+    res.send(updatedUser);
   } catch (err) {
     console.error('🥶Cannot update user streak...');
     next(err);
   }
 });
-
-// router.put('/:id', async (req, res, next) => {
-//   try {
-//     const user = await User.findOne({
-//       where: {
-//         id: req.params.id,
-//       },
-//     });
-//     res.send(await user.update(req.body));
-//     res.status(202);
-//   } catch (err) {
-//     next(err)
-//   }
-// })

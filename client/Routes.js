@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { me } from './store';
-import { getSingleUser } from './store/user';
+import { getSingleUser, updateUserStreak } from './store/user';
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import UserSettings from './components/UserSettings';
@@ -10,6 +10,7 @@ import UserProfile from './components/UserProfile';
 import LeaderBoard from './components/LeaderBoard';
 import Map from './components/Map';
 import PetInfo from './components/PetInfo';
+import Shop from './components/Shop';
 import NotFound from './components/NotFound';
 import Game00 from './components/Games/Level0/Game00';
 import Game01 from './components/Games/Level0/Game01';
@@ -31,6 +32,7 @@ const Routes = () => {
 
   useEffect(() => {
     dispatch(me());
+    dispatch(updateUserStreak(auth.id));
   }, []);
 
   useEffect(() => {
@@ -47,6 +49,7 @@ const Routes = () => {
       <Route path="/" exact component={isLoggedIn ? Map : Home} />
       <Route path="/map" component={Map} />
       <Route path="/leaderboard" component={LeaderBoard} />
+      <Route path="/shop" component={Shop} />
       <Route path="/game/won" component={GameWon} />
       <Route path="/game/0/0" exact component={Game00} />
       <Route path="/game/0/1" exact component={Game01} />
