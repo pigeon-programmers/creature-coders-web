@@ -67,7 +67,7 @@ router.put("/:userId", requireToken, async (req, res, next) => {
 router.put('/:userId/hats', async (req, res, next) => {
   try {
     const hat = req.body;
-    const new PidgeCoins = user.pidgeCoin - hat.cost
+    const newPidgeCoins = user.pidgeCoin - hat.cost
     const user = await User.findByPk(req.params.userId);
     user.addHat(hat.id)
     res.send(await user.update({ points, currentLevel, currentGame, pidgeCoin, streak }));
