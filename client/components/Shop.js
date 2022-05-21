@@ -29,12 +29,13 @@ const SubTitle = styled(HomeSubTitle)`
 const Hat = styled.img`
   width: 28vw;
   justify-content: space-around;
-  margin: 0.25em 3em;
+  margin: 0.5em 3em;
 `;
 const HatButton = styled(Button)`
   width: 30vw;
+  font-size: 1.5em;
 `;
-const ExpensiveHatButton = styled(HatButton)`
+const HatButtonNoClick = styled(HatButton)`
   background: ${palette.mdGray};
 `;
 const HatContainer = styled.div`
@@ -56,9 +57,15 @@ const Shop = () => {
   const dispatch = useDispatch();
   const allHats = useSelector((state) => state.hats);
   const user = useSelector((state) => state.user);
+
   useEffect(() => {
     dispatch(getAllHats());
   }, []);
+
+  const userHats = new Set();
+  if (user.hats && user.hats.length > 0) {
+    user.hats.forEach((hat) => userHats.add(hat.id));
+  }
 
   return (
     <div>
@@ -72,7 +79,9 @@ const Shop = () => {
                 <HatContainer2 key={index}>
                   <Hat src={hat.url} />
                   {hat.cost > user.pidgeCoin ? (
-                    <ExpensiveHatButton>{`P ${hat.cost}`}</ExpensiveHatButton>
+                    <HatButtonNoClick>{`P ${hat.cost}`}</HatButtonNoClick>
+                  ) : userHats.has(hat.id) ? (
+                    <HatButtonNoClick>Already Own</HatButtonNoClick>
                   ) : (
                     <HatButton
                       onClick={() => dispatch(buyHat(hat, user.id))}
