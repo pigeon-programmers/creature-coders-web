@@ -42,6 +42,9 @@ const User = db.define('user', {
     type: Sequelize.INTEGER,
     defaultValue: 0,
   },
+  lastDatePlayed: {
+    type: Sequelize.DATEONLY,
+  },
 });
 
 module.exports = User;
