@@ -9,6 +9,9 @@ const Hat = require('./models/Hat');
 User.hasOne(Pet);
 Pet.belongsTo(User);
 
+Pet.belongsTo(Hat);
+Hat.hasMany(Pet)
+
 User.belongsToMany(Hat, { through: "User_Hats"});
 Hat.belongsToMany(User, { through: "User_Hats"});
 
