@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
-const GET_SINGLE_USER = "GET_SINGLE_USER";
-const UPDATE_USER = "UPDATE_USER";
+const GET_SINGLE_USER = 'GET_SINGLE_USER';
+const UPDATE_USER = 'UPDATE_USER';
 
 const _getSingleUser = (data) => {
   return {
@@ -10,7 +10,7 @@ const _getSingleUser = (data) => {
   };
 };
 
-const updateUser = (user) => ({
+const _updateUser = (user) => ({
   type: UPDATE_USER,
   user,
 });
@@ -44,32 +44,23 @@ export const updateUserWon = (
           authorization: token,
         },
       });
-      dispatch(updateUser(data));
+      dispatch(_updateUser(data));
     } catch (err) {
-      console.log("There was an error updating the user!", err);
+      console.log('💩 There was an error updating the user!', err);
     }
   };
 };
-// const UPDATED_USER = 'UPDATED_USER'
 
-// const _updatedUser = (user) => {
-//   return {
-//     type: UPDATED_USER,
-//     user
-//   }
-// }
-
-// export const fetchUpdatedUser = (data) => {
-//   console.log('are we being called?')
-//   return async (dispatch) => {
-//     try {
-//       const { editedUser } = await axios.put(`/api/users/${data.id}`, { password: data.password })
-//       dispatch(_updatedUser(editedUser))
-//     } catch (err) {
-//       console.log('Unable to fetch edited user', err)
-//     }
-//   }
-// }
+export const buyHat = (hat, userId) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`api/users/${userId}/hats`, hat);
+      dispatch(_updateUser(data))
+    } catch (err) {
+      console.log('🎩 There was an error buying the hat!', err);
+    }
+  };
+};
 
 export default function (state = {}, action) {
   switch (action.type) {

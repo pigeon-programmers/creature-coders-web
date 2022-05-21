@@ -52,10 +52,12 @@ const Navbar = () => {
                 alt="leaderboard"
               />
             </Link>
+            <Link to="/shop">
             <NavIcon
               src="https://creature-coders.s3.amazonaws.com/iconShop.svg"
               alt="shop"
             />
+            </Link>
 
             <NavIcon
               onClick={() => setPop(true)}
