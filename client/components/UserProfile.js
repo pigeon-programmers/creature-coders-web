@@ -9,7 +9,7 @@ import {
   palette,
 } from './style';
 import styled from 'styled-components';
-import { getPet } from '../store/pet';
+import pet, { getPet } from '../store/pet';
 
 const UserBG = styled(Main)`
   background-color: ${palette.pink};
@@ -22,10 +22,9 @@ const UserContent = styled(Content)`
 const ProfileText = styled(HomeSubTitle)`
   font-size: 3vh;
   color: black;
-  z-index: 50;
-  margin: 0;
+  margin: 0.25em 1em;
 `;
-const HatContainer = styled.div`
+const RowContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,6 +32,10 @@ const HatContainer = styled.div`
 const ProfileHat = styled.img`
   width: 10vw;
   margin: 1em;
+`;
+const PetImage = styled.img`
+  height: 30vw;
+  margin-top: 5vh;
 `;
 
 const UserProfile = () => {
@@ -46,25 +49,37 @@ const UserProfile = () => {
     if (id) dispatch(getPet(id));
   }, [id]);
 
+  useEffect(() => {
+    if (id) dispatch(getPet(id));
+  }, [pet]);
+
+  const petUrls = {
+    Pigeon: 'https://creature-coders.s3.amazonaws.com/pigeon-for-hats.svg',
+    Racoon: 'https://creature-coders.s3.amazonaws.com/raccoon.svg',
+  }
+
   return (
     <UserBG>
       <UserContent>
         <HomeTitle>{username}</HomeTitle>
-        <ProfileText>
-          Pet: {name} the {type}
-        </ProfileText>
-        <ProfileText>Current Level: {currentLevel}</ProfileText>
-        <ProfileText>Current Game: {currentGame}</ProfileText>
+        <RowContainer>
+          <ProfileText>Current Level: {currentLevel}</ProfileText>
+          <ProfileText>Current Game: {currentGame}</ProfileText>
+        </RowContainer>
         <ProfileText>Hats:</ProfileText>
         {hats && hats.length > 0 ? (
-          <HatContainer>
+          <RowContainer>
             {hats.map((hat) => (
               <ProfileHat key={hat.id} src={hat.url} />
             ))}
-          </HatContainer>
+          </RowContainer>
         ) : (
           <ProfileText>Visit the shop to buy some hats!</ProfileText>
         )}
+        <PetImage src={petUrls[type]}/>
+        <ProfileText>
+          Pet: {name} the {type}
+        </ProfileText>
       </UserContent>
     </UserBG>
   );
