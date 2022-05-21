@@ -36,7 +36,6 @@ const Routes = () => {
     if (isLoggedIn) dispatch(getSingleUser(auth.id));
   }, [isLoggedIn]);
 
-  console.log('is loading:', isLoading)
   return isLoading ? (
     <Switch>
       <Route component={Loading} />
