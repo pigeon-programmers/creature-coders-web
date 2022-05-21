@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { me, getLoading } from './store';
+import { me } from './store';
 import { getSingleUser } from './store/user';
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
@@ -30,18 +30,19 @@ const Routes = () => {
   const auth = useSelector((state) => state.auth);
   const isLoading = useSelector((state) => state.auth.isLoading);
 
-  console.log('AUTH', auth, 'IS LOADING', isLoading);
-
   useEffect(() => {
     dispatch(me());
-    // dispatch(getLoading());
   }, []);
 
   useEffect(() => {
     if (isLoggedIn) dispatch(getSingleUser(auth.id));
   }, [isLoggedIn]);
 
-  return (
+  return isLoading ? (
+    <Switch>
+      <Route component={Loading} />
+    </Switch>
+  ) : (
     <Switch>
       <Route path="/" exact component={isLoggedIn ? Map : Home} />
       <Route path="/map" component={Map} />
@@ -55,12 +56,12 @@ const Routes = () => {
       <Route path="/game/2/0" exact component={Game20} />
       <Route path="/game/3/0" exact component={Game30} />
       <Route path="/faq" component={FAQ} />
-      {isLoggedIn && <Route path="/settings" component={UserSettings} />}
+      <Route path="/settings" component={UserSettings} />
       {isLoggedIn && <Route path="/profile" component={UserProfile} />}
       {isLoggedIn && <Route path="/pet" component={PetInfo} />}
       {!isLoggedIn && <Route path="/login" exact component={Login} />}
       {!isLoggedIn && <Route path="/signup" exact component={Signup} />}
-      <Route component={isLoading ? Loading : NotFound} />
+      <Route component={NotFound} />
     </Switch>
   );
 };
