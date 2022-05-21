@@ -81,7 +81,6 @@ export const Game12 = () => {
 
   const initApi = (interpreter, scope) => {
     const wrapper = function (text) {
-      console.log(text);
       text = text ? text.toString() : '';
       setSubwayLine(text);
       setConnect(true);
