@@ -44,8 +44,8 @@ export const Debugger = () => {
   const [ran, setRan] = useState(false);
   const [bugs, setBugs] = useState(['{', ';', ':', 'r', "'", '}', 'return']);
   const [levelGame, setLevelGame] = useState(0);
-  const [gamePoints, setGamePoints] = useState(10);
-  const [gameCoins, setGameCoins] = useState(5);
+  const [gamePoints, setGamePoints] = useState(20);
+  const [gameCoins, setGameCoins] = useState(10);
   const [win, setWin] = useState(false);
   const [squashedBugs, setSquashedBugs] = useState([]);
   const [tryAgain, setTryAgain] = useState(false);
@@ -95,7 +95,7 @@ export const Debugger = () => {
           : dispatch(updateUserWon(id, newPoints, 3, 1, newPidgeCoin));
       }
       setTimeout(() => {
-        history.push('/game/won', {
+        history.push('/game/end', {
           points: gamePoints,
           pidgeCoins: gameCoins,
         });
@@ -136,7 +136,7 @@ export const Debugger = () => {
             <div>
               <p>
                 You are trying to play Rock, Paper, Scissors with your friend
-                but then you see Randel the Roach BUGGING up your code!
+                but then you see Randall the Roach BUGGING up your code!
               </p>
               <p>
                 Find all of the BUGS in the code and squash them! BUGS are
