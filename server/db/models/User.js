@@ -43,7 +43,8 @@ const User = db.define('user', {
     defaultValue: 0,
   },
   lastDatePlayed: {
-    type: Sequelize.DATEONLY,
+    type: Sequelize.STRING,
+    defaultValue: 0,
   },
 });
 

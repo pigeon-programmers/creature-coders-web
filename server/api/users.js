@@ -39,14 +39,6 @@ router.get('/:userId', async (req, res, next) => {
   }
 });
 
-// const year = new Date().getFullYear();
-// const month = new Date().getMonth() + 1;
-// const day = new Date().getDate();
-// const today = `${year}-${month}-${day}`;
-// const user = await User.findByToken(req.headers.authorization)
-// const lastDate = user.
-// const updatedUser = user.({last})
-
 router.put('/:userId', requireToken, async (req, res, next) => {
   try {
     if (+req.params.userId === req.user.id) {
@@ -67,6 +59,34 @@ router.put('/:userId', requireToken, async (req, res, next) => {
       throw error;
     }
   } catch (err) {
+    next(err);
+  }
+});
+
+router.put('/:userId/streak', async (req, res, next) => {
+  try {
+    const year = new Date().getFullYear();
+    const month = new Date().getMonth() + 1;
+    const day = new Date().getDate();
+    //put the year month and day together and change it to a number
+    const today = +`${year}${month}${day}`;
+    //get the user by userId
+    const userId = req.params.userId;
+    let user = await User.findByPk(userId, {
+      attributes: ['lastDatePlayed', 'streak'],
+    });
+
+    //check if user is signing in the next day
+    if (today === user.lastDatePlayed + 1) {
+      const newStreak = user.streak++;
+      user = await user.update({ lastDatePlayed: today, streak: newStreak });
+    } else {
+      user = await user.update({ lastDatePlayed: today, streak: 0 });
+    }
+    console.log(user);
+    res.send(user);
+  } catch (err) {
+    console.error('🥶Cannot update user streak...');
     next(err);
   }
 });
