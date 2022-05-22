@@ -42,6 +42,9 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (min-width: 1000px) {
+        width: 1000px;
+}
 `;
 
 export const HomeTitle = styled.h1`

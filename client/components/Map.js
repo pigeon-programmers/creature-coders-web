@@ -18,6 +18,15 @@ const MapContainer = styled.div`
   align-items: center;
   overflow: hidden;
   position: relative;
+  @media (min-width: 1000px) {
+    width: 500px;
+}
+  @media (max-width: 750px) {
+    width: 75vw;
+}
+  @media (max-width: 500px) {
+    width: 100vw;
+}
 `;
 
 const Level = styled.div`
