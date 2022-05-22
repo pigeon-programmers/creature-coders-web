@@ -3,6 +3,7 @@ const {
   models: { User, Pet, Hat },
 } = require('../db');
 const { requireToken } = require('./securityMiddleware');
+const dayjs = require('dayjs');
 module.exports = router;
 
 router.get('/leaderboard', async (req, res, next) => {
@@ -93,34 +94,29 @@ router.put('/:userId/streak', async (req, res, next) => {
     const userId = req.params.userId;
     let user = await User.findByPk(userId);
 
-    const lastPlayed = user.lastDatePlayed;
-
-    const today = new Date();
-
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-
-    console.log('🪱🙊🐸LAST PLAYED', lastPlayed);
-    console.log('🪱🙊YESTERDAY', yesterday);
-    console.log('🪱TOMORROW', tomorrow);
-    console.log('TRUE OR FALSE', lastPlayed === today);
+    const lastPlayed = dayjs(user.lastDatePlayed);
+    const today = dayjs();
+    const yesterday = dayjs().subtract(1, 'day');
 
     const newLogIn = req.body.logIn;
 
     //if they are logging in and last played before yesterday, reset streak to 0
-    if (newLogIn && (lastPlayed !== yesterday || lastPlayed !== today))
+    if (
+      newLogIn &&
+      !lastPlayed.isSame(yesterday, 'day', 'month', 'year') &&
+      !lastPlayed.isSame(today, 'day', 'month', 'year')
+    ) {
+      console.log('IN HERE');
       res.send(
         await user.update({
           lastDatePlayed: today,
           streak: 0,
         })
       );
+    }
 
     //if the streak is 0, this game updates last played to today and makes streak 1
-    if (user.streak === 0) {
+    if (!newLogIn && user.streak === 0) {
       res.send(
         await user.update({
           lastDatePlayed: today,
@@ -130,17 +126,20 @@ router.put('/:userId/streak', async (req, res, next) => {
     }
 
     //if user last played yesterday, don't change anything
-    if (lastPlayed === today) {
+    if (!newLogIn && lastPlayed.isSame(today, 'day', 'month', 'year')) {
       res.send(user);
     }
 
     //if user last played yesterday, then add one to streak and change last played date
-    if (lastPlayed === yesterday) {
-      const newStreak = user.streak++;
+    if (!newLogIn && lastPlayed.isSame(yesterday, 'day', 'month', 'year')) {
+      console.log('IN THE RIGHT PLACE');
+      let newStreak = user.streak;
+
+      console.log(newStreak);
       res.send(
         await user.update({
           lastDatePlayed: today,
-          streak: newStreak,
+          streak: ++newStreak,
         })
       );
     }

@@ -25,7 +25,7 @@ const PopRoach = styled.img`
   width: 50vh;
   position: absolute;
   top: 74vh;
-  animation: ${slideIn} 5s 1 linear;
+  animation: ${slideIn} 3s 1 linear;
   z-index: -1;
 `;
 

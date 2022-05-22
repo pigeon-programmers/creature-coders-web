@@ -60,7 +60,7 @@ export const Debugger = () => {
   useEffect(() => {
     setTimeout(() => {
       return setMission(true);
-    }, 5000);
+    }, 2500);
   }, []);
 
   useEffect(() => {
@@ -95,9 +95,10 @@ export const Debugger = () => {
           : dispatch(updateUserWon(id, newPoints, 3, 1, newPidgeCoin));
       }
       setTimeout(() => {
-        history.push('/game/end', {
+        history.push('/game/won', {
           points: gamePoints,
           pidgeCoins: gameCoins,
+          lastGame: true,
         });
       }, 750);
     } else {

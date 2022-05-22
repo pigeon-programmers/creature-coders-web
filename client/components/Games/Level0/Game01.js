@@ -73,7 +73,7 @@ export const Game01 = () => {
   };
 
   const onRun = (javascriptCode) => {
-    dispatch(updateUserStreak(id));
+    // dispatch(updateUserStreak(id));
     const myInterpreter = new Interpreter(javascriptCode, initApi);
     myInterpreter.run();
   };

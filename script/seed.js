@@ -5,6 +5,10 @@ const {
   models: { User, Pet, Hat },
 } = require('../server/db');
 
+const dayjs = require('dayjs');
+const yesterday = dayjs().subtract(1, 'day');
+const oneWeekAgo = dayjs().subtract(1, 'week');
+
 /**
  * seed - this function clears the database, updates tables to
  *      match the models, and populates the database.
@@ -20,6 +24,8 @@ async function seed() {
       password: '123',
       email: 'cody@cody.com',
       pidgeCoin: 1000,
+      streak: 10,
+      lastDatePlayed: oneWeekAgo,
     }),
     User.create({
       username: 'murphy',
@@ -28,8 +34,9 @@ async function seed() {
       currentLevel: 0,
       currentGame: 1,
       points: 3,
-      streak: 37,
+      streak: 1,
       pidgeCoin: 5000000,
+      lastDatePlayed: yesterday,
     }),
     User.create({
       username: 'pippin',
