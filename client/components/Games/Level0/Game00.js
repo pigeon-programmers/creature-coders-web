@@ -138,8 +138,7 @@ export const Game00 = () => {
             </div>
           </PopUp>
           <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
-          <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
-            <div>Hint</div>
+          <PopUp open={hint} togglePopUp={() => setHint(!hint)} title={'Hint'}>
             <div>Try connecting the given blocks in the WORKSPACE!</div>
           </PopUp>
           <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
