@@ -29,7 +29,6 @@ const Routes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const auth = useSelector((state) => state.auth);
   const isLoading = useSelector((state) => state.auth.isLoading);
-  const { id } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(me());

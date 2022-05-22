@@ -90,22 +90,27 @@ router.put('/:userId/hats', async (req, res, next) => {
 
 router.put('/:userId/streak', async (req, res, next) => {
   try {
-    const year = new Date().getFullYear();
-    const month = new Date().getMonth() + 1;
-    const day = new Date().getDate();
-    //put the year month and day together and change it to a number
-    const today = +`${year}${month}${day}`;
-    //get the user by userId
     const userId = req.params.userId;
     let user = await User.findByPk(userId);
-    // console.log('🐠USER', user);
-    // console.log('🦁OLD LAST DATE PLAYED', user.lastDatePlayed);
-    // console.log('🐷OLD STREAK', user.streak);
-    // console.log('🦆TODAY', today);
+
+    const lastPlayed = user.lastDatePlayed;
+
+    const today = new Date();
+
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+
+    console.log('🪱🙊🐸LAST PLAYED', lastPlayed);
+    console.log('🪱🙊YESTERDAY', yesterday);
+    console.log('🪱TOMORROW', tomorrow);
 
     const newLogIn = req.body.logIn;
-    //if they are logging in and it is not adding to a streak, reset to 0
-    if (newLogIn && today !== user.lastDatePlayed + 1)
+
+    //if they are logging in and last played before yesterday, reset streak to 0
+    if (newLogIn && (lastPlayed !== yesterday || lastPlayed !== today))
       res.send(
         await user.update({
           lastDatePlayed: today,
@@ -113,28 +118,28 @@ router.put('/:userId/streak', async (req, res, next) => {
         })
       );
 
-    // if user last played yesterday, update date and add 1 to streak
-    if (today === user.lastDatePlayed + 1) {
-      const newStreak = user.streak++;
-      console.log('🦀 USER SIGNING IN NEXT DAY');
-      res.send(
-        await user.update({
-          lastDatePlayed: today,
-          streak: newStreak,
-        })
-      );
-    } else if (today === user.lastDatePlayed) {
-      //if the last time they played was today, do nothing
-      console.log('🐥 USER SIGNING IN SAME DAY');
-      res.send(user);
-    } else {
-      //else update date and change streak to 1
-      //this will take care of streak being 0
-      console.log('🐍 USER NOT IN OR BREAKING STREAK');
+    //if the streak is 0, this game updates last played to today and makes streak 1
+    if (user.streak === 0) {
       res.send(
         await user.update({
           lastDatePlayed: today,
           streak: 1,
+        })
+      );
+    }
+
+    //if user last played yesterday, don't change anything
+    if (lastPlayed === today) {
+      res.send(user);
+    }
+
+    //if user last played yesterday, then add one to streak and change last played date
+    if (lastPlayed === yesterday) {
+      const newStreak = user.streak++;
+      res.send(
+        await user.update({
+          lastDatePlayed: today,
+          streak: newStreak,
         })
       );
     }
