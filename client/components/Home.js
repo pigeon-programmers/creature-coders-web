@@ -11,7 +11,7 @@ const HomeButton = styled(Button)`
   height: 7vh;
   font-size: 2.5em;
   margin: 0.5em;
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     width: 65vw;
     padding: 0;
   }
@@ -23,7 +23,7 @@ const Title = styled(HomeTitle)`
   @media (min-width: 1000px) {
     font-size: 10vh;
   }
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     top: 7vh;
     line-height: 90%;
   }
@@ -35,7 +35,7 @@ const SubTitle = styled(HomeSubTitle)`
   @media (min-width: 1000px) {
     top: 28vh;
   }
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     top: 32vh;
   }
 `;

@@ -43,7 +43,7 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   @media (min-width: 1000px) {
-        width: 1000px;
+    width: 1000px;
 }
 `;
 
@@ -114,6 +114,13 @@ export const GameContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  @media (min-width: 1000px) {
+    width: 800px;
+}
+@media (max-width: 500px) {
+  width: 100vw;
+  margin-bottom: 0;
+}
 `;
 
 export const GameContentNoBlock = styled.div`
@@ -124,6 +131,12 @@ export const GameContentNoBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  @media (min-width: 1000px) {
+    width: 800px;
+}
+  @media (max-width: 500px) {
+    width: 100vw;
+}
 `;
 
 export const GameText = styled.p`
