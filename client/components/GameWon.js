@@ -50,7 +50,7 @@ const GameWon = (props) => {
         <BigText>GO YOU!!</BigText>
         {lastGame ? (
           <Link to="/game/end">
-            <Button>Next</Button>
+            <Button>Continue</Button>
           </Link>
         ) : (
           <Link to="/map">

@@ -66,8 +66,6 @@ export const updateUserStreak = (userId, logIn = { logIn: false }) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.put(`/api/users/${userId}/streak`, logIn);
-      console.log('USERINFO', data);
-      console.dir(new Date());
       dispatch(_updateUser(data));
     } catch (err) {
       console.log('🐦 There was an error updating streak!', err);

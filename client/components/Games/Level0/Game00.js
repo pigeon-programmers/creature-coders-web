@@ -14,7 +14,7 @@ import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
 import '../Blocks/00Blocks';
-import { updateUserWon, updateUserStreak } from '../../../store/user';
+import { updateUserWon } from '../../../store/user';
 
 export const Game00 = () => {
   const dispatch = useDispatch();
@@ -77,7 +77,6 @@ export const Game00 = () => {
   };
 
   const onRun = (javascriptCode) => {
-    // dispatch(updateUserStreak(id));
     const myInterpreter = new Interpreter(javascriptCode, initApi);
     myInterpreter.run();
   };

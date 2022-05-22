@@ -106,7 +106,7 @@ router.put('/:userId/streak', async (req, res, next) => {
       !lastPlayed.isSame(yesterday, 'day', 'month', 'year') &&
       !lastPlayed.isSame(today, 'day', 'month', 'year')
     ) {
-      console.log('IN HERE');
+      // const newUser
       res.send(
         await user.update({
           lastDatePlayed: today,
@@ -132,10 +132,8 @@ router.put('/:userId/streak', async (req, res, next) => {
 
     //if user last played yesterday, then add one to streak and change last played date
     if (!newLogIn && lastPlayed.isSame(yesterday, 'day', 'month', 'year')) {
-      console.log('IN THE RIGHT PLACE');
       let newStreak = user.streak;
 
-      console.log(newStreak);
       res.send(
         await user.update({
           lastDatePlayed: today,
