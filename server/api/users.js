@@ -106,6 +106,7 @@ router.put('/:userId/streak', async (req, res, next) => {
     console.log('🪱🙊🐸LAST PLAYED', lastPlayed);
     console.log('🪱🙊YESTERDAY', yesterday);
     console.log('🪱TOMORROW', tomorrow);
+    console.log('TRUE OR FALSE', lastPlayed === today);
 
     const newLogIn = req.body.logIn;
 
