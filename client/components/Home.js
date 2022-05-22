@@ -71,7 +71,7 @@ const Bang = styled.img`
   top: 10vh;
   animation: ${blinker} 1s linear infinite;
   @media (min-width: 1025px) {
-    width: 800px;
+    width: 820px;
   }
 `;
 const Bang2 = styled(Bang)`

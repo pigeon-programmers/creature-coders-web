@@ -20,8 +20,10 @@ const NavIconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (min-width: 1025px) {
+    width: 820px;
+  }
 `;
-
 const StatusIconContainer = styled.div`
   width: 13vw;
   height: 5vh;
@@ -29,14 +31,15 @@ const StatusIconContainer = styled.div`
   align-items: center;
   justify-content: space-around;
 `;
-
 const StatusIcon = styled.img`
   height: 3vh;
 `;
-
 const StatusText = styled.p`
   font-family: 'Anonymous Pro', 'Andale Mono', monospace;
   font-size: 3.5vh;
+  @media (max-width: 500px) {
+    font-size:2.5vh;
+  }
 `;
 
 const StatusBar = () => {

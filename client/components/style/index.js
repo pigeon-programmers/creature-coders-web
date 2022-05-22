@@ -125,7 +125,7 @@ export const GameContent = styled.div`
   align-items: center;
   justify-content: space-around;
   @media (min-width: 1025px) {
-    width: 800px;
+    width: 820px;
 }
 @media (max-width: 500px) {
   width: 100vw;
@@ -155,7 +155,7 @@ export const GameContentNoBlock = styled.div`
   align-items: center;
   justify-content: space-around;
   @media (min-width: 1025px) {
-    width: 800px;
+    width: 820px;
 }
   @media (max-width: 500px) {
     width: 100vw;

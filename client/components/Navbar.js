@@ -16,12 +16,14 @@ const Nav = styled.nav`
   bottom: 0;
   left: 0;
 `;
-
 const NavIconContainer = styled.div`
   width: 80vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (min-width: 1025px) {
+    width: 820px;
+  }
 `;
 
 const Navbar = () => {

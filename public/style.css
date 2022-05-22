@@ -21,7 +21,7 @@ a {
 @media (min-width: 1025px) {
   .blockly-workspace {
     height: 35vh;
-    width: 800px;
+    width: 820px;
   }
 }
 @media (max-width: 500px) {

@@ -17,7 +17,15 @@ const MainBg = styled(Main)`
 `;
 const HatContent = styled(Content)`
   background-color: rgba(255, 255, 255, 0.6);
-  width: 80%;
+  width: 80vw;
+  overflow: scroll;
+  @media (min-width: 1025px) {
+    width: 1025px;
+}
+  @media (max-width: 500px) {
+    width: 100vw;
+}
+
 `;
 const Title = styled(HomeTitle)`
   margin: 0;
@@ -27,12 +35,20 @@ const SubTitle = styled(HomeSubTitle)`
   margin: 2vh;
 `;
 const Hat = styled.img`
-  width: 28vw;
+  height: 10vw;
   margin: 0.5em 3em;
+  @media (max-width: 500px) {
+    margin: 0.5em;
+    height: 20vw;
+  }
 `;
 const HatButton = styled(Button)`
   width: 30vw;
   font-size: 1.5em;
+  @media (max-width: 500px) {
+    width: 45vw;
+    padding: 0.25em .75em;
+  }
 `;
 const HatButtonNoClick = styled(HatButton)`
   opacity: 0.5;
