@@ -106,7 +106,6 @@ router.put('/:userId/streak', async (req, res, next) => {
       !lastPlayed.isSame(yesterday, 'day', 'month', 'year') &&
       !lastPlayed.isSame(today, 'day', 'month', 'year')
     ) {
-      // const newUser
       res.send(
         await user.update({
           lastDatePlayed: today,
