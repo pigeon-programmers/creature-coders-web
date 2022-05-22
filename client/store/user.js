@@ -2,6 +2,8 @@ import axios from 'axios';
 
 const GET_SINGLE_USER = 'GET_SINGLE_USER';
 const UPDATE_USER = 'UPDATE_USER';
+const GET_USER_HATS = 'GET_USER_HATS';
+const UPDATE_USER_HATS = 'UPDATE_USER_HATS';
 
 const _getSingleUser = (data) => {
   return {
@@ -14,6 +16,14 @@ const _updateUser = (user) => ({
   type: UPDATE_USER,
   user,
 });
+
+const _getUserHats = (hats) => {
+  type: GET_USER_HATS, hats;
+};
+
+const _updateUserHats = (hats) => {
+  type: UPDATE_USER_HATS, hats;
+};
 
 export const getSingleUser = (userId) => {
   return async (dispatch) => {
@@ -51,23 +61,38 @@ export const updateUserWon = (
   };
 };
 
+export const getUserHats = (userId) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`api/users/${userId}/hats`);
+      dispatch(_getUserHats(data));
+    } catch (err) {
+      console.log('🎩 There was an error getting the hats!', err);
+    }
+  };
+};
+
 export const buyHat = (hat, userId) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.put(`api/users/${userId}/hats`, hat);
-      dispatch(_updateUser(data))
+      dispatch(_updateUser(data));
     } catch (err) {
       console.log('🎩 There was an error buying the hat!', err);
     }
   };
 };
 
-export default function (state = {}, action) {
+export default function (state = { hats: [] }, action) {
   switch (action.type) {
     case GET_SINGLE_USER:
-      return action.data;
+      return { ...state, ...action.data };
     case UPDATE_USER:
-      return action.user;
+      return { ...state, ...action.user };
+    case GET_USER_HATS:
+      return { ...state, hats: action.hats };
+    case UPDATE_USER_HATS:
+      return { ...state, hats: action.hats };
     default:
       return state;
   }
