@@ -21,6 +21,9 @@ import { updateUserWon } from '../../../store/user';
 const SmallerGameText = styled(GameText)`
   font-size: medium;
 `;
+const ButtonContainer = styled(GameContentNoBlock)`
+height: 25vh;
+`
 
 const Game20 = () => {
   const dispatch = useDispatch();
@@ -170,7 +173,7 @@ const Game20 = () => {
           <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
         </PopContainer>
         <GameContentNoBlock>
-          <div>
+
             <SmallerGameText>
               {`let ourCats = 0;`}
               <br />
@@ -183,16 +186,16 @@ const Game20 = () => {
               <br />
               {`function addCats(cats) {`}
               <br />
-              &ensp;{`for(let i = 0; i < catsTarget; i++){`}
+              &ensp;&ensp;{`for(let i = 0; i < catsTarget; i++){`}
               <br />
-              &ensp;&ensp;
+              &ensp;&ensp;&ensp;&ensp;
               <GameButton id={1} onClick={usedClickHandler}>
                 {usedButtons[1]}
               </GameButton>
               <br />
-              &ensp;{`}`}
+              &ensp;&ensp;{`}`}
               <br />
-              &ensp;
+              &ensp;&ensp;
               <GameButton id={2} onClick={usedClickHandler}>
                 {usedButtons[2]}
               </GameButton>
@@ -203,16 +206,16 @@ const Game20 = () => {
               <br />
               {`addCats(ourCats)`}
             </SmallerGameText>
-          </div>
+
           <Computer src="https://creature-coders.s3.amazonaws.com/computer.svg" />
         </GameContentNoBlock>
-        <GameContentNoBlock>
+        <ButtonContainer>
           {availButtons.map((a, i) => (
             <GameButton key={i} onClick={availClickHandler}>
               {a}
             </GameButton>
           ))}
-        </GameContentNoBlock>
+        </ButtonContainer>
         <Button type="button" onClick={() => onRun()}>
           Run
         </Button>

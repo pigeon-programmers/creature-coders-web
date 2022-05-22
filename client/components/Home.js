@@ -20,7 +20,7 @@ const Title = styled(HomeTitle)`
   text-align: center;
   position: absolute;
   top: 12vh;
-  @media (min-width: 1000px) {
+  @media (min-width: 1025px) {
     font-size: 10vh;
   }
   @media (max-width: 500px) {
@@ -32,7 +32,7 @@ const SubTitle = styled(HomeSubTitle)`
   z-index: 1;
   position: absolute;
   top: 25vh;
-  @media (min-width: 1000px) {
+  @media (min-width: 1025px) {
     top: 28vh;
   }
   @media (max-width: 500px) {
@@ -42,7 +42,7 @@ const SubTitle = styled(HomeSubTitle)`
 const BlocklyLogo = styled.img`
   width: 20vw;
   margin: 3em;
-  @media (min-width: 1000px) {
+  @media (min-width: 1025px) {
     width: 10vw;
   }
 `;
@@ -70,7 +70,7 @@ const Bang = styled.img`
   position: absolute;
   top: 10vh;
   animation: ${blinker} 1s linear infinite;
-  @media (min-width: 1000px) {
+  @media (min-width: 1025px) {
     width: 800px;
   }
 `;

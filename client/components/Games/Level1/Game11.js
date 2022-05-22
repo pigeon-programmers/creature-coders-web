@@ -6,7 +6,6 @@ import {
   GameContent,
   GameText,
   VisualsContainer,
-  Bagel,
   Main,
   PopContainer,
   PopButton,
@@ -17,7 +16,21 @@ import TryAgain from '../../TryAgain';
 import Home from '../../Home';
 import Interpreter from 'js-interpreter';
 import { updateUserWon } from '../../../store/user';
+import styled from 'styled-components';
 import '../Blocks/11Blocks';
+
+ const Bagel = styled.p`
+  background-image: url('https://creature-coders.s3.amazonaws.com/bagel.svg');
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 50px;
+  margin: 2px;
+`;
+const VisCont = styled(VisualsContainer)`
+  flex-wrap: wrap;
+  width: 80%;
+`
+
 
 export const Game11 = () => {
   const dispatch = useDispatch();
@@ -182,13 +195,13 @@ export const Game11 = () => {
         </PopContainer>
         <GameContent>
           <GameText>You have made {timesRan} bagels</GameText>
-          <VisualsContainer>
+          <VisCont>
             {bagelsMade.length === 0 ? (
               <p />
             ) : (
               bagelsMade.map((b, i) => <Bagel key={i} />)
             )}
-          </VisualsContainer>
+          </VisCont>
         </GameContent>
         <Workspace toolbox={toolbox} onRun={onRun} />
       </Content>

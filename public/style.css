@@ -18,7 +18,7 @@ a {
   width: 80vw;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1025px) {
   .blockly-workspace {
     height: 35vh;
     width: 800px;

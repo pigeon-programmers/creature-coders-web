@@ -30,7 +30,7 @@ const LeftDoor = styled.img`
   position: absolute;
   left: -25vw;
   animation: ${slideInLeftAnim} 1.5s 1 alternate linear;
-  @media (min-width: 1000px) {
+  @media (min-width: 1025px) {
     width: 250px;
   }
   @media (max-width: 750px) {
@@ -49,7 +49,7 @@ const RightDoor = styled.img`
   position: absolute;
   right: -25vw;
   animation: ${slideInRightAnim} 1.5s 1 alternate linear;
-  @media (min-width: 1000px) {
+  @media (min-width: 1025px) {
     width: 250px;
   }
   @media (max-width: 750px) {

@@ -18,7 +18,7 @@ const MapContainer = styled.div`
   align-items: center;
   overflow: hidden;
   position: relative;
-  @media (min-width: 1000px) {
+  @media (min-width: 1025px) {
     width: 500px;
 }
   @media (max-width: 750px) {
