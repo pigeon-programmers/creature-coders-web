@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   GameText,
   Main,
@@ -10,7 +11,9 @@ import {
 } from './style';
 import { Link } from 'react-router-dom';
 import DancingPigeon from './Animations/DancingPigeon';
+import NotFound from './NotFound';
 import styled, { keyframes } from 'styled-components';
+import { updateUserStreak } from '../store/user';
 
 const WonBg = styled(Main)`
   background-color: ${palette.yellow};
@@ -30,7 +33,13 @@ const BigText = styled(HomeTitle)`
 `;
 
 const GameWon = (props) => {
-  const { points, pidgeCoins } = props.location.state;
+  const dispatch = useDispatch();
+  const { id } = useSelector((state) => state.user);
+  const { points, pidgeCoins, lastGame } = props.location.state;
+
+  useEffect(() => {
+    dispatch(updateUserStreak(id));
+  }, []);
 
   return (
     <WonBg>
@@ -39,9 +48,15 @@ const GameWon = (props) => {
         <BlackGameText>You won {points} points</BlackGameText>
         <BlackGameText>You won {pidgeCoins} pidge coins</BlackGameText>
         <BigText>GO YOU!!</BigText>
-        <Link to="/map">
-          <Button>Map</Button>
-        </Link>
+        {lastGame ? (
+          <Link to="/game/end">
+            <Button>Continue</Button>
+          </Link>
+        ) : (
+          <Link to="/map">
+            <Button>Map</Button>
+          </Link>
+        )}
       </Content>
     </WonBg>
   );

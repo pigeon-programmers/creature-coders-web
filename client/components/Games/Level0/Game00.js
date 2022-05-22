@@ -13,8 +13,8 @@ import {
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
-import { updateUserWon } from '../../../store/user';
 import '../Blocks/00Blocks';
+import { updateUserWon } from '../../../store/user';
 
 export const Game00 = () => {
   const dispatch = useDispatch();
@@ -138,8 +138,7 @@ export const Game00 = () => {
             </div>
           </PopUp>
           <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
-          <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
-            <div>Hint</div>
+          <PopUp open={hint} togglePopUp={() => setHint(!hint)} title={'Hint'}>
             <div>Try connecting the given blocks in the WORKSPACE!</div>
           </PopUp>
           <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />

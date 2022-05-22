@@ -5,25 +5,25 @@ const UPDATE_USER = 'UPDATE_USER';
 const GET_USER_HATS = 'GET_USER_HATS';
 const UPDATE_USER_HATS = 'UPDATE_USER_HATS';
 
-const _getSingleUser = (data) => {
-  return {
-    type: GET_SINGLE_USER,
-    data,
-  };
-};
+const _getSingleUser = (data) => ({
+  type: GET_SINGLE_USER,
+  data,
+});
 
 const _updateUser = (user) => ({
   type: UPDATE_USER,
   user,
 });
 
-const _getUserHats = (hats) => {
-  type: GET_USER_HATS, hats;
-};
+const _getUserHats = (hats) => ({
+  type: GET_USER_HATS,
+  hats,
+});
 
-const _updateUserHats = (hats) => {
-  type: UPDATE_USER_HATS, hats;
-};
+const _updateUserHats = (hats) => ({
+  type: UPDATE_USER_HATS,
+  hats,
+});
 
 export const getSingleUser = (userId) => {
   return async (dispatch) => {
@@ -75,10 +75,22 @@ export const getUserHats = (userId) => {
 export const buyHat = (hat, userId) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`api/users/${userId}/hats`, hat);
-      dispatch(_updateUser(data));
+      const { data } = await axios.put(`/api/users/${userId}/hats`, hat);
+      dispatch(_updateUser(data.user));
+      dispatch(_updateUserHats(data.hats));
     } catch (err) {
       console.log('🎩 There was an error buying the hat!', err);
+    }
+  };
+};
+
+export const updateUserStreak = (userId, logIn = { logIn: false }) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`/api/users/${userId}/streak`, logIn);
+      dispatch(_updateUser(data));
+    } catch (err) {
+      console.log('🐦 There was an error updating streak!', err);
     }
   };
 };

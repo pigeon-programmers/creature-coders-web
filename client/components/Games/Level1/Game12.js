@@ -151,10 +151,10 @@ export const Game12 = () => {
             </div>
           </PopUp>
           <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
-          <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
-            <div>Hint</div>
+          <PopUp open={hint} togglePopUp={() => setHint(!hint)} title={'Hint'}>
             <p>
-              The Q train is on the Yellow Line! Also remember to select GO!
+              The Q train is on the Yellow Line! The subway also has to know to
+              GO!
             </p>
           </PopUp>
           <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />

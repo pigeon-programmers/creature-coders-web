@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const axios = require('axios');
+const dayjs = require('dayjs');
 
 const SALT_ROUNDS = 5;
 
@@ -41,6 +41,10 @@ const User = db.define('user', {
   pidgeCoin: {
     type: Sequelize.INTEGER,
     defaultValue: 0,
+  },
+  lastDatePlayed: {
+    type: Sequelize.DATE,
+    defaultValue: dayjs(),
   },
 });
 
