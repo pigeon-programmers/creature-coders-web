@@ -66,6 +66,18 @@ router.put('/:userId', requireToken, async (req, res, next) => {
   }
 });
 
+router.get('/:userId/hats', async (req, res, next) => {
+  try {
+    const userId = req.params.userId;
+    const user = await User.findByPk(userId, {
+      include: { model: Hat },
+    });
+    res.send(user.hats);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.put('/:userId/hats', async (req, res, next) => {
   try {
     const hat = req.body;
@@ -76,14 +88,13 @@ router.put('/:userId/hats', async (req, res, next) => {
     if (newPidgeCoin < 0) return res.send('Not enough PidgeCoins!');
     //add hat to user
     await user.addHat(hat.id);
-    await user.update({
+    const userNewHat = await User.findByPk(userId, {
+      include: { model: Hat },
+    });
+    const userNewPidgeCoin = await user.update({
       pidgeCoin: newPidgeCoin,
     });
-    res.send(
-      await User.findByPk(userId, {
-        include: [{ model: Hat }],
-      })
-    );
+    res.send({ user: userNewPidgeCoin, hats: userNewHat.hats });
   } catch (err) {
     next(err);
   }
