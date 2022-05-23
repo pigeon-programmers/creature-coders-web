@@ -182,8 +182,7 @@ export const Game11 = () => {
             </div>
           </PopUp>
           <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
-          <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
-            <div>Hint</div>
+          <PopUp open={hint} togglePopUp={() => setHint(!hint)} title={'Hint'}>
             <div>
               <p>
                 Make sure the connected blocks will be REPEATED on a LOOP of 10

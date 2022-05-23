@@ -9,7 +9,7 @@ import {
 } from './style';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllHats } from '../store/hats';
+import { getAllHats } from '../store/allHats';
 import { buyHat } from '../store/user';
 
 const MainBg = styled(Main)`
@@ -70,18 +70,17 @@ const HatContainer2 = styled.div`
 
 const Shop = () => {
   const dispatch = useDispatch();
-  const allHats = useSelector((state) => state.hats);
+  const allHats = useSelector((state) => state.allHats);
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getAllHats());
   }, []);
 
-  const userHats = new Set();
+  const userHatsSet = new Set();
   if (user.hats && user.hats.length > 0) {
-    user.hats.forEach((hat) => userHats.add(hat.id));
+    user.hats.forEach((hat) => userHatsSet.add(hat.id));
   }
-  console.log('user hats: ', userHats);
 
   return (
     <div>
@@ -94,7 +93,7 @@ const Shop = () => {
               allHats.map((hat, index) => (
                 <HatContainer2 key={index}>
                   <Hat src={hat.url} />
-                  {userHats.has(hat.id) ? (
+                  {userHatsSet.has(hat.id) ? (
                     <HatButtonNoClick>Already Own</HatButtonNoClick>
                   ) : hat.cost > user.pidgeCoin ? (
                     <HatButtonNoClick>{`P ${hat.cost}`}</HatButtonNoClick>
@@ -114,12 +113,5 @@ const Shop = () => {
     </div>
   );
 };
-
-{
-  /* <HatContainer>
-<Hat key={index} src={hat.url} />
-<h3>{`$${hat.cost}`}</h3>
-</HatContainer> */
-}
 
 export default Shop;

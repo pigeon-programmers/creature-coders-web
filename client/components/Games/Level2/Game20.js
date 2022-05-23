@@ -159,8 +159,7 @@ const Game20 = () => {
             </div>
           </PopUp>
           <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
-          <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
-            <div>Hint</div>
+          <PopUp open={hint} togglePopUp={() => setHint(!hint)} title={'Hint'}>
             <div>
               <p>
                 Our TARGET is to make 5 CATS. Where do you think catsTarget

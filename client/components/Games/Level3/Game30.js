@@ -73,7 +73,7 @@ export const Debugger = () => {
   useEffect(() => {
     setTimeout(() => {
       return setMission(true);
-    }, 5000);
+    }, 2500);
   }, []);
 
   useEffect(() => {
@@ -108,9 +108,10 @@ export const Debugger = () => {
           : dispatch(updateUserWon(id, newPoints, 3, 1, newPidgeCoin));
       }
       setTimeout(() => {
-        history.push('/game/end', {
+        history.push('/game/won', {
           points: gamePoints,
           pidgeCoins: gameCoins,
+          lastGame: true,
         });
       }, 750);
     } else {
@@ -161,14 +162,19 @@ export const Debugger = () => {
           </PopUp>
           <PopButton onClick={() => setHint(true)}>Hint</PopButton>
           <PopUp open={hint} title={'Hint'} togglePopUp={() => setHint(false)}>
-            <p>
-              In JavaScript there are a few signs that can be written twice. As
-              you can see there are multiple times we see two EQUAL signs (==)
-              and two AND signs (&&). These are actually not bugs and are needed
-              for the computer to understand what we are trying to do with our
-              code. For more information about these signs, click on the FAQ
-              page on the navigation bar below!
-            </p>
+            <div>
+              <p>
+                In JavaScript there are a few signs that can be written twice.
+                For example, there are multiple times we see two EQUAL signs
+                (==) and two AND signs (&&). These are actually not bugs and are
+                needed for the computer to understand what we are trying to do
+                with our code.
+              </p>
+              <p>
+                For resources on where to find more information about these
+                signs, click on the FAQ page through the navigation bar below!
+              </p>
+            </div>
           </PopUp>
           <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
         </PopContainer>

@@ -26,6 +26,11 @@ const NavIconContainer = styled.div`
   }
 `;
 
+// const ToggleButtons = () => {
+//   const [active, setActive] = useState()
+
+// }
+
 const Navbar = () => {
   const [pop, setPop] = useState(false);
   const isLoggedIn = useSelector((state) => !!state.auth.id);

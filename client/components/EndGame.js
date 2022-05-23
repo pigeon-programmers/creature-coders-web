@@ -18,7 +18,7 @@ const EndBg = styled(Main)`
 const EndGameContent = styled(Content)`
   background-color: rgba(255, 255, 255, 0.6);
   width: 80vw;
-  height: 45vh;
+  height: 40vh;
 `;
 
 const LargeText = styled(HomeSubTitle)`
@@ -31,17 +31,12 @@ const MarginButton = styled(Button)`
   margin: 5vh;
 `;
 
-const EndGame = (props) => {
-  const { points, pidgeCoins } = props.location.state;
-
+const EndGame = () => {
   return (
     <EndBg>
       <HomeTitle>THANKS FOR PLAYING</HomeTitle>
       <EndGameContent>
-        <LargeText>
-          You played all the games! In this last game, you won {points} points
-          and {pidgeCoins} pidge coins.
-        </LargeText>
+        <LargeText>You played all the games!</LargeText>
         <LargeText>
           Feel free to go back and re-play games for more practice, points, and
           pidge coins

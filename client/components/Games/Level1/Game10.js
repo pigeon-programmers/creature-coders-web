@@ -226,8 +226,7 @@ export const Game10 = () => {
             </div>
           </PopUp>
           <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
-          <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
-            <div>Hint</div>
+          <PopUp open={hint} togglePopUp={() => setHint(!hint)} title={'Hint'}>
             <div>
               <p>A STRING is surrounded by QUOTATION MARKS.</p>
               <p>A NUMBER is an INTEGER without quotation marks.</p>
