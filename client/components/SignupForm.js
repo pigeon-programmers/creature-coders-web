@@ -33,7 +33,7 @@ const SignupForm = (props) => {
       <FormContainer onSubmit={handleSubmit} name='signup'>
         <>
           <Label htmlFor="username">
-            <LabelP>Name</LabelP>
+            <LabelP>Username</LabelP>
           </Label>
           <Input id="username" type="text" value={username} required onChange={(evt) => { setUsername(evt.target.value) }} />
             <Label htmlFor="email"><LabelP>Email address</LabelP></Label>
