@@ -43,14 +43,14 @@ export const updateUserWon = (
   points,
   currentLevel,
   currentGame,
-  pidgeCoins
+  pidgeCoin
 ) => {
   return async (dispatch, getState) => {
     try {
       const {
         auth: { token },
       } = getState();
-      const user = { points, currentLevel, currentGame, pidgeCoins };
+      const user = { points, currentLevel, currentGame, pidgeCoin };
       const { data } = await axios.put(`/api/users/${id}`, user, {
         headers: {
           authorization: token,
@@ -102,6 +102,7 @@ export const createUser = (newUser, history) => {
     await axios.post('/api/users/signup', {
       ...newUser,
     });
+    window.localStorage.clear();
     dispatch(authenticate(newUser.email, newUser.password, 'login', true));
 
     history.push('/pet');

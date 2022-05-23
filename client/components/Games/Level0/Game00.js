@@ -103,12 +103,11 @@ export const Game00 = () => {
       }
 
       if (!isLoggedIn) {
-        localStorage.setItem('points', gamePoints + lsPoints);
-        localStorage.setItem('coins', gameCoins + lsCoins);
-        localStorage.setItem('level', '0');
-        localStorage.setItem('game', '1');
+        window.localStorage.setItem('points', gamePoints + lsPoints);
+        window.localStorage.setItem('coins', gameCoins + lsCoins);
+        window.localStorage.setItem('level', '0');
+        window.localStorage.setItem('game', '1');
         dispatch(_getLocalStorage());
-        localStorage.clear();
       }
 
       setTimeout(() => {

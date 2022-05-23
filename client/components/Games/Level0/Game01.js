@@ -106,12 +106,11 @@ export const Game01 = () => {
         }, 750);
       } else {
         //THIS IS HIT IF ANSWER IS CORRECT & USER NOT LOGGED IN
-        localStorage.setItem('points', gamePoints + lsPoints);
-        localStorage.setItem('coins', gameCoins + lsCoins);
-        localStorage.setItem('level', '1');
-        localStorage.setItem('game', '0');
+        window.localStorage.setItem('points', gamePoints + lsPoints);
+        window.localStorage.setItem('coins', gameCoins + lsCoins);
+        window.localStorage.setItem('level', '1');
+        window.localStorage.setItem('game', '0');
         dispatch(_getLocalStorage());
-        localStorage.clear();
 
         setTimeout(() => {
           history.push(`/`, {

@@ -21,8 +21,9 @@ router.get('/leaderboard', async (req, res, next) => {
 
 router.post('/signup', async (req, res, next) => {
   try {
-    const user = await User.create(req.body)
-    res.send(201)
+    const { username, email, password, currentLevel, currentGame, pidgeCoin, points } = req.body
+    await User.create({ username, email, password, currentLevel, currentGame, pidgeCoin, points })
+    res.sendStatus(201)
   } catch (err) {
     if (err.name === "SequelizeUniqueConstraintError") {
       res.status(401).send("User already exists");
