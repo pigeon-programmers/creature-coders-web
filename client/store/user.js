@@ -1,9 +1,11 @@
 import axios from 'axios';
+import { authenticate } from './auth';
 
 const GET_SINGLE_USER = 'GET_SINGLE_USER';
 const UPDATE_USER = 'UPDATE_USER';
 const GET_USER_HATS = 'GET_USER_HATS';
 const UPDATE_USER_HATS = 'UPDATE_USER_HATS';
+const CREATE_USER = 'CREATE_USER'
 
 const _getSingleUser = (data) => ({
   type: GET_SINGLE_USER,
@@ -24,6 +26,11 @@ const _updateUserHats = (hats) => ({
   type: UPDATE_USER_HATS,
   hats,
 });
+
+const _createUser = (newUser) => ({
+  type: CREATE_USER,
+  newUser
+})
 
 export const getSingleUser = (userId) => {
   return async (dispatch) => {
@@ -95,6 +102,17 @@ export const updateUserStreak = (userId, logIn = { logIn: false }) => {
   };
 };
 
+export const createUser = (newUser, history) => {
+  return async (dispatch) => {
+    await axios.post("/api/users/signup", {
+      ...newUser
+    })
+    dispatch(authenticate(newUser.email, newUser.password, "login", true));
+
+    history.push("/pet");
+  }
+}
+
 export default function (state = { hats: [] }, action) {
   switch (action.type) {
     case GET_SINGLE_USER:
@@ -105,6 +123,8 @@ export default function (state = { hats: [] }, action) {
       return { ...state, hats: action.hats };
     case UPDATE_USER_HATS:
       return { ...state, hats: action.hats };
+    case CREATE_USER:
+      return action.newUser
     default:
       return state;
   }
