@@ -104,14 +104,15 @@ export const updateUserStreak = (userId, logIn = { logIn: false }) => {
 
 export const createUser = (newUser, history) => {
   return async (dispatch) => {
-    await axios.post("/api/users/signup", {
-      ...newUser
-    })
-    dispatch(authenticate(newUser.email, newUser.password, "login", true));
+    await axios.post('/api/users/signup', {
+      ...newUser,
+    });
+    window.localStorage.clear();
+    dispatch(authenticate(newUser.email, newUser.password, 'login', true));
 
-    history.push("/pet");
-  }
-}
+    history.push('/pet');
+  };
+};
 
 export default function (state = { hats: [], activePage: null }, action) {
   switch (action.type) {

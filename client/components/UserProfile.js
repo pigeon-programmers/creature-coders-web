@@ -6,7 +6,9 @@ import {
   HomeSubTitle,
   Content,
   palette,
+  Button
 } from './style';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import pet, { getPet } from '../store/pet';
 import { _updateActivePage } from '../store/user';
@@ -27,6 +29,12 @@ const ProfileText = styled(HomeSubTitle)`
   color: black;
   margin: 0.25em 1em;
 `;
+
+const EditButton = styled(Button)`
+  font-size: large;
+  margin: 0.25em;
+  padding: 0.25em 1em;
+`
 const RowContainer = styled.div`
   display: flex;
   align-items: center;
@@ -71,7 +79,7 @@ const UserProfile = () => {
     Pigeon: 'https://creature-coders.s3.amazonaws.com/pigeon-for-hats.svg',
     Raccoon: 'https://creature-coders.s3.amazonaws.com/raccoon.svg',
   }
-
+ 
   return (
     <UserBG>
       <UserContent>
@@ -91,10 +99,15 @@ const UserProfile = () => {
           <ProfileText>Visit the shop to buy some hats!</ProfileText>
         )}
         {petHat ? <PetHat src={petHat.url} onClick={() => setPetHat({})} /> : null}
-        <PetImage src={petUrls[type]}/>
+        <PetImage src={petUrls[type]} />
+        <RowContainer>
         <ProfileText>
-          Pet: {name} the {type}
-        </ProfileText>
+            Pet: {name} the {type}
+            <Link to='/pet'>
+              <EditButton> Edit</EditButton>
+              </Link>
+          </ProfileText>
+        </RowContainer>
       </UserContent>
     </UserBG>
   );
