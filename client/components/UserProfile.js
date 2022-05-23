@@ -9,6 +9,7 @@ import {
 } from './style';
 import styled from 'styled-components';
 import pet, { getPet } from '../store/pet';
+import { _updateActivePage } from '../store/user';
 
 const UserBG = styled(Main)`
   background-color: ${palette.pink};
@@ -61,6 +62,10 @@ const UserProfile = () => {
   useEffect(() => {
     if (id) dispatch(getPet(id));
   }, [pet]);
+
+  useEffect(() => {
+    dispatch(_updateActivePage("profile"))
+  }, [])
 
   const petUrls = {
     Pigeon: 'https://creature-coders.s3.amazonaws.com/pigeon-for-hats.svg',

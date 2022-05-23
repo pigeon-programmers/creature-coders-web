@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllUsers } from '../store/allUsers';
 import { Main, HomeSubTitle, Content, palette } from './style';
 import styled from 'styled-components';
+import { _updateActivePage } from '../store/user';
 
 const LeaderBG = styled(Main)`
   background-color: ${palette.yellow};
@@ -51,6 +52,10 @@ const LeaderBoard = () => {
   useEffect(() => {
     dispatch(fetchAllUsers());
   }, []);
+
+  useEffect(() => {
+    dispatch(_updateActivePage("leaderboard"))
+  }, [])
 
   return (
     <LeaderBG>
