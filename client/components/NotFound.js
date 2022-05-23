@@ -2,10 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Main, Button } from './style';
+import { Main, Button, palette } from './style';
 
 const MainBG = styled(Main)`
-  background-color: #4ede1c;
+  background-color: ${palette.green};
 `;
 
 const Text = styled.h1`

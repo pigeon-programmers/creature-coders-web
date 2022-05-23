@@ -122,8 +122,11 @@ export const Game01 = () => {
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
-          <PopUp open={mission} togglePopUp={() => setMission(false)}>
-            <div>Hello Pigeons!</div>
+          <PopUp
+            open={mission}
+            togglePopUp={() => setMission(false)}
+            title={'Hello Pigeons'}
+          >
             <div>
               <p>
                 The pigeon wants to send out a message to all their friends.
@@ -136,8 +139,7 @@ export const Game01 = () => {
             </div>
           </PopUp>
           <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
-          <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
-            <div>Hint</div>
+          <PopUp open={hint} togglePopUp={() => setHint(!hint)} title={'Hint'}>
             <div>
               Did you make sure to write "hello pigeons" in all lowercase?
             </div>

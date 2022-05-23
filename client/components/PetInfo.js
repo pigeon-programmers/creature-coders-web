@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { Main, FormContainer, Select, Button, Input, Label } from './style';
+import {
+  Main,
+  FormContainer,
+  Select,
+  Button,
+  Input,
+  Label,
+  palette,
+} from './style';
 import { savePet } from '../store/pet';
 
 const MainBG = styled(Main)`
-  background-color: #4ede1c;
+  background-color: ${palette.green};
 `;
 
 const NameBox = styled(Input)`
-background-color: #FFFFFF;
-`
+  background-color: ${palette.white};
+`;
 
 const PetInfo = () => {
   const dispatch = useDispatch();
@@ -117,15 +125,16 @@ const PetInfo = () => {
           <option disabled value="choose"></option>
           <option value="Pigeon">Pigeon</option>
           <option value="Raccoon">Raccoon</option>
-          <option value="Possum">Possum</option>
+          {/* <option value="Possum">Possum</option>
           <option value="Rat">Rat</option>
-          <option value="Skunk">Skunk</option>
+          <option value="Skunk">Skunk</option> */}
         </Select>
         <Label htmlFor="name">Name:</Label>
         <NameBox disabled id="name" value={name}></NameBox>
         <Label htmlFor="get-new-name">Roll the dice to get a new name:</Label>
         <Button
-          type="button" id="get-new-name"
+          type="button"
+          id="get-new-name"
           onClick={(e) => {
             e.preventDefault();
             setName(randomName);

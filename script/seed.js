@@ -1,9 +1,13 @@
-"use strict";
+'use strict';
 
 const {
   db,
-  models: { User, Pet, Badge },
-} = require("../server/db");
+  models: { User, Pet, Hat },
+} = require('../server/db');
+
+const dayjs = require('dayjs');
+const yesterday = dayjs().subtract(1, 'day');
+const oneWeekAgo = dayjs().subtract(1, 'week');
 
 /**
  * seed - this function clears the database, updates tables to
@@ -11,73 +15,103 @@ const {
  */
 async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
-  console.log("db synced!");
+  console.log('db synced!');
 
   // Creating Users
   const users = await Promise.all([
-    User.create({ username: "cody", password: "123", email: "cody@cody.com" }),
     User.create({
-      username: "murphy",
-      password: "123",
-      email: "murphy@murphy.com",
+      username: 'cody',
+      password: '123',
+      email: 'cody@cody.com',
+      pidgeCoin: 1000,
+      streak: 10,
+      lastDatePlayed: oneWeekAgo,
+    }),
+    User.create({
+      username: 'murphy',
+      password: '123',
+      email: 'murphy@murphy.com',
       currentLevel: 0,
       currentGame: 1,
       points: 3,
-      streak: 37,
-      pidgeCoin: 10,
+      streak: 1,
+      pidgeCoin: 5000000,
+      lastDatePlayed: yesterday,
     }),
     User.create({
-      username: "pippin",
-      password: "123",
-      email: "pippin@pippin.com",
+      username: 'pippin',
+      password: '123',
+      email: 'pippin@pippin.com',
       currentLevel: 1,
       currentGame: 2,
+      pidgeCoin: 100,
     }),
     User.create({
-      username: "grace",
-      password: "123",
-      email: "grace@grace.com",
+      username: 'grace',
+      password: '123',
+      email: 'grace@grace.com',
       currentLevel: 3,
       currentGame: 0,
+      points: 3,
+      streak: 37,
+      pidgeCoin: 1000,
     }),
   ]);
 
-  //Badges
+  //Hats
+  const baseball = await Hat.create({
+    name: 'baseball',
+    url: 'https://creature-coders.s3.amazonaws.com/hat-baseball.svg',
+    cost: 10,
+  });
+  const cheese = await Hat.create({
+    name: 'cheese',
+    url: 'https://creature-coders.s3.amazonaws.com/hat-cheese.svg',
+    cost: 50,
+  });
+  const cowboy = await Hat.create({
+    name: 'cowboy',
+    url: 'https://creature-coders.s3.amazonaws.com/hat-cowboy.svg',
+    cost: 100,
+  });
+  const newsie = await Hat.create({
+    name: 'newsie',
+    url: 'https://creature-coders.s3.amazonaws.com/hat-newsie.svg',
+    cost: 25,
+  });
+  const sun = await Hat.create({
+    name: 'sun',
+    url: 'https://creature-coders.s3.amazonaws.com/hat-sun.svg',
+    cost: 2000,
+  });
+  const top = await Hat.create({
+    name: 'top',
+    url: 'https://creature-coders.s3.amazonaws.com/hat-top.svg',
+    cost: 1000000,
+  });
 
-  const welcome = await Badge.create({ name: "welcome" });
-  const nyc = await Badge.create({ name: "nyc" });
-  const pizza = await Badge.create({ name: "pizza" });
-  const grandCentral = await Badge.create({ name: "grand central" });
-  const subway = await Badge.create({ name: "subway" });
+  const hats = [baseball, cheese, cowboy, newsie, sun, top];
 
-  const badges = [
-    welcome,
-    nyc,
-    pizza,
-    grandCentral,
-    subway
-  ]
-
-  console.log(`seeded ${badges.length} badges`);
-
-  users[0].addBadge(1);
-  users[1].addBadge(1);
-  users[1].addBadge(4);
-  users[2].addBadge(1);
-  users[2].addBadge(3);
-  users[2].addBadge(5);
-  users[3].addBadge(1);
-  users[3].addBadge(2);
-  users[3].addBadge(4);
+  users[1].addHat(1);
+  users[1].addHat(2);
+  users[1].addHat(5);
+  users[2].addHat(1);
+  users[2].addHat(2);
+  users[2].addHat(3);
+  users[2].addHat(4);
+  users[2].addHat(5);
+  users[2].addHat(6);
+  users[3].addHat(1);
 
   // Creating Pets
   const pets = await Promise.all([
-    Pet.create({ name: "Blossom", type: "Possum", userId: 1 }),
-    Pet.create({ name: "Pidge", type: "Pigeon", userId: 2 }),
-    Pet.create({ name: "Funky", type: "Skunk", userId: 3 }),
-    Pet.create({ name: "Ratteo", type: "Rat", userId: 4 })
+    Pet.create({ name: 'Blossom', type: 'Raccoon', userId: 1 }),
+    Pet.create({ name: 'Pidge', type: 'Pigeon', userId: 2 }),
+    Pet.create({ name: 'Funky', type: 'Raccoon', userId: 3 }),
+    Pet.create({ name: 'Ratteo', type: 'Pigeon', userId: 4 }),
   ]);
 
+  console.log(`seeded ${hats.length} hats`);
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${pets.length} pets`);
   console.log(`seeded successfully`);
@@ -95,16 +129,16 @@ async function seed() {
  The `seed` function is concerned only with modifying the database.
 */
 async function runSeed() {
-  console.log("seeding...");
+  console.log('seeding...');
   try {
     await seed();
   } catch (err) {
     console.error(err);
     process.exitCode = 1;
   } finally {
-    console.log("closing db connection");
+    console.log('closing db connection');
     await db.close();
-    console.log("db connection closed");
+    console.log('db connection closed');
   }
 }
 

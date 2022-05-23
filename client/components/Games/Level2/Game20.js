@@ -19,7 +19,7 @@ import styled from 'styled-components';
 import { updateUserWon } from '../../../store/user';
 
 const SmallerGameText = styled(GameText)`
-  font-size: small;
+  font-size: medium;
 `;
 
 const Game20 = () => {
@@ -135,8 +135,11 @@ const Game20 = () => {
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
-          <PopUp open={mission} togglePopUp={() => setMission(false)}>
-            <div>We Need More Cats!!!</div>
+          <PopUp
+            open={mission}
+            togglePopUp={() => setMission(false)}
+            title={'We Need More Cats!!!'}
+          >
             <div>
               <p>
                 The pigeon went to the bodega to get some breakfast. While
@@ -153,8 +156,7 @@ const Game20 = () => {
             </div>
           </PopUp>
           <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
-          <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
-            <div>Hint</div>
+          <PopUp open={hint} togglePopUp={() => setHint(!hint)} title={'Hint'}>
             <div>
               <p>
                 Our TARGET is to make 5 CATS. Where do you think catsTarget
@@ -168,7 +170,6 @@ const Game20 = () => {
         </PopContainer>
         <GameContentNoBlock>
           <div>
-            <GameText>We need more cats!!</GameText>
             <SmallerGameText>
               {`let ourCats = 0;`}
               <br />

@@ -5,8 +5,10 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
 import user from './user'
 import pet from './pet'
+import allHats from './allHats'
+import allUsers from './allUsers'
 
-const reducer = combineReducers({ auth, user, pet })
+const reducer = combineReducers({ auth, user, pet, allHats, allUsers })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

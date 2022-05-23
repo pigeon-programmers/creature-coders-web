@@ -207,8 +207,11 @@ export const Game10 = () => {
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
-          <PopUp open={mission} togglePopUp={() => setMission(false)}>
-            <div>JavaScript Data Types</div>
+          <PopUp
+            open={mission}
+            togglePopUp={() => setMission(false)}
+            title={'JavaScript Data Types'}
+          >
             <div>
               <p>
                 JavaScript has 6 different data types: string, number, boolean,
@@ -223,8 +226,7 @@ export const Game10 = () => {
             </div>
           </PopUp>
           <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
-          <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
-            <div>Hint</div>
+          <PopUp open={hint} togglePopUp={() => setHint(!hint)} title={'Hint'}>
             <div>
               <p>A STRING is surrounded by QUOTATION MARKS.</p>
               <p>A NUMBER is an INTEGER without quotation marks.</p>

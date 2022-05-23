@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const palette = {
   white: '#FFFFFF',
@@ -41,7 +41,6 @@ export const Content = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: baseline;
   align-items: center;
 `;
 
@@ -59,8 +58,9 @@ export const HomeSubTitle = styled.h5`
 `;
 
 export const NavIcon = styled.img`
-height: 4vh;
+  height: 4vh;
 `;
+
 //FORMS AND INPUTS
 export const FormContainer = styled.form`
   height: 70vh;

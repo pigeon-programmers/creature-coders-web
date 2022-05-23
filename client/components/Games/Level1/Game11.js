@@ -151,8 +151,11 @@ export const Game11 = () => {
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
-          <PopUp open={mission} togglePopUp={() => setMission(false)}>
-            <div>The Pigeon is Hosting a Breakfast Party</div>
+          <PopUp
+            open={mission}
+            togglePopUp={() => setMission(false)}
+            title={'The Pigeon is Hosting a Breakfast Party'}
+          >
             <div>
               <p>
                 The pigeon is having some out of town guests who really want to
@@ -166,8 +169,7 @@ export const Game11 = () => {
             </div>
           </PopUp>
           <PopButton onClick={() => setHint(!hint)}>Hint</PopButton>
-          <PopUp open={hint} togglePopUp={() => setHint(!hint)}>
-            <div>Hint</div>
+          <PopUp open={hint} togglePopUp={() => setHint(!hint)} title={'Hint'}>
             <div>
               <p>
                 Make sure the connected blocks will be REPEATED on a LOOP of 10
