@@ -30,7 +30,6 @@ export const getPet = (userId) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`/api/pet/${userId}`);
-      console.log('pet data', data)
       dispatch(_getPet(data));
     } catch (err) {
       console.log('Unable to get the pet info!', err)

@@ -74,8 +74,7 @@ const UserProfile = () => {
     Pigeon: 'https://creature-coders.s3.amazonaws.com/pigeon-for-hats.svg',
     Raccoon: 'https://creature-coders.s3.amazonaws.com/raccoon.svg',
   }
-  console.log('pet type', type)
-  console.log('id', id)
+ 
   return (
     <UserBG>
       <UserContent>
