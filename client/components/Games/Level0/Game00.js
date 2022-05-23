@@ -32,8 +32,6 @@ export const Game00 = () => {
   const [levelGame, setLevelGame] = useState(0);
   const [gamePoints, setGamePoints] = useState(10);
   const [gameCoins, setGameCoins] = useState(5);
-  // const [lsPoints, setLsPoints] = useState(0);
-  // const [lsCoins, setLsCoins] = useState(0);
   const { lsCoins, lsPoints } = useSelector((state) => state.localStorage);
 
   const isLoggedIn = useSelector((state) => !!state.auth.id);
@@ -46,17 +44,6 @@ export const Game00 = () => {
       ? setLevelGame(parseInt(`${currentLevel}${currentGame}`))
       : setLevelGame(1);
   }, []);
-
-  // useEffect(() => {
-  //   if (!isLoggedIn) {
-  //     +localStorage.getItem('points')
-  //       ? setLsPoints(+localStorage.getItem('points'))
-  //       : null;
-  //     +localStorage.getItem('coins')
-  //       ? setLsCoins(+localStorage.getItem('coins'))
-  //       : null;
-  //   }
-  // }, []);
 
   useEffect(() => {
     if (connect) outcome();
@@ -116,10 +103,12 @@ export const Game00 = () => {
       }
 
       if (!isLoggedIn) {
-        localStorage.clear();
         localStorage.setItem('points', gamePoints + lsPoints);
         localStorage.setItem('coins', gameCoins + lsCoins);
+        localStorage.setItem('level', '0');
+        localStorage.setItem('game', '1');
         dispatch(_getLocalStorage());
+        localStorage.clear();
       }
 
       setTimeout(() => {

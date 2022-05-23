@@ -28,8 +28,7 @@ export const Game01 = () => {
   const [levelGame, setLevelGame] = useState(0);
   const [gamePoints, setGamePoints] = useState(10);
   const [gameCoins, setGameCoins] = useState(5);
-  const [lsPoints, setLsPoints] = useState(0);
-  const [lsCoins, setLsCoins] = useState(0);
+  const { lsCoins, lsPoints } = useSelector((state) => state.localStorage);
 
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const { id, points, currentLevel, currentGame, pidgeCoin } = useSelector(
@@ -40,17 +39,6 @@ export const Game01 = () => {
     isLoggedIn
       ? setLevelGame(parseInt(`${currentLevel}${currentGame}`))
       : setLevelGame(1);
-  }, []);
-
-  useEffect(() => {
-    if (!isLoggedIn) {
-      +localStorage.getItem('points')
-        ? setLsPoints(+localStorage.getItem('points'))
-        : null;
-      +localStorage.getItem('coins')
-        ? setLsCoins(+localStorage.getItem('coins'))
-        : null;
-    }
   }, []);
 
   useEffect(() => {
@@ -94,6 +82,7 @@ export const Game01 = () => {
   const outcome = () => {
     if (string === 'hello pigeons') {
       if (isLoggedIn) {
+        //THIS IS HIT IF ANSWER IS CORRECT & USER LOGGED IN
         let newPoints = points + gamePoints;
         let newPidgeCoin = pidgeCoin + gameCoins;
 
@@ -109,13 +98,6 @@ export const Game01 = () => {
             )
           : dispatch(updateUserWon(id, newPoints, 1, 0, newPidgeCoin));
 
-        if (!isLoggedIn) {
-          localStorage.clear();
-          localStorage.setItem('points', gamePoints + lsPoints);
-          localStorage.setItem('coins', gameCoins + lsCoins);
-          dispatch(_getLocalStorage());
-        }
-
         setTimeout(() => {
           history.push(`/game/won`, {
             points: gamePoints,
@@ -123,6 +105,14 @@ export const Game01 = () => {
           });
         }, 750);
       } else {
+        //THIS IS HIT IF ANSWER IS CORRECT & USER NOT LOGGED IN
+        localStorage.setItem('points', gamePoints + lsPoints);
+        localStorage.setItem('coins', gameCoins + lsCoins);
+        localStorage.setItem('level', '1');
+        localStorage.setItem('game', '0');
+        dispatch(_getLocalStorage());
+        localStorage.clear();
+
         setTimeout(() => {
           history.push(`/`, {
             mustLogIn: true,
@@ -130,8 +120,8 @@ export const Game01 = () => {
         }, 750);
       }
     } else {
+      //THIS IS HIT IF ANSWER IS INCORRECT, REGARDLESS OF LOG IN STATUS
       setTryAgain(true);
-      //set connect to false again to allow another try if solution was incorrect
       setConnect(false);
       gamePoints <= 5 ? null : setGamePoints(gamePoints - 1);
       gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);

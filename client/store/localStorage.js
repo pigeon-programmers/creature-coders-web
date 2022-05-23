@@ -7,15 +7,18 @@ export const _getLocalStorage = () => ({
 const initialState = {
   lsPoints: 0,
   lsCoins: 0,
+  lsLevel: 0,
+  lsGame: 0,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_LOCAL_STORAGE:
-      const newPoints = +localStorage.getItem('points');
-      const newCoins = +localStorage.getItem('coins');
-      return { ...state, lsPoints: newPoints, lsCoins: newCoins };
-
+      const lsPoints = +localStorage.getItem('points');
+      const lsCoins = +localStorage.getItem('coins');
+      const lsLevel = +localStorage.getItem('level');
+      const lsGame = +localStorage.getItem('game');
+      return { ...state, lsPoints, lsCoins, lsLevel, lsGame };
     default:
       return state;
   }
