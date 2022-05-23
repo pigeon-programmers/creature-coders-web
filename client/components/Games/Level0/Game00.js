@@ -15,6 +15,7 @@ import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
 import '../Blocks/00Blocks';
 import { updateUserWon } from '../../../store/user';
+import { _getLocalStorage } from '../../../store/localStorage';
 
 export const Game00 = () => {
   const dispatch = useDispatch();
@@ -31,8 +32,9 @@ export const Game00 = () => {
   const [levelGame, setLevelGame] = useState(0);
   const [gamePoints, setGamePoints] = useState(10);
   const [gameCoins, setGameCoins] = useState(5);
-  const [lsPoints, setLsPoints] = useState(0);
-  const [lsCoins, setLsCoins] = useState(0);
+  // const [lsPoints, setLsPoints] = useState(0);
+  // const [lsCoins, setLsCoins] = useState(0);
+  const { lsCoins, lsPoints } = useSelector((state) => state.localStorage);
 
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   let { id, points, currentLevel, currentGame, pidgeCoin } = useSelector(
@@ -45,16 +47,16 @@ export const Game00 = () => {
       : setLevelGame(1);
   }, []);
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      +localStorage.getItem('points')
-        ? setLsPoints(+localStorage.getItem('points'))
-        : null;
-      +localStorage.getItem('coins')
-        ? setLsCoins(+localStorage.getItem('coins'))
-        : null;
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!isLoggedIn) {
+  //     +localStorage.getItem('points')
+  //       ? setLsPoints(+localStorage.getItem('points'))
+  //       : null;
+  //     +localStorage.getItem('coins')
+  //       ? setLsCoins(+localStorage.getItem('coins'))
+  //       : null;
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (connect) outcome();
@@ -113,8 +115,14 @@ export const Game00 = () => {
           : dispatch(updateUserWon(id, newPoints, 0, 1, newPidgeCoin));
       }
 
-      localStorage.setItem('points', gamePoints + lsPoints);
-      localStorage.setItem('coins', gameCoins + lsCoins);
+      if (!isLoggedIn) {
+        const newPoints = gamePoints + lsPoints;
+        const newCoins = gameCoins + lsCoins;
+        localStorage.clear();
+        localStorage.setItem('points', newPoints);
+        localStorage.setItem('coins', newCoins);
+        dispatch(_getLocalStorage());
+      }
 
       setTimeout(() => {
         history.push(`/game/won`, {
@@ -129,9 +137,6 @@ export const Game00 = () => {
       gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);
     }
   };
-
-  console.log('COINS', lsCoins);
-  console.log('POINTS', lsPoints);
 
   return (
     <Main>

@@ -27,6 +27,8 @@ export const Game01 = () => {
   const [levelGame, setLevelGame] = useState(0);
   const [gamePoints, setGamePoints] = useState(10);
   const [gameCoins, setGameCoins] = useState(5);
+  const [lsPoints, setLsPoints] = useState(0);
+  const [lsCoins, setLsCoins] = useState(0);
 
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const { id, points, currentLevel, currentGame, pidgeCoin } = useSelector(
@@ -37,6 +39,17 @@ export const Game01 = () => {
     isLoggedIn
       ? setLevelGame(parseInt(`${currentLevel}${currentGame}`))
       : setLevelGame(1);
+  }, []);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      +localStorage.getItem('points')
+        ? setLsPoints(+localStorage.getItem('points'))
+        : null;
+      +localStorage.getItem('coins')
+        ? setLsCoins(+localStorage.getItem('coins'))
+        : null;
+    }
   }, []);
 
   useEffect(() => {
@@ -94,6 +107,10 @@ export const Game01 = () => {
               )
             )
           : dispatch(updateUserWon(id, newPoints, 1, 0, newPidgeCoin));
+
+        localStorage.setItem('points', gamePoints + lsPoints);
+        localStorage.setItem('coins', gameCoins + lsCoins);
+        //after Game 01 clear local storage?
 
         setTimeout(() => {
           history.push(`/game/won`, {
