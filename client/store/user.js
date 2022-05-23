@@ -27,11 +27,6 @@ const _updateUserHats = (hats) => ({
   hats,
 });
 
-const _createUser = (newUser) => ({
-  type: CREATE_USER,
-  newUser,
-});
-
 export const getSingleUser = (userId) => {
   return async (dispatch) => {
     try {

@@ -116,11 +116,9 @@ export const Game00 = () => {
       }
 
       if (!isLoggedIn) {
-        const newPoints = gamePoints + lsPoints;
-        const newCoins = gameCoins + lsCoins;
         localStorage.clear();
-        localStorage.setItem('points', newPoints);
-        localStorage.setItem('coins', newCoins);
+        localStorage.setItem('points', gamePoints + lsPoints);
+        localStorage.setItem('coins', gameCoins + lsCoins);
         dispatch(_getLocalStorage());
       }
 

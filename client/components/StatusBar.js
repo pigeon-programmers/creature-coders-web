@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { palette } from './style';
 import styled from 'styled-components';
-import { _getLocalStorage } from '../store/localStorage';
 
 const Status = styled.nav`
   width: 100vw;
@@ -41,18 +40,9 @@ const StatusText = styled.p`
 `;
 
 const StatusBar = () => {
-  // const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const { points, pidgeCoin, streak } = useSelector((state) => state.user);
   const { lsCoins, lsPoints } = useSelector((state) => state.localStorage);
-  // const [lsCoins, setLsCoins] = useState(0);
-  // const [lsPoints, setLsPoints] = useState(0);
-
-  // useEffect(() => {
-  //   if (!isLoggedIn) {
-  //     dispatch(_getLocalStorage());
-  //   }
-  // }, [lsCoins, lsPoints]);
 
   return (
     <Status>
