@@ -15,6 +15,7 @@ import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
 import '../Blocks/00Blocks';
 import { updateUserWon } from '../../../store/user';
+import { _getLocalStorage } from '../../../store/localStorage';
 
 export const Game00 = () => {
   const dispatch = useDispatch();
@@ -31,9 +32,10 @@ export const Game00 = () => {
   const [levelGame, setLevelGame] = useState(0);
   const [gamePoints, setGamePoints] = useState(10);
   const [gameCoins, setGameCoins] = useState(5);
+  const { lsCoins, lsPoints } = useSelector((state) => state.localStorage);
 
   const isLoggedIn = useSelector((state) => !!state.auth.id);
-  const { id, points, currentLevel, currentGame, pidgeCoin } = useSelector(
+  let { id, points, currentLevel, currentGame, pidgeCoin } = useSelector(
     (state) => state.user
   );
 
@@ -81,9 +83,6 @@ export const Game00 = () => {
     myInterpreter.run();
   };
 
-  // for this ternary we would need to make sure the instructions say to write hello pigeons with no caps or punctuation
-  // ideally this will end up not being alerts
-
   const outcome = () => {
     if (connect === 1) {
       if (isLoggedIn) {
@@ -102,6 +101,16 @@ export const Game00 = () => {
             )
           : dispatch(updateUserWon(id, newPoints, 0, 1, newPidgeCoin));
       }
+
+      if (!isLoggedIn) {
+        localStorage.setItem('points', gamePoints + lsPoints);
+        localStorage.setItem('coins', gameCoins + lsCoins);
+        localStorage.setItem('level', '0');
+        localStorage.setItem('game', '1');
+        dispatch(_getLocalStorage());
+        localStorage.clear();
+      }
+
       setTimeout(() => {
         history.push(`/game/won`, {
           points: gamePoints,
