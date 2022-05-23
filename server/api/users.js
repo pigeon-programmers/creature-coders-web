@@ -19,6 +19,19 @@ router.get('/leaderboard', async (req, res, next) => {
   }
 });
 
+router.post('/signup', async (req, res, next) => {
+  try {
+    const user = await User.create(req.body)
+    res.send(201)
+  } catch (err) {
+    if (err.name === "SequelizeUniqueConstraintError") {
+      res.status(401).send("User already exists");
+    } else {
+      next(err)
+    }
+  }
+})
+
 router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {

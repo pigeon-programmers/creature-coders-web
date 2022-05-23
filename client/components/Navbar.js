@@ -24,6 +24,11 @@ const NavIconContainer = styled.div`
   justify-content: space-between;
 `;
 
+// const ToggleButtons = () => {
+//   const [active, setActive] = useState()
+
+// }
+
 const Navbar = () => {
   const [pop, setPop] = useState(false);
   const isLoggedIn = useSelector((state) => !!state.auth.id);
