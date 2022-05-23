@@ -5,7 +5,7 @@ const GET_SINGLE_USER = 'GET_SINGLE_USER';
 const UPDATE_USER = 'UPDATE_USER';
 const GET_USER_HATS = 'GET_USER_HATS';
 const UPDATE_USER_HATS = 'UPDATE_USER_HATS';
-const CREATE_USER = 'CREATE_USER';
+const UPDATE_ACTIVE_PAGE = 'UPDATE_ACTIVE_PAGE'
 
 const _getSingleUser = (data) => ({
   type: GET_SINGLE_USER,
@@ -26,6 +26,11 @@ const _updateUserHats = (hats) => ({
   type: UPDATE_USER_HATS,
   hats,
 });
+
+export const _updateActivePage = (page) => ({
+  type: UPDATE_ACTIVE_PAGE,
+  page
+})
 
 export const getSingleUser = (userId) => {
   return async (dispatch) => {
@@ -109,7 +114,7 @@ export const createUser = (newUser, history) => {
   };
 };
 
-export default function (state = { hats: [] }, action) {
+export default function (state = { hats: [], activePage: null }, action) {
   switch (action.type) {
     case GET_SINGLE_USER:
       return { ...state, ...action.data };
@@ -119,8 +124,8 @@ export default function (state = { hats: [] }, action) {
       return { ...state, hats: action.hats };
     case UPDATE_USER_HATS:
       return { ...state, hats: action.hats };
-    case CREATE_USER:
-      return action.newUser;
+    case UPDATE_ACTIVE_PAGE:
+      return { ...state, activePage: action.page };
     default:
       return state;
   }

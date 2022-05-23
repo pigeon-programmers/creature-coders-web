@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import {
-  Button,
-  Main,
-  FormContainer,
-  Label,
-  Input,
-  LabelP,
-  PopContainer,
-} from "./style";
-import PopUp from "./PopUp";
-import { createUser } from "../store/user";
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { Button, Main, FormContainer, Label, Input, LabelP, PopContainer } from './style'
+import PopUp from './PopUp'
+import { createUser } from '../store/user'
+import styled from 'styled-components'
+import { _updateActivePage } from '../store/user'
+
+const MainSU = styled(Main)`
+background-color: #ED1697;
+`
 
 const SignupForm = () => {
   const dispatch = useDispatch();
@@ -26,6 +24,10 @@ const SignupForm = () => {
   const { lsCoins, lsPoints, lsGame, lsLevel } = useSelector(
     (state) => state.localStorage
   );
+
+  useEffect(() => {
+    dispatch(_updateActivePage("signup"))
+  }, [])
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -54,8 +56,8 @@ const SignupForm = () => {
   };
 
   return (
-    <Main>
-      <FormContainer onSubmit={handleSubmit} name="signup">
+    <MainSU>
+      <FormContainer onSubmit={handleSubmit} name='signup'>
         <>
           <Label htmlFor="username">
             <LabelP>Username</LabelP>
@@ -112,8 +114,8 @@ const SignupForm = () => {
           <Button>Signup</Button>
         </div>
       </FormContainer>
-    </Main>
-  );
-};
+    </MainSU>
+  )
+}
 
 export default SignupForm;

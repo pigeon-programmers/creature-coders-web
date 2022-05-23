@@ -10,7 +10,7 @@ import {
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllHats } from '../store/allHats';
-import { buyHat } from '../store/user';
+import { buyHat, _updateActivePage } from '../store/user';
 
 const MainBg = styled(Main)`
   background-color: ${palette.green};
@@ -60,6 +60,10 @@ const Shop = () => {
   useEffect(() => {
     dispatch(getAllHats());
   }, []);
+
+  useEffect(() => {
+    dispatch(_updateActivePage("shop"))
+  }, [])
 
   const userHatsSet = new Set();
   if (user.hats && user.hats.length > 0) {
