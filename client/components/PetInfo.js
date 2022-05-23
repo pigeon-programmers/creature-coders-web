@@ -125,9 +125,9 @@ const PetInfo = () => {
           <option disabled value="choose"></option>
           <option value="Pigeon">Pigeon</option>
           <option value="Raccoon">Raccoon</option>
-          <option value="Possum">Possum</option>
+          {/* <option value="Possum">Possum</option>
           <option value="Rat">Rat</option>
-          <option value="Skunk">Skunk</option>
+          <option value="Skunk">Skunk</option> */}
         </Select>
         <Label htmlFor="name">Name:</Label>
         <NameBox disabled id="name" value={name}></NameBox>

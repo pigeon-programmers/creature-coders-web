@@ -44,8 +44,8 @@ export const Debugger = () => {
   const [ran, setRan] = useState(false);
   const [bugs, setBugs] = useState(['{', ';', ':', 'r', "'", '}', 'return']);
   const [levelGame, setLevelGame] = useState(0);
-  const [gamePoints, setGamePoints] = useState(10);
-  const [gameCoins, setGameCoins] = useState(5);
+  const [gamePoints, setGamePoints] = useState(20);
+  const [gameCoins, setGameCoins] = useState(10);
   const [win, setWin] = useState(false);
   const [squashedBugs, setSquashedBugs] = useState([]);
   const [tryAgain, setTryAgain] = useState(false);
@@ -60,7 +60,7 @@ export const Debugger = () => {
   useEffect(() => {
     setTimeout(() => {
       return setMission(true);
-    }, 5000);
+    }, 2500);
   }, []);
 
   useEffect(() => {
@@ -98,6 +98,7 @@ export const Debugger = () => {
         history.push('/game/won', {
           points: gamePoints,
           pidgeCoins: gameCoins,
+          lastGame: true,
         });
       }, 750);
     } else {
@@ -136,7 +137,7 @@ export const Debugger = () => {
             <div>
               <p>
                 You are trying to play Rock, Paper, Scissors with your friend
-                but then you see Randel the Roach BUGGING up your code!
+                but then you see Randall the Roach BUGGING up your code!
               </p>
               <p>
                 Find all of the BUGS in the code and squash them! BUGS are
@@ -148,14 +149,19 @@ export const Debugger = () => {
           </PopUp>
           <PopButton onClick={() => setHint(true)}>Hint</PopButton>
           <PopUp open={hint} title={'Hint'} togglePopUp={() => setHint(false)}>
-            <p>
-              In JavaScript there are a few signs that can be written twice. As
-              you can see there are multiple times we see two EQUAL signs (==)
-              and two AND signs (&&). These are actually not bugs and are needed
-              for the computer to understand what we are trying to do with our
-              code. For more information about these signs, click on the FAQ
-              page on the navigation bar below!
-            </p>
+            <div>
+              <p>
+                In JavaScript there are a few signs that can be written twice.
+                For example, there are multiple times we see two EQUAL signs
+                (==) and two AND signs (&&). These are actually not bugs and are
+                needed for the computer to understand what we are trying to do
+                with our code.
+              </p>
+              <p>
+                For resources on where to find more information about these
+                signs, click on the FAQ page through the navigation bar below!
+              </p>
+            </div>
           </PopUp>
           <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
         </PopContainer>

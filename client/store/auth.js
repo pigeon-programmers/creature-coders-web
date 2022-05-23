@@ -7,18 +7,24 @@ const TOKEN = 'token';
  * ACTION TYPES
  */
 const SET_AUTH = 'SET_AUTH';
+const GET_LOADING = 'IS_LOADING';
 
 /**
  * ACTION CREATORS
  */
 const setAuth = (auth) => ({ type: SET_AUTH, auth });
 
+export const getLoading = () => ({
+  type: GET_LOADING,
+});
+
 /**
  * THUNK CREATORS
  */
+
 export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
-  if (token) {
+  if (token && token!=="undefined") {
     const res = await axios.get('/auth/me', {
       headers: {
         authorization: token,
@@ -26,19 +32,19 @@ export const me = () => async (dispatch) => {
     });
     return dispatch(setAuth({ ...res.data, token }));
   }
+  dispatch(getLoading());
 };
 
 export const authenticate =
-  (username, email, password, method) => async (dispatch) => {
+  (email, password, method, isSignup = false) => async (dispatch) => {
     try {
       const res = await axios.post(`/auth/${method}`, {
-        username,
         email,
         password,
       });
       window.localStorage.setItem(TOKEN, res.data.token);
       dispatch(me());
-      method === 'login' ? history.push('/map') : history.push('/pet');
+      method === 'login' && isSignup !== true ? history.push('/map') : history.push('/pet');
     } catch (authError) {
       return dispatch(setAuth({ error: authError }));
     }
@@ -56,10 +62,12 @@ export const logout = () => {
 /**
  * REDUCER
  */
-export default function (state = {}, action) {
+export default function (state = { isLoading: true }, action) {
   switch (action.type) {
     case SET_AUTH:
-      return action.auth;
+      return { ...action.auth, isLoading: false };
+    case GET_LOADING:
+      return { ...state, isLoading: false };
     default:
       return state;
   }

@@ -17,7 +17,6 @@ router.get('/:userId', async (req, res, next) => {
 
 router.post('/:userId', async (req, res, next) => {
   try {
-    console.log('wreck that body: ', req.body);
     const user = await User.findByPk(req.params.userId);
     const pet = await user.createPet({
       name: req.body.name,
