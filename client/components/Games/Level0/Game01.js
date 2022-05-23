@@ -15,6 +15,7 @@ import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
 import '../Blocks/01Blocks';
 import { updateUserWon } from '../../../store/user';
+import { _getLocalStorage } from '../../../store/localStorage';
 
 export const Game01 = () => {
   const dispatch = useDispatch();
@@ -108,9 +109,12 @@ export const Game01 = () => {
             )
           : dispatch(updateUserWon(id, newPoints, 1, 0, newPidgeCoin));
 
-        localStorage.setItem('points', gamePoints + lsPoints);
-        localStorage.setItem('coins', gameCoins + lsCoins);
-        //after Game 01 clear local storage?
+        if (!isLoggedIn) {
+          localStorage.clear();
+          localStorage.setItem('points', gamePoints + lsPoints);
+          localStorage.setItem('coins', gameCoins + lsCoins);
+          dispatch(_getLocalStorage());
+        }
 
         setTimeout(() => {
           history.push(`/game/won`, {
