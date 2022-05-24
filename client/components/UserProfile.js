@@ -6,7 +6,7 @@ import {
   HomeSubTitle,
   Content,
   palette,
-  Button
+  Button,
 } from './style';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -17,27 +17,35 @@ const UserBG = styled(Main)`
 `;
 const UserContent = styled(Content)`
   background-color: rgba(255, 255, 255, 0.6);
-  height: 70%;
-  width: 80%;
+  width: 80vw;
 `;
 const Title = styled(HomeTitle)`
-margin: 0;
-`
+  margin: 0;
+`;
 const ProfileText = styled(HomeSubTitle)`
   font-size: 3vh;
   color: black;
-  margin: 0.25em 1em;
 `;
-
 const EditButton = styled(Button)`
   font-size: large;
-  margin: 0.25em;
+  margin: 0.25em 1em;
   padding: 0.25em 1em;
-`
+`;
 const RowContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
+`;
+const HatContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 500px) {
+    flex-wrap: wrap;
+  }
 `;
 const ProfileHat = styled.img`
   width: 10vw;
@@ -51,8 +59,8 @@ const PetHat = styled.img`
   width: 25vw;
   position: absolute;
   top: 47vh;
-  left:41vw;
-`
+  left: 41vw;
+`;
 
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -60,7 +68,7 @@ const UserProfile = () => {
     (state) => state.user
   );
   const { name, type } = useSelector((state) => state.pet);
-  const [petHat, setPetHat] = useState({})
+  const [petHat, setPetHat] = useState({});
 
   useEffect(() => {
     if (id) dispatch(getPet(id));
@@ -73,9 +81,9 @@ const UserProfile = () => {
   const petUrls = {
     Pigeon: 'https://creature-coders.s3.amazonaws.com/pigeon-for-hats.svg',
     Raccoon: 'https://creature-coders.s3.amazonaws.com/raccoon.svg',
-  }
-  console.log('pet type', type)
-  console.log('id', id)
+  };
+  console.log('pet type', type);
+  console.log('id', id);
   return (
     <UserBG>
       <UserContent>
@@ -86,22 +94,28 @@ const UserProfile = () => {
         </RowContainer>
         <ProfileText>Hats - click to wear!</ProfileText>
         {hats && hats.length > 0 ? (
-          <RowContainer>
+          <HatContainer>
             {hats.map((hat) => (
-              <ProfileHat key={hat.id} src={hat.url} onClick={() => setPetHat(hat)} />
+              <ProfileHat
+                key={hat.id}
+                src={hat.url}
+                onClick={() => setPetHat(hat)}
+              />
             ))}
-          </RowContainer>
+          </HatContainer>
         ) : (
           <ProfileText>Visit the shop to buy some hats!</ProfileText>
         )}
-        {petHat ? <PetHat src={petHat.url} onClick={() => setPetHat({})} /> : null}
+        {petHat ? (
+          <PetHat src={petHat.url} onClick={() => setPetHat({})} />
+        ) : null}
         <PetImage src={petUrls[type]} />
         <RowContainer>
-        <ProfileText>
+          <ProfileText>
             Pet: {name} the {type}
-            <Link to='/pet'>
+            <Link to="/pet">
               <EditButton> Edit</EditButton>
-              </Link>
+            </Link>
           </ProfileText>
         </RowContainer>
       </UserContent>

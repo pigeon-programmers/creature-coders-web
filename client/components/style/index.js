@@ -35,14 +35,13 @@ export const Main = styled.div`
 export const Content = styled.div`
   margin-top: 5vh;
   margin-bottom: 7vh;
-  bottom: 0;
   height: 90vh;
   width: 100vw;
-  margin-bottom: 7vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   @media (min-width: 1025px) {
     width: 1025px;
 }

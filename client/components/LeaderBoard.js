@@ -11,7 +11,7 @@ const LeaderBG = styled(Main)`
 const LeaderContent = styled(Content)`
   background-color: rgba(255, 255, 255, 0.6);
   height: 70%;
-  width: 80%;
+  width: 80vw;
 `;
 
 const LeaderText = styled(HomeSubTitle)`
