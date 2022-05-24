@@ -31,7 +31,7 @@ async function seed() {
       username: 'murphy',
       password: '123123',
       email: 'murphy@gmail.com',
-      currentLevel: 0,
+      currentLevel: 3,
       currentGame: 1,
       points: 3,
       streak: 1,
