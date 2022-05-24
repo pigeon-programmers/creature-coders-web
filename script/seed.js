@@ -105,7 +105,7 @@ async function seed() {
 
   // Creating Pets
   const pets = await Promise.all([
-    Pet.create({ name: 'Blossom', type: 'Raccoon', userId: 1 }),
+    Pet.create({ name: 'Blossom', type: 'Possum', userId: 1 }),
     Pet.create({ name: 'Pidge', type: 'Pigeon', userId: 2 }),
     Pet.create({ name: 'Funky', type: 'Raccoon', userId: 3 }),
     Pet.create({ name: 'Ratteo', type: 'Pigeon', userId: 4 }),

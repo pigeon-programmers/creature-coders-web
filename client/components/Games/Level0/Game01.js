@@ -9,6 +9,7 @@ import {
   PopContainer,
   PopButton,
   Content,
+  palette
 } from '../../style';
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
@@ -16,6 +17,11 @@ import Interpreter from 'js-interpreter';
 import '../Blocks/01Blocks';
 import { updateUserWon } from '../../../store/user';
 import { _getLocalStorage } from '../../../store/localStorage';
+import styled from 'styled-components';
+
+const MainBG = styled(Main)`
+  background-color: ${palette.green};
+`;
 
 export const Game01 = () => {
   const dispatch = useDispatch();
@@ -128,7 +134,7 @@ export const Game01 = () => {
   };
 
   return (
-    <Main>
+    <MainBG>
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
@@ -161,7 +167,7 @@ export const Game01 = () => {
         </GameContent>
         <Workspace toolbox={toolbox} onRun={onRun} />
       </Content>
-    </Main>
+    </MainBG>
   );
 };
 
