@@ -30,7 +30,7 @@ async function seed() {
     User.create({
       username: 'murphy',
       password: '123123',
-      email: 'murphy@gmail.com',
+      email: 'Murphy@gmail.com',
       currentLevel: 3,
       currentGame: 1,
       points: 3,
