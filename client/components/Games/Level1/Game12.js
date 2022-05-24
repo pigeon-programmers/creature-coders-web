@@ -19,6 +19,9 @@ import { updateUserWon } from '../../../store/user';
 import '../Blocks/12Blocks';
 import styled from 'styled-components';
 
+const MainBG = styled(Main)`
+  background-color: ${palette.yellow};
+`;
 const Bush = styled.img`
   height: 15vh;
   width: 15vh;
@@ -130,7 +133,7 @@ export const Game12 = () => {
   };
 
   return isLoggedIn ? (
-    <Main>
+    <MainBG>
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
@@ -170,7 +173,7 @@ export const Game12 = () => {
         </SubwayGameContent>
         <Workspace toolbox={toolbox} onRun={onRun} />
       </Content>
-    </Main>
+    </MainBG>
   ) : (
     <Home mustLogIn={true} />
   );

@@ -11,6 +11,7 @@ import {
   PopContainer,
   PopButton,
   Content,
+  palette
 } from '../../style';
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
@@ -18,6 +19,11 @@ import Home from '../../Home';
 import Interpreter from 'js-interpreter';
 import { updateUserWon } from '../../../store/user';
 import '../Blocks/11Blocks';
+import styled from 'styled-components';
+
+const MainBG = styled(Main)`
+  background-color: ${palette.yellow};
+`;
 
 export const Game11 = () => {
   const dispatch = useDispatch();
@@ -147,7 +153,7 @@ export const Game11 = () => {
   };
 
   return isLoggedIn ? (
-    <Main>
+    <MainBG>
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
@@ -191,7 +197,7 @@ export const Game11 = () => {
         </GameContent>
         <Workspace toolbox={toolbox} onRun={onRun} />
       </Content>
-    </Main>
+    </MainBG>
   ) : (
     <Home mustLogIn={true} />
   );

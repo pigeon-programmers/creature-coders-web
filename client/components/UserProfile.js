@@ -78,8 +78,9 @@ const UserProfile = () => {
   const petUrls = {
     Pigeon: 'https://creature-coders.s3.amazonaws.com/pigeon-for-hats.svg',
     Raccoon: 'https://creature-coders.s3.amazonaws.com/raccoon.svg',
+    Possum: 'https://creature-coders.s3.amazonaws.com/possum.svg',
   }
- 
+
   return (
     <UserBG>
       <UserContent>

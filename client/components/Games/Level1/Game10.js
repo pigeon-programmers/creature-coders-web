@@ -8,6 +8,7 @@ import {
   PopContainer,
   PopButton,
   Content,
+  palette
 } from '../../style';
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
@@ -17,6 +18,9 @@ import { updateUserWon } from '../../../store/user';
 import '../Blocks/10Blocks';
 import styled from 'styled-components';
 
+const MainBG = styled(Main)`
+  background-color: ${palette.yellow};
+`;
 const GameWrapper = styled.div`
   .blocklyToolboxDiv {
     z-index: 5;
@@ -203,7 +207,7 @@ export const Game10 = () => {
   //we can take it out or put examples of each data type in it
 
   return isLoggedIn ? (
-    <Main>
+    <MainBG>
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
@@ -243,7 +247,7 @@ export const Game10 = () => {
           <Workspace toolbox={toolbox} onRun={onRun} />
         </GameWrapper>
       </Content>
-    </Main>
+    </MainBG>
   ) : (
     <Home mustLogIn={true} />
   );
