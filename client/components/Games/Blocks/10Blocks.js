@@ -175,7 +175,7 @@ Blockly.JavaScript['object'] = function (block) {
 Blockly.Blocks['object_ex'] = {
   init: function () {
     this.appendDummyInput().appendField(
-      new Blockly.FieldLabelSerializable(' {  }  [  ] '),
+      new Blockly.FieldLabelSerializable(' { name: "pidge", age: 12 }'),
       'object'
     );
     this.setPreviousStatement(true, null);
