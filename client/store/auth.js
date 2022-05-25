@@ -36,16 +36,16 @@ export const me = () => async (dispatch) => {
 };
 
 export const authenticate =
-  (email, password, method, isSignup = false) =>
+  (email, password, method) =>
   async (dispatch) => {
     try {
-      const res = await axios.post(`/auth/${method}`, {
+      const res = await axios.post(`/auth/login`, {
         email,
         password,
       });
       window.localStorage.setItem(TOKEN, res.data.token);
       await dispatch(me());
-      method === 'login' && isSignup !== true
+      method === 'login'
         ? history.push('/map')
         : history.push('/pet');
     } catch (authError) {

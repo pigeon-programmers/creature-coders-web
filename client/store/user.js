@@ -104,11 +104,15 @@ export const updateUserStreak = (userId, logIn = { logIn: false }) => {
 
 export const createUser = (newUser) => {
   return async (dispatch) => {
-    await axios.post('/api/users/signup', {
-      ...newUser,
-    });
-    window.localStorage.clear();
-    dispatch(authenticate(newUser.email, newUser.password, 'login', true));
+    try {
+      await axios.post('/api/users/signup', {
+        ...newUser,
+      });
+      window.localStorage.clear();
+      dispatch(authenticate(newUser.email, newUser.password, 'signup'));
+    } catch (err) {
+      console.log('🐦 There was an error adding user!', err);
+    }
   };
 };
 
