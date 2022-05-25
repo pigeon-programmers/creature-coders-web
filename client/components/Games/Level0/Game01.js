@@ -9,14 +9,14 @@ import {
   PopContainer,
   PopButton,
   Content,
-  palette
+  palette,
 } from '../../style';
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
 import '../Blocks/01Blocks';
 import { updateUserWon } from '../../../store/user';
-import { _getLocalStorage } from '../../../store/localStorage';
+import { getLocalStorage } from '../../../store/localStorage';
 import styled from 'styled-components';
 
 const MainBG = styled(Main)`
@@ -116,7 +116,7 @@ export const Game01 = () => {
         window.localStorage.setItem('coins', gameCoins + lsCoins);
         window.localStorage.setItem('level', '1');
         window.localStorage.setItem('game', '0');
-        dispatch(_getLocalStorage());
+        dispatch(getLocalStorage());
 
         setTimeout(() => {
           history.push(`/`, {
