@@ -11,10 +11,10 @@ const _getLocalStorage = (lsGame, lsLevel, lsPoints, lsCoins) => ({
 export const getLocalStorage = () => {
   return (dispatch) => {
     try {
-      const lsGame = +localStorage.getItem('game');
-      const lsLevel = +localStorage.getItem('level');
-      const lsPoints = +localStorage.getItem('points');
-      const lsCoins = +localStorage.getItem('coins');
+      const lsGame = +window.localStorage.getItem('game');
+      const lsLevel = +window.localStorage.getItem('level');
+      const lsPoints = +window.localStorage.getItem('points');
+      const lsCoins = +window.localStorage.getItem('coins');
       dispatch(_getLocalStorage(lsGame, lsLevel, lsPoints, lsCoins));
     } catch (err) {
       console.log('🐭 unable to get local storage', err);
