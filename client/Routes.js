@@ -69,12 +69,12 @@ const Routes = () => {
       <Route path="/game/2/0" exact component={Game20} />
       <Route path="/game/3/0" exact component={Game30} />
       <Route path="/faq" component={FAQ} />
+      {!isLoggedIn && <Route path="/login" exact component={Login} />}
+      {!isLoggedIn && <Route path="/signup" exact component={Signup} />}
       {isLoggedIn && <Route path="/settings" component={UserSettings} />}
       {isLoggedIn && <Route path="/profile" component={UserProfile} />}
       {isLoggedIn && <Route path="/pet" component={PetInfo} />}
       {isLoggedIn && <Route path="/game/end" component={EndGame} />}
-      {!isLoggedIn && <Route path="/login" exact component={Login} />}
-      {!isLoggedIn && <Route path="/signup" exact component={Signup} />}
       <Route component={NotFound} />
     </Switch>
   );

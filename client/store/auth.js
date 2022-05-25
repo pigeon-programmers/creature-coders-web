@@ -30,7 +30,7 @@ export const me = () => async (dispatch) => {
         authorization: token,
       },
     });
-    return dispatch(setAuth({ ...res.data, token }));
+    return await dispatch(setAuth({ ...res.data, token }));
   }
   dispatch(getLoading());
 };
@@ -43,7 +43,7 @@ export const authenticate =
         password,
       });
       window.localStorage.setItem(TOKEN, res.data.token);
-      dispatch(me());
+      await dispatch(me());
       method === 'login' && isSignup !== true ? history.push('/map') : history.push('/pet');
     } catch (authError) {
       return dispatch(setAuth({ error: authError }));
