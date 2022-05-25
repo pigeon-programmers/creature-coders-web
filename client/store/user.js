@@ -5,7 +5,7 @@ const GET_SINGLE_USER = 'GET_SINGLE_USER';
 const UPDATE_USER = 'UPDATE_USER';
 const GET_USER_HATS = 'GET_USER_HATS';
 const UPDATE_USER_HATS = 'UPDATE_USER_HATS';
-const UPDATE_ACTIVE_PAGE = 'UPDATE_ACTIVE_PAGE'
+const UPDATE_ACTIVE_PAGE = 'UPDATE_ACTIVE_PAGE';
 
 const _getSingleUser = (data) => ({
   type: GET_SINGLE_USER,
@@ -29,8 +29,8 @@ const _updateUserHats = (hats) => ({
 
 export const _updateActivePage = (page) => ({
   type: UPDATE_ACTIVE_PAGE,
-  page
-})
+  page,
+});
 
 export const getSingleUser = (userId) => {
   return async (dispatch) => {
@@ -102,15 +102,13 @@ export const updateUserStreak = (userId, logIn = { logIn: false }) => {
   };
 };
 
-export const createUser = (newUser, history) => {
+export const createUser = (newUser) => {
   return async (dispatch) => {
     await axios.post('/api/users/signup', {
       ...newUser,
     });
     window.localStorage.clear();
     dispatch(authenticate(newUser.email, newUser.password, 'login', true));
-
-    history.push('/pet');
   };
 };
 
