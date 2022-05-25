@@ -19,7 +19,6 @@ import Interpreter from 'js-interpreter';
 import { updateUserWon } from '../../../store/user';
 import styled from 'styled-components';
 import '../Blocks/11Blocks';
-import styled from 'styled-components';
 
 const MainBG = styled(Main)`
   background-color: ${palette.yellow};

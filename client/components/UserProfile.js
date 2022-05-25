@@ -19,6 +19,14 @@ const UserBG = styled(Main)`
 const UserContent = styled(Content)`
   background-color: rgba(255, 255, 255, 0.6);
   width: 80vw;
+  height: 85vh;
+  @media (min-width: 1025px) {
+    width: 1025px;
+  }
+  @media (max-width: 500px) {
+    width: 100vw;
+    height: 100vh;
+  }
 `;
 const Title = styled(HomeTitle)`
   margin: 0;
@@ -26,6 +34,10 @@ const Title = styled(HomeTitle)`
 const ProfileText = styled(HomeSubTitle)`
   font-size: 3vh;
   color: black;
+  margin: 0.5em;
+  @media (max-width: 500px) {
+    margin: 0.25em 0;
+  }
 `;
 const EditButton = styled(Button)`
   font-size: large;
@@ -46,21 +58,44 @@ const HatContainer = styled.div`
   justify-content: space-between;
   @media (max-width: 500px) {
     flex-wrap: wrap;
+    margin: 0 1em;
   }
 `;
 const ProfileHat = styled.img`
   width: 10vw;
   margin: 1em;
+  @media (min-width: 1025px) {
+    width: 125px;
+  }
+  @media (max-width: 500px) {
+    width: 82px;
+    margin: 0.25em;
+  }
+`;
+const PetContainer = styled.div`
+  height: 600px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  @media (max-width: 500px) {
+    height: 300px;
+  }
 `;
 const PetImage = styled.img`
-  height: 40vw;
-  margin-top: 9vh;
+  height: 400px;
+  @media (max-width: 500px) {
+    height: 225px;
+  }
 `;
 const PetHat = styled.img`
-  width: 25vw;
+  width: 215px;
   position: absolute;
-  top: 47vh;
-  left: 41vw;
+  bottom: 350px;
+  left: 178px;
+  z-index: 1;
 `;
 
 const UserProfile = () => {
@@ -80,14 +115,14 @@ const UserProfile = () => {
   }, [pet]);
 
   useEffect(() => {
-    dispatch(_updateActivePage("profile"))
-  }, [])
+    dispatch(_updateActivePage('profile'));
+  }, []);
 
   const petUrls = {
     Pigeon: 'https://creature-coders.s3.amazonaws.com/pigeon-for-hats.svg',
     Raccoon: 'https://creature-coders.s3.amazonaws.com/raccoon.svg',
     Possum: 'https://creature-coders.s3.amazonaws.com/possum.svg',
-  }
+  };
 
   return (
     <UserBG>
@@ -111,17 +146,19 @@ const UserProfile = () => {
         ) : (
           <ProfileText>Visit the shop to buy some hats!</ProfileText>
         )}
-        {petHat ? (
-          <PetHat src={petHat.url} onClick={() => setPetHat({})} />
-        ) : null}
-        <PetImage src={petUrls[type]} />
+        <PetContainer>
+          {petHat ? (
+            <PetHat src={petHat.url} onClick={() => setPetHat({})} />
+          ) : null}
+          <PetImage src={petUrls[type]} />
+        </PetContainer>
         <RowContainer>
           <ProfileText>
             Pet: {name} the {type}
-            <Link to="/pet">
-              <EditButton> Edit</EditButton>
-            </Link>
           </ProfileText>
+          <Link to="/pet">
+            <EditButton> Edit</EditButton>
+          </Link>
         </RowContainer>
       </UserContent>
     </UserBG>
