@@ -34,11 +34,12 @@ const BigText = styled(HomeTitle)`
 
 const GameWon = (props) => {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
   const { id } = useSelector((state) => state.user);
   const { points, pidgeCoins, lastGame } = props.location.state;
 
   useEffect(() => {
-    dispatch(updateUserStreak(id));
+    if (isLoggedIn) dispatch(updateUserStreak(id));
   }, []);
 
   return (

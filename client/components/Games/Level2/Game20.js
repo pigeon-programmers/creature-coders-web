@@ -11,6 +11,7 @@ import {
   PopButton,
   Content,
   Button,
+  palette
 } from '../../style';
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
@@ -18,6 +19,9 @@ import Home from '../../Home';
 import styled from 'styled-components';
 import { updateUserWon } from '../../../store/user';
 
+const MainBG = styled(Main)`
+  background-color: ${palette.red};
+`;
 const SmallerGameText = styled(GameText)`
   font-size: medium;
 `;
@@ -134,7 +138,7 @@ const Game20 = () => {
   };
 
   return isLoggedIn ? (
-    <Main>
+    <MainBG>
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
@@ -219,7 +223,7 @@ const Game20 = () => {
           Run
         </Button>
       </Content>
-    </Main>
+    </MainBG>
   ) : (
     <Home mustLogIn={true} />
   );

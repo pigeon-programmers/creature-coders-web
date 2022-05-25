@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Doors from './Animations/Doors';
 import { Main, Content, palette } from './style';
 import SubwayLines from './SubwayLines';
 import styled from 'styled-components';
+import { _updateActivePage } from '../store/user';
 
 const MapContainer = styled.div`
   background-image: url('https://creature-coders.s3.amazonaws.com/subway-map-updated-01.jpg');
@@ -53,9 +54,14 @@ const Level = styled.div`
 `;
 
 const Map = () => {
+  const dispatch = useDispatch()
   const { currentLevel, currentGame } = useSelector((state) => state.user);
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const [levelGame, setLevelGame] = useState(0);
+
+  useEffect(() => {
+    dispatch(_updateActivePage("map"))
+  }, [])
 
   useEffect(() => {
     isLoggedIn

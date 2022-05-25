@@ -21,17 +21,17 @@ async function seed() {
   const users = await Promise.all([
     User.create({
       username: 'cody',
-      password: '123',
-      email: 'cody@cody.com',
+      password: '123123',
+      email: 'cody@gmail.com',
       pidgeCoin: 1000,
       streak: 10,
       lastDatePlayed: oneWeekAgo,
     }),
     User.create({
       username: 'murphy',
-      password: '123',
-      email: 'murphy@murphy.com',
-      currentLevel: 0,
+      password: '123123',
+      email: 'Murphy@gmail.com',
+      currentLevel: 3,
       currentGame: 1,
       points: 3,
       streak: 1,
@@ -40,16 +40,16 @@ async function seed() {
     }),
     User.create({
       username: 'pippin',
-      password: '123',
-      email: 'pippin@pippin.com',
+      password: '123123',
+      email: 'pippin@gmail.com',
       currentLevel: 1,
       currentGame: 2,
       pidgeCoin: 100,
     }),
     User.create({
       username: 'grace',
-      password: '123',
-      email: 'grace@grace.com',
+      password: '123123',
+      email: 'grace@gmail.com',
       currentLevel: 3,
       currentGame: 0,
       points: 3,
@@ -105,7 +105,7 @@ async function seed() {
 
   // Creating Pets
   const pets = await Promise.all([
-    Pet.create({ name: 'Blossom', type: 'Raccoon', userId: 1 }),
+    Pet.create({ name: 'Blossom', type: 'Possum', userId: 1 }),
     Pet.create({ name: 'Pidge', type: 'Pigeon', userId: 2 }),
     Pet.create({ name: 'Funky', type: 'Raccoon', userId: 3 }),
     Pet.create({ name: 'Ratteo', type: 'Pigeon', userId: 4 }),

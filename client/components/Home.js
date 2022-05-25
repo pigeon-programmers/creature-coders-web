@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Main, Button, HomeTitle, HomeSubTitle } from './style';
 import { Link } from 'react-router-dom';
+import { _updateActivePage } from '../store/user';
 import styled, { keyframes } from 'styled-components';
 
 const MainBG = styled(Main)`
@@ -108,11 +110,16 @@ const SmallBang4 = styled(SmallBang)`
 //THIS COMPONENT OPERATES AS HOME AND "MUST LOG IN" PAGE FOR GAMES ABOVE TUTORIAL LEVEL
 
 const Home = (props) => {
+  const dispatch = useDispatch();
   //mustLogIn is passed after last tutorial game and from games that are only accessible to logged-in users
   const { mustLogIn } =
     props && props.location && props.location.state
       ? props.location.state
       : props;
+
+  useEffect(() => {
+    dispatch(_updateActivePage('home'));
+  }, []);
 
   return (
     <MainBG>

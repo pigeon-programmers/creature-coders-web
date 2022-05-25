@@ -8,6 +8,7 @@ import {
   PopContainer,
   PopButton,
   Content,
+  palette,
 } from '../../style';
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
@@ -17,10 +18,23 @@ import { updateUserWon } from '../../../store/user';
 import '../Blocks/10Blocks';
 import styled from 'styled-components';
 
+const MainBG = styled(Main)`
+  background-color: ${palette.yellow};
+`;
 const GameWrapper = styled.div`
   .blocklyToolboxDiv {
     z-index: 5;
   }
+`;
+
+const PizzaPigeon = styled.img`
+  width: 15vw;
+  height: 15vh;
+`;
+
+const Pigeon = styled.img`
+  width: 15vw;
+  height: 15vh;
 `;
 
 export const Game10 = () => {
@@ -32,6 +46,7 @@ export const Game10 = () => {
   const [nullBlock, setNullBlock] = useState('');
   const [object, setObject] = useState('');
   const [undef, setUndef] = useState('');
+  const [showPigeon, setShowPigeon] = useState(false);
   const [mission, setMission] = useState(true);
   const [hint, setHint] = useState(false);
   const [tryAgain, setTryAgain] = useState(false);
@@ -186,12 +201,15 @@ export const Game10 = () => {
             )
           : dispatch(updateUserWon(id, newPoints, 1, 1, newPidgeCoin));
       }
+
+      setShowPigeon(true);
+
       setTimeout(() => {
         history.push(`/game/won`, {
           points: gamePoints,
           pidgeCoins: gameCoins,
         });
-      }, 750);
+      }, 1200);
     } else {
       setTryAgain(true);
       gamePoints <= 5 ? null : setGamePoints(gamePoints - 1);
@@ -203,7 +221,7 @@ export const Game10 = () => {
   //we can take it out or put examples of each data type in it
 
   return isLoggedIn ? (
-    <Main>
+    <MainBG>
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
@@ -220,8 +238,8 @@ export const Game10 = () => {
               </p>
               <p>
                 Match each one of the TYPE blocks with one EXAMPLE block to give
-                your creature a slice of pizza! 🍕. Press RUN when all 6 types
-                are connected to an example.
+                the pigeon a slice of pizza! 🍕. Press RUN when all 6 types are
+                connected to an example.
               </p>
             </div>
           </PopUp>
@@ -238,12 +256,18 @@ export const Game10 = () => {
           </PopUp>
           <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
         </PopContainer>
-        <GameContent></GameContent>
+        <GameContent>
+          {showPigeon ? (
+            <Pigeon src="https://creature-coders.s3.amazonaws.com/pidgePizza.svg" />
+          ) : (
+            <Pigeon src="https://creature-coders.s3.amazonaws.com/pigeon.svg" />
+          )}
+        </GameContent>
         <GameWrapper>
           <Workspace toolbox={toolbox} onRun={onRun} />
         </GameWrapper>
       </Content>
-    </Main>
+    </MainBG>
   ) : (
     <Home mustLogIn={true} />
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PopUp from './PopUp';
 import {
   Content,
@@ -9,6 +9,8 @@ import {
   palette,
 } from './style';
 import styled from 'styled-components';
+import { _updateActivePage } from '../store/user';
+import { useDispatch } from 'react-redux';
 
 const FaqTitle = styled(HomeTitle)`
   margin-bottom: 1vh;
@@ -27,6 +29,7 @@ const ButtonContainer = styled.div`
 `;
 
 export const FAQ = () => {
+  const dispatch = useDispatch()
   const [creatures, setCreatures] = useState(false);
   const [creators, setCreators] = useState(false);
   const [js, setJs] = useState(false);
@@ -39,6 +42,10 @@ export const FAQ = () => {
   const [play, setPlay] = useState(false);
   const [other, setOther] = useState(false);
   const [more, setMore] = useState(false);
+
+  useEffect(() => {
+    dispatch(_updateActivePage(""))
+  }, [])
 
   return (
     <Main>

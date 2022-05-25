@@ -9,12 +9,19 @@ import {
   PopContainer,
   PopButton,
   Content,
+  palette
 } from '../../style';
 import PopUp from '../../PopUp';
 import TryAgain from '../../TryAgain';
 import Interpreter from 'js-interpreter';
 import '../Blocks/01Blocks';
 import { updateUserWon } from '../../../store/user';
+import { _getLocalStorage } from '../../../store/localStorage';
+import styled from 'styled-components';
+
+const MainBG = styled(Main)`
+  background-color: ${palette.green};
+`;
 
 export const Game01 = () => {
   const dispatch = useDispatch();
@@ -27,6 +34,7 @@ export const Game01 = () => {
   const [levelGame, setLevelGame] = useState(0);
   const [gamePoints, setGamePoints] = useState(10);
   const [gameCoins, setGameCoins] = useState(5);
+  const { lsCoins, lsPoints } = useSelector((state) => state.localStorage);
 
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const { id, points, currentLevel, currentGame, pidgeCoin } = useSelector(
@@ -80,6 +88,7 @@ export const Game01 = () => {
   const outcome = () => {
     if (string === 'hello pigeons') {
       if (isLoggedIn) {
+        //THIS IS HIT IF ANSWER IS CORRECT & USER LOGGED IN
         let newPoints = points + gamePoints;
         let newPidgeCoin = pidgeCoin + gameCoins;
 
@@ -102,6 +111,13 @@ export const Game01 = () => {
           });
         }, 750);
       } else {
+        //THIS IS HIT IF ANSWER IS CORRECT & USER NOT LOGGED IN
+        window.localStorage.setItem('points', gamePoints + lsPoints);
+        window.localStorage.setItem('coins', gameCoins + lsCoins);
+        window.localStorage.setItem('level', '1');
+        window.localStorage.setItem('game', '0');
+        dispatch(_getLocalStorage());
+
         setTimeout(() => {
           history.push(`/`, {
             mustLogIn: true,
@@ -109,8 +125,8 @@ export const Game01 = () => {
         }, 750);
       }
     } else {
+      //THIS IS HIT IF ANSWER IS INCORRECT, REGARDLESS OF LOG IN STATUS
       setTryAgain(true);
-      //set connect to false again to allow another try if solution was incorrect
       setConnect(false);
       gamePoints <= 5 ? null : setGamePoints(gamePoints - 1);
       gameCoins <= 3 ? null : setGameCoins(gameCoins - 1);
@@ -118,7 +134,7 @@ export const Game01 = () => {
   };
 
   return (
-    <Main>
+    <MainBG>
       <Content>
         <PopContainer>
           <PopButton onClick={() => setMission(true)}>Mission</PopButton>
@@ -151,7 +167,7 @@ export const Game01 = () => {
         </GameContent>
         <Workspace toolbox={toolbox} onRun={onRun} />
       </Content>
-    </Main>
+    </MainBG>
   );
 };
 

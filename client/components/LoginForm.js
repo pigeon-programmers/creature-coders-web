@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { authenticate } from '../store'
 import { Button, Main, FormContainer, Label, Input, LabelP } from './style'
 import { Link } from 'react-router-dom';
+import styled from 'styled-components'
+import { _updateActivePage } from '../store/user';
+
 
 /**
  * COMPONENT
  */
+
+const MainLI = styled(Main)`
+background-color: #2828FF;
+`
+
 const LoginForm = (props) => {
   const dispatch = useDispatch()
 
@@ -17,11 +25,14 @@ const LoginForm = (props) => {
     const email = evt.target.email ? evt.target.email.value : null
     dispatch(authenticate(email, password, formName))
   }
+  useEffect(() => {
+    dispatch(_updateActivePage("login"))
+  }, [])
 
   const { error } = props
 
   return (
-    <Main>
+    <MainLI>
       <FormContainer onSubmit={handleSubmit} name='login'>
           <>
             <Label htmlFor="email"><LabelP>Email address</LabelP></Label>
@@ -34,12 +45,8 @@ const LoginForm = (props) => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </FormContainer>
-      {/* <div>Forgot password?
-        <Link to='somehting'>Reset it</Link>
-      </div> */}
-    </Main>
+    </MainLI>
   )
 }
-
 
 export default LoginForm

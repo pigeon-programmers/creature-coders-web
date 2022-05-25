@@ -45,6 +45,7 @@ const StatusText = styled.p`
 const StatusBar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const { points, pidgeCoin, streak } = useSelector((state) => state.user);
+  const { lsCoins, lsPoints } = useSelector((state) => state.localStorage);
 
   return (
     <Status>
@@ -70,9 +71,14 @@ const StatusBar = () => {
         <>
           {/* The StatusBar will show this before you log in */}
           <NavIconContainer>
-            <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconPidgeCoin.svg" />
-            <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconStreak.svg" />
-            <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconPoints.svg" />
+            <StatusIconContainer>
+              <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconPidgeCoin.svg" />
+              <StatusText>{lsCoins}</StatusText>
+            </StatusIconContainer>
+            <StatusIconContainer>
+              <StatusIcon src="https://creature-coders.s3.amazonaws.com/iconPoints.svg" />
+              <StatusText>{lsPoints}</StatusText>
+            </StatusIconContainer>
           </NavIconContainer>
         </>
       )}
