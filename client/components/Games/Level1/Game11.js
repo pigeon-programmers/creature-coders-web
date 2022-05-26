@@ -23,7 +23,6 @@ import '../Blocks/11Blocks';
 const MainBG = styled(Main)`
   background-color: ${palette.yellow};
 `;
-
  const Bagel = styled.p`
   background-image: url('https://creature-coders.s3.amazonaws.com/bagel.svg');
   background-repeat: no-repeat;
@@ -32,8 +31,15 @@ const MainBG = styled(Main)`
   margin: 2px;
 `;
 const VisCont = styled(VisualsContainer)`
-  flex-wrap: wrap;
-  width: 80%;
+width: 80%;
+@media (max-width: 500px) {
+    flex-wrap: wrap;
+}
+`;
+const GameCont = styled(GameContent)`
+@media (max-width: 500px) {
+    margin-bottom: -1em;
+}
 `
 
 
@@ -197,7 +203,7 @@ export const Game11 = () => {
           </PopUp>
           <TryAgain tryAgain={tryAgain} setTryAgain={setTryAgain} />
         </PopContainer>
-        <GameContent>
+        <GameCont>
           <GameText>You have made {timesRan} bagels</GameText>
           <VisCont>
             {bagelsMade.length === 0 ? (
@@ -206,7 +212,7 @@ export const Game11 = () => {
               bagelsMade.map((b, i) => <Bagel key={i} />)
             )}
           </VisCont>
-        </GameContent>
+        </GameCont>
         <Workspace toolbox={toolbox} onRun={onRun} />
       </Content>
     </MainBG>

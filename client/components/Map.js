@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { _updateActivePage } from '../store/user';
 
 const MapContainer = styled.div`
-  background-image: url('https://creature-coders.s3.amazonaws.com/subwayGrid-01.jpg');
+  background-image: url('https://creature-coders.s3.amazonaws.com/subway+grid-01.jpg');
   background-size: 100% 100%;
   background-color: ${palette.dkGray};
   width: 50vw;

@@ -63,7 +63,7 @@ const HatContainer = styled.div`
 `;
 const ProfileHat = styled.img`
   width: 10vw;
-  margin: 1em;
+  margin: 1vw;
   @media (min-width: 1025px) {
     width: 125px;
   }
@@ -96,6 +96,11 @@ const PetHat = styled.img`
   bottom: 350px;
   left: 178px;
   z-index: 1;
+  @media (max-width: 500px) {
+    width: 145px;
+    bottom: 194px;
+    left: 198px;
+  }
 `;
 
 const UserProfile = () => {

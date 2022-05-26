@@ -20,32 +20,22 @@ import styled, { keyframes } from 'styled-components';
 
 const BigGameContent = styled(GameContentNoBlock)`
   height: 60vh;
-
 `;
-
 const SmallerGameText = styled(GameText)`
-  font-size: x-large;
-  @media (min-width: 1025px) {
-    font-size: large;
-}
   @media (max-width: 500px) {
-    font-size: medium;
+    font-size: .9em;
 }
 `;
-
 const BugText = styled.button`
   color: ${palette.red};
   border: none;
   outline: none;
   background: none;
   cursor: pointer;
-  font-size: x-large;
+  font-size: large;
   padding: 0;
-  @media (min-width: 1025px) {
-    font-size: large;
-}
   @media (max-width: 500px) {
-    font-size: medium;
+    font-size: .9em;
 }
 `;
 

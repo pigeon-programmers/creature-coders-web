@@ -99,8 +99,11 @@ export const Input = styled.input`
   margin: 0.5em;
   @media (max-width: 500px) {
     width: 80vw;
+    height: 7vh;
+    margin: 2vh;
 }
 `;
+
 export const Select = styled.select`
   width: 50vw;
   margin: 1em;
