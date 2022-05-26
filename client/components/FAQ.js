@@ -13,23 +13,20 @@ import { _updateActivePage } from '../store/user';
 import { useDispatch } from 'react-redux';
 
 const FaqTitle = styled(HomeTitle)`
-  margin-bottom: 1vh;
-  font-family: 'Kirang Haerang', sans-serif;
-  font-size: 8vh;
-  color: ${palette.white};
-  filter: drop-shadow(5px 5px 0 black);
+  margin: 0;
 `;
-
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: baseline;
   align-items: center;
   margin-top: 1vh;
+  @media (max-width: 500px) {
+    overflow: scroll;
+  }
 `;
 
 export const FAQ = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [creatures, setCreatures] = useState(false);
   const [creators, setCreators] = useState(false);
   const [js, setJs] = useState(false);
@@ -44,8 +41,8 @@ export const FAQ = () => {
   const [more, setMore] = useState(false);
 
   useEffect(() => {
-    dispatch(_updateActivePage(""))
-  }, [])
+    dispatch(_updateActivePage(''));
+  }, []);
 
   return (
     <Main>
@@ -63,8 +60,8 @@ export const FAQ = () => {
             <div>
               <p>
                 Creature Coders is a fun, learn-to-code game that teaches the
-                logic behind JavaScript! It ranges from learning logic to seeing
-                how real code looks!!
+                logic behind JavaScript! It ranges from learning the principles
+                of coding to seeing how real code looks!
               </p>
               <p> Note: It currently views and operates best on a tablet.</p>
             </div>
@@ -79,27 +76,26 @@ export const FAQ = () => {
           >
             <div>
               <p>
-                Log in or Sign up once you get to the Home page, or, if you just
-                want to test the game out, you can try the first two levels
-                without an account! Once you sign in you can choose a garbage
-                animal pet and hop on the subway to code your way through each
-                stop.
+                Log in or Sign up from the Home page, or if you want to test the
+                game out, you can try the first two levels without an account!
+                Once you sign in you can choose a garbage animal pet and hop on
+                the subway to code your way through each stop.
               </p>
               <p>
                 Any white subway stop means that it is open and accessible, and
                 the black stops are not unlocked yet. You must beat a level to
-                unlock the next level.
+                unlock the level after it.
               </p>
               <p>
-                After winning a level you gain points and Pidge coins. But watch
-                out -- if you run the game and it is incorrect, you will loose a
-                point and a coin. Even so, you will always at least win 5 points
-                and 3 Pidge coins!
+                After winning a level you gain points and PidgeCoins. But watch
+                out -- if click the run button and it is incorrect, you will
+                loose a point and a coin. You will always win at least 5 points
+                and 3 PidgeCoins!
               </p>
               <p>
-                You are able to spend your Pidge coins on hats for your pet in
-                the store. The points are to see how great you are doing, and
-                you can see how others are doing on leadership board!
+                You are able to spend your PidgeCoins on hats for your pet in
+                the shop. The points are to see how great you are doing, and you
+                can see how far other players have gotten on the leaderboard!
               </p>
               <p>...now get coding!</p>
             </div>
@@ -114,10 +110,10 @@ export const FAQ = () => {
           >
             <div>
               <p>
-                The amazing creators of Creature Coders are Caitlin Sherman,
-                Angel Robish, Kendall Perry, and Hannah Sommer. They worked hard
-                to make a fun game that people of all ages would enjoy and are
-                so excited for you to play!
+                The creators of Creature Coders are Caitlin Sherman, Angel
+                Robish, Kendall Perry, and Hannah Sommer. They worked hard to
+                make a fun game that people of all ages would enjoy and are so
+                excited for you to play!
               </p>
             </div>
           </PopUp>
@@ -169,26 +165,28 @@ export const FAQ = () => {
             togglePopUp={() => setStr(!str)}
           >
             <div>
-              <p>A string is anything that is put in quotes ("", ''). </p>
               <p>
-                "This is a string". "1235" is also a string because it has
-                quotes around it.
+                A string is anything that is put in quotes. They can be single
+                quotes, 'like this,' or double quotes, "like this."{' '}
+              </p>
+              <p>
+                "This is a string." "123" is also a string because it has quotes
+                around it!
               </p>
             </div>
           </PopUp>
           <PopButton onClick={() => setInt(!int)} type="button">
-            What is an Number?
+            What is a Number?
           </PopButton>
           <PopUp
             open={int}
-            title={'What is an Number?'}
+            title={'What is n Number?'}
             togglePopUp={() => setInt(!int)}
           >
             <div>
               <p>
-                An Number is any whole number. Any at all! 1,346? Yep, that's a
-                number. -8,945? That is also an number! The numbers are
-                infinite!!
+                A Number is any number. Any at all! 346.5? Yep, that's a number.
+                -8,945? That is also a number! The numbers are infinite!!
               </p>
             </div>
           </PopUp>
@@ -202,15 +200,16 @@ export const FAQ = () => {
           >
             <div>
               <p>
-                An Object is an unordered collection of key-value pairs. If you
-                think of this like a dictionary, the "key" is the word, and the
-                "value" is the definition
+                An Object is an collection of key-value pairs. If you think of
+                this like a dictionary, the "key" is the word, and the "value"
+                is the definition. Unlike a dictionary though, the contents of
+                objects are not in any special order!
               </p>
               <p>
-                {`An object has curly braces around it with information inside it.
-                it may look something like this: { a: 1 }. The
-                "key" is the character to the left side of the colon and the
-                "value" is to the right side of the colon.`}
+                {`An object has curly braces around it and information inside.
+                it may look something like this: { name: "Pidge" }. The
+                "key" is on the left side and the
+                "value" is on the right.`}
               </p>
             </div>
           </PopUp>
@@ -224,12 +223,14 @@ export const FAQ = () => {
           >
             <div>
               <p>
-                An array is an object but without the key/value pairs. You are
-                able to store multiple items in an array, you can even store
-                multiple objects inside an array!
+                An array is like a list. You can put all sorts of things into an
+                array!
               </p>
               <p>
-                {`Arrays are kept within square brackets and may look something like this: [1, hello, 2, pigeons].`}
+                {`Arrays use square brackets and may look something like this: ["hello", 42, "pigeons"].`}{' '}
+                The order of things in an array is called the index. But unlike
+                how you or I probably count, computers start counting at zero.
+                So "hello" in our example array is at the 0th index!
               </p>
               <p>
                 Something to remember when it comes to Objects and Arrays: All
@@ -262,16 +263,16 @@ export const FAQ = () => {
           >
             <div>
               <p>
-                Null and Undefined may seem very similar, but they are actually
-                different. Undefined means a variable has been declared but has
-                not been assigned. Null means a variable has been assigned to
-                nothing!
+                Null and Undefined may seem like the same thing, but they are
+                actually different. Undefined means a variable has been declared
+                but has not been assigned. Null means a variable has been
+                assigned to nothing!
               </p>
             </div>
           </PopUp>
-          <PopButton onClick={() => setOther(!other)} type="button">
+          {/* <PopButton onClick={() => setOther(!other)} type="button">
             What else will I see here?
-          </PopButton>
+          </PopButton> */}
           <PopButton onClick={() => setUndeNull(!undeNull)} type="button">
             What is a bug?
           </PopButton>
@@ -290,9 +291,9 @@ export const FAQ = () => {
                 In 1947 Grace Hopper, a computer scientist and naval engineer,
                 found AN ACTUAL BUG in the computer that was causing problems.
                 She put the bug in a log with the note: "First actual case of a
-                bug being found." This was back when computers were big things
-                that relayed information through tons of wires (...we've come a
-                long way). This is why we use the word "bug."
+                bug being found." This was back when computers filled rooms and
+                relayed information through tons of wires (...we've come a long
+                way). This is why we use the word "bug."
               </p>
               <p>
                 Fun fact: Grace Hopper is an important figure in the programming
@@ -311,15 +312,16 @@ export const FAQ = () => {
           >
             <p>
               In some of the levels you may see a block that says "Repeat". This
-              block is replacing the for/while loops that are used in JavaScript
-              and that you will see on some of the harder levels.
+              block is replacing the "for" and "while" loops that are used in
+              JavaScript and that you will see on some of the harder levels.
             </p>
             <p>
-              For/while loops are very useful for when you need to check every
-              element of an array. They keep your code DRY (Don't Repeat
-              Yourself), which is very important when writing code. If you can
-              write easy to understand code that works in 5 lines verses 20 by
-              using a for loop then do it!
+              A "for" loop does something FOR a set number of times, and a
+              "while" loop does something WHILE a certain condidtion is met.
+              They keep your code DRY (Don't Repeat Yourself), which is very
+              important when writing code. If you can write easy-to-understand
+              code that works in 5 lines verses 20 by using a for loop then do
+              it!
             </p>
           </PopUp>
           <PopButton onClick={() => setMore(!more)} type="button">
@@ -333,8 +335,8 @@ export const FAQ = () => {
             <p>
               There are so many websites out there that give great information
               and go into detail about coding in JavaScript and all the other
-              languages as well. We listed two below that really dive into
-              explaining everything there is to know about coding!
+              languages as well. We listed two below that dive into explaining
+              in much more detail!
               <ul>
                 <li>
                   <a href="https://developer.mozilla.org/en-US">
