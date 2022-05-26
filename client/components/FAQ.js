@@ -33,12 +33,14 @@ export const FAQ = () => {
   const [creatures, setCreatures] = useState(false);
   const [creators, setCreators] = useState(false);
   const [js, setJs] = useState(false);
+  const [types, setTypes] = useState(false);
   const [str, setStr] = useState(false);
   const [obj, setObj] = useState(false);
   const [arr, setArr] = useState(false);
   const [undeNull, setUndeNull] = useState(false);
-  const [int, setInt] = useState(false);
+  const [num, setNum] = useState(false);
   const [bool, setBool] = useState(false);
+  const [bug, setBug] = useState(false);
   const [play, setPlay] = useState(false);
   const [other, setOther] = useState(false);
   const [more, setMore] = useState(false);
@@ -137,13 +139,13 @@ export const FAQ = () => {
               </p>
             </div>
           </PopUp>
-          <PopButton onClick={() => setStr(!str)} type="button">
+          <PopButton onClick={() => setTypes(!types)} type="button">
             What are Data Types?
           </PopButton>
           <PopUp
-            open={js}
+            open={types}
             title={'What are Data Types?'}
-            togglePopUp={() => setJs(!js)}
+            togglePopUp={() => setTypes(!types)}
           >
             <div>
               <p>
@@ -169,20 +171,20 @@ export const FAQ = () => {
             togglePopUp={() => setStr(!str)}
           >
             <div>
-              <p>A string is anything that is put in quotes ("", ''). </p>
+              <p>A string is anything that is put in quotes (" ", ' '). </p>
               <p>
                 "This is a string". "1235" is also a string because it has
                 quotes around it.
               </p>
             </div>
           </PopUp>
-          <PopButton onClick={() => setInt(!int)} type="button">
+          <PopButton onClick={() => setNum(!num)} type="button">
             What is an Number?
           </PopButton>
           <PopUp
-            open={int}
+            open={num}
             title={'What is a Number?'}
-            togglePopUp={() => setInt(!int)}
+            togglePopUp={() => setNum(!num)}
           >
             <div>
               <p>
@@ -269,16 +271,13 @@ export const FAQ = () => {
               </p>
             </div>
           </PopUp>
-          <PopButton onClick={() => setOther(!other)} type="button">
-            What else will I see here?
-          </PopButton>
-          <PopButton onClick={() => setUndeNull(!undeNull)} type="button">
+          <PopButton onClick={() => setBug(!bug)} type="button">
             What is a Bug?
           </PopButton>
           <PopUp
-            open={undeNull}
+            open={bug}
             title={'What is a bug?'}
-            togglePopUp={() => setUndeNull(!undeNull)}
+            togglePopUp={() => setBug(!bug)}
           >
             <div>
               <p>
