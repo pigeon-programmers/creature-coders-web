@@ -18,17 +18,19 @@ const MainBg = styled(Main)`
 const HatContent = styled(Content)`
   background-color: rgba(255, 255, 255, 0.6);
   width: 80vw;
-  overflow: scroll;
+  top: 7vh;
   @media (min-width: 1025px) {
     width: 1025px;
-}
+  }
   @media (max-width: 500px) {
+    overflow: scroll;
     width: 100vw;
 }
 
 `;
 const Title = styled(HomeTitle)`
   margin: 0;
+  margin-top: .5em;
 `;
 const SubTitle = styled(HomeSubTitle)`
   color: black;
@@ -37,14 +39,21 @@ const SubTitle = styled(HomeSubTitle)`
 const Hat = styled.img`
   height: 10vw;
   margin: 0.5em 3em;
+  @media (min-width: 1025px) {
+    height: 100px;
+}
   @media (max-width: 500px) {
-    margin: 0.5em;
-    height: 20vw;
+    margin: 0.25em;
+    height: 10vh;
   }
 `;
 const HatButton = styled(Button)`
   width: 30vw;
   font-size: 1.5em;
+  padding: 0.25em 1.25em;
+  @media (min-width: 1025px) {
+    width: 275px;
+  }
   @media (max-width: 500px) {
     width: 45vw;
     padding: 0.25em .75em;
