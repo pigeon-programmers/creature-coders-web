@@ -29,7 +29,7 @@ const ButtonContainer = styled.div`
 `;
 
 export const FAQ = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [creatures, setCreatures] = useState(false);
   const [creators, setCreators] = useState(false);
   const [js, setJs] = useState(false);
@@ -44,8 +44,8 @@ export const FAQ = () => {
   const [more, setMore] = useState(false);
 
   useEffect(() => {
-    dispatch(_updateActivePage(""))
-  }, [])
+    dispatch(_updateActivePage(''));
+  }, []);
 
   return (
     <Main>
@@ -181,13 +181,13 @@ export const FAQ = () => {
           </PopButton>
           <PopUp
             open={int}
-            title={'What is an Number?'}
+            title={'What is a Number?'}
             togglePopUp={() => setInt(!int)}
           >
             <div>
               <p>
-                An Number is any whole number. Any at all! 1,346? Yep, that's a
-                number. -8,945? That is also an number! The numbers are
+                A Number in JavaScript is any integer. Any at all! 346.5? Yep,
+                that's a number. -8,945? That is also a number! The numbers are
                 infinite!!
               </p>
             </div>
@@ -273,7 +273,7 @@ export const FAQ = () => {
             What else will I see here?
           </PopButton>
           <PopButton onClick={() => setUndeNull(!undeNull)} type="button">
-            What is a bug?
+            What is a Bug?
           </PopButton>
           <PopUp
             open={undeNull}
@@ -309,18 +309,22 @@ export const FAQ = () => {
             title={'What else will I see here?'}
             togglePopUp={() => setOther(!other)}
           >
-            <p>
-              In some of the levels you may see a block that says "Repeat". This
-              block is replacing the for/while loops that are used in JavaScript
-              and that you will see on some of the harder levels.
-            </p>
-            <p>
-              For/while loops are very useful for when you need to check every
-              element of an array. They keep your code DRY (Don't Repeat
-              Yourself), which is very important when writing code. If you can
-              write easy to understand code that works in 5 lines verses 20 by
-              using a for loop then do it!
-            </p>
+            <div>
+              <p>
+                In some of the levels you may see a block that says "Repeat".
+                This block is replacing the "for" and "while" loops that are
+                used in JavaScript and that you will see on some of the harder
+                levels.
+              </p>
+              <p>
+                A "for" loop does something FOR a set number of times, and a
+                "while" loop does something WHILE a certain condition is met.
+                They keep your code DRY (Don't Repeat Yourself), which is very
+                important when writing code. If you can write easy-to-understand
+                code that works in 5 lines verses 20 by using a for loop then do
+                it!
+              </p>
+            </div>
           </PopUp>
           <PopButton onClick={() => setMore(!more)} type="button">
             Where can I find more information?
@@ -330,11 +334,11 @@ export const FAQ = () => {
             title={'Where can I find more information?'}
             togglePopUp={() => setMore(!more)}
           >
-            <p>
+            <div>
               There are so many websites out there that give great information
-              and go into detail about coding in JavaScript and all the other
-              languages as well. We listed two below that really dive into
-              explaining everything there is to know about coding!
+              and go into detail about coding in JavaScript (and all the other
+              languages, as well). We listed two below that dive into explaining
+              these concepts in more detail!
               <ul>
                 <li>
                   <a href="https://developer.mozilla.org/en-US">
@@ -345,7 +349,7 @@ export const FAQ = () => {
                   <a href="https://www.w3schools.com">W3 Schools</a>
                 </li>
               </ul>
-            </p>
+            </div>
           </PopUp>
         </ButtonContainer>
       </Content>
