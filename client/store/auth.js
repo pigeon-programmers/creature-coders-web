@@ -39,7 +39,7 @@ export const authenticate =
   (email, password, method, isSignup = false) => async (dispatch) => {
     try {
       const res = await axios.post(`/auth/${method}`, {
-        email,
+        email: email.toLowerCase(),
         password,
       });
       window.localStorage.setItem(TOKEN, res.data.token);
