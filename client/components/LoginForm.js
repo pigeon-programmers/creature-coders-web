@@ -23,7 +23,7 @@ const LoginForm = (props) => {
     const formName = evt.target.name
     const password = evt.target.password.value
     const email = evt.target.email ? evt.target.email.value : null
-    dispatch(authenticate(email, password, formName))
+    dispatch(authenticate(email.toLowerCase(), password, formName))
   }
   useEffect(() => {
     dispatch(_updateActivePage("login"))
