@@ -76,9 +76,6 @@ export const FormContainer = styled.form`
   @media (max-width: 500px) {
     width: 100vw;
 }
-@media (min-width: 500px) {
-  height: 85vh;
-}
 `;
 
 export const Label = styled.label`
