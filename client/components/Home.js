@@ -8,57 +8,101 @@ import styled, { keyframes } from 'styled-components';
 const MainBG = styled(Main)`
   background-color: #2828ff;
 `;
-
 const HomeButton = styled(Button)`
   width: 40vw;
   height: 7vh;
   font-size: 2.5em;
   margin: 0.5em;
+  @media (max-width: 500px) {
+    width: 65vw;
+    padding: 0;
+  }
+  @media (min-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
-
 const Title = styled(HomeTitle)`
+  text-align: center;
   position: absolute;
   top: 12vh;
+  @media (min-width: 1025px) {
+    font-size: 10vh;
+    top: 9vh;
+  }
+  @media (min-width: 501px) {
+    font-size: 8.5vh;
+    top: 10vh;
+  }
+  @media (max-width: 500px) {
+    top: 7vh;
+    line-height: 90%;
+  }
 `;
-
 const SubTitle = styled(HomeSubTitle)`
   z-index: 1;
   position: absolute;
   top: 25vh;
+  @media (min-width: 1025px) {
+    top: 28vh;
+  }
+  @media (max-width: 500px) {
+    top: 32vh;
+  }
 `;
+const BlocklyLogo = styled.img`
+  width: 20vw;
+  margin: 3em;
+  @media (min-width: 1025px) {
+    width: 10vw;
+  }
+`;
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 35vh;
+  z-index: 1;
 
+  @media (min-width: 500px) {
+    margin-top: 50vh;
+  }
+`;
 const blinker = keyframes`
 0% {opacity: 0;}
 49.9% {opacity: 0;}
 50% {opacity: 1;}
 100% {opacity: 1;}
 `;
-
 const blinker2 = keyframes`
 0% {opacity: 1;}
 49.9% {opacity: 1;}
 50% {opacity: 0;}
 100% {opacity: 0;}
 `;
-
 const Bang = styled.img`
   width: 95vw;
   position: absolute;
   top: 10vh;
   animation: ${blinker} 1s linear infinite;
+  @media (min-width: 1025px) {
+    width: 820px;
+  }
+  @media (min-width: 900px) {
+    width: 600px;
+    top: 6vh;
+  }
 `;
-
 const Bang2 = styled(Bang)`
   animation: ${blinker2} 1s linear infinite;
 `;
-
 const twister = keyframes`
   0% {transform: rotate(0);}
   49.9% {transform: rotate(0);}
   50% {transform: rotate(0.2turn);}
   100% {transform: rotate(0.2turn);}
   `;
-
 const SmallBang = styled.img`
   width: 9vw;
   position: absolute;
@@ -66,7 +110,6 @@ const SmallBang = styled.img`
   top: 52vh;
   left: 13vw;
 `;
-
 const SmallBang2 = styled(SmallBang)`
   top: 10vh;
   left: 75vw;
@@ -80,19 +123,6 @@ const SmallBang4 = styled(SmallBang)`
   top: 81vh;
   left: 19vw;
   width: 6vw;
-`;
-
-const BlocklyLogo = styled.img`
-  width: 20vw;
-  margin: 3em;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: baseline;
-  align-items: center;
-  margin-top: 35vh;
 `;
 
 //THIS COMPONENT OPERATES AS HOME AND "MUST LOG IN" PAGE FOR GAMES ABOVE TUTORIAL LEVEL
