@@ -28,12 +28,14 @@ export const FAQ = () => {
   const [creatures, setCreatures] = useState(false);
   const [creators, setCreators] = useState(false);
   const [js, setJs] = useState(false);
+  const [types, setTypes] = useState(false);
   const [str, setStr] = useState(false);
   const [obj, setObj] = useState(false);
   const [arr, setArr] = useState(false);
   const [undeNull, setUndeNull] = useState(false);
-  const [int, setInt] = useState(false);
+  const [num, setNum] = useState(false);
   const [bool, setBool] = useState(false);
+  const [bug, setBug] = useState(false);
   const [play, setPlay] = useState(false);
   const [other, setOther] = useState(false);
   const [more, setMore] = useState(false);
@@ -131,13 +133,13 @@ export const FAQ = () => {
               </p>
             </div>
           </PopUp>
-          <PopButton onClick={() => setStr(!str)} type="button">
+          <PopButton onClick={() => setTypes(!types)} type="button">
             What are Data Types?
           </PopButton>
           <PopUp
-            open={js}
+            open={types}
             title={'What are Data Types?'}
-            togglePopUp={() => setJs(!js)}
+            togglePopUp={() => setTypes(!types)}
           >
             <div>
               <p>
@@ -163,6 +165,7 @@ export const FAQ = () => {
             togglePopUp={() => setStr(!str)}
           >
             <div>
+              <p>A string is anything that is put in quotes (" ", ' '). </p>
               <p>
                 A string is anything that is put in quotes. They can be single
                 quotes, 'like this,' or double quotes, "like this."{' '}
@@ -173,18 +176,19 @@ export const FAQ = () => {
               </p>
             </div>
           </PopUp>
-          <PopButton onClick={() => setInt(!int)} type="button">
-            What is a Number?
+          <PopButton onClick={() => setNum(!num)} type="button">
+            What is an Number?
           </PopButton>
           <PopUp
-            open={int}
-            title={'What is n Number?'}
-            togglePopUp={() => setInt(!int)}
+            open={num}
+            title={'What is a Number?'}
+            togglePopUp={() => setNum(!num)}
           >
             <div>
               <p>
-                A Number is any number. Any at all! 346.5? Yep, that's a number.
-                -8,945? That is also a number! The numbers are infinite!!
+                A Number in JavaScript is any integer. Any at all! 346.5? Yep,
+                that's a number. -8,945? That is also a number! The numbers are
+                infinite!!
               </p>
             </div>
           </PopUp>
@@ -268,16 +272,13 @@ export const FAQ = () => {
               </p>
             </div>
           </PopUp>
-          {/* <PopButton onClick={() => setOther(!other)} type="button">
-            What else will I see here?
-          </PopButton> */}
-          <PopButton onClick={() => setUndeNull(!undeNull)} type="button">
-            What is a bug?
+          <PopButton onClick={() => setBug(!bug)} type="button">
+            What is a Bug?
           </PopButton>
           <PopUp
-            open={undeNull}
+            open={bug}
             title={'What is a bug?'}
-            togglePopUp={() => setUndeNull(!undeNull)}
+            togglePopUp={() => setBug(!bug)}
           >
             <div>
               <p>
@@ -308,19 +309,22 @@ export const FAQ = () => {
             title={'What else will I see here?'}
             togglePopUp={() => setOther(!other)}
           >
-            <p>
-              In some of the levels you may see a block that says "Repeat". This
-              block is replacing the "for" and "while" loops that are used in
-              JavaScript and that you will see on some of the harder levels.
-            </p>
-            <p>
-              A "for" loop does something FOR a set number of times, and a
-              "while" loop does something WHILE a certain condidtion is met.
-              They keep your code DRY (Don't Repeat Yourself), which is very
-              important when writing code. If you can write easy-to-understand
-              code that works in 5 lines verses 20 by using a for loop then do
-              it!
-            </p>
+            <div>
+              <p>
+                In some of the levels you may see a block that says "Repeat".
+                This block is replacing the "for" and "while" loops that are
+                used in JavaScript and that you will see on some of the harder
+                levels.
+              </p>
+              <p>
+                A "for" loop does something FOR a set number of times, and a
+                "while" loop does something WHILE a certain condition is met.
+                They keep your code DRY (Don't Repeat Yourself), which is very
+                important when writing code. If you can write easy-to-understand
+                code that works in 5 lines verses 20 by using a for loop then do
+                it!
+              </p>
+            </div>
           </PopUp>
           <PopButton onClick={() => setMore(!more)} type="button">
             Where can I find more information?
@@ -330,11 +334,11 @@ export const FAQ = () => {
             title={'Where can I find more information?'}
             togglePopUp={() => setMore(!more)}
           >
-            <p>
+            <div>
               There are so many websites out there that give great information
-              and go into detail about coding in JavaScript and all the other
-              languages as well. We listed two below that dive into explaining
-              in much more detail!
+              and go into detail about coding in JavaScript (and all the other
+              languages, as well). We listed two below that dive into explaining
+              these concepts in more detail!
               <ul>
                 <li>
                   <a href="https://developer.mozilla.org/en-US">
@@ -345,7 +349,7 @@ export const FAQ = () => {
                   <a href="https://www.w3schools.com">W3 Schools</a>
                 </li>
               </ul>
-            </p>
+            </div>
           </PopUp>
         </ButtonContainer>
       </Content>

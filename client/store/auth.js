@@ -24,7 +24,7 @@ export const getLoading = () => ({
 
 export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
-  if (token && token!=="undefined") {
+  if (token && token !== 'undefined') {
     const res = await axios.get('/auth/me', {
       headers: {
         authorization: token,
@@ -36,7 +36,8 @@ export const me = () => async (dispatch) => {
 };
 
 export const authenticate =
-  (email, password, method, isSignup = false) => async (dispatch) => {
+  (email, password, method, isSignup = false) =>
+  async (dispatch) => {
     try {
       const res = await axios.post(`/auth/${method}`, {
         email,
@@ -44,7 +45,9 @@ export const authenticate =
       });
       window.localStorage.setItem(TOKEN, res.data.token);
       dispatch(me());
-      method === 'login' && isSignup !== true ? history.push('/map') : history.push('/pet');
+      method === 'login' && isSignup !== true
+        ? history.push('/map')
+        : history.push('/pet');
     } catch (authError) {
       return dispatch(setAuth({ error: authError }));
     }
