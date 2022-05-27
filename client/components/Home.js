@@ -30,7 +30,7 @@ const Title = styled(HomeTitle)`
   @media (min-width: 1025px) {
     font-size: 10vh;
   }
-  @media (min-width: 900px) {
+  @media (min-width: 501px) {
     font-size: 8.5vh;
     line-height: -10%;
   }
