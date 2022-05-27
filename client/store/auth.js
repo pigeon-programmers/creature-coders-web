@@ -7,6 +7,7 @@ const TOKEN = 'token';
  * ACTION TYPES
  */
 const GET_LOADING = 'IS_LOADING';
+const SET_AUTH = 'SET_AUTH';
 
 /**
  * ACTION CREATORS
