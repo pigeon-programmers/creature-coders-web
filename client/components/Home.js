@@ -29,10 +29,11 @@ const Title = styled(HomeTitle)`
   top: 12vh;
   @media (min-width: 1025px) {
     font-size: 10vh;
+    top: 9vh;
   }
   @media (min-width: 501px) {
     font-size: 8.5vh;
-    line-height: -10%;
+    top: 10vh;
   }
   @media (max-width: 500px) {
     top: 7vh;
@@ -63,6 +64,10 @@ const ButtonContainer = styled.div`
   align-items: center;
   margin-top: 35vh;
   z-index: 1;
+
+  @media (min-width: 500px) {
+    margin-top: 50vh;
+  }
 `;
 const blinker = keyframes`
 0% {opacity: 0;}
@@ -84,12 +89,13 @@ const Bang = styled.img`
   @media (min-width: 1025px) {
     width: 820px;
   }
-  @media (min-width: 650px) {
+  @media (min-width: 600px) {
     width: 500px;
+    top: 7vh;
   }
   @media (min-width: 900px) {
     width: 600px;
-    line-height: 10%;
+    top: 6vh;
   }
 `;
 const Bang2 = styled(Bang)`
