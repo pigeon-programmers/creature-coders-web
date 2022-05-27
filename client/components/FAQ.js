@@ -20,9 +20,7 @@ const ButtonContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 1vh;
-  @media (max-width: 500px) {
-    overflow: scroll;
-  }
+  overflow: scroll;
 `;
 
 export const FAQ = () => {
