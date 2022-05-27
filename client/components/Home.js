@@ -17,6 +17,11 @@ const HomeButton = styled(Button)`
     width: 65vw;
     padding: 0;
   }
+  @media (min-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 const Title = styled(HomeTitle)`
   text-align: center;
@@ -24,6 +29,10 @@ const Title = styled(HomeTitle)`
   top: 12vh;
   @media (min-width: 1025px) {
     font-size: 10vh;
+  }
+  @media (min-width: 900px) {
+    font-size: 8.5vh;
+    line-height: -10%;
   }
   @media (max-width: 500px) {
     top: 7vh;
@@ -74,6 +83,13 @@ const Bang = styled.img`
   animation: ${blinker} 1s linear infinite;
   @media (min-width: 1025px) {
     width: 820px;
+  }
+  @media (min-width: 650px) {
+    width: 500px;
+  }
+  @media (min-width: 900px) {
+    width: 600px;
+    line-height: 10%;
   }
 `;
 const Bang2 = styled(Bang)`
