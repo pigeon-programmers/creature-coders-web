@@ -22,9 +22,13 @@ const BigGameContent = styled(GameContentNoBlock)`
   height: 60vh;
 `;
 const SmallerGameText = styled(GameText)`
+  font-size: 0.8em;
+  @media (max-width: 900px) {
+    font-size: 1.3em;
+  }
   @media (max-width: 500px) {
-    font-size: .9em;
-}
+    font-size: 0.9em;
+  }
 `;
 const BugText = styled.button`
   color: ${palette.red};
@@ -32,11 +36,14 @@ const BugText = styled.button`
   outline: none;
   background: none;
   cursor: pointer;
-  font-size: large;
+  font-size: 0.5em;
   padding: 0;
+  @media (max-width: 900px) {
+    font-size: 1.3em;
+  }
   @media (max-width: 500px) {
-    font-size: .9em;
-}
+    font-size: 0.8em;
+  }
 `;
 
 export const Debugger = () => {
