@@ -16,12 +16,19 @@ import { _updateActivePage } from '../store/user';
 const UserBG = styled(Main)`
   background-color: ${palette.pink};
 `;
+
 const UserContent = styled(Content)`
   background-color: rgba(255, 255, 255, 0.6);
   width: 80vw;
   height: 85vh;
   @media (min-width: 1025px) {
     width: 1025px;
+  }
+  @media (min-width: 501px) {
+    ${'' /* display: flex; 
+    flex-direction: column; */}
+    width: 70%;
+    margin: 3%;
   }
   @media (max-width: 500px) {
     width: 100vw;
@@ -85,9 +92,11 @@ const PetContainer = styled.div`
   }
 `;
 const PetImage = styled.img`
-  height: 400px;
   @media (max-width: 500px) {
     height: 225px;
+  }
+  @media (min-width: 501px) {
+    height: 310px;
   }
 `;
 const PetHat = styled.img`
