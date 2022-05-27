@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 const slideIn = keyframes`
   from {
-    top: 74vh;
+    top: 80vh;
     z-index: 0;
   }
   35% {
@@ -15,7 +15,7 @@ const slideIn = keyframes`
     z-index: 0;
   }
   to{
-    top: 74vh;
+    top: 80vh;
     z-index: 0;
   }
 `;
@@ -24,7 +24,7 @@ const PopRoach = styled.img`
   height: 60vh;
   width: 50vh;
   position: absolute;
-  top: 74vh;
+  top: 80vh;
   animation: ${slideIn} 3s 1 linear;
   z-index: -1;
 `;

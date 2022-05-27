@@ -32,7 +32,5 @@ a {
 }
 
 .test {
-  width: 80vw;
-  height: 7vh;
-  margin: 2vh;
+  font-weight: bold
 }

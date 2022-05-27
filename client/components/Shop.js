@@ -20,28 +20,26 @@ const HatContent = styled(Content)`
   width: 80vw;
   top: 7vh;
   @media (min-width: 1025px) {
-    width: 1025px;
+    width: 1000px;
   }
   @media (max-width: 500px) {
-    overflow: scroll;
     width: 100vw;
-}
-
+  }
 `;
 const Title = styled(HomeTitle)`
   margin: 0;
-  margin-top: .5em;
+  margin-top: 8vh;
 `;
 const SubTitle = styled(HomeSubTitle)`
   color: black;
   margin: 2vh;
 `;
 const Hat = styled.img`
-  height: 10vw;
+  height: 10vh;
   margin: 0.5em 3em;
   @media (min-width: 1025px) {
-    height: 100px;
-}
+    height: 9vh;
+  }
   @media (max-width: 500px) {
     margin: 0.25em;
     height: 10vh;
@@ -56,7 +54,7 @@ const HatButton = styled(Button)`
   }
   @media (max-width: 500px) {
     width: 45vw;
-    padding: 0.25em .75em;
+    padding: 0.25em 0.75em;
   }
 `;
 const HatButtonNoClick = styled(HatButton)`
@@ -87,8 +85,8 @@ const Shop = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(_updateActivePage("shop"))
-  }, [])
+    dispatch(_updateActivePage('shop'));
+  }, []);
 
   const userHatsSet = new Set();
   if (user.hats && user.hats.length > 0) {

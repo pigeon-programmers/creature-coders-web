@@ -90,18 +90,16 @@ const PetContainer = styled.div`
   }
 `;
 const PetImage = styled.img`
+height: 310px;
   @media (max-width: 500px) {
     height: 225px;
   }
-  @media (min-width: 501px) {
-    height: 310px;
-  }
 `;
 const PetHat = styled.img`
-  width: 215px;
+  width: 185px;
   position: absolute;
-  bottom: 350px;
-  left: 178px;
+  bottom: 270px;
+  left: 185px;
   z-index: 1;
   @media (max-width: 500px) {
     width: 145px;
