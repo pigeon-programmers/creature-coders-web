@@ -25,8 +25,6 @@ const UserContent = styled(Content)`
     width: 1025px;
   }
   @media (min-width: 501px) {
-    ${'' /* display: flex; 
-    flex-direction: column; */}
     width: 70%;
     margin: 3%;
   }
