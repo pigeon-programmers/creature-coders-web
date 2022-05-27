@@ -22,7 +22,7 @@ const NameBox = styled(Input)`
 
 const PetInfo = () => {
   const dispatch = useDispatch();
-  const [petType, setPetType] = useState('');
+  const [petType, setPetType] = useState('Pigeon');
   const [name, setName] = useState('');
   const { id } = useSelector((state) => state.user);
   const pet = useSelector((state) => state.pet)
@@ -34,10 +34,10 @@ const PetInfo = () => {
   }, [pet])
 
   useEffect(() => {
-    if (petType && !pet.name) {
+    if (!pet.name) {
       setName(randomName);
     }
-  }, [petType]);
+  }, []);
 
   const names = [
     'Blossom',
@@ -129,7 +129,6 @@ const PetInfo = () => {
             setPetType(e.target.value);
           }}
         >
-          <option disabled value="choose"></option>
           <option value="Pigeon">Pigeon</option>
           <option value="Raccoon">Raccoon</option>
           <option value="Possum">Possum</option>
