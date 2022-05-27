@@ -44,10 +44,13 @@ const ProfileText = styled(HomeSubTitle)`
     margin: 0.25em 0;
   }
 `;
+const NameText = styled(ProfileText)`
+  font-size: 1.5vh;
+`;
 const EditButton = styled(Button)`
   font-size: large;
   margin: 0.25em 1em;
-  padding: 0.25em 1em;
+  padding: 0 .75em;
 `;
 const RowContainer = styled.div`
   display: flex;
@@ -163,9 +166,9 @@ const UserProfile = () => {
           <PetImage src={petUrls[type]} />
         </PetContainer>
         <RowContainer>
-          <ProfileText>
+          <NameText>
             Pet: {name} the {type}
-          </ProfileText>
+          </NameText>
           <Link to="/pet">
             <EditButton> Edit</EditButton>
           </Link>
