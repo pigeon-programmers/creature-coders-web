@@ -3,22 +3,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Doors from './Animations/Doors';
 import { Main, Content, palette } from './style';
-import SubwayLines from './SubwayLines';
 import styled from 'styled-components';
 import { _updateActivePage } from '../store/user';
 
 const MapContainer = styled.div`
-  background-image: url('https://creature-coders.s3.amazonaws.com/subway-map-updated-01.jpg');
+  background-image: url('https://creature-coders.s3.amazonaws.com/subway+grid-01.jpg');
   background-size: 100% 100%;
   background-color: ${palette.dkGray};
   width: 50vw;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  @media (min-width: 1025px) {
+    width: 500px;
+  }
+  @media (max-width: 750px) {
+    width: 75vw;
+  }
+  @media (max-width: 500px) {
+    width: 100vw;
+  }
 `;
 
 const Level = styled.div`
@@ -43,16 +50,21 @@ const Level = styled.div`
       parseInt(p.linkLevel) <= p.levelGame ? 'auto' : 'none'};
   }
 `;
+const StopContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const Map = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { currentLevel, currentGame } = useSelector((state) => state.user);
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const [levelGame, setLevelGame] = useState(0);
 
   useEffect(() => {
-    dispatch(_updateActivePage("map"))
-  }, [])
+    dispatch(_updateActivePage('map'));
+  }, []);
 
   useEffect(() => {
     isLoggedIn
@@ -72,69 +84,59 @@ const Map = () => {
       <Content>
         <MapContainer>
           {/* <SubwayLines /> */}
-          <Level
-            linkLevel={'30'}
-            levelGame={levelGame}
-            style={{ top: '6vh', right: '4vw' }}
-          >
-            <Link to="/game/3/0" className="link">
-              3.0
-            </Link>
-          </Level>
-          <Level
-            linkLevel={'20'}
-            levelGame={levelGame}
-            style={{ top: '20.5vh', right: '28.5vw' }}
-          >
-            <Link to="/game/2/0" className="link">
-              2.0
-            </Link>
-          </Level>
-          <Level
-            linkLevel={'12'}
-            levelGame={levelGame}
-            style={{ top: '38.5vh', right: '23vw' }}
-          >
-            <Link to="/game/1/2" className="link">
-              1.2
-            </Link>
-          </Level>
-          <Level
-            linkLevel={'11'}
-            levelGame={levelGame}
-            style={{ top: '51.5vh', right: '13.25vw' }}
-          >
-            <Link to="/game/1/1" className="link">
-              1.1
-            </Link>
-          </Level>
-          <Level
-            linkLevel={'10'}
-            levelGame={levelGame}
-            style={{ top: '65vh', right: '13.25vw' }}
-          >
-            <Link to="/game/1/0" className="link">
-              1.0
-            </Link>
-          </Level>
-          <Level
-            linkLevel={'01'}
-            levelGame={levelGame}
-            style={{ top: '75vh', right: '18.25vw' }}
-          >
-            <Link to="/game/0/1" className="link">
-              0.1
-            </Link>
-          </Level>
-          <Level
-            linkLevel={'00'}
-            levelGame={levelGame}
-            style={{ top: '82vh', right: '24.25vw' }}
-          >
-            <Link to="/game/0/0" className="link">
-              0.0
-            </Link>
-          </Level>
+          <StopContainer style={{ gridColumn: 5, gridRow: 1 }}>
+            <Level linkLevel={'30'} levelGame={levelGame}>
+              <Link to="/game/3/0" className="link">
+                3.0
+              </Link>
+            </Level>
+          </StopContainer>
+          <StopContainer style={{ gridColumn: 2, gridRow: 2 }}>
+            <Level linkLevel={'20'} levelGame={levelGame}>
+              <Link to="/game/2/0" className="link">
+                2.0
+              </Link>
+            </Level>
+          </StopContainer>
+          <StopContainer style={{ gridColumn: 3, gridRow: 3 }}>
+            <Level linkLevel={'12'} levelGame={levelGame}>
+              <Link to="/game/1/2" className="link">
+                1.2
+              </Link>
+            </Level>
+          </StopContainer>
+          <StopContainer style={{ gridColumn: 4, gridRow: 4 }}>
+            <Level
+              linkLevel={'11'}
+              levelGame={levelGame}
+              style={{ gridColumn: 4, gridRow: 4 }}
+            >
+              <Link to="/game/1/1" className="link">
+                1.1
+              </Link>
+            </Level>
+          </StopContainer>
+          <StopContainer style={{ gridColumn: 4, gridRow: 5 }}>
+            <Level linkLevel={'10'} levelGame={levelGame}>
+              <Link to="/game/1/0" className="link">
+                1.0
+              </Link>
+            </Level>
+          </StopContainer>
+          <StopContainer style={{ gridColumn: 4, gridRow: 6 }}>
+            <Level linkLevel={'01'} levelGame={levelGame}>
+              <Link to="/game/0/1" className="link">
+                0.1
+              </Link>
+            </Level>
+          </StopContainer>
+          <StopContainer style={{ gridColumn: 3, gridRow: 7 }}>
+            <Level linkLevel={'00'} levelGame={levelGame}>
+              <Link to="/game/0/0" className="link">
+                0.0
+              </Link>
+            </Level>
+          </StopContainer>
           <Doors />
         </MapContainer>
       </Content>

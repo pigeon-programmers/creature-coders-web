@@ -12,7 +12,6 @@ const slideInLeftAnim = keyframes`
     left: -25vw;
   }
 `;
-
 const slideInRightAnim = keyframes`
   0% {
     right: 0vw;
@@ -24,7 +23,6 @@ const slideInRightAnim = keyframes`
     right: -25vw;
   }
 `;
-
 const LeftDoor = styled.img`
   width: 25vw;
   height: 89vh;
@@ -32,8 +30,18 @@ const LeftDoor = styled.img`
   position: absolute;
   left: -25vw;
   animation: ${slideInLeftAnim} 1.5s 1 alternate linear;
+  @media (min-width: 1025px) {
+    width: 250px;
+  }
+  @media (max-width: 750px) {
+    left: -37.5vw;
+    width: 37.5vw;
+  }
+  @media (max-width: 500px) {
+    left: -50vw;
+    width: 50vw;
+  }
 `;
-
 const RightDoor = styled.img`
   width: 25vw;
   height: 89vh;
@@ -41,6 +49,17 @@ const RightDoor = styled.img`
   position: absolute;
   right: -25vw;
   animation: ${slideInRightAnim} 1.5s 1 alternate linear;
+  @media (min-width: 1025px) {
+    width: 250px;
+  }
+  @media (max-width: 750px) {
+    right: -37.5vw;
+    width: 37.5vw;
+  }
+  @media (max-width: 500px) {
+    right: -50vw;
+    width: 50vw;
+  }
 `;
 
 const Doors = () => {

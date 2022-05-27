@@ -21,18 +21,18 @@ import styled, { keyframes } from 'styled-components';
 const BigGameContent = styled(GameContentNoBlock)`
   height: 60vh;
 `;
-
 const SmallerGameText = styled(GameText)`
-  font-size: x-large;
+  font-size: 2vh;
 `;
-
 const BugText = styled.button`
   color: ${palette.red};
   border: none;
   outline: none;
   background: none;
   cursor: pointer;
-  font-size: x-large;
+  font-size: 2vh;
+  font-weight: bold;
+  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
   padding: 0;
 `;
 

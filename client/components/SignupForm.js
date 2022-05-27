@@ -11,6 +11,12 @@ const MainSU = styled(Main)`
 background-color: #ED1697;
 `
 
+const SignUpContainer = styled(FormContainer)`
+@media (min-width: 500px) {
+  height: 85vh;
+}
+`
+
 const SignupForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -57,7 +63,7 @@ const SignupForm = () => {
 
   return (
     <MainSU>
-      <FormContainer onSubmit={handleSubmit} name='signup'>
+      <SignUpContainer onSubmit={handleSubmit} name='signup'>
         <>
           <Label htmlFor="username">
             <LabelP>Username</LabelP>
@@ -113,7 +119,7 @@ const SignupForm = () => {
         <div>
           <Button>Signup</Button>
         </div>
-      </FormContainer>
+      </SignUpContainer>
     </MainSU>
   )
 }
