@@ -33,15 +33,18 @@ export const Main = styled.div`
 `;
 
 export const Content = styled.div`
-  margin-top: 20%;
-  bottom: 0;
+  margin-top: 5vh;
+  margin-bottom: 7vh;
   height: 90vh;
   width: 100vw;
-  margin: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  @media (min-width: 1025px) {
+    width: 1025px;
+}
 `;
 
 export const HomeTitle = styled.h1`
@@ -70,6 +73,9 @@ export const FormContainer = styled.form`
   justify-content: center;
   align-items: center;
   background-color: ${palette.mdGray};
+  @media (max-width: 500px) {
+    width: 100vw;
+}
 `;
 
 export const Label = styled.label`
@@ -91,7 +97,13 @@ export const Input = styled.input`
   float: left;
   clear: left;
   margin: 0.5em;
+  @media (max-width: 500px) {
+    width: 80vw;
+    height: 7vh;
+    margin: 2vh;
+}
 `;
+
 export const Select = styled.select`
   width: 50vw;
   margin: 1em;
@@ -100,6 +112,9 @@ export const Select = styled.select`
   box-sizing: border-box;
   font-size: 1.5em;
   font-family: 'Anonymous Pro', 'Andale Mono', monospace;
+  @media (max-width: 500px) {
+    width: 80vw;
+}
 `;
 
 //GAME COMPONENTS
@@ -112,8 +127,28 @@ export const GameContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  @media (min-width: 1025px) {
+    width: 820px;
+}
+@media (max-width: 500px) {
+  width: 100vw;
+  margin-bottom: 7;
+}
 `;
 
+export const VisualsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const GameText = styled.p`
+color: ${palette.white};
+font-size: large;
+font-family: 'Anonymous Pro', 'Andale Mono', monospace;
+margin: 1em;
+`;
+
+//used for FILL IN THE BLANK GAMES
 export const GameContentNoBlock = styled.div`
   width: 80vw;
   height: 40vh;
@@ -122,16 +157,16 @@ export const GameContentNoBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  @media (min-width: 1025px) {
+    width: 820px;
+}
+  @media (max-width: 500px) {
+    width: 100vw;
+    flex-direction: column;
+    margin: .25em;
+  }
 `;
 
-export const GameText = styled.p`
-  color: ${palette.white};
-  font-size: large;
-  font-family: 'Anonymous Pro', 'Andale Mono', monospace;
-  margin: 1em;
-`;
-
-//used for FILL IN THE BLANK GAMES
 export const GameButton = styled.button`
   align-items: center;
   color: ${palette.black};
@@ -166,32 +201,14 @@ export const Button = styled.button`
   white-space: nowrap;
 `;
 
-export const VisualsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
 //ARTWORK/ASSET STYLING
-export const Bagel = styled.p`
-  background-image: url('https://creature-coders.s3.amazonaws.com/bagel.svg');
-  background-repeat: no-repeat;
-  height: 50px;
-  width: 50px;
-  margin: 2px;
-`;
-
 export const Computer = styled.img`
   height: 20vh;
   margin: 1em;
+  @media (max-width: 500px) {
+    height: 0;
+}
 `;
-
-// export const Pigeon = styled.p`
-//   background-image: url('https://creature-coders.s3.amazonaws.com/pigeon.svg');
-//   background-repeat: no-repeat;
-//   height: 500px;
-//   width: 350px;
-//   margin-top: 1.5em;
-// `;
 
 export const Pigeon = styled.img`
   height: 40vh;

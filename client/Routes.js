@@ -24,7 +24,7 @@ import GameWon from './components/GameWon';
 import EndGame from './components/EndGame';
 import Loading from './components/Loading';
 import FAQ from './components/FAQ';
-import { _getLocalStorage } from './store/localStorage';
+import { getLocalStorage } from './store/localStorage';
 
 const Routes = () => {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const Routes = () => {
 
   useEffect(() => {
     if (!isLoggedIn) {
-      dispatch(_getLocalStorage());
+      dispatch(getLocalStorage());
     }
   }, []);
 
