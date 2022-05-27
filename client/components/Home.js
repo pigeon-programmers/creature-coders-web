@@ -89,10 +89,6 @@ const Bang = styled.img`
   @media (min-width: 1025px) {
     width: 820px;
   }
-  @media (min-width: 600px) {
-    width: 500px;
-    top: 7vh;
-  }
   @media (min-width: 900px) {
     width: 600px;
     top: 6vh;
