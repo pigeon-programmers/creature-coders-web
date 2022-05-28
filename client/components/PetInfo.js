@@ -10,7 +10,7 @@ import {
   Label,
   palette,
 } from './style';
-import { savePet } from '../store/pet';
+import { savePet, updatePet } from '../store/pet';
 
 const MainBG = styled(Main)`
   background-color: ${palette.green};
@@ -118,6 +118,8 @@ const PetInfo = () => {
   ];
   const randomName = names[Math.floor(Math.random() * names.length)];
 
+  console.log('PETNAME: ', pet.name);
+
   return (
     <MainBG>
       <FormContainer>
@@ -155,7 +157,11 @@ const PetInfo = () => {
           type="submit"
           onClick={(e) => {
             e.preventDefault();
-            dispatch(savePet(id, { name, type: petType }));
+            {
+              !pet.name
+                ? dispatch(savePet(id, { name, type: petType }))
+                : dispatch(updatePet(id, { name, type: petType, id: pet.id }));
+            }
           }}
         >
           Submit

@@ -6,6 +6,7 @@ const UPDATE_USER = 'UPDATE_USER';
 const GET_USER_HATS = 'GET_USER_HATS';
 const UPDATE_USER_HATS = 'UPDATE_USER_HATS';
 const UPDATE_ACTIVE_PAGE = 'UPDATE_ACTIVE_PAGE';
+const LOGOUT_USER = 'LOGOUT_USER';
 
 const _getSingleUser = (data) => ({
   type: GET_SINGLE_USER,
@@ -30,6 +31,10 @@ const _updateUserHats = (hats) => ({
 export const _updateActivePage = (page) => ({
   type: UPDATE_ACTIVE_PAGE,
   page,
+});
+
+export const _logoutUser = () => ({
+  type: LOGOUT_USER,
 });
 
 export const getSingleUser = (userId) => {
@@ -116,7 +121,12 @@ export const createUser = (newUser) => {
   };
 };
 
-export default function (state = { hats: [], activePage: null }, action) {
+const initialState = {
+  hats: [],
+  activePage: null,
+};
+
+export default function (state = initialState, action) {
   switch (action.type) {
     case GET_SINGLE_USER:
       return { ...state, ...action.data };
@@ -128,6 +138,8 @@ export default function (state = { hats: [], activePage: null }, action) {
       return { ...state, hats: action.hats };
     case UPDATE_ACTIVE_PAGE:
       return { ...state, activePage: action.page };
+    case LOGOUT_USER:
+      return { ...initialState, activePage: 'home' };
     default:
       return state;
   }
