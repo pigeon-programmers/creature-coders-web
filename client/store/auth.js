@@ -42,7 +42,7 @@ export const authenticate = (email, password, method) => async (dispatch) => {
       password,
     });
     window.localStorage.setItem(TOKEN, res.data.token);
-    await dispatch(me());
+    dispatch(me());
     method === 'login' ? history.push('/map') : history.push('/pet');
   } catch (authError) {
     return dispatch(setAuth({ error: authError }));

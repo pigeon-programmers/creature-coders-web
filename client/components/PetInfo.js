@@ -10,7 +10,7 @@ import {
   Label,
   palette,
 } from './style';
-import { savePet, updatePet } from '../store/pet';
+import { savePet } from '../store/pet';
 
 const MainBG = styled(Main)`
   background-color: ${palette.green};
@@ -25,13 +25,13 @@ const PetInfo = () => {
   const [petType, setPetType] = useState('Pigeon');
   const [name, setName] = useState('');
   const { id } = useSelector((state) => state.user);
-  const pet = useSelector((state) => state.pet)
+  const pet = useSelector((state) => state.pet);
 
   useEffect(() => {
     if (pet.name) {
-      setName(pet.name)
+      setName(pet.name);
     }
-  }, [pet])
+  }, [pet]);
 
   useEffect(() => {
     if (!pet.name) {
@@ -155,7 +155,7 @@ const PetInfo = () => {
           type="submit"
           onClick={(e) => {
             e.preventDefault();
-            { pet.name ? dispatch(updatePet(id, { name, type: petType, id: pet.id})) : dispatch(savePet(id, { name, type: petType })) };
+            dispatch(savePet(id, { name, type: petType }));
           }}
         >
           Submit
