@@ -50,7 +50,7 @@ const NameText = styled(ProfileText)`
 const EditButton = styled(Button)`
   font-size: large;
   margin: 0.25em 1em;
-  padding: 0 .75em;
+  padding: 0 0.75em;
 `;
 const RowContainer = styled.div`
   display: flex;
@@ -93,7 +93,7 @@ const PetContainer = styled.div`
   }
 `;
 const PetImage = styled.img`
-height: 310px;
+  height: 310px;
   @media (max-width: 500px) {
     height: 225px;
   }
@@ -121,11 +121,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     if (id) dispatch(getPet(id));
-  }, [id]);
-
-  useEffect(() => {
-    if (id) dispatch(getPet(id));
-  }, [pet]);
+  }, [id, pet]);
 
   useEffect(() => {
     dispatch(_updateActivePage('profile'));

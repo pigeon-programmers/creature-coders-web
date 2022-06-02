@@ -25,13 +25,13 @@ const PetInfo = () => {
   const [petType, setPetType] = useState('Pigeon');
   const [name, setName] = useState('');
   const { id } = useSelector((state) => state.user);
-  const pet = useSelector((state) => state.pet)
+  const pet = useSelector((state) => state.pet);
 
   useEffect(() => {
     if (pet.name) {
-      setName(pet.name)
+      setName(pet.name);
     }
-  }, [pet])
+  }, [pet]);
 
   useEffect(() => {
     if (!pet.name) {
@@ -118,6 +118,8 @@ const PetInfo = () => {
   ];
   const randomName = names[Math.floor(Math.random() * names.length)];
 
+  console.log('PETNAME: ', pet.name);
+
   return (
     <MainBG>
       <FormContainer>
@@ -155,7 +157,11 @@ const PetInfo = () => {
           type="submit"
           onClick={(e) => {
             e.preventDefault();
-            { pet.name ? dispatch(updatePet(id, { name, type: petType, id: pet.id})) : dispatch(savePet(id, { name, type: petType })) };
+            {
+              !pet.name
+                ? dispatch(savePet(id, { name, type: petType }))
+                : dispatch(updatePet(id, { name, type: petType, id: pet.id }));
+            }
           }}
         >
           Submit
